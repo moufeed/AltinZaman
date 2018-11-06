@@ -1,0 +1,94 @@
+﻿@model List<MenuLiteDto>
+@{
+
+    ViewData["Title"] = Localizer["menus"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@ViewData["Title"] <small></small></h3>
+        </div>
+        <div class="title_right">
+
+            <a href="@Url.AdminUrl("Create","Menus")"
+               class="btn btn-blue  btn-add-new"><i class="fa fa-plus"></i>@Localizer["new_menu"]</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            <a href="@Url.AdminUrl("index", "menus", new { culture = lang.Lang})">@lang.Name</a>
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel p-x-0">
+            
+            <div class="x_content">
+                <div class="table-responsive">
+
+                    <table class="table table-middle table-striped table-menus">
+
+                        <thead>
+                            <tr>
+                                <th>@Localizer["t_name"]</th>
+                                <th>@Localizer["t_title"]</th>
+                                <th>@Localizer["t_position"]</th>
+                                <th width="200">@Localizer["t_create_date"]</th>
+                                <th width="200">@Localizer["t_modified_date"]</th>
+                                <th width="100">
+                                    @Localizer["t_actions"]
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var menu in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @menu.Key
+                                    </td>
+                                    <td>
+                                        @menu.Title
+                                    </td>
+                                    <td>
+                                        @menu.Position
+                                    </td>
+                                    <td>
+                                        @menu.CreatedDate
+                                    </td>
+                                    <td>
+                                        @menu.ModifiedDate
+                                    </td>
+                                    <td>
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           href="@Url.AdminUrl("Edit","menus",new { id = menu.Id})"
+                                           title="@Localizer["t_edit"]"
+                                           class="btn btn-edit"><i class="fa fa-edit "></i></a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

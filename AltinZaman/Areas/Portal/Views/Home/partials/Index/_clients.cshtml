@@ -1,0 +1,27 @@
+
+<svg id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 C 50 100 80 100 100 0 Z"></path></svg>
+<section class="home_clients_section">
+        <div class="container">
+            <header class="section-header text-center">
+                            <p>@Localizer["Our_Clients"]</p>
+                            <h2><strong>@Localizer["meet_our_clients"]</strong></h2>
+            </header>
+
+
+            <div class="row">
+                <div class="col">
+                  <div class="owl-carousel clients_carousel">
+                      @for(var i=1; i< 10;i++){
+                         <div class="clients-img">
+                            <a href="" >
+                              <img src="~/portal/img/logos/@(i).png">
+                            </a>
+                         </div>
+                      }
+                  </div>  
+                </div>
+            </div>
+        </div>
+</section>
+
+

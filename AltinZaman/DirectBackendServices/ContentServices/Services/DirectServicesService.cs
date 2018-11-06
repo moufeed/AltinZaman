@@ -1,0 +1,165 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AltinZaman.DirectBackendServices.ContentServices.Services.Mapper;
+using TamTechSDK.Common.Models.ContentItem;
+using TamTechSDK.Common.Providers.Requests.Models;
+using TamTechSDK.Common.Services.ContentService.Services;
+using TamTechSDK.Common.Services.ContentService.Services.Models;
+
+namespace AltinZaman.DirectBackendServices.ContentServices.Services
+{
+    public class DirectServicesService : TamTechSDK.Common.Services.ContentService.Services.IServicesService
+    {
+
+        #region Props  
+        private readonly TamTechBackendSDK.ContentService.Services.Services.IServicesService _servicesService;
+        #endregion
+
+
+        #region Ctors
+        public DirectServicesService(TamTechBackendSDK.ContentService.Services.Services.IServicesService servicesService)
+        {
+            _servicesService = servicesService;
+        }
+        #endregion
+
+        #region Utilities
+
+        private IRequestProviderResult<TResult> MapRequestProviderResult<TResult>(
+           TamTechBackendSDK.ContentService.Models.Results.IReturnResultModel<TResult> inputResult)
+        {
+            IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
+            _resultModel.Success = inputResult.Success;
+            _resultModel.StatusCode = inputResult.StatusCode;
+            _resultModel.Data = inputResult.Data;
+            _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
+            foreach (var error in inputResult.ModelState)
+            {
+                var errorMessages = new List<string>();
+                if (error.Value.Errors.Count > 0)
+                {
+                    foreach (var value in error.Value.Errors)
+                    {
+                        errorMessages.Add(value.ErrorMessage);
+                    }
+
+                    _resultModel.Messages.Add(error.Key, errorMessages);
+                }
+            }
+            return _resultModel;
+        }
+
+        private IRequestProviderResult<TResult> GetRequestProviderResult<TResult>(TResult data)
+        {
+            IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
+            _resultModel.Success = true;
+            _resultModel.StatusCode = System.Net.HttpStatusCode.OK;
+            _resultModel.Data = data;
+            return _resultModel;
+        }
+        #region Deserialize
+        public TResult DeserializeFromObject<TResult>(dynamic inputObject)
+        {
+            string serialized = JsonConvert.SerializeObject(inputObject);
+            TResult handledResult = JsonConvert.DeserializeObject<TResult>(serialized);
+            return handledResult;
+        }
+        #endregion
+
+        #endregion
+
+        #region Services
+
+        #region {Public Services}  
+
+        public async Task<IRequestProviderResult<ServiceDto>> GetPublicBySlugAsync(string slug)
+        {
+            // TODO: Not optimized
+            dynamic result = await _servicesService.GetPublicDynamicBySlugAsync(slug);
+            ServiceDto page = new ServiceDto();
+            if (result != null)
+            {
+                page = DeserializeFromObject<ServiceDto>(result);
+            }
+            return GetRequestProviderResult(page);
+
+        }
+
+
+
+
+        public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync()
+        {
+            // TODO: Not optimized
+            dynamic result = await _servicesService.GetPublicDynamicListAsync();
+            List<ServiceDto> ServicesList = new List<ServiceDto>();
+            if (result != null)
+            {
+                ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
+            }
+            return GetRequestProviderResult(ServicesList);
+
+        }
+
+
+        public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync(int takeItems)
+        {
+            // TODO: Not optimized
+            dynamic result = await _servicesService.GetPublicDynamicListAsync(takeItems);
+            List<ServiceDto> ServicesList = new List<ServiceDto>();
+            if (result != null)
+            {
+                ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
+            }
+            return GetRequestProviderResult(ServicesList);
+
+        }
+        #endregion
+
+        #region {Services Manager}  
+        public async Task<IRequestProviderResult<List<ServiceDto>>> GetAllAsync(string lang)
+        {
+            var services = await _servicesService.GetAllExceptSoftDeletedAsync(lang);
+            List<ServiceDto> servicesDto = services != null ? services.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>();
+            return GetRequestProviderResult(servicesDto);
+        }
+
+        public async Task<IRequestProviderResult<ServiceDto>> GetByIdAsync(Guid id, string lang)
+        {
+            var service = await _servicesService.GetByIdExceptSoftDeletedAsync(id, lang);
+            return GetRequestProviderResult(service.MapToFrontendDto());
+        }
+
+        public async Task<IRequestProviderResult<Guid>> CreateAsync(CreateServiceDto model)
+        {
+            var result = await _servicesService.CreateAsync(model.MapToBackendDto());
+            return MapRequestProviderResult(result);
+        }
+
+        public async Task<IRequestProviderResult<bool>> EditAsync(UpdateServiceDto model)
+        {
+            var result = await _servicesService.EditAsync(model.MapToBackendDto());
+            return MapRequestProviderResult(result);
+        }
+
+        public async Task<IRequestProviderResult<bool>> DeleteAsync(Guid id)
+        {
+            var result = await _servicesService.SoftDeleteAsync(id);
+            return MapRequestProviderResult(result);
+        }
+
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO data)
+        {
+            var result = await _servicesService.PublishAsync(data.MapToBackend());
+            return MapRequestProviderResult(result);
+        }
+
+
+        #endregion
+
+        #endregion
+    }
+}

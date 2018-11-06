@@ -1,0 +1,16 @@
+﻿using TamTechSDK.Common.Services.Identity;
+using TamTechSDK.Common.Services.ServiceBus;
+using TamTechSDK.Common.Services.SMS;
+using TamTechSDK.Web.Controllers.Admin;
+using TamTechSDK.Web.Services.Configurations.Cultures;
+using TamTechSDK.Web.Services.Telemetry;
+
+namespace AltinZaman.Areas.Admin.Controllers
+{
+    public class SmsController : SmsBaseController
+    {
+        public SmsController(ITelemetryClientService telemetryClientService, ICulturesManager languageService, ISMSService sMSService, IUsersManagerService IdentityService, ServiceBusSettings serviceBusSettings) : base(telemetryClientService, languageService, sMSService, IdentityService, serviceBusSettings)
+        {
+        }
+    }
+}

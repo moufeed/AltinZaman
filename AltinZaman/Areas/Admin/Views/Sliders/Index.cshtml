@@ -1,0 +1,147 @@
+﻿@model List<SliderDto>
+@{
+    ViewData["Title"] = Localizer["Sliders"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["Sliders"] <small></small></h3>
+        </div>
+        <div class="title_right">
+            <a href="@Url.AdminUrl("CreateSlider" ,"Sliders")"
+               class="btn btn-blue btn-add-new">@Localizer["new_slider"]</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            <a href="@Url.AdminUrl("index", "sliders", new { culture = lang.Lang})">@lang.Name</a>
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel p-x-0">
+
+
+        
+            <div class="x_content">
+                <div class="table-responsive">
+                    <table class="table table-middle table-striped services-table" id="ServicesTable">
+                        <thead>
+                            <tr>
+                                <th class="index" style="min-width:100px">@Localizer["t_title"]</th>
+                                <th style="min-width:100px">@Localizer["t_key"]</th>
+                                <th>@Localizer["t_summary"]</th>
+
+                                <th width="75" class="text-center">@Localizer["t_visibility"]</th>
+                                <th width="175">@Localizer["t_actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr id="tr-@item.Id">
+                                    <td class="index">
+                                        @item.Title
+                                    </td>
+
+
+                                    <td>@item.Key</td>
+                                    <td>
+
+                                        @{
+                                            string text;
+                                            if (item.Summary != null)
+                                            {
+                                                text = Regex.Replace(item.Summary, "<.*?>", String.Empty);
+                                            }
+                                        }
+                                        @Html.Raw(item.Summary)
+
+                                    </td>
+
+                                    <td>
+
+                                        @if (item.Published)
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               data-status="true"
+                                               title="@Localizer["t_unpublish"]"
+                                               data-type="slider"
+                                               data-url="@Url.AdminUrl("PublishSliderAsync","Sliders" ,new { id= item.Id })"
+                                               class="btn btn-link-pup published toggle__publish">
+                                                <i class="fa fa-eye c-green"></i>
+                                                <small>@Localizer["t_published"]</small>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="@Localizer["t_publish"]"
+                                               data-type="slider"
+                                               data-url="@Url.AdminUrl("PublishSliderAsync","sliders",new { id=item.Id} )"
+                                               class="btn btn-link-pup unpublished toggle__publish">
+                                                <i class="fa fa-eye-slash c-red"></i>
+                                                <small>@Localizer["t_unpublished"]</small>
+                                            </a>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_details"]"
+                                           href="@Url.AdminUrl("details","sliders",new { id=item.Id} )"
+                                           class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           href="@Url.AdminUrl("Edit","sliders",new { id=item.Id})"
+                                           title="@Localizer["t_edit"]"
+                                           class="btn btn-edit btn-round"><i class="fa fa-edit "></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_remove"]"
+                                           data-url="@Url.AdminUrl("DeleteAsync","sliders",new { id=item.Id})"
+                                           data-target="#tr-@item.Id"
+                                           class="btn btn-remove btn-round delete__slider"><i class="fa fa-times "></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles{
+
+}
+
+@section Scripts {
+    <script src="~/Admin/js/sliders.min.js"></script>
+}

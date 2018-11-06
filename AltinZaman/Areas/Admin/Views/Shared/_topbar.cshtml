@@ -1,0 +1,46 @@
+﻿ 
+<div class="top_nav">
+
+    <div class="nav_menu">
+
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+               
+            </div>
+
+
+            @using IdentityServer4.Extensions
+            @{
+                string name = null;
+                if (!true.Equals(ViewData["signed-out"]))
+                {
+                    name = Context.User?.GetDisplayName();
+                }
+            }
+
+                <ul class="nav navbar-nav navbar-right">
+                   
+            @if (!string.IsNullOrWhiteSpace(name))
+            {
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            @name
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right flip-dir">
+                            <li><a asp-area="identity" asp-action="Logout" asp-controller="Account"><i class="fa fa-sign-out pull-right flip-dir"></i> @Localizer["Log_Out"]</a></li>
+                        </ul>
+                    </li>
+            }
+             <li>
+                 <a href="/" class="" target="_blank">
+
+                     <i class=" fa fa-home"></i> @Localizer["visit_public_site"]
+                 </a>
+                    </li>
+                </ul>
+ 
+        </nav>
+    </div>
+</div>

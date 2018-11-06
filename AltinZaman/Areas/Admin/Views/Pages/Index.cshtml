@@ -1,0 +1,178 @@
+﻿@model List<PageDto>
+
+@{
+    ViewData["Title"] = Localizer["Pages"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["Pages"] <small></small></h3>
+        </div>
+        <div class="title_right">
+
+            <a href="@Url.AdminUrl("CreateHtmlPage" ,"Pages")" class="btn btn-blue btn-add-new">@Localizer["new_html_page"]</a>
+            <a href="@Url.AdminUrl("CreateSectionsPage","Pages")" class="btn btn-blue  btn-add-new">@Localizer["new_section_page"]</a>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            <a href="@Url.AdminUrl("index", "Pages", new { culture = lang.Lang})">@lang.Name</a>
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel p-x-0">
+            
+            <div class="x_content">
+                <div class="table-responsive datatable">
+                    <table class="table table-middle table-striped" id="pagesTable">
+                        <thead>
+                            <tr>
+                                <th width="50" class="text-center">No.</th>
+                                <th>@Localizer["t_title"]</th>
+                                @*<th>Author</th>*@
+                                <th>@Localizer["t_create_date"]</th>
+                                <th>@Localizer["t_modified_date"]</th>
+                                <th>@Localizer["t_type"]</th>
+                                <th width="150" class="text-center">@Localizer["t_visibility"]</th>
+                                <th width="200" class="text-center">@Localizer["t_actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{int i = 1;}
+                            @foreach (var item in Model)
+                            {
+                                <tr id="tr-@item.Id">
+                                    <td class="text-center">@i</td>
+                                    <td>@item.Title</td>
+                                    @*<td>@item.CreatorUserId</td>*@
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.ModifiedDate</td>
+                                    <td>
+                                        @((item.Type == (int)PageTypeEnum.Sections) ?
+                                                                                      PageTypeEnum.Sections.ToString() : PageTypeEnum.Html.ToString())
+                                    </td>
+                                    <td class="text-center">
+
+                                        @if (item.Locked)
+                                        {
+                                            @if (item.Published)
+                                            {
+                                                <span data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="@Localizer["locked_by_system"]">
+                                                    <i class="fa fa-eye c-green"></i>
+                                                    <small>@Localizer["t_published"]</small>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      title="@Localizer["locked_by_system"]">
+                                                    <i class="fa fa-eye-slash c-red"></i>
+                                                    <small>@Localizer["t_unpublished"]</small>
+                                                </span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (@item.Published)
+                                            {
+                                                <a id="pubunpub-@i"
+                                                   data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   data-id="@item.Id"
+                                                   data-status="true"
+                                                   title="@Localizer["t_publish"]"
+                                                   data-url="@Url.AdminUrl("Publish","Pages", new { type = item.TypeEnum , id = item.Id } )"
+                                                   class="btn btn-link-pup ptrue">
+                                                    <i class="fa fa-eye c-green"></i>
+                                                    <small>@Localizer["t_published"]</small>
+                                                </a>
+                                            }
+                                            else
+                                            {
+
+                                                <a id="pubunpub-@i"
+                                                   data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   data-id="@item.Id"
+                                                   title="@Localizer["t_unpublish"]"
+                                                   data-url="@Url.AdminUrl("Publish","Pages", new { type = item.TypeEnum , id = item.Id } )"
+                                                   class="btn btn-link-pup ">
+                                                    <i class="fa fa-eye-slash c-red"></i>
+                                                    <small>@Localizer["t_unpublished"]</small>
+                                                </a>
+                                            }
+                                        }
+
+                                    </td>
+                                    <td class="text-center">
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_details"]"
+                                           href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "GetSectionsDetailsAsync" : "GetHtmlDetailsAsync"  , "Pages",new { id = item.Id })"
+                                           class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_edit"]"
+                                           href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "EditSectionsPage" : "EditHtmlPage"   , "Pages" , new { id = item.Id})"
+                                           class="btn btn-edit btn-round"><i class="fa fa-edit "></i></a>
+
+                                        @if (item.Locked)
+                                        {
+                                            <span data-toggle="tooltip"
+                                                  data-placement="top"
+                                                  class="btn-locked btn-round"
+                                                  title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                        }
+                                        else
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               data-id="@item.Id"
+                                               title="@Localizer["t_remove"]"
+                                               data-url="@Url.AdminUrl("Delete" ,"Pages" , new { id = item.Id , type = item.TypeEnum})"
+                                               class="btn btn-remove remove_page btn-round"><i class="fa fa-times "></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        window.pageLocalization  = {
+            "t_unpublish " :"@Localizer["t_unpublish"]",
+            "t_unpublished " :"@Localizer["t_unpublished"]",
+            "unpublished_successfully " :"@Localizer["unpublished_successfully"]",
+            "t_publish " :"@Localizer["t_publish"]",
+            "t_published " :"@Localizer["t_published"]",
+            "published_successfully " :"@Localizer["published_successfully"]"
+        }
+    </script>
+    <script src="~/Admin/js/pages.min.js"></script>
+}

@@ -1,0 +1,203 @@
+﻿@model UpdateSliderDto
+
+@{
+    ViewData["Title"] = Localizer["edit_slider"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["edit_slider"] <small></small></h3>
+        </div>
+        <div class="title_right">
+            <a asp-action="Index"
+               class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            <a href="@Url.AdminUrl("Edit", "sliders", new { culture = lang.Lang , id=Model.Id })">@lang.Name</a>
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel">
+ 
+            <div class="x_content">
+
+                <form asp-controller="Sliders"
+                      asp-action="Edit"
+                      class="form-horizontal forn-new form-label-left m-t5"
+                      id="SlidersForm">
+
+                    <input type="hidden" name="Lang" value="@activeLang" />
+
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    }
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_name"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <input asp-for="Title" class="form-control" required />
+                            <span asp-validation-for="Title" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Key" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_key"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <input asp-for="Key" class="form-control" required />
+                            <span asp-validation-for="Key" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group clearfix">
+                        <label asp-for="Position" class="control-label col-md-3 col-sm-3 col-xs-12 ">Slider Position</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <select asp-for="Position" class="form-control" required>
+                                <option value="Header">Header</option>
+                            </select>
+
+                            <span asp-validation-for="Position" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>*@
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Summary" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_summary"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <textarea asp-for="Summary" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Summary" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5" value="@Localizer["Update"]">
+                            <button type="submit" name="save-continue" class="btn  btn-info">
+                                <i class="fa fa-floppy-o"></i>
+                                @Localizer["save_and_continue"]
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@await Html.PartialAsync("_sliderItems")
+
+
+
+
+
+@section Styles{
+
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+
+    <script>
+        $('#SlidersForm').validate({
+            errorClass: "invalid_field",
+            validClass: "valid_field",
+            ignore: ".ignore"
+        });
+    </script>
+
+
+    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+    <script src="~/Admin/js/sliders.min.js"></script>
+    <script src="~/Admin/js/validator.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#PublishSlider").on("change", function (event) {
+
+                var $this = $(this);
+                    $.ajax({
+                        url: "@Url.AdminUrl("PublishSliderAsync", "sliders", new { id = Model.Id })",
+                        type: 'GET',
+                        dataType: "json",
+                        data: {}
+                    })
+                    .done(function (data) {
+                        if (data.success) {
+
+                             var text = ( $this.is(":checked") ) ? "@Localizer["was_successfully_published"]" :  "@Localizer["was_successfully_unpublished"]"  ;
+                            $notification.success("@Localizer["slider"]", text , 2000, "fa fa-check");
+                        }
+                        else {
+                          var errors = data.errors;
+                    $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+                        }
+                    })
+                    .fail(function (jqXHR, Status) {
+                        $notification.error("@Localizer["error"]", jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                    });
+                });
+            });
+
+
+
+        tinymce.init({
+            selector: '#Content',
+            branding: false,
+            theme: 'modern',
+            height: 300,
+            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor'],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+            setup: function (editor) {
+                editor.on('change', function (e) {
+                    editor.save();
+                });
+            }
+
+        });
+
+        tinymce.init({
+            selector: '#Summary',
+            branding: false,
+            min_height: 150,
+
+            statusbar: false,
+            theme: 'modern',
+            menubar: false,
+            plugins: ['code hr anchor pagebreak spellchecker '],
+            setup: function (editor) {
+                editor.on('change', function (e) {
+                    editor.save();
+                });
+            }
+        });
+    </script>
+
+}
+
+

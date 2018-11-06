@@ -1,0 +1,210 @@
+﻿@model GalleryItemFormVM
+
+@{
+    ViewData["Title"] =   ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>
+                @( ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"])
+            <small></small>
+        </h3>
+    </div>
+    <div class="title_right">
+        <a href="@Url.AdminUrl("Edit" ,"Galleries" ,new { id = ViewBag.GalleryId} ) "
+           class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_gallery"]</a>
+    </div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            @if (ViewBag.isUpdate)
+                            {
+                                <a href="@Url.AdminUrl("EditGaleryItemAsync", "galleries", new { gid = ViewBag.GalleryId , id = Model.Id ,culture = lang.Lang})">@lang.Name</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.AdminUrl("CreateGaleryItemAsync", "galleries", new { gid = ViewBag.GalleryId , culture = lang.Lang})">@lang.Name</a>
+                            }
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel">
+            <div class="x_content">
+                 
+                <form asp-controller="Galleries"
+                      asp-action="@ViewBag.FormAction"
+                      method="post"
+                      class="form-horizontal forn-new form-label-left"
+                      id="GalleryItemForm" enctype="multipart/form-data">
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    }
+                    @if (ViewBag.isUpdate)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <input type="hidden" name="GalleryId" value="@ViewBag.GalleryId">
+                    <input type="hidden" name="Lang" value="@activeLang">
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_title"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="MainImage" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_main_image"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+
+                            @if (!string.IsNullOrEmpty(Model.MainImage))
+                            {
+                                <img src="@Model.MainImage" style="max-width:300px" class="img-thumbnail m-b3">
+                                <input type="hidden" name="MainImage" value="@Model.MainImage" />
+                            }
+
+                                <label class="form-control clearfix uploadfile">
+                                    @if (ViewBag.isUpdate)
+                                    {
+                                        <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                    }
+                                    else
+                                    {
+                                        <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
+                                    }
+
+                                    <span class="url">@Localizer["choose_file"]</span>
+                                    <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
+                                </label>
+                        </div>
+                        <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="DisplayOrder" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <input asp-for="DisplayOrder" class="form-control" min="0" />
+                            <span asp-validation-for="DisplayOrder" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Summary" class="control-label col-md-3 col-sm-3 col-xs-12 "> @Localizer["f_summary"]</label>
+                        <div class="col-md-7 col-sm-5 col-xs-12">
+                            <textarea asp-for="Summary" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Summary" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5" value="@( (ViewBag.isUpdate) ? Localizer["Update"] : Localizer["Create"] )">
+
+                            <button type="submit" name="save-continue" class="btn  btn-info">
+                                <i class="fa fa-floppy-o"></i>
+                                @Localizer["save_and_continue"]
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Styles{
+
+}
+
+@section Scripts {
+    
+     
+    <script src="~/Admin/js/validator.min.js"></script>
+    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+
+  
+
+    <script>
+
+        
+         
+
+        tinymce.init({
+            selector: '#Content',
+            branding: false,
+            theme: 'modern',
+            height: 300,
+            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor'],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+            setup: function (editor) {
+                editor.on('change', function (e) {
+                    editor.save();
+                });
+            }
+
+        });
+
+        tinymce.init({
+            selector: '#Summary',
+            branding: false,
+            min_height: 150,
+
+            statusbar: false,
+            theme: 'modern',
+            menubar: false,
+            plugins: ['code hr anchor pagebreak spellchecker '],
+            setup: function (editor) {
+                editor.on('change', function (e) {
+                    editor.save();
+                });
+            }
+        });
+    </script>
+
+}
+
+
