@@ -255,9 +255,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Products.Mapper
                 // ModifiedDate = item.ModifiedDate
             };
         }
-        public static TamTechBackendSDK.ContentService.Dtos.ContentItem.PublishDto MapToBackendPublishDt(this TamTechSDK.Common.Services.ContentService.Products.Models.PublishDto item)
+        public static TamTechBackendSDK.ContentService.Services.Common.Dtos.PublishDto MapToBackendPublishDt(this TamTechSDK.Common.Services.ContentService.Products.Models.PublishDto item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.ContentItem.PublishDto
+            return new TamTechBackendSDK.ContentService.Services.Common.Dtos.PublishDto
             {
                 Id = item.Id,
                 Lang = item.Lang

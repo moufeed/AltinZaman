@@ -21,8 +21,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 CreatedDate = backend.CreatedDate,
                 ModifiedDate = backend.ModifiedDate,
                 Published = backend.Published,
-                // PublishedDate =backend.PublishedDate,
-                // Locked = backend.Locked,
+                Locked = backend.Locked,
                 Items = backend.Items != null ? backend.Items.Where(item => !item.Deleted)
                                                                      .Select(p => p.MapToFrontendDto())
                                                                      .OrderBy(m => m.DisplayOrder)
@@ -92,8 +91,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Published = backend.Published,
                 DisplayOrder = backend.DisplayOrder,
                 Summary = backend.Summary,
-                CreatedDate = backend.CreatedDate,
-                //Locked =backend.Locked
+                CreatedDate = backend.CreatedDate
 
             };
         }
@@ -127,7 +125,8 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Url = frontend.Url,
                 UrlTarget = frontend.UrlTarget,
                 DisplayOrder = frontend.DisplayOrder,
-                Summary = frontend.Summary
+                Summary = frontend.Summary,
+
 
             };
         }

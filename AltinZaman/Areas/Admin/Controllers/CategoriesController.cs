@@ -19,6 +19,7 @@ namespace AltinZaman.Areas.Admin.Controllers
               IStringLocalizer<CategoriesBaseController> localizer)
             : base(telemetryClientService, categoryService, uploadService, languageService, localizer)
         {
+
         }
         #endregion
 

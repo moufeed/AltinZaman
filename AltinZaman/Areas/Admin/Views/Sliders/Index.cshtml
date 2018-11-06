@@ -1,6 +1,7 @@
 ﻿@model List<SliderDto>
 @{
     ViewData["Title"] = Localizer["Sliders"];
+        ViewData["UnitTestPageClass"] = "ut-sliders-index";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -11,7 +12,7 @@
         </div>
         <div class="title_right">
             <a href="@Url.AdminUrl("CreateSlider" ,"Sliders")"
-               class="btn btn-blue btn-add-new">@Localizer["new_slider"]</a>
+               class="btn btn-blue btn-add-new ut-new-btn">@Localizer["new_slider"]</a>
         </div>
     </div>
 </div>
@@ -41,7 +42,7 @@
         
             <div class="x_content">
                 <div class="table-responsive">
-                    <table class="table table-middle table-striped services-table" id="ServicesTable">
+                    <table class="table table-middle table-striped sliders-table" id="SlidersTable">
                         <thead>
                             <tr>
                                 <th class="index" style="min-width:100px">@Localizer["t_title"]</th>
@@ -72,12 +73,33 @@
                                                 text = Regex.Replace(item.Summary, "<.*?>", String.Empty);
                                             }
                                         }
-                                        @Html.Raw(item.Summary)
-
-                                    </td>
-
-                                    <td>
-
+                                     
+                                    @Html.Raw(item.Summary)
+                                </td>
+                                <td>
+                                    @if (item.Locked)
+                                    {
+                                        @if (item.Published)
+                                        {
+                                            <span data-toggle="tooltip"
+                                                  data-placement="top"
+                                                  title="@Localizer["locked_by_system"]">
+                                                <i class="fa fa-eye c-green"></i>
+                                                <small>@Localizer["t_published"]</small>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span data-toggle="tooltip"
+                                                  data-placement="top"
+                                                  title="@Localizer["locked_by_system"]">
+                                                <i class="fa fa-eye-slash c-red"></i>
+                                                <small>@Localizer["t_unpublished"]</small>
+                                            </span>
+                                        }
+                                    }
+                                    else
+                                    {
                                         @if (item.Published)
                                         {
                                             <a data-toggle="tooltip"
@@ -86,50 +108,81 @@
                                                title="@Localizer["t_unpublish"]"
                                                data-type="slider"
                                                data-url="@Url.AdminUrl("PublishSliderAsync","Sliders" ,new { id= item.Id })"
-                                               class="btn btn-link-pup published toggle__publish">
+                                               class="btn btn-link-pup published toggle__publish ut-published">
                                                 <i class="fa fa-eye c-green"></i>
                                                 <small>@Localizer["t_published"]</small>
                                             </a>
                                         }
                                         else
                                         {
-                                            <a data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="@Localizer["t_publish"]"
-                                               data-type="slider"
-                                               data-url="@Url.AdminUrl("PublishSliderAsync","sliders",new { id=item.Id} )"
-                                               class="btn btn-link-pup unpublished toggle__publish">
-                                                <i class="fa fa-eye-slash c-red"></i>
-                                                <small>@Localizer["t_unpublished"]</small>
-                                            </a>
-                                        }
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           title="@Localizer["t_details"]"
-                                           href="@Url.AdminUrl("details","sliders",new { id=item.Id} )"
-                                           class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
 
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           href="@Url.AdminUrl("Edit","sliders",new { id=item.Id})"
-                                           title="@Localizer["t_edit"]"
-                                           class="btn btn-edit btn-round"><i class="fa fa-edit "></i></a>
+                                            @if (item.Locked)
+                                            {
+                                                <span data-toggle="tooltip"
+                                                      data-placement="top"
+                                                      class="btn-locked btn-round"
+                                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                            }
+                                            else
+                                            {
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   data-id="@item.Id"
+                                                   data-target="#tr-@item.Id"
+                                                   data-url="@Url.AdminUrl("DeleteAsync", "sliders", new { id = item.Id })"
+                                                   title="@Localizer["t_remove"]"
+                                                   data-msg-error="@Localizer["error"]"
+                                                   data-msg-deleted="@Localizer["deleted_successfully"]"
+                                                   class="btn btn-remove btn-round delete__slider "><i class="fa fa-times "></i></a>
+                                            }
+                                        }
+                                    }
+                                </td>
+
+                                <td>
+                                    <a data-toggle="tooltip"
+                                       data-placement="top"
+                                       title="@Localizer["t_details"]"
+                                       href="@Url.AdminUrl("details","sliders",new { id=item.Id} )"
+                                       class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
+
+                                    <a data-toggle="tooltip"
+                                       data-placement="top"
+                                       href="@Url.AdminUrl("Edit","sliders",new { id=item.Id})"
+                                       title="@Localizer["t_edit"]"
+                                       class="btn btn-edit btn-round ut-edit-btn"><i class="fa fa-edit "></i></a>
+
+                                    @if (item.Locked)
+                                    {
+                                        <span data-toggle="tooltip"
+                                              data-placement="top"
+                                              class="btn-locked btn-round"
+                                              title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                    }
+                                    else
+                                    {
 
                                         <a data-toggle="tooltip"
                                            data-placement="top"
                                            title="@Localizer["t_remove"]"
                                            data-url="@Url.AdminUrl("DeleteAsync","sliders",new { id=item.Id})"
                                            data-target="#tr-@item.Id"
-                                           class="btn btn-remove btn-round delete__slider"><i class="fa fa-times "></i></a>
+                                           data-id = "@item.Id"
+                                           class="btn btn-remove btn-round delete__slider ut-delete-btn"><i class="fa fa-times "></i></a>
+                                    } 
+
+                                </td>
+
+                            </tr>
+                             }
+                                     
+
                                     </td>
                                 </tr>
-
                             }
 
                         </tbody>
-                    </table>
+                            </table>
                 </div>
             </div>
         </div>

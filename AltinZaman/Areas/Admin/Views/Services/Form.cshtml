@@ -2,6 +2,7 @@
 @model ServiceFormVM
 
 @{
+    ViewData["UnitTestPageClass"] = "ut-sevices_form";
     ViewData["Title"] = ViewBag.isUpdate ? Localizer["services_edit"] : Localizer["services_create"];
 
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
@@ -66,7 +67,7 @@
                     <input type="hidden" name="Lang" value="@ViewContext.RouteData.Values["lang"]" />
                     @if (ViewBag.isUpdate)
                     {
-                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Id" class="ut-id" />
                     }
                     <div class="form-group clearfix">
                         <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_name"]</label>
@@ -81,7 +82,8 @@
                             @if (Model.Locked)
                             {
                                 <div class="input-group input-locked">
-                                    <input type="text" asp-for="Slug" class="form-control" disabled />
+                                    
+                                    <p class="form-control-static">@Model.Slug</p>
                                     <span class="input-group-addon" 
                                                     data-toggle="tooltip"
                                                     data-placement="top"
@@ -98,7 +100,7 @@
                         </div>
                     </div>
                     <div class="form-group clearfix">
-                        <label asp-for="Slug" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_main_image"]</label>
+                        <label asp-for="MainImage" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_main_image"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
 
                             @if (!string.IsNullOrEmpty(Model.MainImage))
@@ -108,7 +110,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
                             </label>
@@ -204,8 +206,8 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
-                            <input type="submit" class="btn btn-success p-x-5" name="save" value="@((ViewBag.isUpdate) ? Localizer["Update"]  : Localizer["Create"] )">
-                            <input type="submit" class="btn btn-info p-x-5" name="save-continue" value="@Localizer["save_and_continue"]">
+                            <input type="submit" class="btn btn-success p-x-5 ut-createbtn" name="save" value="@((ViewBag.isUpdate) ? Localizer["Update"]  : Localizer["Create"] )">
+                            <input type="submit" class="btn btn-info p-x-5   ut-savecontinue" name="save-continue" value="@Localizer["save_and_continue"]">
                         </div>
                     </div>
                 </form>

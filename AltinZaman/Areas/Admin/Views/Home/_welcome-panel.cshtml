@@ -10,17 +10,20 @@
         <div class="clearfix">
             <div class="col-sm-4">
                 <h3 class="m-b5">Get Started</h3>
-                <a  href="~/Admin/pages/@activeLang" 
-                      class="btn btn-blue" >@Localizer["create_page"]</a>
+                <a asp-area="Admin" asp-controller="pages" asp-action="Index"
+                    class="btn btn-blue">@Localizer["create_page"]
+                </a>
+
             </div>
             <div class="col-sm-4">
                 <h3>@Localizer["next_steps"]</h3>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="/Admin/@activeLang/Galleries/Create">
-                            <i class="fa fa-upload"></i>
-                            @Localizer["upload_first_gallery"] 
-                        </a>
+                        <a asp-area="Admin" asp-controller="Galleries" asp-action="Index">
+                           
+                                <i class="fa fa-upload"></i>
+                                @Localizer["upload_first_gallery"]
+                            </a>
                     </li>
                     <li>
                         <a asp-area="Admin" asp-controller="Services" asp-action="Index">

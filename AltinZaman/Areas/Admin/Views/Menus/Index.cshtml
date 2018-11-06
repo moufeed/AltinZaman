@@ -3,6 +3,7 @@
 
     ViewData["Title"] = Localizer["menus"];
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewData["UnitTestPageClass"] = "ut-Menus_index";
 }
 
 
@@ -14,7 +15,7 @@
         <div class="title_right">
 
             <a href="@Url.AdminUrl("Create","Menus")"
-               class="btn btn-blue  btn-add-new"><i class="fa fa-plus"></i>@Localizer["new_menu"]</a>
+               class="btn btn-blue  btn-add-new ut-newMenu"><i class="fa fa-plus"></i>@Localizer["new_menu"]</a>
         </div>
     </div>
 </div>
@@ -50,17 +51,15 @@
                                 <th>@Localizer["t_position"]</th>
                                 <th width="200">@Localizer["t_create_date"]</th>
                                 <th width="200">@Localizer["t_modified_date"]</th>
-                                <th width="100">
-                                    @Localizer["t_actions"]
-                                </th>
+                                <th width="150">@Localizer["t_actions"]</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var menu in Model)
                             {
 
-                                <tr>
-                                    <td>
+                                <tr id="tr-@menu.Id">
+                                    <td class="index">
                                         @menu.Key
                                     </td>
                                     <td>
@@ -80,7 +79,28 @@
                                            data-placement="top"
                                            href="@Url.AdminUrl("Edit","menus",new { id = menu.Id})"
                                            title="@Localizer["t_edit"]"
-                                           class="btn btn-edit"><i class="fa fa-edit "></i></a>
+                                           class="btn btn-edit u_edit_btn btn-round"><i class="fa fa-edit "></i></a>
+                                        @*href="~/Admin/@activeLang/Menus/Edit/@menu.Id"*@
+
+                                        @if (menu.Locked)
+                                        {
+                                            <span data-toggle="tooltip"
+                                                  data-placement="top"
+                                                  class="btn-locked btn-round"
+                                                  title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                        }
+                                        else
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               data-id="@menu.Id"
+                                               data-target="#tr-@menu.Id"
+                                               data-url="@Url.AdminUrl("Delete", "menus", new { id = menu.Id })"
+                                               title="@Localizer["t_remove"]"
+                                               data-msg-error="@Localizer["error"]"
+                                               data-msg-deleted="@Localizer["deleted_successfully"]"
+                                               class="btn btn-remove btn-round delete__menu "><i class="fa fa-times "></i></a>
+                                        }
 
                                     </td>
                                 </tr>
@@ -92,3 +112,8 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script src="~/Admin/js/menu.min.js"></script>
+}

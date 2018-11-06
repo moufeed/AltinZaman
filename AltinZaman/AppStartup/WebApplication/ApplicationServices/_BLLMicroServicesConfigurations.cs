@@ -7,6 +7,7 @@ using TamTechSDK.Common.Services.ContentService.Categories;
 using TamTechSDK.Common.Services.ContentService.Galleries;
 using TamTechSDK.Common.Services.ContentService.Menus;
 using TamTechSDK.Common.Services.ContentService.Pages;
+using TamTechSDK.Common.Services.ContentService.Posts;
 using TamTechSDK.Common.Services.ContentService.Products;
 using TamTechSDK.Common.Services.ContentService.Reviews;
 using TamTechSDK.Common.Services.ContentService.Services;
@@ -36,6 +37,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             // services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<IContentServices, ContentServices>();
             services.AddTransient<IGalleriesService, GalleriesService>();
+            services.AddTransient<IPostsService, PostsService>();
 
             #endregion
 

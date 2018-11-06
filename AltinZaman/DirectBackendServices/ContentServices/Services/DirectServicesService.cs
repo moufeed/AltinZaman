@@ -15,12 +15,12 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
     {
 
         #region Props  
-        private readonly TamTechBackendSDK.ContentService.Services.Services.IServicesService _servicesService;
+        private readonly TamTechBackendSDK.ContentService.Services.Services.IServicesModuleService _servicesService;
         #endregion
 
 
         #region Ctors
-        public DirectServicesService(TamTechBackendSDK.ContentService.Services.Services.IServicesService servicesService)
+        public DirectServicesService(TamTechBackendSDK.ContentService.Services.Services.IServicesModuleService servicesService)
         {
             _servicesService = servicesService;
         }
@@ -33,7 +33,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = inputResult.Success;
-            _resultModel.StatusCode = inputResult.StatusCode;
+            _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = inputResult.Data;
             _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
             foreach (var error in inputResult.ModelState)
@@ -77,15 +77,16 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
 
         public async Task<IRequestProviderResult<ServiceDto>> GetPublicBySlugAsync(string slug)
         {
-            // TODO: Not optimized
-            dynamic result = await _servicesService.GetPublicDynamicBySlugAsync(slug);
-            ServiceDto page = new ServiceDto();
-            if (result != null)
-            {
-                page = DeserializeFromObject<ServiceDto>(result);
-            }
-            return GetRequestProviderResult(page);
-
+            //// TODO: Not optimized
+            //dynamic result = await _servicesService.GetPublicDynamicBySlugAsync(slug);
+            //ServiceDto page = new ServiceDto();
+            //if (result != null)
+            //{
+            //    page = DeserializeFromObject<ServiceDto>(result);
+            //}
+            //return GetRequestProviderResult(page);
+            var service = await _servicesService.GetPublicBySlugAsync(slug);
+            return GetRequestProviderResult(service.MapToFrontendDto());
         }
 
 
@@ -93,29 +94,34 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
 
         public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync()
         {
-            // TODO: Not optimized
-            dynamic result = await _servicesService.GetPublicDynamicListAsync();
-            List<ServiceDto> ServicesList = new List<ServiceDto>();
-            if (result != null)
-            {
-                ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
-            }
-            return GetRequestProviderResult(ServicesList);
-
+            //// TODO: Not optimized
+            //dynamic result = await _servicesService.GetPublicDynamicListAsync();
+            //List<ServiceDto> ServicesList = new List<ServiceDto>(); 
+            //if (result != null)
+            //{
+            //    ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
+            //}
+            //return GetRequestProviderResult(ServicesList);
+            var services = await _servicesService.GetPublicListAsync();
+            List<ServiceDto> servicesDto = services != null ? services.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>();
+            return GetRequestProviderResult(servicesDto);
         }
 
 
         public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync(int takeItems)
         {
-            // TODO: Not optimized
-            dynamic result = await _servicesService.GetPublicDynamicListAsync(takeItems);
-            List<ServiceDto> ServicesList = new List<ServiceDto>();
-            if (result != null)
-            {
-                ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
-            }
-            return GetRequestProviderResult(ServicesList);
+            //// TODO: Not optimized
+            //dynamic result = await _servicesService.GetPublicDynamicListAsync(takeItems);
+            //List<ServiceDto> ServicesList = new List<ServiceDto>();
+            //if (result != null)
+            //{
+            //    ServicesList = DeserializeFromObject<List<ServiceDto>>(result);
+            //}
+            //return GetRequestProviderResult(ServicesList); 
 
+            var services = await _servicesService.GetPublicListAsync(takeItems);
+            List<ServiceDto> servicesDto = services != null ? services.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>();
+            return GetRequestProviderResult(servicesDto);
         }
         #endregion
 

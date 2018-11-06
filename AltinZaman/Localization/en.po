@@ -183,10 +183,10 @@ msgstr "Description"
 #-------------------------------------------------------------------------
 
 msgid "AdminPanelWeb"
-msgstr "AdminPanelWeb"
+msgstr "Admin Panel Web"
 
 msgid "AdminPanel"
-msgstr "AdminPanel"
+msgstr "Admin Panel"
 
 msgid "visit_public_site"
 msgstr "Visit public site"
@@ -405,7 +405,7 @@ msgid "f_password"
 msgstr "Password :"
 
 msgid "f_confirmpassword"
-msgstr "Confirm Passwoord :"
+msgstr "Confirm Password :"
 
 msgid "f_phone"
 msgstr "Phone :"
@@ -423,7 +423,7 @@ msgid "f_recipients"
 msgstr "Recipients :"
 
 msgid "f_massage"
-msgstr "Massage :"
+msgstr "Message :"
 
 msgid "f_icon"
 msgstr "Icon :"
@@ -933,16 +933,16 @@ msgid "parameter_required"
 msgstr "{0} parameter is required!" 
 
 msgid "html_page_creation_successfully"
-msgstr "The Html Page creation was successfully."
+msgstr "The Html Page creation was done successfully."
 
 msgid "html_page_updating_successfully"
-msgstr "The Html Page updating was successfully."
+msgstr "The Html Page updating was done successfully."
 
 msgid "section_page_creation_successfully"
-msgstr "The Sections Page creation was successfully."
+msgstr "The Sections Page creation was done successfully."
 
 msgid "section_page_updating_successfully"
-msgstr "The Sections Page updating was successfully."
+msgstr "The Sections Page updating was done successfully."
   
 #: pages Index.cshtml
 msgid "new_html_page"
@@ -957,10 +957,10 @@ msgstr "Page Details"
  
 #:menus controller
 msgid "menu_creation_successfully"
-msgstr "The Menu creation was successfully."
+msgstr "The Menu creation was done successfully."
 
 msgid "menu_updating_successfully"
-msgstr "The Menu updating was successfully."
+msgstr "The Menu updating was done successfully."
 
 #:menus Index.cshtml
 msgid "menus"
@@ -1008,7 +1008,7 @@ msgid "c_roles_required"
 msgstr "Roles is required!"
 
 msgid "c_user_creation_successfully"
-msgstr "The User creation was successfully."
+msgstr "The User creation was done successfully."
 
 
 #: Users Index.cshtml
@@ -1193,25 +1193,25 @@ msgstr "Publish all Images"
 #:products controller
 
 msgid "product_ceation_successfully"
-msgstr "The Product creation was successfully."
+msgstr "The Product creation was done successfully."
 
 msgid "product_updating_successfully"
-msgstr "The Product updating was successfully."
+msgstr "The Product updating was done successfully."
 
 msgid "combination_creation_successfully"
-msgstr "The combination of product creation was successfully."
+msgstr "The combination of product creation was done successfully."
 
 msgid "attribute_creation_successfully"
-msgstr "The attribute of product creation was successfully."
+msgstr "The attribute of product creation was done successfully."
 
 msgid "attribute_updating_successfully"
-msgstr "The attribute of product updating was successfully."
+msgstr "The attribute of product updating was done successfully."
 
 msgid "attribute_value_creation_successfully"
-msgstr "The attribute value of product creation was successfully."
+msgstr "The attribute value of product creation was done successfully."
 
 msgid "attribute_value_updating_successfully"
-msgstr "The attribute value of product updating was successfully."
+msgstr "The attribute value of product updating was done successfully."
 
 #: product javascript 
 msgid "delete_combination"
@@ -1320,10 +1320,10 @@ msgstr "Add Attrbute"
 msgid "add_combination"
 msgstr "Add combination"
 
-#: caegories controller
+#: categories controller
 
 msgid "category_creation_successfully"
-msgstr "The category creation was successfully."
+msgstr "The category creation was done successfully."
 
 #: caegories index.cshtml
 msgid "new_category"
@@ -1406,3 +1406,17 @@ msgstr "Please enter a multiple of {{0}}."
 
 msgid "enter_vaild_extension"
 msgstr "Please enter a value with a valid extension."
+
+#: Posts index.cshtml
+msgid "Posts"
+msgstr "Posts"
+
+msgid "new_post"
+msgstr "New post"
+
+#: Posts Form.cshtml
+msgid "post_edit"
+msgstr "Edit post"
+
+msgid "post_create"
+msgstr "Create Post"

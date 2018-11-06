@@ -22,12 +22,13 @@ $(document).on('click','a[id^="pubunpub-"]',function(){
             if( $el.hasClass('ptrue') ){
              $el.removeClass('ptrue')
              $el.attr('title' , _localizer.t_unpublish  );
+             $el.removeClass("ut-published").addClass("ut-unpublished");
              $el.find('i').removeClass("fa-spinner fa-pulse").addClass("fa-eye-slash c-red");
              $el.find('small').text(_localizer.t_unpublished);
              $notification.success("", _localizer.unpublished_successfully , 2500, "fa fa-check")
         }else{
 
-            $el.addClass('ptrue')
+            $el.removeClass("ut-unpublished").addClass("ut-published ptrue");
             $el.attr('title' ,_localizer.t_publish );
             $el.find('i').removeClass("fa-spinner fa-pulse").addClass("fa-eye c-green");
             $el.find('small').text(_localizer.t_published );

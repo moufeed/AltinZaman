@@ -1,0 +1,50 @@
+﻿@model List<PageDto>
+
+@{
+    ViewData["Title"] = Localizer["Posts"];
+    ViewData["UnitTestPageClass"] = "ut-posts-index";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["Posts"] <small></small></h3>
+        </div>
+        <div class="title_right">
+            <a href="@Url.AdminUrl("Create" , "Posts")"
+               class="btn btn-blue btn-add-new ut-create-btn">@Localizer["new_post"]</a>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @if (ViewBag.Languages?.Count > 1)
+        {
+            <header class="language_bar clearfix">
+                <ul class="nav nav-tabs nav-header" role="tablist">
+                    @foreach (var lang in ViewBag.Languages)
+                    {
+                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                            <a href="@Url.AdminUrl("index", "Posts", new { culture = lang.Lang})">@lang.Name</a>
+                        </li>
+                    }
+                </ul>
+            </header>
+        }
+
+        <div class="x_panel p-x-0">
+
+            <div class="x_content">
+                <div class="table-responsive datatable">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   
+}

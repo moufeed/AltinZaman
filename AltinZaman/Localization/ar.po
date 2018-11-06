@@ -25,17 +25,17 @@ msgstr "راسلنا"
 
 # bootombar
 msgid "Copyright_©_2018_tamtech_solutions._All_rights_reserved."
-msgstr "جميع الحقوق محفوظة لصالح تام تيك ©2018"
+msgstr "جميع الحقوق محفوظة لصالح تام تك ©2018"
 
 msgid "Powered_by"
 msgstr "تطوير"
 
 msgid "tamtech"
-msgstr "تام تيك"
+msgstr "تام تك"
 
 # index
 msgid "Welcome_Totamtech"
-msgstr "مرحبا بك في تام تيك"
+msgstr "مرحبا بك في تام تك"
 
 msgid "Who_we_are"
 msgstr "من نحن ؟"
@@ -161,10 +161,10 @@ msgstr "اِقرأ أكثر"
 #: Products
 
 msgid "Products"
-msgstr "منتجات"
+msgstr "منتَجات"
 
 msgid "Our_products"
-msgstr "منتجاتنا"
+msgstr "منتَجاتنا"
 
 msgid "Previous"
 msgstr "السّابق"
@@ -180,79 +180,79 @@ msgstr "وصف"
 #-------------------------------------------------------------------------
 
 msgid "AdminPanelWeb"
-msgstr "AdminPanelWeb"
+msgstr "لوحة التّحكّم"
 
 msgid "AdminPanel"
 msgstr "لوحة تحكّم المدير"
 
 msgid "visit_public_site"
-msgstr "زُرْ الموقع العام"
+msgstr "زيارة الموقع العام"
 
 msgid "SEO"
-msgstr "تحسين نتائج محرّك البحث"
+msgstr "تحسين نتائج محرّك البحث (SEO)"
  
 msgid "Add"
-msgstr "أضف"
+msgstr "إضافة"
 
 msgid "Create"
-msgstr "أنشئ"
+msgstr "حفظ"
 
 msgid "Update"
-msgstr "حدّث"
+msgstr "تحديث"
 
 msgid "close"
-msgstr "أغلق"
+msgstr "إغلاق"
 
 msgid "save"
-msgstr "اِحفظ"
+msgstr "حفظ"
 
 msgid "delete"
-msgstr "اِحذف"
+msgstr "حذف"
 
 msgid "cancel"
-msgstr "ألغِ"
+msgstr "إلغاء"
 
 msgid "yes"
 msgstr "نعم"
 
 msgid "remove"
-msgstr "أزل"
+msgstr "إزالة"
 
 msgid "search"
-msgstr "اِبحث"
+msgstr "بحث"
 
 msgid "reset"
-msgstr "اِسترجع الضّبط الأوّليّ"
+msgstr "اِسترجاع الضّبط الأوّليّ"
 
 msgid "send"
-msgstr "أرسل"
+msgstr "إرسال"
 
 msgid "Update"
-msgstr "حدّث"
+msgstr "تحديث"
 
 msgid "Upload"
-msgstr "اِرفع"
+msgstr "رفع"
 
 msgid "edit"
-msgstr "حرّر"
+msgstr "تحرير"
 
 msgid "back"
 msgstr "الخلف"
 
 msgid  "Browse"
-msgstr "اِستعرض"
+msgstr "اِستعراض"
 
 msgid  "select"
-msgstr "اِختر"
+msgstr "اِختيار"
 
 msgid "save_and_continue"
-msgstr "اِحفظ و تابع"
+msgstr "حفظ و متابعة"
 
 msgid "back_to_list"
-msgstr "عُد إلى القائمة"
+msgstr "العودة إلى القائمة"
  
 msgid "add_Item"
-msgstr "أضف عنصراً"
+msgstr "إضافة عنصر"
  
 msgid "title"
 msgstr "العنوان"
@@ -270,7 +270,7 @@ msgid "modified_date"
 msgstr "تاريخ التّعديل"
 
 msgid "slug"
-msgstr "Slug"
+msgstr "الاسم اللطيف"
 
 msgid "summary"
 msgstr "ملخّص"
@@ -285,10 +285,10 @@ msgid "icon"
 msgstr "أيقونة"
   
 msgid "meta_keywords"
-msgstr "Meta keywords"
+msgstr "كلمات مفتاحيّة"
 
 msgid "meta_description"
-msgstr "Meta description"
+msgstr "وصف"
 
 msgid "content"
 msgstr "محتوى"
@@ -337,7 +337,7 @@ msgid "confirm_yes"
 msgstr "نعم"
 
 msgid "Confirm_cancel"
-msgstr "ألغِ"
+msgstr "إلغاء"
 
 msgid "characters"
 msgstr "محارف"
@@ -349,7 +349,7 @@ msgid "f_title"
 msgstr "العنوان :"
 
 msgid "f_name"
-msgstr "الاِسم"
+msgstr "الاِسم :"
 
 msgid  "f_slug"
 msgstr "Slug :"
@@ -361,7 +361,7 @@ msgid  "f_main_image"
 msgstr "الصّورة الرّئيسيّة :"
 
 msgid  "choose_file"
-msgstr "اِختر ملف."
+msgstr "اِختيار ملف."
  
 msgid  "f_summary"
 msgstr "الملخّص :"
@@ -382,10 +382,10 @@ msgid  "f_display_order"
 msgstr "ترتيب العرض :"
 
 msgid "f_url"
-msgstr "Url :"
+msgstr "الرّابط :"
 
 msgid "f_url_target"
-msgstr "Url Target :"
+msgstr "مكان فتح الرّابط :"
 
 msgid "f_username"
 msgstr "اِسم المستخدم :"
@@ -397,13 +397,13 @@ msgid "f_password"
 msgstr "كلمة السّر :"
 
 msgid "f_confirmpassword"
-msgstr "أكّد كلمة السّر :"
+msgstr "تأكيد كلمة السّر :"
 
 msgid "f_phone"
 msgstr "رقم الهاتف :"
 
 msgid "f_role"
-msgstr "الدّور :"
+msgstr "الصّلاحيّات :"
 
 msgid "f_gender"
 msgstr "الجنس :"
@@ -492,7 +492,7 @@ msgid  "t_key"
 msgstr "Key"
 
 msgid  "t_visibility"
-msgstr "رّؤيا"
+msgstr "إمكانيّة الرّؤيا"
 
 msgid  "t_actions"
 msgstr "إجراءات"
@@ -504,28 +504,28 @@ msgid  "t_unpublished"
 msgstr "غير منشور"
 
 msgid  "t_publish"
-msgstr "اُنشر"
+msgstr "نشر"
 
 msgid  "t_unpublish"
-msgstr "ألغِ النّشر"
+msgstr "إلغاء النّشر"
 
 msgid  "t_details"
 msgstr "تفاصيل"
 
 msgid  "t_edit"
-msgstr "حرّر"
+msgstr "تحرير"
 
 msgid  "t_remove"
-msgstr "أزل"
+msgstr "إزالة"
 
 msgid  "t_delete"
-msgstr "اِحذف"
+msgstr "حذف"
 
 msgid  "t_order"
-msgstr "اُطلب"
+msgstr "طلب"
 
 msgid  "t_url"
-msgstr "Url"
+msgstr "رابط"
 
 msgid  "t_username"
 msgstr "اِسم المستخدم"
@@ -622,7 +622,7 @@ msgid  "you_wont_be_able_to_revert_this"
 msgstr "لن تستطيع التّراجع عن هذا!"
 
 msgid  "yse_delete"
-msgstr "نعم, اِحذفه!"
+msgstr "نعم, حذف!"
 
 msgid  "something_wrong"
 msgstr "هناك خطبٌ ما"
@@ -634,13 +634,13 @@ msgid  "image_uploading_error"
 msgstr "حدث خطأ أثناء رفع الصّورة!"
 
 msgid "service_creation_successfully"
-msgstr "تمّ إنشاء الخدمة بنجاح. "
+msgstr "تمّ إنشاء خدمة بنجاح. "
 
 msgid "slider_creation_successfully"
-msgstr "تمّ إنشاء مُزحلق الصّور بنجاح."
+msgstr "تمّ إنشاء سلايدر بنجاح."
 
 msgid "slider_updating_successfully"
-msgstr "تمّ تحديث مُزحلق الصّور بنجاح."
+msgstr "تمّ تحديث السّلايدر بنجاح."
 
 msgid "deleted_successfully"
 msgstr "تمّ الحذف بنجاح"
@@ -670,7 +670,7 @@ msgstr "Sorry, an error occurred while processing the process please try again l
 #admin sidebar
 
 msgid "view_all"
-msgstr "اِعرض الكلّ"
+msgstr "عرض الكلّ"
 
 msgid "Home"
 msgstr "الصّفحة الرّئيسيّة"
@@ -695,10 +695,10 @@ msgid "new_gallery"
 msgstr "معرض صور جديد"
 
 msgid "Sliders"
-msgstr "مُزحلقات الصّور"
+msgstr "سلايدرات"
 
 msgid "new_slider"
-msgstr "مُزحلق صور جديد"
+msgstr "سلايدر جديد"
 
 msgctxt "admin.Views.Shared._side_menu"
 msgid "Services"
@@ -718,7 +718,7 @@ msgstr "فهْرس"
 
 msgctxt "admin.Views.Shared._side_menu"
 msgid "Products"
-msgstr "منتجات"
+msgstr "منتَجات"
 
 msgid "Manufacturer"
 msgstr "مُنتِج"
@@ -839,10 +839,10 @@ msgstr "ناشر المقالة :"
 
 #:_SeoFields.cshtml
 msgid "seo_type"
-msgstr "Seo Type :"
+msgstr "أنواع (SEO) :"
 
 msgid "select_type"
-msgstr "اِختر نوع"
+msgstr "اِختيار نوع"
 
 msgid "seo_markup"
 msgstr "Seo Markup :"
@@ -896,505 +896,521 @@ msgid "sections_creating_form"
 msgstr "نموذج إنشاء صفحة Sections"
 
 msgid "page_content"
-msgstr "Page Content"
+msgstr "محتوى الصّفحة"
 
 msgid "add_content"
-msgstr "أضف محتوى"
+msgstr "إضافة محتوى"
 
 #:EditHtmlPage.cshtml
 msgid "edit_html_page"
-msgstr "Edit Htmal Page"
+msgstr "تحرير صفحة الـ HTML"
 
 msgid "html_editing_form"
-msgstr "Html Page Editing Form"
+msgstr "نموذج تحرير صفحة الـ HTML"
 
 #: EditSectionsPage.cshtml
 msgid "edit_sections_page"
-msgstr "Edit Sections page"
+msgstr "تحرير صفحة الـ Sections"
 
 msgid "sections_editing_form"
-msgstr "Sections Page Editing Form"
+msgstr "نموذج تحرير صفحة الـ Sections"
 
 #: pages Controller
 msgid "c_type"
-msgstr "type"
+msgstr "نوع"
 
 msgid "c_id"
-msgstr "id"
+msgstr "معرّف"
 
 msgid "parameter_required"
-msgstr "{0} parameter is required!" 
+msgstr "المعامل {0} مطلوب!" 
 
 msgid "html_page_creation_successfully"
-msgstr "The Html Page creation was successfully."
+msgstr "تمّ إنشاء صفحة HTML بنجاح."
 
 msgid "html_page_updating_successfully"
-msgstr "The Html Page updating was successfully."
+msgstr "تمّ تحديث صفحة الـ HTML بنجاح."
 
 msgid "section_page_creation_successfully"
-msgstr "The Sections Page creation was successfully."
+msgstr "تمّ إنشاء صفحة Sections بنجاح."
 
 msgid "section_page_updating_successfully"
-msgstr "The Sections Page updating was successfully."
+msgstr "تمّ تحديث صفحة الـ Sections بنجاح."
   
 #: pages Index.cshtml
 msgid "new_html_page"
-msgstr "New html Page"
+msgstr "صفحة HTML جديدة"
 
 msgid "new_section_page"
-msgstr "New Sections Page"
+msgstr "صفحة Sections جديدة"
 
 #: HtmlPageDetails.cshtml
 msgid "page_details"
-msgstr "Page Details"
+msgstr "تفاصيل الصّفحة
  
 #:menus controller
 msgid "menu_creation_successfully"
-msgstr "The Menu creation was successfully."
+msgstr "تمّ إنشاء قائمة بنجاح."
 
 msgid "menu_updating_successfully"
-msgstr "The Menu updating was successfully."
+msgstr "تمّ تحديث القائمة بنجاح."
 
 #:menus Index.cshtml
 msgid "menus"
-msgstr "Menus"
+msgstr "قوائم"
 
 msgid "new_menu"
-msgstr "New Menu"
+msgstr "قائمة جديدة"
 
 #:createform.cshtml
 
 msgid "create_menu"
-msgstr "Create menu"
+msgstr "إنشاء قائمة"
 
 #:EditForm.cshtml
 msgid "edit_menu"
-msgstr "Edit Menu"
+msgstr "تعديل قائمة"
 
 msgid "menu_structure"
-msgstr " Menu Structure"
+msgstr "بنية القائمة "
 
 msgid "submenu"
-msgstr "Submenu"
+msgstr "قائمة فرعيّة"
 
 
 
 #: menus _modal.cshtml
 msgid "parent_menu"
-msgstr "Parent Menu"
+msgstr "قائمة فرعيّة"
 
 msgid "link"
-msgstr "Link"
+msgstr "رابط"
 
 msgid "static_page"
-msgstr "Static Page"
+msgstr "صفحة ثابتة"
 
 msgctxt "admin.Views.Menus.partials._modal"
 msgid "product"
-msgstr "Product"
+msgstr "منتَج"
 
 #:users Controller
 msgid "c_roles"
-msgstr "Roles"
+msgstr "أدوار"
 
 msgid "c_roles_required"
-msgstr "Roles is required!"
+msgstr "تعيين أحد الأدوار مطلوب!"
 
 msgid "c_user_creation_successfully"
-msgstr "The User creation was successfully."
+msgstr "تمّ إنشاء مستخدم بنجاح."
 
 
 #: Users Index.cshtml
 msgid "Users"
-msgstr "Users"
+msgstr "مستخدمون"
 
 msgid "new_user"
-msgstr "New user"
+msgstr "مستخدم جديد"
 
 msgid "roles"
-msgstr "Roles"
+msgstr "أدوار"
 
 msgid "user_role"
-msgstr "User Role"
+msgstr "دور المستخدم"
 
 #:Users  Create.cshtml
 msgid "User_Create"
-msgstr "User - Create"
+msgstr "إنشاء مستخدم"
 
 msgid "new_user"
-msgstr "New user"
+msgstr "مستخدم جديد"
 
 #: Users Edit.cshtml
 msgid "user_edit"
-msgstr "User - Edit"
+msgstr "تحرير مستخدم
 
 msgid "edit_user"
-msgstr "Edit User"
+msgstr "تحرير المستخدم"
 
 msgid "choose_picture"
-msgstr "Choose a Picture"
+msgstr "اِختيار صورة"
 
 #: Users Details.cshtml
 msgid "user_details"
-msgstr "User Details"
+msgstr "تفاصيل المستخدم"
 
 msgid "user_information"
-msgstr "User Information"
+msgstr "معلومات المستخدم
 
 msgid "user_status"
-msgstr "user status :"
+msgstr "حالة المستخدم :"
 
 msgid "send_email"
-msgstr "Send Email"
+msgstr "إرسال بريد إلكترونيّ"
 
 msgid "unblock_user"
-msgstr "unblock user"
+msgstr "إلغاء حجب المستخدم"
 
 msgid "block_user"
-msgstr "block user"
+msgstr "حجب المستخدم"
 
 #:CreateEmail.cshtml
 msgid "new_email"
-msgstr "New Email"
+msgstr "بريد إلكترونيّ جديد"
 
 #:Services Controller
 
 #:Services index.cshtml
 msgctxt "admin.Views.Services.index"
 msgid "services"
-msgstr "Services"
+msgstr "خدمات"
 
 msgid "new_service"
-msgstr "New Service"
+msgstr "خدمة جديدة"
 
 #:services Form.cshtml
 
 msgid "services_edit"
-msgstr "Services - Edit "
+msgstr "تحرير خدمة "
 
 msgid "services_create"
-msgstr "Services - Create "
+msgstr "إنشاء خدمة "
 
 msgid "create_service"
-msgstr "Create Service."
+msgstr "إنشاء خدمة."
 
 msgid "edit_service"
-msgstr "update Service."
+msgstr "تحديث خدمة."
 
 msgid "icon_visibility"
-msgstr "Icon Visibility"
+msgstr "إمكانيّة رؤية الأيقونة"
 
 #: Services Details.cshtml
 msgid "service_details"
-msgstr "Service Details"
+msgstr "تفاصيل الخدمة"
 
 #: Sliders index.cshtml
 msgid "new_slider"
-msgstr "New Slider"
+msgstr "سلايدر جديد"
 
 #: EditSliderItemForm.cshtml
 msgid "edit_slider_item"
-msgstr "Edit Slider Item"
+msgstr "تحرير صورة في السّلايدر"
  
 msgid "f_slider_title"
-msgstr "Slider Title :"
+msgstr "عنوان السّلايدر :"
 
 #:EditSliderForm.cshtml
 msgid "edit_slider"
-msgstr "Edit Slider"
+msgstr "تحرير سلايدر"
  
 msgid "unpublish/publish"
-msgstr "unpublish/publish"
+msgstr "نشر/إلغاء النّشر"
  
 msgid "slider"
-msgstr "Slider"
+msgstr "سلايدر"
 
 #: _sliderItems.cshtml
 msgid "slider_items"
-msgstr "Slider Items"
+msgstr "صور السّلايدر"
  
 msgid "upload_single_image"
-msgstr "Upload Single Image"
+msgstr "رفع صورة واحدة"
  
 #: sliders Details.cshtml
 msgid "slider_details"
-msgstr "Slider Details "
+msgstr "تفاصيل السّلايدر"
 
 #:CreateSliderItemForm.cshtml
 msgid "create_slider_item"
-msgstr "Create Slider Item"
+msgstr "إنشاء صورة في السّلايدر"
  
 msgid "back_to_slider"
-msgstr "Back to Slider"
+msgstr "العودة إلى السّلايدر"
 
 #:CreateSliderForm.cshtml
 msgid "create_slider"
-msgstr "Create Slider"
+msgstr "إنشاء سلايدر"
 
 
 #:galleries index.cshtml
 msgid "new_gallery"
-msgstr "New Gallery"
+msgstr "معرض صور جديد"
 
 
 
 #:FormGalleryItem.cshtml
 msgid "create_gallery_item"
-msgstr "Create Gallery Item"
+msgstr "إنشاء صورة في المعرض"
 
 msgid "edit_gallery_item"
-msgstr "Update Gallery Item"
+msgstr "تحديث صورة في المعرض"
 
 msgid "back_to_gallery"
-msgstr "Back to Gallery"
+msgstr "العودة إلى معرض الصّور"
 
 #:FormGallery.cshtml 
 msgid "create_gallery"
-msgstr "Create Gallery"
+msgstr "إنشاء معرض صور"
 
 msgid "update_gallery"
-msgstr "Update Gallery"
+msgstr "تحديث معرض صور"
  
 msgid "upload_multiple_images"
-msgstr "Upload Multiple Images"
+msgstr "رفع عدّة صور"
 
 
 #: galleries Details.cshtml
 msgid "galleries_details"
-msgstr "Gallery Details "
+msgstr "تفاصيل معرض الصّور"
 
 msgid "gallery_pictures"
-msgstr "Gallery pictures"
+msgstr "صور المعرض"
 
 #:_galleryitems.cshtml
 msgid "gallery_items"
-msgstr "Gallery Items"
+msgstr "صور المعرض"
 
 msgid "publish_all"
-msgstr "Publish All"
+msgstr "نشر الكلّ"
 
 msgid "Publish"
-msgstr "Publish"
+msgstr "نشر"
 
 msgid "unpublish"
-msgstr "unpublish"
+msgstr "إلغاء النّشر"
 
 msgid "publish_all_images"
-msgstr "Publish all Images"
+msgstr "نشر كلّ الصّور"
 
 #:products controller
 
 msgid "product_ceation_successfully"
-msgstr "The Product creation was successfully."
+msgstr "تمّ إنشاء منتَج بنجاح."
 
 msgid "product_updating_successfully"
-msgstr "The Product updating was successfully."
+msgstr "تمّ تحديث المنتَج بنجاح."
 
 msgid "combination_creation_successfully"
-msgstr "The combination of product creation was successfully."
+msgstr "تمّ إنشاء منتَج مخصّص بنجاح."
 
 msgid "attribute_creation_successfully"
-msgstr "The attribute of product creation was successfully."
+msgstr "تمّ إنشاء سمات منتَج بنجاح."
 
 msgid "attribute_updating_successfully"
-msgstr "The attribute of product updating was successfully."
+msgstr "تمّ تحديث سمات المنتَج بنجاح."
 
 msgid "attribute_value_creation_successfully"
-msgstr "The attribute value of product creation was successfully."
+msgstr "تمّ إنشاء قيم سمات المنتَج بنجاح."
 
 msgid "attribute_value_updating_successfully"
-msgstr "The attribute value of product updating was successfully."
+msgstr "تمّ تحديث قيم سمات المنتَج بنجاح."
 
 #: product javascript 
 msgid "delete_combination"
-msgstr "Delete Combination"
+msgstr "حذف المنتَج المخصّص"
 #: products Index.cshtml
 msgctxt "admin.Views.Products.index"
 msgid "Products"
-msgstr "Products"
+msgstr "المنتَجات"
 
 msgid "new_product"
-msgstr "New Product"
+msgstr "منتَج جديد"
 
 #: products List.cshtml
 msgid "Products_list"
-msgstr "Product list"
+msgstr "قائمة المنتَجات"
 
 #: products Form.cshtml
 msgid "create_product"
-msgstr "Create Product."
+msgstr "إنشاء منتَج."
 
 msgid "edit_product"
-msgstr "Update product."
+msgstr "تحديث منتَج."
 
 msgid "product_info"
-msgstr "Product info"
+msgstr "معلومات المنتَج"
 
 msgid "product_specifications"
-msgstr "Product Specifications"
+msgstr "مواصفات المنتَج"
 
 msgid "product_description"
-msgstr "Product Description"
+msgstr "وصف المنتَج"
 
 msgid "product_pictures"
-msgstr "Product Pictures"
+msgstr "صور المنتَج"
 
 msgid "product_attributes"
-msgstr "Product Attributes"
+msgstr "سمات المنتَج"
 
 #: products combination Modal
 msgid "select_new_combination"
-msgstr "Select new combination and enter details below "
+msgstr "اِختر منتَج مخصّص جديد و أدخل التّفاصيل أدناه "
 
 #: _Form_information_tab.cshtml
 msgid "f_short_description"
-msgstr "Short Description :"
+msgstr "وصف قصير :"
 
 msgid "f_full_description"
-msgstr "Full Description (WEB) :"
+msgstr "وصف كامل (WEB) :"
 
 msgid "maximum_cart_quantity"
-msgstr "Maximum Cart Quantity"
+msgstr "الكميّة القصوى لعربة التّسوّق"
  
 msgid "requires_shipping"
-msgstr "Requires Shipping"
+msgstr "يتطلّب شحن"
 
 msgid "free_shipping"
-msgstr "Free Shipping"
+msgstr "شحن مجّانيّ"
 
 msgid "weight"
-msgstr "Weight"
+msgstr "الوزن"
 
 msgid "gram"
-msgstr "gram"
+msgstr "غرام"
 
 msgid "millimeter"
-msgstr "Millimeter"
+msgstr "ميلّيمتر"
 
 msgid "height"
-msgstr "Height"
+msgstr "الإرتفاع"
 
 msgid "length"
-msgstr "Length"
+msgstr "الطّول"
 
 msgid "width"
-msgstr "Width"
+msgstr "العرض"
 
 #: products _Form_Images_tab.cshtml
 msgid "product_images"
-msgstr "Product Images"
+msgstr "صور المنتَج"
 
 msgid "add_images"
-msgstr "Add Images"
+msgstr "إضافة صور"
 
 msgid "remove_selected_images"
-msgstr "Remove selected pictures"
+msgstr "إزالة الصّور المحدّدة"
 
 #: Products _Form_Attributes_tab.cshtml
 msgid "attributes"
-msgstr "Attributes"
+msgstr "السّمات"
 
 msgid "attribute_combinations"
-msgstr "Attribute combinations"
+msgstr "الخصائص"
 
 msgid "values"
-msgstr "Values"
+msgstr "القيم"
 
 msgid "option_value"
-msgstr "Option Value"
+msgstr "قيمة الخيار"
 
 msgid "add_option"
-msgstr "Add option"
+msgstr "إضافة خيار"
 
 msgid "add_attribute"
-msgstr "Add Attrbute"
+msgstr "إضافة سمة"
 
 msgid "add_combination"
-msgstr "Add combination"
+msgstr "إضافة خصائص"
 
-#: caegories controller
+#: categories controller
 
 msgid "category_creation_successfully"
-msgstr "The category creation was successfully."
+msgstr "تمّ إنشاء فئة بنجاح."
 
 #: caegories index.cshtml
 msgid "new_category"
-msgstr "New Category"
+msgstr "فئة جديدة"
 
 #: home _welcome-panel.cshtml
 msgid "welcome_to_tamcms"
-msgstr "Welcome to TamCMS Admin Panel!"
+msgstr "مرحباً بكم في لوحة تحكّم TamCMS!"
 
 msgid "welcome_message"
-msgstr "We’ve assembled some links to get you started:"
- 
+msgstr "لقد قمنا بجمع بعض الرّوابط من أجل أن تبدأ:"
+
 msgid "create_page"
-msgstr "Create Page"
+msgstr "إنشاء صفحة"
  
 msgid "next_steps"
-msgstr "Next Steps"
+msgstr "خطوات تالية"
  
 msgid "upload_first_gallery"
-msgstr "Upload your first gallery"
+msgstr "اِرفع أوّل معرض صور"
  
 msgid "managing_services"
-msgstr "Start managing your services"
+msgstr "اِبدأ بإدارة خدماتك"
  
 msgid "view_site"
-msgstr "view your site"
+msgstr "اِستعرض موقعك"
  
 msgid "check_home_slider"
-msgstr "Check your home page slider"
+msgstr "تحقّق من سلايدر صفحتك الرّئيسيّة"
 
 #: validator.messages
 
 msgid "this_is_field_is_required"
-msgstr "This field is required."
+msgstr "هذا الحقل مطلوب."
 
 msgid "fix_this_field"
-msgstr "Please fix this field."
+msgstr "أصلح هذا الحقل من فضلك."
 
 msgid "enter_valid_email"
-msgstr "Please enter a valid email address."
+msgstr "أدخل عنوان بريد إلكترونيّ صالح من فضلك."
 
 msgid "enter_valid_url"
-msgstr "Please enter a valid URL."
+msgstr "أدخل رابط صالح من فضلك."
 
 msgid "enter_valid_date"
-msgstr "Please enter a valid date."
+msgstr "أدخل تاريخ صالح من فضلك."
 
 msgid "enter_valid_iso"
-msgstr "Please enter a valid date (ISO)."
+msgstr "أدخل تاريخ (ISO) صالح من فضلك."
 
 msgid "enter_valid_number"
-msgstr "Please enter a valid number."
+msgstr "أدخل رقم صالح من فضلك."
 
 msgid "enter_only_digits"
-msgstr "Please enter only digits."
+msgstr "أدخل أرقام فقط من فضلك."
 
 msgid "enter_same_value"
-msgstr "Please enter the same value again."
+msgstr "أدخل القيمة نفسها مرّة ثانية من فضلك."
 
 msgid "enter_more_than_characters"
-msgstr "Please enter no more than {0} characters."
+msgstr "لا تدخل أكثر من {0} محرف من فضلك."
 
 msgid "enter_at_least_characters"
-msgstr "Please enter at least {0} characters."
+msgstr "أدخل على الأقل {0} محرف من فضلك."
 
 msgid "enter_value_between_characters"
-msgstr "Please enter a value between {0} and {1} characters long."
+msgstr "أدخل قيمة بطول يتراوح بين {0} و {1} محرف من فضلك."
 
 msgid "enter_value_between_0_and_1"
-msgstr "Please enter a value between {0} and {1}."
+msgstr "أدخل قيمة بين {0} و {1} من فضلك."
 
 msgid "enter_value_less_or_equal"
-msgstr "Please enter a value less than or equal to {0}."
+msgstr "أدخل قيمة أصغر أو تساوي {0} من فضلك."
 
 msgid "enter_value_greater_or_equal"
-msgstr "Please enter a value greater than or equal to {0}."
+msgstr "أدخل قيمة أكبر أو تساوي {0} من فضلك."
 
 msgid "enter_multiple_of"
-msgstr "Please enter a multiple of {0}."
+msgstr "أدخل مضاعف للعدد {0} من فضلك."
 
 msgid "enter_vaild_extension"
-msgstr "Please enter a value with a valid extension."
+msgstr "أدخل قيمة بِامتداد صالح من فضلك."
+#: Posts index.cshtml
+msgid "Posts"
+msgstr "مقالات"
+
+msgid "new_post"
+msgstr "مقالة جديدة"
+
+#: Posts Form.cshtml
+msgid "post_edit"
+msgstr "تعديل مقالة"
+
+msgid "post_create"
+msgstr "مقالة جديدة"
+
+msgid "locked_by_system"
+msgstr "مُقفل من قِبل النّظام"

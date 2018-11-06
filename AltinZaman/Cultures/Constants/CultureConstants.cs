@@ -11,14 +11,15 @@ namespace AltinZaman.Cultures.Constants
 
         public static readonly CultureModel DefaultCulture = new CultureModel
         {
-            Name = "العربية",
-            Culture = "ar",
-            Lang = "ar"
+            Name = "English",
+            Culture = "en",
+            Lang = "en"
         };
 
         public static readonly List<CultureModel> CulturesList = new List<CultureModel>
         {
-            DefaultCulture
+            DefaultCulture,
+            new CultureModel{Name = "العربية", Culture = "ar", Lang = "ar"}
         };
 
         public static readonly string Constraint = DefaultCulture.Culture.Length == 2 ? "^([a||e])+([r||n])$" : "^([ar||en]{2})+(-)+([ar||en]{2})$";

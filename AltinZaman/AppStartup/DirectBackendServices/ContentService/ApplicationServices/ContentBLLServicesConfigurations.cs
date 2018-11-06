@@ -21,9 +21,9 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
     {
         public static void DirectBackendServices_ContentService_AddContentBLLServicesConfigurations(this IServiceCollection services)
         {
-            services.AddScoped<IIdentityHelperService, HttpContextService>();
+            services.AddScoped<IIdentityHelper, HttpContextHelper>();
 
-            services.AddTransient<BaseServiceManager, BaseServiceManager>();
+
 
             services.AddTransient<PageServiceManager, PageServiceManager>();
             services.AddTransient<IPageService, PageService>();
@@ -33,7 +33,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
             services.AddTransient<MenuServiceManager, MenuServiceManager>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<ServicesServiceManager, ServicesServiceManager>();
-            services.AddTransient<IServicesService, ServicesService>();
+            services.AddTransient<IServicesModuleService, ServicesModuleService>();
             services.AddTransient<ISliderService, SliderService>();
             services.AddTransient<GalleryServiceManager, GalleryServiceManager>();
             services.AddTransient<IGalleryService, GalleryService>();

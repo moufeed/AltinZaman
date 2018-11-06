@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Silders - Edit Slide";
+    ViewData["UnitTestPageClass"] = "ut-slides-edit";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -87,11 +88,13 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
+                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
                             </label>
+                            <label id="NewMainImage-error" class="error invalid_field" for="NewMainImage" style="display:none;"></label>
                             <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
+                            
                         </div>
                     </div>
 
@@ -106,7 +109,7 @@
                             <span asp-validation-for="Url" class="text-danger invalid_field"></span>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                            <select class="form-control" name="UrlTarget" asp-for="Url" id="UrlTarget">
+                            <select class="form-control" asp-for="UrlTarget" id="UrlTarget">
                                 <option value="_blank">_blank</option>
                                 <option value="_self">_self</option>
                                 <option value="_parent">_parent</option>
@@ -138,9 +141,8 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
-                            <input type="submit" class="btn btn-success p-x-5" value="@Localizer["save"]">
-
-                            <button type="submit" name="save-continue" class="btn  btn-info">
+                           <input type="submit" class="btn btn-success p-x-5 ut-save-btn" value="@Localizer["save"]">
+                            <button type="submit" name="save-continue" class="btn  btn-info ut-continue-btn">
                                 <i class="fa fa-floppy-o"></i>
                                 @Localizer["save_and_continue"]
                             </button>
@@ -167,33 +169,7 @@
 
 
     <script>
-        $(document).ready(function() {
-
-            $("#PublisheSliderItem").on("change", function (event) {
-
-                var $this = $(this);
-                    $.ajax({
-                        url:"@Url.AdminUrl("PublishItem", "sliders", new { sliderId= ViewBag.SliderId, id = Model.Id })" ,
-                        type: 'GET',
-                        dataType: "json",
-                        data: {}
-                    })
-                    .done(function (data) {
-                        if (data.success) {
-
-                            var text = ( $this.is(":checked") ) ? "@Localizer["was_successfully_published"]" :  "@Localizer["was_successfully_unpublished"]"  ;
-                            $notification.success("@Localizer["Image"]", text , 2000, "fa fa-check");
-                        }
-                        else {
-                           var errors = data.errors;
-                    $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
-                        }
-                    })
-                    .fail(function (jqXHR, Status) {
-                        $notification.error("@Localizer["error"]", jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-                    });
-                });
-            });
+       
 
 
 

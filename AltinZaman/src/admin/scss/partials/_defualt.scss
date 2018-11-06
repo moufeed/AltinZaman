@@ -257,7 +257,7 @@ a:focus {
   }
 }
 
-.btn{
+.btn:not(.btn-round){
   border-radius: 0 !important; 
 }  
 
@@ -275,3 +275,10 @@ a:focus {
     border: 0;
   }
 }
+
+.form-control-static{
+  &.disabled{
+    background: #f6f6f6;
+    user-select: none;
+  }
+}   

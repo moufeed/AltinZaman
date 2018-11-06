@@ -6,31 +6,35 @@
 
 <div class="modal fade" id="MenuItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content ut-modal">
             <div class="content">
                 <ul class="nav nav-tabs navs-line" role="tablist">
                     <li role="presentation" class="active" data-type="Page">
                         <a href="#@MenuItemTypeEnum.page.ToString()"
                            aria-controls="@MenuItemTypeEnum.page.ToString()"
                            role="tab"
-                           data-toggle="tab"><strong>Page</strong></a>
+                           data-toggle="tab"
+                           class="ut-page-tab" ><strong>Page</strong></a>
                     </li>
                     @*<li role="presentation" data-type="product" >
                         <a href="#@MenuItemTypeEnum.product.ToString()"
                            aria-controls="@MenuItemTypeEnum.product.ToString()"
                            role="tab"
+                           class="ut-product-tab"
                            data-toggle="tab"><strong>@Localizer["product"]</strong></a>
                     </li>*@
                     <li role="presentation" data-type="dropdown">
                         <a href="#@MenuItemTypeEnum.dropdown.ToString()"
                            aria-controls="@MenuItemTypeEnum.dropdown.ToString()"
                            role="tab"
+                           class="ut-submenu-tab"
                            data-toggle="tab"><strong>@Localizer["parent_menu"]</strong></a>
                     </li>
                     <li role="presentation" data-type="Url">
                         <a href="#@MenuItemTypeEnum.url.ToString()"
                            aria-controls="@MenuItemTypeEnum.url.ToString()"
                            role="tab"
+                           class="ut-link"
                            data-toggle="tab"><strong>@Localizer["link"]</strong></a>
                     </li>
 
@@ -38,6 +42,7 @@
                         <a href="#@MenuItemTypeEnum.staticpage.ToString()"
                            aria-controls="@MenuItemTypeEnum.staticpage.ToString()"
                            role="tab"
+                           class="ut-staticpage-tab"
                            data-toggle="tab"><strong>@Localizer["static_page"]</strong></a>
                     </li>
                 </ul>
@@ -50,7 +55,7 @@
 
                         <form  asp-action="CreateMenuItemAsync" asp-controller="menus"
                               method="post"
-                              class="form-horizontal forn-new form-label-left p-x-5 p-y-3"
+                              class="form-horizontal forn-new form-label-left p-x-5 p-y-3 ut-page-form"
                               id="PageMenuItem">
                             @if (!ViewData.ModelState.IsValid)
                             {
@@ -67,7 +72,7 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> Title </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="text" name="Title" id="page-Title" class="form-control" required>
+                                    <input type="text" name="Title" id="page-Title" class="form-control ut-title-input" required>
                                 </div>
                             </div>
 
@@ -89,12 +94,12 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_display_order"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="number" name="DisplayOrder" id="page-Title" step="1"  min="0" value="0" class="form-control">
+                                    <input type="number" name="DisplayOrder" id="PageDisplayOrder" step="1"  min="0" value="0" class="form-control ut-order-input">
                                 </div>
                             </div>
 
                             <div class=" clearfix text-right">
-                                <input type="submit" value="Add to menu" class="btn btn-success">
+                                <input type="submit" value="Add to menu" class="btn btn-success ut-page-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
                             </div>
 
@@ -106,7 +111,7 @@
                     <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.product.ToString()">
                         <form asp-action="CreateMenuItemAsync" asp-controller="menus"
                               method="post"
-                              class="form-horizontal forn-new form-label-left p-5"
+                              class="form-horizontal forn-new form-label-left p-5 ut-product-form"
                               id="PageMenuItem">
                             @if (!ViewData.ModelState.IsValid)
                             {
@@ -121,7 +126,7 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_title"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="text" name="Title" id="product-Title" class="form-control" required>
+                                    <input type="text" name="Title" id="product-Title" class="form-control ut-title-input" required>
                                 </div>
                             </div>
 
@@ -142,12 +147,12 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_display_order"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="number" name="DisplayOrder" id="page-Title" step="1" min="0" value="0" class="form-control">
+                                    <input type="number" name="DisplayOrder" id="ProductDisplayOrder" step="1" min="0" value="0" class="form-control ut-order-input">
                                 </div>
                             </div>
 
                             <div class=" clearfix text-right">
-                                <input type="submit" value="Add to menu" class="btn btn-success">
+                                <input type="submit" value="Add to menu" class="btn btn-success ut-product-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
                             </div>
 
@@ -156,7 +161,7 @@
                     <div role="tabpanel" class="tab-pane fade " id="@MenuItemTypeEnum.dropdown.ToString()">
                         <form asp-action="CreateMenuItemAsync" asp-controller="menus"
                              method="post" 
-                            class="form-horizontal forn-new form-label-left p-x-5 p-y-3">
+                            class="form-horizontal forn-new form-label-left p-x-5 p-y-3 ut-submenu-form">
                             @if (!ViewData.ModelState.IsValid)
                             {
                                 <div class="alert alert-danger">
@@ -170,7 +175,7 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_title"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="text" name="Title" id="url-Title" class="form-control" required>
+                                    <input type="text" name="Title" id="url-Title" class="form-control ut-title-input" required>
                                     <input type="hidden" name="Url" value="#" />
                                 </div>
                             </div>
@@ -178,11 +183,11 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_display_order"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="number" name="DisplayOrder" id="page-Title" step="1" min="0" value="0" class="form-control">
+                                    <input type="number" name="DisplayOrder" id="dropdownDisplayOrder" step="1" min="0" value="0" class="form-control ut-order-input">
                                 </div>
                             </div>
                             <div class=" clearfix text-right">
-                                <input type="submit" value="Add to menu" class="btn btn-success">
+                                <input type="submit" value="Add to menu" class="btn btn-success ut-submenu-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
                             </div>
 
@@ -192,7 +197,7 @@
 
                         
                         <form asp-action="CreateMenuItemAsync" asp-controller="menus"
-                                method="post" class="form-horizontal forn-new form-label-left p-x-5 p-y-3">
+                                method="post" class="form-horizontal forn-new form-label-left p-x-5 p-y-3 ut-link-form">
                             @if (!ViewData.ModelState.IsValid)
                             {
                                 <div class="alert alert-danger">
@@ -206,7 +211,7 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_title"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="text" name="Title" id="url-Title" class="form-control" required>
+                                    <input type="text" name="Title" id="url-Title" class="form-control ut-title-input" required>
                                 </div>
                             </div>
 
@@ -231,11 +236,11 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_display_order"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="number" name="DisplayOrder" id="page-Title" step="1" value="0" min="0" class="form-control">
+                                    <input type="number" name="DisplayOrder" id="UrlDisplayOrder" step="1" value="0" min="0" class="form-control ut-order-input">
                                 </div>
                             </div>
                             <div class=" clearfix text-right">
-                                <input type="submit" value="Add" class="btn btn-success">
+                                <input type="submit" value="Add" class="btn btn-success ut-link-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
                             </div>
 
@@ -244,7 +249,8 @@
                         </div>
 
                     <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.staticpage.ToString()">
-                        <form asp-action="CreateMenuItemAsync" asp-controller="menus" method="post" class="form-horizontal forn-new form-label-left p-x-5 p-y-3">
+                        <form asp-action="CreateMenuItemAsync" asp-controller="menus" method="post" 
+                        class="form-horizontal forn-new form-label-left p-x-5 p-y-3 ut-staticpage-form">
                             @if (!ViewData.ModelState.IsValid)
                             {
                                 <div class="alert alert-danger">
@@ -258,7 +264,7 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_title"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="text" name="Title" id="url-Title" class="form-control" required>
+                                    <input type="text" name="Title" id="url-Title" class="form-control ut-title-input" required>
                                 </div>
                             </div>
 
@@ -267,9 +273,9 @@
                                 <div class="col-md-9 col-sm-8 col-xs-12">
 
                                     <select style="width:100%"
-                                            name="Url" id="page-Url"
+                                            name="Url" id="Static-page-Url"
                                             asp-items="ViewBag.StaticPagesSelectList"
-                                            class="form-control select_picker"
+                                            class="form-control select_picker ut-staticpage-url"
                                             required
                                             data-live-search="true"
                                             data-style="btn-select"></select>
@@ -279,11 +285,11 @@
                             <div class="form-group clearfix">
                                 <label class="control-label col-md-3 col-sm-4"> @Localizer["f_display_order"] </label>
                                 <div class="col-md-9 col-sm-8 col-xs-12">
-                                    <input type="number" name="DisplayOrder" id="page-Title" step="1" value="0" min="0" class="form-control">
+                                    <input type="number" name="DisplayOrder" id="StaticPageDisplayOrder" step="1" value="0" min="0" class="form-control ut-order-input">
                                 </div>
                             </div>
                             <div class=" clearfix text-right">
-                                <input type="submit" value="Add" class="btn btn-success">
+                                <input type="submit" value="Add" class="btn btn-success ut-staticpage-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
                             </div>
 

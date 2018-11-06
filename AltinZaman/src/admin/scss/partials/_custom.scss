@@ -148,12 +148,12 @@
         .control-label { 
             text-align: $left;
         }
-        .form-control {  @extend %inputStyle; }  
+        .form-control ,.form-control-static{  @extend %inputStyle; }  
         textarea{
             resize: vertical;
         } 
     }
-
+ 
 }
 
 #gender {

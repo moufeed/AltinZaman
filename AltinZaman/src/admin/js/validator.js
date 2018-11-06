@@ -1,3 +1,5 @@
+ 
+ 
 $.validator.addMethod('lessThan', function(value, element, param) {
     return this.optional(element) || parseInt(value) <= parseInt($(param[0]).val());
 }, "The value must be less than {1} ");
@@ -12,7 +14,7 @@ $.validator.addMethod(
         var re = new RegExp(regexp);
         return this.optional(element) || re.test(value);
     },
-    "Please check your input."
+    "Please check your input." 
 );
 
 $.validator.addMethod(
@@ -21,7 +23,7 @@ $.validator.addMethod(
         var re = new RegExp('^([A-Za-z0-9\u0621-\u064A0-9])+(?:[-|_]|[A-Za-z0-9\u0621-\u064A0-9])+([A-Za-z0-9\u0621-\u064A0-9])$');
         return this.optional(element) || re.test(value);
     },
-    "Only use numbers,letters and  \"  _ , - , +  \" symbols. no space are allowed"
+    "Only use numbers,letters and  \"  _ , - , +  \" symbols. no space are allowed. enter 3 numbers or letters at least."
 );
 
 
@@ -55,7 +57,6 @@ $.validator.addMethod(
     },
     "The @type is required and cannot be an empty string "
 );
-
 
 $("#CreateUserForm").validate({
     errorClass: "invalid_field",
@@ -127,7 +128,7 @@ $("#DiscountPrice").on('keyup',function(){
     Productvalidator.element( "#Price" );
 })
 
-$('   #BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm' ,'#CreateUserForm' ).validate({
+$('#BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm' ,'#CreateUserForm' ).validate({
     errorClass: "invalid_field",
     validClass: "valid_field",
     ignore: ".ignore",
@@ -136,30 +137,35 @@ $('   #BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm' ,'#CreateUserForm'
  
 
  
+//THIS VALIDATION WAS MERGED INTO THE HTML SCRIPT :
+// by adding :data-rule-slug="true"
 
-$('#MenuForm').validate({
-    errorClass: "invalid_field",
-    validClass: "valid_field",
-    ignore: ".ignore",
-    rules: { 
-        "Slug" :{
-            slug :true 
-        },
+//$('#MenuForm').validate({
+//    errorClass: "invalid_field",
+//    validClass: "valid_field",
+//    ignore: ".ignore",
+//    rules: { 
+//        "Key" :{
+//            slug :true 
+//        },
          
-},
-});
+//},
+//});
 
-$('#SliderItemForm').validate({
-    errorClass: "invalid_field",
-    validClass: "valid_field",
-    ignore: ".ignore",
-    rules: {
-        "Key": {
-            slug: true
-        },
+//THIS VALIDATION WAS MERGED INTO THE HTML SCRIPT :
+// by adding : data-rule-slug="true"
 
-    },
-});
+//$('#SlidersForm').validate({
+//    errorClass: "invalid_field",
+//    validClass: "valid_field",
+//    ignore: ".ignore",
+//    rules: {
+//        "Key": {
+//            slug: true
+//        },
+
+//    },
+//});
 $('#CreatePageForm,#EditPageForm ,#ServicesForm').validate({
     errorClass: "invalid_field",
     validClass: "valid_field",
@@ -178,7 +184,4 @@ $('#CreatePageForm,#EditPageForm ,#ServicesForm').validate({
         },
 },
 });
-
-
-
  

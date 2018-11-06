@@ -48,6 +48,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages
 
         }
 
+
         public async Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(Guid id)
         {
             dynamic result = await _pageService.GetPublicDynamicByIdAsync(id);

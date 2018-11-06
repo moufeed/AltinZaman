@@ -1,7 +1,7 @@
 ﻿@model List<ServiceDto>
 @{
     ViewData["Title"] = Localizer["services"];
-    
+    ViewData["UnitTestPageClass"] = "ut-sevices_index";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -12,7 +12,7 @@
         </div>
         <div class="title_right">
             <a href="@Url.AdminUrl("Create" , "services")"
-               class="btn btn-blue btn-add-new">@Localizer["new_service"]</a>
+               class="btn btn-blue btn-add-new ut-create_btn">@Localizer["new_service"]</a>
 
         </div>
     </div>
@@ -58,7 +58,7 @@
                             @foreach (var item in Model)
                             {
 
-                                <tr>
+                                <tr id="tr-@item.Id">
                                     <td class="text-center">
                                         @if (!string.IsNullOrEmpty(item.MainImage))
                                         {
@@ -122,7 +122,7 @@
                                                    title="@Localizer["t_unpublish"]"
                                                    data-unpublished="@Localizer["t_unpublished"]"
                                                    data-published="@Localizer["t_published"]"
-                                                   class="btn btn-link-pup published toggle_publish">
+                                                   class="btn btn-link-pup published ut-published toggle_publish">
                                                     <i class="fa fa-eye c-green"></i>
                                                     <small>@Localizer["t_published"]</small>
                                                 </a>
@@ -131,12 +131,11 @@
                                             {
                                                 <a data-toggle="tooltip"
                                                    data-placement="top"
-                                                   
                                                    data-url="@Url.AdminUrl("PublishAsync","services" , new { id = item.Id})"
                                                    title="@Localizer["t_publish"]"
                                                    data-unpublished="@Localizer["t_unpublished"]"
                                                    data-published="@Localizer["t_published"]"
-                                                   class="btn btn-link-pup unpublished toggle_publish">
+                                                   class="btn btn-link-pup unpublished ut-unpublished toggle_publish">
                                                     <i class="fa fa-eye-slash c-red"></i>
                                                     <small>@Localizer["t_unpublished"]</small>
                                                 </a>
@@ -148,13 +147,13 @@
                                            data-placement="top"
                                            title="@Localizer["t_details"]"
                                            href="@Url.AdminUrl("Details","services",new { id = item.Id })"
-                                           class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
+                                           class="btn btn-view btn-round ut-detail_btn"><i class="fa fa-eye "></i></a>
 
                                         <a data-toggle="tooltip"
                                            data-placement="top"
                                            title="@Localizer["t_edit"]"
                                            href="@Url.AdminUrl("Edit" ,"services",new { id = item.Id })"
-                                           class="btn btn-edit btn-round"><i class="fa fa-edit "></i></a>
+                                           class="btn btn-edit btn-round ut-edit_btn"><i class="fa fa-edit "></i></a>
 
                                         @if (item.Locked)
                                         {
@@ -167,9 +166,10 @@
                                         {
                                             <a data-toggle="tooltip"
                                                data-placement="top"
+                                               data-id="@item.Id"
                                                data-url="@Url.AdminUrl("DeleteAsync", "services", new { id = item.Id })"
                                                title="@Localizer["t_remove"]"
-                                               class="btn btn-remove btn-round delete-service"><i class="fa fa-times "></i></a>
+                                               class="btn btn-remove btn-round delete-service ut-service_remove_btn"><i class="fa fa-times "></i></a>
                                         }
 
 

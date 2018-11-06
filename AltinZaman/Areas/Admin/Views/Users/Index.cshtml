@@ -1,6 +1,7 @@
 ﻿@model List<UserModel>
 @{
     ViewData["Title"] = Localizer["Users"];
+    ViewData["UnitTestPageClass"] = "ut-Users_index";
 
     // Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -43,7 +44,7 @@
         </div>
         <div class="title_right">
             <a   href="@Url.AdminUrl("Create","Users")"
-               class="btn btn-default btn-add-new">@Localizer["new_user"]</a>
+               class="btn btn-default btn-add-new ut-create_btn">@Localizer["new_user"]</a>
         </div>
     </div>
 </div>
@@ -157,12 +158,27 @@
                                             <i class="fa fa-times c-red"></i>
                                         }
                                     </td>
-                                    <td class="text-center">
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           title="@Localizer["t_details"]"
-                                           href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
-                                           class="btn btn-view"><i class="fa fa-eye "></i></a>
+                                    <td class="text-center ut-details_btn">
+                                        @if (user.IsBlocked)
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="@Localizer["t_details"]"
+                                               href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
+                                               class="btn btn-view ut-details_btn_for_blocked_user">
+                                            <i class="fa fa-eye"></i></a>
+
+                                        }
+                                        else
+                                        {
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="@Localizer["t_details"]"
+                                               href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
+                                               class="btn btn-view ut-details_btn_for_unblocked_user">
+                                            <i class="fa fa-eye "></i></a>
+                                        }
+
                                     </td>
                                 </tr>
                             }

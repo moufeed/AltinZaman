@@ -28,19 +28,19 @@ $('#combinationModal').on('show.bs.modal', function (e) {
     let trTemplate = "";
     modal.find('#pro_sku').val($('input[id="SKU"]').val()) || window.product.PSKU;
 
-    $.getJSON( window.productlinks.geteditAttributes, function (data) {
+    $.getJSON( window.productlinks.geteditAttributes, (data)=> {
 
         
             if (data.success && data.result.length > 0) {
                 
                 modal.find('.atrributes_selects_box').html(" ");
-                $.each(data.result,   (idx, attr)=>{
+                $.each(data.result,   (idx, attr) => {
                     modal.find('.atrributes_selects_box').append(
                         `<div class="form-group clearfix" id="selects_box">
                         <label class="control-label col-md-3 col-sm-4">${attr.name}</label>
                         <div class="col-md-9 col-sm-8 col-xs-12">
                         <select class="form-control" name="attr-${attr.name}-${idx}"><option value="null">${_localizer.select}  ${attr.name} </option></select></div></div>`);
-                    $.each(attr.values,   (i, opt)=> {
+                    $.each(attr.values,   (i , opt)=> {
                         modal.find('select[name="attr-' + attr.name + '-' + idx + '"]')
                             .append(`<option value="${opt.value}"> ${opt.value} </option>`)
                     })
@@ -73,7 +73,7 @@ $('#combinationModal').on('hidden.bs.modal',   (e)=> {
 //------------------------------------------------------------------
 //#region  #2  create combination  model
 //------------------------------------------------------------------
-function createObj($form) { 
+const createObj= ($form) => { 
     let inputs = $form.find('input').serializeArray();
     let selects = $form.find('select').serializeArray();
     var deferred = new $.Deferred();
@@ -82,10 +82,11 @@ function createObj($form) {
         productid: window.product.pid,
         ProductSku : window.product.PSKU
     };
-    $.each(inputs, function (i, item) {
-        combinationData[item.name] = item.value;
-    })
-    $.each(selects, function (i, select) {
+
+
+    $.each(inputs, (i, item)=> combinationData[item.name] = item.value )
+
+    $.each(selects,   (i, select) => {
         if (select.value != "null")
             combinationData.Attributes[select.name.split('-')[1]] = select.value;
         if (selects.length - 1 == i)
@@ -102,39 +103,38 @@ function createObj($form) {
 //#region  #3   append new combination to table 
 //------------------------------------------------------------------
 
-function appendTableRow(row,key,refresh) {
+const appendTableRow = (row,key,refresh) => {
     
-    console.log(row,key,refresh)
     
-    var attrHtml = ""; 
-    if(refresh){
+    let attrHtml = ""; 
+    if(refresh)
         attrHtml = key.replace(/,/g,"<br/>").replace(/:/g," : ");
-        
-    }else{
-        $.each(row.attributes, function (index, item) {
-            attrHtml += index + " : " + item + "<br/>";
-        })
-    }
+    else
+        $.each(row.attributes, (index, item) =>  attrHtml += `${index} : ${item} <br />`) ;
+    
  
-    var temp = '<tr ><td>' + attrHtml + '</td><td>' +
-    '<input type="number" step="1" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[' + window.product.comb + '].Quantity"   value="' + row.quantity + '" disabled /></td><td>' +
-    '<p class="form-control-static">' + row.sku + '</p></td><td>' +
-    '<input type="number" step="any" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[' + window.product.comb + '].Price" value="' + row.price + '" disabled /></td>' +
-    '<td><input type="number" step="any" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[' + window.product.comb + '].DiscountPrice" value="' + row.discountPrice + '" disabled /></td>' +
-    '<td class="text-center" ><a data-sku="'+row.sku+'"  data-key="'+key+'" class="btn btn-link-pup toggle_comb_publish">   <span class="unpublished"> <i class="fa fa-eye-slash c-red"></i> <small>'+_localizer.unpublished+'</small></span></a> </td>'+
-    '<td><a href="#" class="btn btn-update-link update-combination  hidden m-y-2 " data-index="' + window.product.comb + '">' +
-    '<i class="fa fa-pencil-square-o" aria-hidden="true"></i> '+_localizer.edit+' </a>' +
-    '<a title="'+_localizer.delete_combination+'" data-sku="'+row.sku+'" data-key="'+key+'" data-id="' + window.product.comb + '" class="btn btn-remove-combination c-red m-y-2 remove-combination">'+
-    '<i class="fa fa-trash-o"></i> '+_localizer.delete+'</a>'+
-    '<a class="btn btn-save-link save-combination hidden m-y-2" data-index="' + window.product.comb + '">' +
-    '<i class="fa fa-check" aria-hidden="true"></i>  '+_localizer.save+'</a></td></tr>';
+    let temp =  `<tr><td>${attrHtml}</td><td>
+                <input type="number" step="1" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[${window.product.comb}].Quantity"   value="${row.quantity}" disabled /></td><td>
+                <p class="form-control-static">${row.sku}</p></td><td>
+                <input type="number" step="any" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[${window.product.comb}].Price" value="${row.price}" disabled /></td> 
+                <td><input type="number" step="any" class="form-control m-y-1 ignore" name="ProductAttributeCombinations[${window.product.comb}].DiscountPrice" value="${row.discountPrice}" disabled /></td> 
+                <td class="text-center" ><a data-sku="${row.sku}"  data-key="${key}" class="btn btn-link-pup toggle_comb_publish">   <span class="unpublished"> <i class="fa fa-eye-slash c-red"></i> <small>${_localizer.unpublished}</small></span></a> </td> 
+                <td><a href="#" class="btn btn-update-link update-combination  hidden m-y-2 " data-index="${window.product.comb}">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>${_localizer.edit}</a>
+                <a title="${_localizer.delete_combination}" data-sku="${row.sku}" data-key="${key}" data-id="${window.product.comb}" class="btn btn-remove-combination c-red m-y-2 remove-combination">
+                <i class="fa fa-trash-o"></i>${_localizer.delete}</a>
+                <a class="btn btn-save-link save-combination hidden m-y-2" data-index="${window.product.comb}">
+                <i class="fa fa-check" aria-hidden="true"></i>${_localizer.save}</a></td></tr>`;
+
     if(row.published){
          temp = temp.replace(/unpublished/g, 'published')
          temp = temp.replace('fa-eye-slash c-red','fa-eye c-green'); 
     }
-    if($('.combinations-table').has('.empty_row ').length > 0){
+
+    if($('.combinations-table').has('.empty_row ').length > 0) 
         $('.combinations-table').find('.empty_row').remove();
-    }
+
+
     $('.combinations-table tbody').append(temp);
     window.product.comb++;
 } 
@@ -148,18 +148,16 @@ function appendTableRow(row,key,refresh) {
 //#region  #4  append Errors to commbination modal 
 //------------------------------------------------------------------
 
-function appendError(errors,$form) {
-    var alertTemp = '<div class="alert alert-danger   alert-dismissible fade in" style="border-radius: 0;" role="alert">' +
-        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-        '<span aria-hidden="true">×</span></button><ol id="errors_list" class="m-b0"></ol></div>';
-    if ($('#combinationModal').find('.alert').length <= 0) {
+const appendError =(errors,$form) => {
+    var alertTemp = 
+    `<div class="alert alert-danger alert-dismissible fade in" style="border-radius: 0;" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span></button><ol id="errors_list" class="m-b0"></ol></div>`;
+
+    if ($('#combinationModal').find('.alert').length <= 0) 
         $form.before(alertTemp);
-    }
-    $.each(errors, function (key, value) {
-        $.each(value.value, function (k, v) {
-            $('#errors_list').append('<li>' + v + '</li>');
-        })
-    })
+    
+    $.each(errors, (key, value) => $.each(value.value,(k, v) => $('#errors_list').append(`<li>${v}</li>`))) 
 }
 
 //------------------------------------------------------------------
@@ -182,12 +180,12 @@ var cobinations_validator =  $(" #product_cobinations ").validate({
         }
     },
     submitHandler: function (form) {
-        var $form = $(form);
+        let $form = $(form);
         createObj($form).then(function (result) {
 
-            if ($('#combinationModal').find('.alert').length > 0) {
-                    $('.alert').remove();
-            }
+            if ($('#combinationModal').find('.alert').length > 0) 
+                $('.alert').remove();
+            
 
             $.ajax({
                     url: window.productlinks.createCombination,
@@ -195,10 +193,10 @@ var cobinations_validator =  $(" #product_cobinations ").validate({
                     dataType: "json",
                     data: result
                 })
-                .done(function (data) {
+                .done(  (data)=> {
                     if (data.success) {
 
-                        $notification.success("success", "", 2000, "fa fa-check");
+                        $notification.success(window.localization.success, "", 2000, "fa fa-check");
                         $("[data-dismiss=modal]").trigger({
                             type: "click"
                         });
@@ -206,12 +204,10 @@ var cobinations_validator =  $(" #product_cobinations ").validate({
                         appendTableRow(data.model,data.result.key);
                         $form[0].reset();
                     } else {
-                         
                         appendError(data.errors,$form);
                     }
                 })
-                .fail(function (jqXHR, Status) {
-                     
+                .fail((jqXHR,Status) => {
                     if(jqXHR.status == 400 ){
                         appendError(jqXHR.responseJSON,$form);
                     }else{
@@ -238,20 +234,19 @@ $("#discount_price").on('keyup',function(){
 //------------------------------------------------------------------
 //#region #6  toggle update combination button 
 //------------------------------------------------------------------
-function ShowUpdateBtn($this, $tr) {
+const ShowUpdateBtn = ($this, $tr) => {
     $tr.find(":input").attr('disabled', 'disabled');
     $this.addClass('hidden');
-    $this.siblings('.update-combination').removeClass('hidden');
+    $this.siblings('.update-combination').removeClass('hidden'); 
 }
 
 var combinationTemp = {};
 $(document).on('click', '.update-combination', function (e) {
     e.preventDefault();
-    var $tr = $($(this).parents('tr')[0]),
+    let $tr = $($(this).parents('tr')[0]),
         index = $(this).data('index');
     $tr.find(":input").removeAttr('disabled');
     combinationTemp[index] = $tr.find(":input").serializeArray();
-
     $(this).addClass('hidden').siblings('a.save-combination').removeClass('hidden');
 })
 //------------------------------------------------------------------
@@ -263,7 +258,7 @@ $(document).on('click', '.update-combination', function (e) {
 //#region #7 save updated Combination
 //------------------------------------------------------------------
 $(document).on('click', '.save-combination', function () {
-    var $tr = $($(this).parents('tr')[0]),
+    let $tr = $($(this).parents('tr')[0]),
         index = $(this).data('index');
     data = $tr.find(":input").serializeArray();
     if (JSON.stringify(combinationTemp[index]) !== JSON.stringify(data)) {
@@ -280,7 +275,7 @@ $(document).on('click', '.save-combination', function () {
                 dataType: "json",
                 data: comData
             })
-            .done(function (data) {
+            .done((data) => {
                 if (data.success) {
                     $notification.success(window.localization.success, "", 2000, "fa fa-check");
                     ShowUpdateBtn($(this), $tr);
@@ -288,13 +283,9 @@ $(document).on('click', '.save-combination', function () {
                     showErrorsMsg(data.data);
                 }
             })
-            .fail(function (jqXHR, Status) {
-
-                $notification.error(window.localization.error, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-
-                $.each(data, function (idx, item) {
-                    $('input[name="' + item.name + '"]').val(combinationTemp[index][idx].value);
-                });
+            .fail((jqXHR, Status)=> {
+                $fail(jqXHR, Status);
+                $.each(data, (idx, item) =>  $(`input[name="${item.name}"]`).val(combinationTemp[index][idx].value) );
             });
     } else {
         delete combinationTemp[index];
@@ -309,7 +300,7 @@ $(document).on('click', '.save-combination', function () {
 //------------------------------------------------------------------
 //#region #8  toggle Publish Combination button 
 //------------------------------------------------------------------
-function togglePublishCombBtn($this , status){
+const   togglePublishCombBtn = ($this , status) => {
     if(status){
         if($this.find('span').hasClass('unpublished')){
             $this.find('span').removeClass('unpublished').addClass('published');
@@ -338,6 +329,7 @@ function togglePublishCombBtn($this , status){
 $(document).on('click','.toggle_comb_publish',function(e){
     e.preventDefault();
     var $this =$(this);
+
     $this.find('i').removeClass().addClass("fa fa-spinner fa-pulse");
 
     $.ajax({
@@ -350,17 +342,16 @@ $(document).on('click','.toggle_comb_publish',function(e){
             sku : $this.data('sku'),
         }
     })
-    .done(function (data) {
-
+    .done((data) => {
         if(data.success){
-           togglePublishCombBtn($this , true)
+           togglePublishCombBtn($this , true);
         }else{
-            $notification.error(window.localization.error, "", 2000, "fa fa-exclamation-circle");
+            $showErorr(data.errors);
             togglePublishCombBtn($this , false);
         }
     })
-    .fail(function (jqXHR, Status) {
-        $notification.error(window.localization.error, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+    .fail((jqXHR, Status) => {
+        $fail(jqXHR, Status)
         togglePublishCombBtn($this , false);
     });
 }); 
@@ -375,13 +366,11 @@ $(document).on('click','.toggle_comb_publish',function(e){
 //------------------------------------------------------------------
 //#region #10  refresh Combinations table 
 //------------------------------------------------------------------
-window.$refreshCombinationsTable = function (newData){
+window.$refreshCombinationsTable = (newData) => {
      $('.combinations-table').find('tbody').html(' ');
      window.product.comb= 0;
-     $.each(newData,function(index,row){
-        appendTableRow(row,row.attributesvalues,true); 
-     });
- }
+     $.each(newData, (index , row ) => appendTableRow(row,row.attributesvalues,true) );
+ };
 //------------------------------------------------------------------
 //#endregion #10
 //------------------------------------------------------------------
@@ -392,24 +381,21 @@ window.$refreshCombinationsTable = function (newData){
 //#region #11   delete combination
 //------------------------------------------------------------------
 
-var emptyRowTemp = '<tr class="empty_row"><td colspan="7">'+                                    
-"<div class='empty_table text-center'> <i class='fa fa fa-exclamation-circle'></i><p>"+_localizer.no_data_table+"</p></div></td></tr>";
+var emptyRowTemp = 
+`<tr class="empty_row"><td colspan="7">                                    
+    <div class='empty_table text-center'> 
+    <i class='fa fa fa-exclamation-circle'></i>
+    <p>${_localizer.no_data_table}</p></div></td></tr>`;
 
                              
 
 $(document).on('click','.remove-combination',function(e){
     e.preventDefault();
     var $this = $(this);
-
-    $Confirm({},function(result){
-        if (result.value) {
-            deleteCombination($this);
-        }
-    }) 
- 
+    $Confirm({},(result) =>  (result.value) ? deleteCombination($this) : null ) 
 })
 
-function deleteCombination($this){
+const deleteCombination = ($this) => {
     $.ajax({
         url: window.productlinks.deleteCombination,
         type: 'Get',
@@ -420,22 +406,22 @@ function deleteCombination($this){
             sku : $this.data('sku'),
         }
     })
-    .done(function(data){
+    .done((data)=>{
         if(data.success){
+
             $notification.success(window.localization.success, "", 2000, "fa fa-check");
+
             $this.parents('tr').remove();
-            console.log($('.combinations-table tbody tr').length)
-            if($('.combinations-table tbody tr').length == 0 ){
+            
+            if($('.combinations-table tbody tr').length == 0 )
                 $('.combinations-table tbody').append(emptyRowTemp);
-            }
+            
         }else{
-            var errors =data.errors;
-            $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+            
+            $showErorr(data.errors)
         }
     })
-    .fail(function (jqXHR, Status) {
-        $notification.error(window.localization.erorr, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-    });
+    .fail((jqXHR,Status) => $fail(jqXHR, Status));
 }
 
  
@@ -444,26 +430,6 @@ function deleteCombination($this){
 //------------------------------------------------------------------
 //#endregion #11
 //------------------------------------------------------------------
-
-
-//------------------------------------------------------------------
-//#region #12
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-//#endregion #12
-//------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------
-//#region #13
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-//#endregion #13
-//------------------------------------------------------------------
-
- 
- 
 
  //-- end --
 });

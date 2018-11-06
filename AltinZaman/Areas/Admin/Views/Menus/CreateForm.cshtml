@@ -1,10 +1,11 @@
 ﻿@model MenuLiteDto
 @{
     ViewData["Title"] = Localizer["create_menu"];
+    ViewData["UnitTestPageClass"] = "ut-Menus_create";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
- 
+
 
 @using (Html.BeginForm("Create", "Menus", FormMethod.Post,
 new
@@ -27,10 +28,10 @@ new
                 <a asp-action="Index" class="btn btn-default">
                     <span class="fa fa-chevron-left"></span> @Localizer["back_to_list"]
                 </a>
-                <button type="submit" name="save" class="btn btn-success"><i class="fa fa-save"></i> @Localizer["save"] </button>
-                <button type="submit" name="save-continue" class="btn  btn-blue">
+                <button type="submit" name="save" class="btn btn-success ut-create_btn"><i class="fa fa-save"></i> @Localizer["save"] </button>
+                <button type="submit" name="save-continue" class="btn  btn-blue ut-saveandcontinue">
                     <i class="fa fa-floppy-o"></i>
-                     @Localizer["save_and_continue"]
+                    @Localizer["save_and_continue"]
                 </button>
             </div>
         </div>
@@ -64,7 +65,7 @@ new
 
 
             <div class="x_panel">
-                  
+
                 <div class="row m-t5">
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group clearfix">
@@ -79,16 +80,17 @@ new
                         <div class="form-group clearfix">
                             <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_name"]</label>
                             <div class="col-md-9 col-sm-12">
-                                <input type="text" asp-for="Key" name="Key" id="MenuKey" class="form-control" required pattern="^[A-Za-z0-9]+(?:[-|_]|[A-Za-z0-9]+)+[A-Za-z0-9]$" />
+
+                                <input type="text" asp-for="Key" id="MenuKey" class="form-control ut-menukey" required data-rule-slug="true" />
                                 <span asp-validation-for="Key" class="text-danger invalid_field"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group clearfix">
-                            <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
+                            <label for="Position" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
                             <div class="col-md-9 col-sm-12">
-                                <select class="form-control" name="Position" asp-for="Position">
+                                <select class="form-control" asp-for="Position">
                                     <option value="header">Header</option>
                                 </select>
                             </div>

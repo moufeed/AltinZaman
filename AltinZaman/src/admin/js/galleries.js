@@ -96,16 +96,16 @@ $(document).ready(() => {
                 data: {}
             })
             .done(function (data) {
-                if (data.success) {
+                if (data.success) { //.toggleClass("ut-unpublished ut-published");
                      
                     if($this.hasClass("unpublished")){
                         $this.attr("title", unpublish);
-                        $this.toggleClass("unpublished published");
+                        $this.toggleClass("unpublished published  ut-unpublished ut-published");
                         $this.find('.fa').removeClass().addClass("fa fa-eye-slash");
                         $this.find(".text").text(unpublish)
                     }else{
                         $this.attr("title", publish);
-                        $this.toggleClass("published unpublished ");
+                        $this.toggleClass("unpublished published  ut-unpublished ut-published");
                         $this.find('.fa').removeClass().addClass("fa fa-eye");
                         $this.find(".text").text(publish)
                     }
@@ -194,11 +194,11 @@ $(document).ready(function(){
         $("#FilesCount").text(files.length);
         
         $('.uploadfile .url').text((files.length > 0 ) ? files.join() : fileInputTextContent);
-        if(files.length > 0){
+        /* if(files.length > 0){
             $("#submitImages").removeClass("disabled").removeAttr("disabled");
         }else{
             $("#submitImages").addClass("disabled").attr("disabled","disabled");
-        }
+        } */
     }) 
 
 

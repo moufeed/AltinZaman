@@ -2,6 +2,7 @@
 @model TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage
 @{
     ViewData["Title"] = Localizer["page_details"];
+    ViewData["UnitTestPageClass"] = "ut-page_details";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 <div class="clearfix">
@@ -65,7 +66,7 @@
                 <hr />
                 <div class="form-group clearfix">
                     <strong class="control-label col-md-2 col-sm-4 col-xs-12">@Localizer["slug"]</strong>
-                    <strong class="col-md-8 col-sm-8 col-xs-12">@Model.Slug</strong>
+                    <strong class="col-md-8 col-sm-8 col-xs-12 ut-page_slug">@Model.Slug</strong>
                 </div>
                 <hr />
 

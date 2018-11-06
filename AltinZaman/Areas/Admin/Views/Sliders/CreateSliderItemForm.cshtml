@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Silders - Create slide";
+    ViewData["UnitTestPageClass"] = "ut-slides-create";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -82,13 +83,17 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
+                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i>@Localizer["Browse"]</span>
+                            
                             </label>
-                            <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
+                        <label id="NewMainImage-error" class="error invalid_field" for="NewMainImage" style="display:none;"></label>
+                         <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
                         </div>
-                    </div>
+                           
+                        
+                        </div>
 
 
 
@@ -97,11 +102,13 @@
                     <div class="form-group clearfix">
                         <label asp-for="Url" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_url"]</label>
                         <div class="col-md-5 col-sm-3 col-xs-12">
-                            <input asp-for="Url" class="form-control" />
+                            <input asp-for="Url" class="form-control" data-rule-url="true" data-msg-url="Url must be in this form : http://example.com" />
+                            @*<input data-rule-slug="true" data-msg-slug="slug is wrong" />*@
+
                             <span asp-validation-for="Url" class="text-danger invalid_field"></span>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                            <select class="form-control" name="Url" id="Url">
+                            <select class="form-control" asp-for="UrlTarget">
                                 <option value="_blank" selected>_blank</option>
                                 <option value="_self">_self</option>
                                 <option value="_parent">_parent</option>
@@ -133,8 +140,8 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
-                            <input type="submit" class="btn btn-success p-x-5" value="@Localizer["Create"]">
-                            <button type="submit" name="save-continue" class="btn  btn-info">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" value="@Localizer["Create"]">
+                            <button type="submit" name="save-continue" class="btn  btn-info ut-continue-btn">
                                 <i class="fa fa-floppy-o"></i>
                                 @Localizer["save_and_continue"]
                             </button>

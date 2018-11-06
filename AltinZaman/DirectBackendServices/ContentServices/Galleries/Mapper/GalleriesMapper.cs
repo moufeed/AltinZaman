@@ -133,8 +133,8 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Summary = item.Summary,
                 DisplayOrder = item.DisplayOrder,
                 GalleryId = item.GalleryId,
-                Tags = item.Tags,
-                MetaDescription = item.MetaDescription,
+                //   Tags = item.Tags,
+                //   MetaDescription = item.MetaDescription,
             };
         }
 
@@ -152,8 +152,8 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 DisplayOrder = item.DisplayOrder,
                 GalleryId = item.GalleryId,
                 Id = item.Id,
-                Tags = item.Tags,
-                MetaDescription = item.MetaDescription,
+                //   Tags = item.Tags,
+                //   MetaDescription = item.MetaDescription,
             };
         }
 

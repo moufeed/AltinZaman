@@ -1,6 +1,7 @@
 ﻿@model GalleryItemFormVM
 
 @{
+    ViewData["UnitTestPageClass"] = "ut-item-form-page";
     ViewData["Title"] =   ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"];
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
@@ -88,11 +89,11 @@
                                 <label class="form-control clearfix uploadfile">
                                     @if (ViewBag.isUpdate)
                                     {
-                                        <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                        <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                     }
                                     else
                                     {
-                                        <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
+                                        <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
                                     }
 
                                     <span class="url">@Localizer["choose_file"]</span>
@@ -134,9 +135,9 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
-                            <input type="submit" class="btn btn-success p-x-5" value="@( (ViewBag.isUpdate) ? Localizer["Update"] : Localizer["Create"] )">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" value="@( (ViewBag.isUpdate) ? Localizer["Update"] : Localizer["Create"] )">
 
-                            <button type="submit" name="save-continue" class="btn  btn-info">
+                            <button type="submit" name="save-continue" class="btn  btn-info ut-continue-btn">
                                 <i class="fa fa-floppy-o"></i>
                                 @Localizer["save_and_continue"]
                             </button>

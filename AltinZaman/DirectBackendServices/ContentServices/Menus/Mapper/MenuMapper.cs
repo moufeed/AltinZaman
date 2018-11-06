@@ -60,6 +60,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
                 Position = frontend.Position,
                 Title = frontend.Title,
                 Lang = frontend.Lang,
+                Key = frontend.Key
             };
         }
 
@@ -92,7 +93,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
                 CreatedDate = backend.CreatedDate,
                 ModifiedDate = backend.ModifiedDate,
                 Lang = backend.Lang,
-
+                Locked = backend.Locked
             };
         }
 
@@ -123,6 +124,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
                 Key = backend.Key,
                 Title = backend.Title,
                 Position = backend.Position,
+                Locked = backend.Locked,
                 CreatedDate = backend.CreatedDate,
                 ModifiedDate = backend.ModifiedDate,
                 MenuItems = backend.MenuItems != null ? backend.MenuItems.Select(m => m.MapToFrontendDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemDto>(),

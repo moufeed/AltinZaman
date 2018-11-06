@@ -114,9 +114,7 @@ $('#publish_product').on('change',function(e){
             }
         }
     })
-    .fail(function (jqXHR, Status) {
-        $notification.error(window.localization.error , jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-    })
+    fail(  (jqXHR, Status)  => $fail(jqXHR, Status) )
 });
 
 
@@ -136,18 +134,15 @@ $('#publish_product').on('change',function(e){
                         redirection : true
                     }
                 })
-                .done(function(data){
+                .done((data)=>{
                     if(data.success){
                         $notification.success("", window.localization.deleted_successfully , 2000, "fa fa-check");
                         window.location.assign(backurl || window.location.origin + '/Admin/products');
                     }else{
-                        var errors =data.errors;
-                        $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+                        $showErorr(data.errors)
                     }   
                  }
-            ) .fail(function (jqXHR, Status) {
-                $notification.error(window.localization.error, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-            })
+            ) .fail(  (jqXHR, Status)  => $fail(jqXHR, Status))
                
             }
 

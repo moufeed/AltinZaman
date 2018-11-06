@@ -1,6 +1,7 @@
 ﻿@model EmailVM
 @{
     ViewData["Title"] = Localizer["new_email"];
+    ViewData["UnitTestPageClass"] = "ut-Email_create";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -68,13 +69,13 @@
                     <div class="form-group clearfix">
                         <label asp-for="Subject" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_subject"]</label>
                         <div class="col-md-7 col-sm-5 col-xs-12">
-                            <input type="text" asp-for="Subject" class="form-control" required />
+                            <input type="text" asp-for="Subject" class="form-control" required id="ut-subject" />
                             <span asp-validation-for="Subject" class="text-danger invalid_field"></span>
                         </div>
                     </div>
 
                     <div class="form-group clearfix">
-                        <label asp-for="Recipients" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_recipients"] :</label>
+                        <label asp-for="Recipients" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_recipients"]</label>
                         <div class="col-md-7 col-sm-5 col-xs-12">
 
                             @if (ViewBag.SpecificUser)
@@ -105,16 +106,16 @@
 
 
                     <div class="form-group clearfix">
-                        <label asp-for="Massage" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_massage"]</label>
+                        <label asp-for="Message" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_massage"]</label>
                         <div class="col-md-7 col-sm-5 col-xs-12">
-                            <textarea asp-for="Massage" class="form-control" rows="12" required></textarea>
-                            <span asp-validation-for="Massage" class="text-danger invalid_field"></span>
+                            <textarea asp-for="Message" class="form-control" rows="12" required></textarea>
+                            <span asp-validation-for="Message" class="text-danger invalid_field"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-7 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 text-right">
-                            <input type="submit" class="btn btn-success p-x-5" value="@Localizer["send"]">
+                            <input type="submit" class="btn btn-success p-x-5 ut-send_btn" value="@Localizer["send"]">
                         </div>
                     </div>
 
@@ -150,28 +151,21 @@
         });
 
 
-
         tinymce.init({
-                    selector: 'textarea',
-                 branding: false,
-                 menubar: "edit insert format",
-                 plugins: [
-                "advlist autolink lists link image charmap  anchor",
-                "searchreplace visualblocks",
-                "  contextmenu paste imagetools wordcount"
-            ],
-             setup: function (editor) {
+            selector: '#Message',
+            branding: false,
+            min_height: 150,
+
+            statusbar: false,
+            theme: 'modern',
+            menubar: false,
+            plugins: ['code hr anchor pagebreak spellchecker '],
+            setup: function (editor) {
                 editor.on('change', function (e) {
                     editor.save();
                 });
-            },
-            toolbar: "undo redo  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            }
         });
-
-
-
-         
-        
 
     </script>
 

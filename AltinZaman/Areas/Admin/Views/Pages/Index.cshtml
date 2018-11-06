@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = Localizer["Pages"];
+    ViewData["UnitTestPageClass"] = "ut-pages_index";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -12,8 +13,8 @@
         </div>
         <div class="title_right">
 
-            <a href="@Url.AdminUrl("CreateHtmlPage" ,"Pages")" class="btn btn-blue btn-add-new">@Localizer["new_html_page"]</a>
-            <a href="@Url.AdminUrl("CreateSectionsPage","Pages")" class="btn btn-blue  btn-add-new">@Localizer["new_section_page"]</a>
+            <a href="@Url.AdminUrl("CreateHtmlPage" ,"Pages")" class="btn btn-blue btn-add-new ut-html-btn" id="html-btn">@Localizer["new_html_page"]</a>
+            <a href="@Url.AdminUrl("CreateSectionsPage","Pages")" class="btn btn-blue  btn-add-new ut-sections-btn" id="sections-btn">@Localizer["new_section_page"]</a>
         </div>
     </div>
 </div>
@@ -35,7 +36,7 @@
         }
 
         <div class="x_panel p-x-0">
-            
+
             <div class="x_content">
                 <div class="table-responsive datatable">
                     <table class="table table-middle table-striped" id="pagesTable">
@@ -64,7 +65,7 @@
                                     <td>@item.ModifiedDate</td>
                                     <td>
                                         @((item.Type == (int)PageTypeEnum.Sections) ?
-                                                                                      PageTypeEnum.Sections.ToString() : PageTypeEnum.Html.ToString())
+                                                                                              PageTypeEnum.Sections.ToString() : PageTypeEnum.Html.ToString())
                                     </td>
                                     <td class="text-center">
 
@@ -100,7 +101,7 @@
                                                    data-status="true"
                                                    title="@Localizer["t_publish"]"
                                                    data-url="@Url.AdminUrl("Publish","Pages", new { type = item.TypeEnum , id = item.Id } )"
-                                                   class="btn btn-link-pup ptrue">
+                                                   class="btn btn-link-pup ptrue ut-published">
                                                     <i class="fa fa-eye c-green"></i>
                                                     <small>@Localizer["t_published"]</small>
                                                 </a>
@@ -114,7 +115,7 @@
                                                    data-id="@item.Id"
                                                    title="@Localizer["t_unpublish"]"
                                                    data-url="@Url.AdminUrl("Publish","Pages", new { type = item.TypeEnum , id = item.Id } )"
-                                                   class="btn btn-link-pup ">
+                                                   class="btn btn-link-pup ut-unpublished">
                                                     <i class="fa fa-eye-slash c-red"></i>
                                                     <small>@Localizer["t_unpublished"]</small>
                                                 </a>
@@ -127,13 +128,13 @@
                                            data-placement="top"
                                            title="@Localizer["t_details"]"
                                            href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "GetSectionsDetailsAsync" : "GetHtmlDetailsAsync"  , "Pages",new { id = item.Id })"
-                                           class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
+                                           class="btn btn-view btn-round  @(item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "ut-section_detail_btn" : "ut-detail_btn")"><i class="fa fa-eye "></i></a>
 
                                         <a data-toggle="tooltip"
                                            data-placement="top"
                                            title="@Localizer["t_edit"]"
                                            href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "EditSectionsPage" : "EditHtmlPage"   , "Pages" , new { id = item.Id})"
-                                           class="btn btn-edit btn-round"><i class="fa fa-edit "></i></a>
+                                           class="btn btn-edit ut-edit_btn btn-round"><i class="fa fa-edit "></i></a>
 
                                         @if (item.Locked)
                                         {
@@ -149,7 +150,7 @@
                                                data-id="@item.Id"
                                                title="@Localizer["t_remove"]"
                                                data-url="@Url.AdminUrl("Delete" ,"Pages" , new { id = item.Id , type = item.TypeEnum})"
-                                               class="btn btn-remove remove_page btn-round"><i class="fa fa-times "></i></a>
+                                               class="btn btn-remove remove_page btn-round ut-remove_btn"><i class="fa fa-times "></i></a>
                                         }
                                     </td>
                                 </tr>

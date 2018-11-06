@@ -14,6 +14,12 @@
     <link rel="shortcut icon" href="~/Admin/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/Admin/img/favicon.ico" type="image/x-icon">
 
+    @{
+        var lang = DataCultureHelper.GetCurrent(Context.Request.Query);
+
+        var styleFile = (lang == "ar") ? "style-rtl.min.css" : "style-ltr.min.css";
+    }
+
 
     <environment include="Development">
         <link rel="stylesheet" href="~/Admin/lib/bootstrap/dist/css/bootstrap.css" />
@@ -24,11 +30,7 @@
             @RenderSection("Styles", required: false)
         }
 
-        @{ 
-            var lang = DataCultureHelper.GetCurrent(Context.Request.Query);
 
-            var styleFile = (lang == "ar") ? "style-rtl.min.css" : "style-ltr.min.css";
-        }
         <link rel="stylesheet" href="~/Admin/css/@styleFile" />
 
 
@@ -53,19 +55,14 @@
         }
 
 
-
-
-
-        <link rel="stylesheet" href="~/Admin/css/style-ltr.min.css" asp-append-version="true" />
-
-
-
+ 
+        <link rel="stylesheet" href="~/Admin/css/@styleFile" />
 
 
     </environment>
 
 </head>
-<body class="nav-md">
+<body class="nav-md  @ViewData["UnitTestPageClass"]">
 
     <div class="container body">
         <div class="main_container">

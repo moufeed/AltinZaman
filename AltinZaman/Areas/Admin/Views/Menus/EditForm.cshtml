@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = Localizer["edit_menu"];
-
+    ViewData["UnitTestPageClass"] = "ut-Menus-edit";
     List<string> targets = new List<string> { "_blank", "_self", "_parent", "_top" };
 
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
@@ -49,9 +49,9 @@
     private void PrintMenuItem(MenuItemDto dto, StringBuilder stringBuilder)
     {
 
-        stringBuilder.Append($"<tr data-key=\"{dto.Key}\" data-type=\"{dto.ItemType}\">");
-        stringBuilder.Append($"<td class=\"text-center\"><input type=\"number\" name=\"DisplayOrder\" min=\"0\" class=\"form-control order-control\"  value=\"{dto.DisplayOrder}\" disabled/></td>");
-        stringBuilder.Append($"<td><input type='text' class='form-control input-title'  value='{dto.Title}' disabled /></td> ");
+        stringBuilder.Append($"<tr data-key=\"{dto.Key}\" data-type=\"{dto.ItemType}\" class=\"{dto.ItemType}\" >");
+        stringBuilder.Append($"<td class=\"text-center\"><input type=\"number\" name=\"DisplayOrder\" min=\"0\" class=\"form-control order-control ut-displayOrder\"  value=\"{dto.DisplayOrder}\" disabled/></td>");
+        stringBuilder.Append($"<td><input type='text' class='form-control input-title ut-input-title'  value='{dto.Title}' disabled /></td> ");
 
 
         stringBuilder.Append($"<td>");
@@ -59,7 +59,7 @@
 
 
         stringBuilder.Append($"<span class=\"url-target\" data-target=\"{dto.UrlTarget}\">");
-        stringBuilder.Append($"<select class=\"form-control url-select hidden\">");
+        stringBuilder.Append($"<select class=\"form-control url-select hidden ut-select-url\">");
 
         foreach (var target in targets)
         {
@@ -77,7 +77,7 @@
         stringBuilder.Append($"</select>");
         stringBuilder.Append($"<span class=\"badge badge-pill badge-secondary\">{dto.UrlTarget}</span>");
         stringBuilder.Append($"</span>");
-        stringBuilder.Append($"<input type=\"url\" name=\"Url\" value=\"{dto.Url}\" class=\"form-control url-control\" disabled />");
+        stringBuilder.Append($"<input type=\"url\" name=\"Url\" value=\"{dto.Url}\" class=\"form-control url-control ut-input-url \" disabled />");
 
 
         stringBuilder.Append($"</div>");
@@ -128,7 +128,7 @@
                              $"data-key='{dto.Key}' " +
                              $"data-type=\"{dto.ItemType}\" " +
                              $"data-root='{@Model.Id}' " +
-                             $"class='btn btn-edit edit-menuitem btn-round child' >" +
+                             $"class='btn btn-edit edit-menuitem ut-edit-{dto.ItemType} btn-round child' >" +
                              $"<i class='fa fa-edit '></i></a>");
 
 
@@ -154,7 +154,7 @@
         if (dto.ItemType != null && dto.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))
         {
 
-            stringBuilder.Append($"<tr class=\"submenu\" data-key=\"{dto.Key}\"><td colspan=\"6\"  >");
+            stringBuilder.Append($"<tr class=\"submenu ut-submenu\" data-key=\"{dto.Key}\"><td colspan=\"6\"  >");
 
             stringBuilder.Append($"<div class=\"collapse collapse-box\" aria-expanded=\"false\">");
 
@@ -240,26 +240,42 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group clearfix">
                             <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["name"]</label>
                             <div class="col-md-9 col-sm-12">
-                                <input type="text" asp-for="Key" name="Key" id="MenuKey" class="form-control" required pattern="^[A-Za-z0-9]+(?:[-|_]|[A-Za-z0-9]+)+[A-Za-z0-9]$" disabled />
+                                @if (Model.Locked)
+                                {
+                                <div class="input-group input-locked">
+                                    <p class="form-control-static p-x-2 disabled">@Model.Key</p>
+                                    <input type="hidden" asp-for="Key" id="MenuKey" class="form-control" disabled />
+                                    <span class="input-group-addon"
+                                          data-toggle="tooltip"
+                                          data-placement="top"
+                                          title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                </div>
+                                }
+                                else
+                                {
+                                    <input type="text" asp-for="Key" id="MenuKey" class="form-control" required data-rule-slug="true" />
+                                }
                                 <span asp-validation-for="Key" class="text-danger invalid_field"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group clearfix">
-                            <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
-                            <div class="col-md-9 col-sm-12">
-                                <select class="form-control" name="Position" asp-for="Position">
-                                    <option value="header">Header</option>
-                                </select>
+
+                        <div class="col-md-4 col-xs-12">
+                            <div class="form-group clearfix">
+                                <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
+                                <div class="col-md-9 col-sm-12">
+                                    <select class="form-control" name="Position" asp-for="Position">
+                                        <option value="header">Header</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
             </div>
         </div>
@@ -299,22 +315,23 @@
                                 <tbody>
                                     @foreach (var item in Model.MenuItems)
                                     {
-                                        <tr data-key="@item.Key" data-type="@item.ItemType">
+                                        <tr data-key="@item.Key" data-type="@item.ItemType" class="ut-tr-@item.ItemType">
 
                                             <td class="text-center">
                                                 <input type="number" 
                                                        name="DisplayOrder" 
-                                                       class="form-control order-control" min="0" value="@item.DisplayOrder" disabled />
+                                                        
+                                                       class="form-control order-control ut-input-displayOrder" min="0" value="@item.DisplayOrder" disabled />
                                             </td>
 
 
                                             <td>
-                                                <input type="text" class="form-control input-title" value="@item.Title" disabled />
+                                                <input type="text" class="form-control input-title ut-input-title" value="@item.Title" disabled />
                                             </td>
                                             <td>
                                                 <div class="flex-display">
                                                     <span class="url-target" data-target="@item.UrlTarget">
-                                                        <select class="form-control url-select hidden">
+                                                        <select class="form-control url-select hidden ut-select-url">
                                                             @foreach (var target in targets)
                                                             {
                                                                 if (target == @item.UrlTarget)
@@ -330,7 +347,7 @@
                                                         </select>
                                                         <span class="badge badge-pill badge-secondary">@item.UrlTarget</span>
                                                     </span>
-                                                    <input type="url" name="Url" value="@item.Url" class="form-control url-control" disabled />
+                                                    <input type="url" name="Url" value="@item.Url" class="form-control url-control ut-input-url"  disabled />
                                                 </div>
 
                                             </td>
@@ -351,7 +368,7 @@
                                                        data-unpublished='@Localizer["t_unpublish"]'
                                                        data-key="@item.Key"
                                                        data-root="@Model.Id"
-                                                       class="btn btn-link-pup published toggle__publish">
+                                                       class="btn btn-link-pup published toggle__publish ut-published">
                                                         <i class="fa fa-eye c-green"></i>
                                                         <small>@Localizer["published"]</small>
                                                     </a>
@@ -368,7 +385,7 @@
                                                        data-unpublished='@Localizer["t_unpublish"]'
                                                        data-key="@item.Key"
                                                        data-root="@Model.Id"
-                                                       class="btn btn-link-pup unpublished toggle__publish">
+                                                       class="btn btn-link-pup unpublished toggle__publish ut-unpublished">
                                                         <i class="fa fa-eye-slash c-red"></i>
                                                         <small>@Localizer["unpublished"]</small>
                                                     </a>
@@ -401,7 +418,7 @@
                                                    data-key="@item.Key"
                                                    data-root="@Model.Id"
                                                    data-type='@item.ItemType'
-                                                   class="btn btn-edit edit-menuitem btn-round"><i class="fa fa-edit "></i></a>
+                                                   class="btn btn-edit edit-menuitem btn-round ut-edit-@item.ItemType"><i class="fa fa-edit "></i></a>
 
 
                                                 <a data-toggle="tooltip"
@@ -417,14 +434,14 @@
                                                    data-type='@item.ItemType'
                                                    data-url="@Url.AdminUrl("DeleteAsync","menus",new { rootmenuid = Model.Id , Key=item.Key})"
                                                    title="@Localizer["remove"]"
-                                                   class="btn btn-remove delete-menuitem btn-round"><i class="fa fa-times "></i></a>
+                                                   class="btn btn-remove delete-menuitem btn-round ut-delete-btn"><i class="fa fa-times "></i></a>
 
                                             </td>
                                         </tr>
 
                                         @if (item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))
                                         {
-                                            <tr class="submenu " data-key="@item.Key">
+                                            <tr class="submenu ut-submenu" data-key="@item.Key" >
                                                 <td colspan="6">
                                                     <div class="collapse collapse-box" id="collapse-@index">
                                                         @Html.Raw(PrintMenu(item.MenuItems))
@@ -455,7 +472,7 @@
             </div>
             <div class="x_footer m-t3 p-x-3">
 
-                <button class="btn btn-add btn-info" data-toggle="modal" data-target="#MenuItemModal" data-root="true">
+                <button class="btn btn-add btn-info ut-root-additem" data-toggle="modal" data-target="#MenuItemModal" data-root="true">
                     <i class="fa fa-plus"></i>
                     @Localizer["add_Item"]
                 </button>
@@ -474,7 +491,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script src="~/Admin/lib/select2/dist/js/select2.min.js"></script>
-    <script src="~/Admin/js/validator.min.js"></script>
+    <script src="~/Admia/js/validator.min.js"></script>
 
     <script>
         var edit_url = '@Url.AdminUrl("EditMenuItemAsync" , "menus" )';

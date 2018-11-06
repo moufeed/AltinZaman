@@ -32,7 +32,7 @@ namespace AltinZaman.DirectBackendServices
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = inputResult.Success;
-            _resultModel.StatusCode = inputResult.StatusCode;
+            _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = inputResult.Data;
             _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
             foreach (KeyValuePair<string, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry> error in inputResult.ModelState)
@@ -102,7 +102,7 @@ namespace AltinZaman.DirectBackendServices
                 }
             }
             _resultModel.Success = inputResult.Success;
-            _resultModel.StatusCode = inputResult.StatusCode;
+            _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = data;
             return _resultModel;
         }

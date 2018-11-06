@@ -16,7 +16,7 @@ $(document).ready(function(){
         var button = $(event.relatedTarget)  
         var isRoot = button.data('root');
         let $modal = $(this)
-        var key = null;
+        var key = null; 
         if(!isRoot){
             key = $(button.closest(".submenu")).data('key');
 
@@ -146,98 +146,128 @@ function toggle($input,$order,$this){
 var tmpVal;
 var tempdata = [];  
 
+$(".input-title , .url-control").on('keyup',function(){
+     let $this = $(this);
+        if($this.hasClass("invalid_field") && $this.val().length > 0){
+            $this.removeClass("invalid_field")
+        }
+}) 
 
 
+const SaveItem = ($this)=> {
+
+    let $tr = $($this.parent().parent()),
+    $input = $( $tr.find('.input-title')),
+    $order = $( $tr.find('.order-control')),
+    $target =  $($tr.find('.url-target')),
+    type = $this.data('type');
+     
+
+
+    if( $input.val().length <= 0 ){
+
+        $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
+         $input.addClass("invalid_field");
+      
+        return;
+    }
+    
+
+      if(type == "url"  ){
+       // let regx = new RegExp(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g);
+        let url = $tr.find('.url-control');
+        if(url.val().length <= 0 ){
+            $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
+            $tr.find('.url-control').addClass("invalid_field");
+            return;
+        }
+ 
+    }
+ 
+    var dataRequest =  { 
+        RootMenuId : $this.data('root'),
+        key : $this.data('key'),
+        Title : $input.val(),
+        DisplayOrder : $order.val()
+    }
+    if(type == "url"){
+        dataRequest["UrlTarget"] =  $target.find('select').val() ;
+        dataRequest["url"] =  $tr.find('.url-control').val() ;
+    }
+     
+    
+    $.ajax({
+        url: edit_url,
+        type: 'POST',
+        dataType: "json",
+        data: dataRequest
+    })
+    .done((data)=>{
+        
+        if(data.success){
+
+            $notification.success("", window.localization.updateted_successfully ||  "updateted successfully", 2000, "fa fa-check");
+            setTimeout(()=>{
+                window.location.reload();
+            },500)
+            $tr.find(".btn-remove").removeClass("hidden");
+             
+            if(type == "url"){
+                $target.find('select').addClass('hidden');
+                $target.find('.badge').removeClass('hidden').text($target.find('select').val() );
+                $target.next().attr('disabled','disabled');
+            }
+            
+            /* toggle($input,$order,$this);
+            $tr.find(".btn-cancel").addClass("hidden"); */
+
+        }else{ 
+            $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
+            let errors = data.errors;
+            $input.val(tmpVal);
+            $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+        } 
+        
+           
+     }
+) .fail((jqXHR, Status)=>{
+    toggle($input,$order,$this);
+    $notification.error(errorTitle +  "  - "+jqXHR.status +"<br>", jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+})
+
+}
+
+const toggleEdit_menuitem = ($this)=>{
+
+    let $tr = $($this.parent().parent()),
+    $input = $( $tr.find('.input-title')),
+    $order = $( $tr.find('.order-control')),
+    $target =  $($tr.find('.url-target')),
+    type = $this.data('type');
+
+    if(type == "url"){
+        $target.find('select').removeClass('hidden');
+        $target.find('.badge').addClass('hidden');
+        $target.next().removeAttr('disabled');
+    }
+
+    tmpVal = $input.val();
+    $input.removeAttr("disabled");
+    $order.removeAttr("disabled");
+    $this.removeClass('btn-edit').addClass('btn-save editable').attr('data-original-title',"save");
+    $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
+    $tr.find(".btn-remove").addClass("hidden");
+    $tr.find(".btn-cancel").removeClass("hidden");
+    
+}
 
 $(document).on('click',".edit-menuitem",function(event){
-    
-    var $this = $(this),
-        $tr = $($this.parent().parent()),
-        $input = $( $tr.find('.input-title')),
-        $order = $( $tr.find('.order-control')),
-        $target =  $($tr.find('.url-target')),
-        type = $this.data('type');
-        
+    var $this = $(this);
         $this.find('.fa').removeClass().addClass("fa fa-spinner fa-pulse");
-
-        if($this.hasClass("editable")){
-
-                 var dataRequest =  { 
-                    RootMenuId : $this.data('root'),
-                    key : $this.data('key'),
-                    Title : $input.val(),
-                    DisplayOrder : $order.val()
-                }
-                if(type == "url"){
-                    dataRequest["UrlTarget"] =  $target.find('select').val() ;
-                    dataRequest["url"] =  $tr.find('.url-control').val() ;
-                }
-                 
-                $.ajax({
-                    url: edit_url,
-                    type: 'POST',
-                    dataType: "json",
-                    data: dataRequest
-                })
-                .done(function(data){
-                    toggle($input,$order,$this);
-                    $tr.find(".btn-cancel").addClass("hidden");
-                    if(data.success){
-                        $notification.success("", window.localization.updateted_successfully ||  "updateted successfully", 2000, "fa fa-check");
-                        setTimeout(function(){
-                            window.location.reload();
-                        },500)
-                        $tr.find(".btn-remove").removeClass("hidden");
-                         
-                        if(type == "url"){
-                            $target.find('select').addClass('hidden');
-                            $target.find('.badge').removeClass('hidden').text($target.find('select').val() );
-                            $target.next().attr('disabled','disabled');
-                        }
-
-                    }else{ 
-                        var errors = data.errors;
-                        if(data.statusCode != 400){
-                            $input.val(tmpVal);
-                            $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
-                            
-                        }else{
-                            $notification.error(errorTitle, "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
-                        }
-                    } 
-                    
-                       
-                 }
-            ) .fail(function (jqXHR, Status) {
-                toggle($input,$order,$this);
-                $notification.error(errorTitle +  "  - "+jqXHR.status +"<br>", jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-            })  
-
-
-            
-                /* $input.attr("disabled","disabled");
-                $this.removeClass('btn-save editable').addClass('btn-edit').attr('data-original-title',"Edit");
-                $this.find(".fa").removeClass().addClass('fa fa-edit'); */
-          
-        }else{
-
-            if(type == "url"){
-                $target.find('select').removeClass('hidden');
-                $target.find('.badge').addClass('hidden');
-                $target.next().removeAttr('disabled');
-            }
-
-            tmpVal = $input.val();
-            $input.removeAttr("disabled");
-            $order.removeAttr("disabled");
-            $this.removeClass('btn-edit').addClass('btn-save editable').attr('data-original-title',"save");
-            $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
-            $tr.find(".btn-remove").addClass("hidden");
-            $tr.find(".btn-cancel").removeClass("hidden");
-            
-        }
-    
-
+        if($this.hasClass("editable"))
+            SaveItem($this);
+        else
+            toggleEdit_menuitem($this);
 })
 
 $(document).on('click',".cancel-menuitem",function(event){
@@ -263,5 +293,35 @@ $(document).on('click',".cancel-menuitem",function(event){
  
 })
 
+$(document).on("click", ".delete__menu", function (event) {
+    event.preventDefault();
+    var $this = $(this),
+        target = $this.data('target'),
+        dataurl = $this.data('url');
 
+
+    $Confirm({}, function (result) {
+        if (result.value) {
+            $.ajax({
+                url: dataurl,
+                type: 'Get',
+                dataType: "json",
+                data: {}
+            })
+                .done(function (data) {
+                    if (data.success) {
+                        $notification.success("", window.localization.deleted_successfully || "Deleted successfully", 2000, "fa fa-check");
+                        $(target).remove();
+                    } else {
+                        var errors = data.errors;
+                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                    }
+                }).fail(function (jqXHR, Status) {
+                    $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                })
+        }
+    });
+
+
+})
  

@@ -1,6 +1,7 @@
 ﻿@model GalleryFormVM
 
 @{
+    ViewData["UnitTestPageClass"] = "ut-form-page";
     ViewData["Title"] = ViewBag.isUpdate ? Localizer["update_gallery"] : Localizer["create_gallery"];
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
@@ -124,7 +125,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
                             </label>
@@ -205,8 +206,8 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-3 col-sm-6 col-xs-12 ">
-                            <input type="submit" class="btn btn-success p-x-5" value="@( (ViewBag.isUpdate) ? @Localizer["Update"] : @Localizer["Create"] )">
-                            <input type="submit" class="btn btn-info p-x-5" value="@Localizer["save_and_continue"]" name="save-continue">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" value="@( (ViewBag.isUpdate) ? @Localizer["Update"] : @Localizer["Create"] )">
+                            <input type="submit" class="btn btn-info p-x-5 ut-saveAndContinue-btn" value="@Localizer["save_and_continue"]" name="save-continue">
 
                         </div>
                     </div>
@@ -252,13 +253,13 @@
 
                     <label>Images</label>
                     <label class="form-control clearfix uploadfile">
-                        <input type="file" name="Images" class="uploadinput" data-text="@Localizer["choose_file"]" accept="image/*" multiple />
+                        <input type="file" name="Images" class="uploadinput ut-mulipleFile-input" data-text="@Localizer["choose_file"]" accept="image/*" multiple />
                         <span class="url">@Localizer["choose_file"]</span>
                         <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
                     </label>
 
                     <div class="m-t4 clearfix">
-                        <input type="submit" class="btn btn-success p-x-5  disabled" id="submitImages" value="@Localizer["Upload"]" disabled>
+                        <input type="submit" class="btn btn-success p-x-5 ut-upload-btn " id="submitImages" value="@Localizer["Upload"]" >
                         <div class="pull-right flip-dir m-t2 m-x-4"> <span id="FilesCount">0</span> @Localizer["files"]</div>
                     </div>
                 </form>

@@ -5,6 +5,7 @@ using TamTechSDK.Common.Services.ContentService.Categories;
 using TamTechSDK.Common.Services.ContentService.Galleries;
 using TamTechSDK.Common.Services.ContentService.Menus;
 using TamTechSDK.Common.Services.ContentService.Pages;
+using TamTechSDK.Common.Services.ContentService.Posts;
 using TamTechSDK.Common.Services.ContentService.Products;
 using TamTechSDK.Common.Services.ContentService.Reviews;
 using TamTechSDK.Common.Services.ContentService.Services;
@@ -21,23 +22,24 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
         {
             #region Contents Service 
 
-            services.AddScoped<IMenusServices, Web.DirectBackendServices.ContentServices.Menus.DirectMenusServices>();
-            services.AddTransient<ICategoriesServices, Web.DirectBackendServices.ContentServices.Categories.DirectCategoriesServices>();
-            services.AddTransient<IProductsManagerService, Web.DirectBackendServices.ContentServices.Products.DirectProductsManagerService>();
+            services.AddScoped<IMenusServices, AltinZaman.DirectBackendServices.ContentServices.Menus.DirectMenusServices>();
+            services.AddTransient<ICategoriesServices, AltinZaman.DirectBackendServices.ContentServices.Categories.DirectCategoriesServices>();
+            services.AddTransient<IProductsManagerService, AltinZaman.DirectBackendServices.ContentServices.Products.DirectProductsManagerService>();
             // services.AddTransient<IProductsService, Web.DirectBackendServices.ContentServices.Products.DirectProductsService> ();
-            services.AddTransient<IBrandsServices, Web.DirectBackendServices.ContentServices.Brands.DirectBrandsServices>();
-            services.AddTransient<IPageService, Web.DirectBackendServices.ContentServices.Pages.DirectPagesService>();
-            services.AddTransient<IReviewsServices, Web.DirectBackendServices.ContentServices.Reviews.DirectReviewsServices>();
-            services.AddTransient<IServicesService, Web.DirectBackendServices.ContentServices.Services.DirectServicesService>();
-            services.AddTransient<IContentServices, Web.DirectBackendServices.ContentServices.Content.DirectContentService>();
-            services.AddTransient<ISlidersServices, Web.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
-            services.AddTransient<IGalleriesService, Web.DirectBackendServices.ContentServices.Galleries.DirectGalleriesService>();
+            services.AddTransient<IBrandsServices, AltinZaman.DirectBackendServices.ContentServices.Brands.DirectBrandsServices>();
+            services.AddTransient<IPageService, AltinZaman.DirectBackendServices.ContentServices.Pages.DirectPagesService>();
+            services.AddTransient<IReviewsServices, AltinZaman.DirectBackendServices.ContentServices.Reviews.DirectReviewsServices>();
+            services.AddTransient<IServicesService, AltinZaman.DirectBackendServices.ContentServices.Services.DirectServicesService>();
+            services.AddTransient<IContentServices, AltinZaman.DirectBackendServices.ContentServices.Content.DirectContentService>();
+            services.AddTransient<ISlidersServices, AltinZaman.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
+            services.AddTransient<IGalleriesService, AltinZaman.DirectBackendServices.ContentServices.Galleries.DirectGalleriesService>();
+            services.AddTransient<IPostsService, AltinZaman.DirectBackendServices.ContentServices.Posts.DirectPostsService>();
 
             #endregion
 
             #region Upload Service 
 
-            services.AddTransient<IUploadService, Web.DirectBackendServices.UploadService.DirectFileStorageService>();
+            services.AddTransient<IUploadService, AltinZaman.DirectBackendServices.UploadService.DirectFileStorageService>();
 
             #endregion
 
@@ -51,7 +53,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             #region Identity Service 
 
             services.AddTransient<IAuthService, AltinZaman.DirectBackendServices.IdentityService.DirectAuthService>();
-            services.AddTransient<IUsersManagerService, Web.DirectBackendServices.IdentityService.UsersMenager.DirectUserMenagerServices>();
+            services.AddTransient<IUsersManagerService, AltinZaman.DirectBackendServices.IdentityService.UsersMenager.DirectUserMenagerServices>();
             services.AddTransient<IRolesService, AltinZaman.DirectBackendServices.IdentityService.RolesService.DirectRolesService>();
 
 

@@ -42,7 +42,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = inputResult.Success;
-            _resultModel.StatusCode = inputResult.StatusCode;
+            _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = inputResult.Data;
             _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
             foreach (var error in inputResult.ModelState)
@@ -153,7 +153,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         #endregion
 
 
-        #region  {Menu}  Create / Edit / Delete / Publish 
+        #region  {Menu}  Create / Edit / Delete  
 
         public async Task<IRequestProviderResult<Guid>> CreateAsync(CreateMenuDto model)
         {
@@ -165,7 +165,11 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
             var result = await _menuService.EditAsync(model.MapToBackendDto());
             return MapRequestProviderResult(result);
         }
-
+        public async Task<IRequestProviderResult<bool>> DeleteByIdAsync(Guid id)
+        {
+            var result = await _menuService.SoftDeleteAsync(id);
+            return MapRequestProviderResult(result);
+        }
 
 
         #endregion

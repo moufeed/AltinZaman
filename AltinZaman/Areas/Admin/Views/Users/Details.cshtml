@@ -1,6 +1,7 @@
 @model  UserModel
  
     @{ ViewData["Title"] = Localizer["user_details"];
+        ViewData["UnitTestPageClass"] = "ut-Users_details";
         //   Layout = "~/Views/Shared/_Layout.cshtml";
         var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
     }
@@ -88,7 +89,7 @@
 
                             <hr />
                             <div class="u_actions">
-                                <a class="btn btn-se btn-success" href="@Url.AdminUrl("NewEmail","email" ,new { username = Model.UserName , email =Model.Email , bt = "users" })">
+                                <a class="btn btn-se btn-success ut-send_btn" href="@Url.AdminUrl("NewEmail","email" ,new { username = Model.UserName , email =Model.Email , bt = "users" })">
                                     <i class="fa fa-envelope-open-o"></i>
                                     @Localizer["send_email"]
                                 </a>
@@ -99,7 +100,7 @@
 
                                 @if (Model.IsBlocked)
                                 {
-                                    <a class="btn btn-danger unblock toggleblock"
+                                    <a class="btn btn-danger unblock toggleblock ut-unblock_btn"
                                        data-unblock-url="@Url.AdminUrl("Unblock" ,"users" ,new { username = Model.UserName })"
                                        data-block-url="@Url.AdminUrl("block" ,"users" ,new { username = Model.UserName })"
                                        data-username="@Model.UserName"
@@ -110,7 +111,7 @@
                                 }
                                 else
                                 {
-                                    <a class="btn btn-danger block toggleblock"
+                                    <a class="btn btn-danger block toggleblock  ut-block_btn"
                                        data-username="@Model.UserName"
                                        data-unblock-url="@Url.AdminUrl("Unblock" ,"users" ,new { username = Model.UserName })"
                                        data-block-url="@Url.AdminUrl("block" ,"users" ,new { username = Model.UserName })"

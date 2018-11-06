@@ -83,7 +83,7 @@ namespace AltinZaman
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/error/500");
                 app.UseHsts();
             }
 
@@ -95,7 +95,7 @@ namespace AltinZaman
             app.UseStaticFiles();
             //app.UseCookiePolicy();
 
-
+            app.UseStatusCodePagesWithRedirects("/error/{0}");
 
             app.InitializeMapper();
 

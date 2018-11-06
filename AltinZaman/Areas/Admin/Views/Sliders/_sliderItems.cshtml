@@ -12,7 +12,7 @@
                 <h3>@Localizer["slider_items"] <small></small></h3>
             </div>
             <div class="title_right">
-                <a href="@Url.AdminUrl("CreateItem","sliders", new { sliderId = Model.Id, sliderTitle =Model.Title  } )" class="btn btn-info "> @Localizer["upload_single_image"]</a>
+                <a href="@Url.AdminUrl("CreateItem","sliders", new { sliderId = Model.Id, sliderTitle =Model.Title  } )" class="btn btn-info ut-slide-create"> @Localizer["upload_single_image"]</a>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
             @foreach (var item in Model.Items)
             {
                     <div class="col-md-6 col-sm-6 col-lg-3"  id="@item.Id">
-                        <div class="gallery_item">
+                        <div class="gallery_item ut-item">
                             <figure>
                                 @if (string.IsNullOrEmpty(item.MainImage))
                                 {
@@ -52,7 +52,7 @@
                                                data-url="@Url.AdminUrl("PublishItem","sliders" , new {sliderId = Model.Id , id = item.Id })"
                                                title="@Localizer["t_unpublish"]"
                                                data-type="item"
-                                               class="btn btn-default published toggle_publish_slider_item"
+                                               class="btn btn-default published toggle_publish_slider_item ut-published"
                                                data-publish="@Localizer["Publish"]"
                                                data-unpublish="@Localizer["unpublish"]">
                                                 <span class="fa fa-eye-slash"></span> 
@@ -64,7 +64,7 @@
                                             <a data-url="@Url.AdminUrl("PublishItem","sliders" , new {sliderId = Model.Id , id = item.Id })"
                                                title="@Localizer["t_publish"]"
                                                data-type="item"
-                                               class="btn btn-default unpublished toggle_publish_slider_item">
+                                               class="btn btn-default unpublished toggle_publish_slider_item ut-unpublished">
                                                 <span class="fa fa-eye"></span> 
                                                 <span class="text">@Localizer["t_publish"]</span>
                                             </a>
@@ -72,12 +72,12 @@
                                         }
                                             <a href="@Url.AdminUrl("EditItem","sliders" , new {sliderId = Model.Id , slideId = item.Id , sliderTitle = Model.Title }) "
                                                title="Edit"
-                                               class="btn btn-default btn-link-edit">
+                                               class="btn btn-default btn-link-edit ut-edit-btn">
                                                 <span class="fa fa-edit"></span> @Localizer["t_edit"]
                                             </a>
 
                                             <a title="Delete"
-                                               class="btn btn-link-delete delete__slider"
+                                               class="btn btn-link-delete delete__slider ut-delete-btn"
                                                data-parent-id="@Model.Id"
                                                data-target="#@item.Id"
                                                data-url="@Url.AdminUrl("DeleteAsync","sliders" , new {sliderId = Model.Id , id = item.Id })">
