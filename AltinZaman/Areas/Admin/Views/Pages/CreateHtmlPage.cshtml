@@ -76,7 +76,7 @@
 
                         <label asp-for="Section" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_section"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
-                            <input type="text" asp-for="Section" class="form-control" required />
+                            <input type="text" asp-for="Section" class="form-control"  />
                             <span asp-validation-for="Section" class="text-danger invalid_field"></span>
                         </div>
                     </div>
@@ -177,13 +177,13 @@
                 plugins : ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
               'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
               'save table contextmenu directionality emoticons template paste textcolor'],
-                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | fontselect fontsizeselect | forecolor backcolor emoticons',
+                directionality : "@(activeLang == "ar" ? "rtl" : "ltr")" ,
                 setup: function (editor) {
                     editor.on('change', function (e) {
                         editor.save();
                     });
-            }
-
+                }
         });
 
         tinymce.init({
@@ -193,7 +193,8 @@
             statusbar: false,
             theme: 'modern',
             menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
+            plugins: ['code hr anchor pagebreak spellchecker directionality'],
+              directionality : "@(activeLang == "ar" ? "rtl" : "ltr")" ,
                 setup: function (editor) {
                 editor.on('change', function (e) {
                     editor.save();

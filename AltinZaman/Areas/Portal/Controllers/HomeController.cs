@@ -31,7 +31,14 @@ namespace AltinZaman.Areas.Portal.Controllers
              IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
                                : base(telemetryClientService, pageService, menusServices, configuration, emailSender, appSettingsService, servicesservice, stringLocalizer, sliderService)
 
+        { }
+
+        public override async Task<IActionResult> Index()
         {
+
+
+
+            return await  base.Index();  
         }
     }
 }

@@ -123,11 +123,14 @@ msgstr "Close"
 msgid "mobile_no"
 msgstr "Mobile No"
 
+msgid  "please_wait"
+msgstr  "Please wait"
+
 msgid "dear_customer"
 msgstr  "Dear  <strong class=\"customer_name\"></strong>, thanks for reaching out!"
 
 msgid  "We_have_received_your_message"
-msgstr  "We have received your message and would like to thank you for writing to us. If it's urgent, You can also use the mobile number listed below to talk to us."
+msgstr  "We have received your message and would like to thank you for writing to us."
 
 msgid  "have_great_day"
 msgstr  "Have a great day!"
@@ -987,6 +990,10 @@ msgstr "Submenu"
 
 
 #: menus _modal.cshtml
+
+msgid "page"
+msgstr "Page"
+
 msgid "parent_menu"
 msgstr "Parent Menu"
 
@@ -995,6 +1002,9 @@ msgstr "Link"
 
 msgid "static_page"
 msgstr "Static Page"
+
+msgid "add_to_menu"
+msgstr "Add to menu"
 
 msgctxt "admin.Views.Menus.partials._modal"
 msgid "product"

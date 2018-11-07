@@ -120,18 +120,21 @@ msgstr "أغلق"
 msgid "mobile_no"
 msgstr "رقم الهاتف المحمول"
 
+msgid  "please_wait"
+msgstr  "الرجاء الانتظار"
+  
 msgid "dear_customer"
 msgstr  "عزيزي  <strong class=\"customer_name\"></strong>, شكراً لتواصلك معنا!"
 
 msgid  "We_have_received_your_message"
-msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا. إذا كان الأمر مستعجلاً, يمكنك أيضاً استخدام رقم الهاتف المحمول أدناه للتّحدّث معنا."
+msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا."
 
 msgid  "have_great_day"
 msgstr  "طاب يومك!"
 
 
 msgid "About_Us"
-msgstr "عنّا"
+msgstr "عن الشركة"
 
 msgid "Call_us_today_at_<span>{0}</span>_or_Email_us_at_<span>{1}</span>"
 msgstr "اِتّصل بنا اليوم على <span>{0}</span> أو أرسل لنا بريداً إلكترونيّاً على  <span>{1}</span>"
@@ -980,6 +983,10 @@ msgstr "قائمة فرعيّة"
 
 
 #: menus _modal.cshtml
+
+msgid "page"
+msgstr "صفحة"
+
 msgid "parent_menu"
 msgstr "قائمة فرعيّة"
 
@@ -988,6 +995,9 @@ msgstr "رابط"
 
 msgid "static_page"
 msgstr "صفحة ثابتة"
+
+msgid "add_to_menu"
+msgstr "إضافة للقائمة"
 
 msgctxt "admin.Views.Menus.partials._modal"
 msgid "product"

@@ -1,0 +1,45 @@
+@{ 
+    var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+}
+<section class="call-back sec-pad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12 colmun">
+                <div class="call-back-content">
+                    <div class="call-back-title">
+                        <div class="section-title"><h2>طلب إستفسار</h2></div>
+                        <div class="title-text"><p>تقدم الشركة خدمة الرد على استفسارات العملاء .لطلب الخدمة يرجئ تعبئة الحقول التالية</p></div>
+                    </div>
+                    <div class="form-area">
+                        <form action="/@lang/Portal/Home/contactus" method="post" id="contact-form" data-id="contact-form" class="default-form">
+                            <div class="row">
+                                <div class=" form-group col-md-6 col-sm-6 col-xs-12 colmun">
+                                    <input type="text" placeholder="@Localizer["name"].." name="Name" required />
+                                </div>
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
+                                    <input type="tel" placeholder="@Localizer["Phone"].." name="Mobile" id="cphone" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
+                                    <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail">
+                                </div>
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
+                                    <textarea placeholder="@Localizer["Message"].." name="Message" class="home-textarea" required></textarea>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <button type="submit" class="btn-one style-one radi"
+                                        data-loading-text="@Localizer["please_wait"] ..."
+                                        data-success-text="@Localizer["We_have_received_your_message"]">
+                                    @Localizer["Send_it"]
+                                </button>
+                            </div>
+                        </form>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

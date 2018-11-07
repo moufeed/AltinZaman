@@ -1,0 +1,490 @@
+@import url(../css/bootstrap_rtl.css);
+
+
+
+
+@font-face {
+    font-family: 'gsb';
+    src: url("../fonts/gesstow/GE_SS_Two_Bold.otf");
+}
+
+@font-face {
+    font-family: 'gsl';
+    src: url("../fonts/gesstow/GE_SS_Two_Light.otf");
+}
+
+@font-face {
+    font-family: 'gsm';
+    src: url("../fonts/gesstow/GE_SS_Two_Medium.otf");
+}
+
+
+.btn-one :before,
+.style-one:before ,
+.sec-title h2:before{
+    left: auto;
+    right : 0;
+} 
+.title-text:before {
+    left: auto;
+    margin-left:auto;
+    right: 50%;
+    margin-right: -25px;
+}
+.scroll-to-top {
+    right: auto;
+    left: 15px;
+}
+.scroll-to-top:after {
+    left: auto;
+    right: 5%;
+}
+.switcher .switch_btn {
+    right: auto;
+    left: -40px;
+}
+.swicher .switch_menu .switch_body .box {
+    margin-left: auto;
+    margin-right: 25px;
+}
+.switcher .box_bg .layout_bg {
+    margin-right: auto;
+    margin-left: 2px;
+}
+.switcher .box_bg .layout_bg:last-child {
+    margin-right: auto;
+    margin-left: 0;
+}
+.switcher #styleOptions li {
+    margin-right: auto;
+    margin-left: 2px;
+}
+.switcher #styleOptions li:last-child {
+    margin-right: auto;
+    margin-left: 0;
+}
+.header-search .container {
+    padding-right: auto;
+    padding-left: 0px;
+}
+.header-search .search input[type="text"],
+.header-search input[type="search"] {
+    padding: 7px 15px 7px 40px;
+}
+.header-search button {
+    right: auto;
+    left: 0;
+}
+.main-header {
+    left: auto;
+    right: 0px;
+}
+.sticky-header {
+    left: auto;
+    right: 0px;
+}
+.header-upper .top-left li i:before {
+    margin-right: auto;
+    margin-left: 8px;
+}
+.header-upper .top-right {
+    float: left;
+}
+.header-upper .top-right .button-top {
+    margin-left: auto;
+    margin-right: 16px;
+}
+.logo-box {
+    margin-left: auto;
+    margin-right: -8px;
+}
+.main-header .menu-bar {
+    float: right;
+    left: auto;
+    right: 2px;
+}
+.main-header .search-box {
+    margin-left: auto;
+    margin-right: 51px;
+}
+.main-header .search-box:before {
+    left: auto;
+    right: -31px;
+}
+.sticky-header .main-menu {
+    left: 25px;
+    right: auto;
+   }
+   .main-menu .navigation>li {
+    margin-right: auto;
+    margin-left: 36px;
+}
+.main-menu .navigation>li>a>i:before {
+    margin-right: auto;
+    margin-left: 5px;
+}
+.main-menu .navigation>li>ul {
+    left: auto;
+    right: 0px;
+}
+.main-menu .navigation>li>ul>li:hover>a {
+    padding: 10px 17px 10px 15px;
+}
+.main-menu .navbar-collapse>ul li.dropdown .dropdown-btn {
+    right: auto;
+    left: -10px;
+}
+/** main-slider **/.main-slider .btn-two {
+    margin-right: 10px;
+    margin-left: auto;
+}
+.feature-section .single-item .single-content{
+    padding: 48px 28px 22px 5px;
+}
+
+.feature-section .single-item .single-content .icon-box {
+    left: auto;
+    right: 30px;
+     
+} 
+.service-section {
+    padding: 100px 375px 100px 30px;
+}
+.service-section:before {
+       left: auto;
+    right: 0px;
+}
+.service-section:after {
+    right: 0px;
+    left: auto;
+}
+.service-section .service-title {
+    margin-left: auto;
+    margin-right: -15px;
+}
+.service-section .three-column-carousel .single-item {
+    padding: 55px 40px 13px 10px;
+}
+.service-section .owl-theme .owl-controls {
+    right: -35%;
+    left:auto;
+}
+.service-section .three-column-carousel .single-item .icon-box:before {
+    left: auto;
+    right: 0px;
+}/** testimonial-section **/
+.testimonial-section .img-box {
+    margin-right: auto;
+    margin-left: 20px;
+}
+.testimonial-section .img-box:before {
+    right: auto;
+    left: -9px;
+}
+.testimonial-section .testimonial-content {
+    padding: 65px 30px 48px 10px;
+}
+.fact-counter:before {
+    left: auto;
+    right: 0px;
+}
+.fact-counter .single-item .text:before {
+    left: auto;
+    right: 50%;
+    margin-left: auto;
+    margin-right: -25px;
+}
+
+.our-team ul.nav-link {
+    left: auto;
+    right: 0px;
+}
+.our-team .team-content .team-social li {
+    margin-right: auto;
+    margin-left: 5px;
+}
+.our-team .team-content {
+    margin-left: auto;
+    margin-right: 16px;
+}
+.our-team li#slider-prev {
+    right: -100px;
+    left: auto;
+}
+.our-team li#slider-next {
+    right: auto;
+    left: -105px;
+}
+.our-team .slider-pager .list-inline li a figure:before {
+    left: auto;
+    right: 0px;
+}
+
+.call-back:before {
+    right: auto;
+    left: 0px;
+}
+.call-back:after {
+    left: auto;
+    right: 0px;
+}
+.call-back .title-text:before {
+    left: auto;
+    right: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+}
+.call-back .call-back-content {
+    margin-right: auto;
+    margin-left: 40px;
+}
+.btn-one.radi {
+    padding: 12px 34px 11px 34px;
+    
+}
+.call-back .select-box i {
+    right: auto;
+    left: 20px;
+}
+.gallery-section .title-text:before {
+    left: auto;
+    right: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+} 
+.overlay {
+    left: auto;
+    right: 0;
+}
+.gallery-section .owl-theme .owl-controls {
+    right: auto;
+    left: 206px;
+}
+/** news-section **/.news-section .single-item .news-content {
+    padding: 55px 30px 44px 0px;
+}
+.news-section .single-item .news-content .date {
+    left: auto;
+    right: 30px;
+}
+.news-section .single-item .news-content .meta li {
+    margin-right: auto;
+    margin-left: 13px;
+}
+.news-section .single-item .news-content .meta li i:before {
+    margin-right: auto;
+    margin-left: 8px;
+}
+.news-section .single-item .news-content h4 a:before {
+    left: auto;
+    right: 0px;
+}
+
+.sponsors-section .owl-prev {
+    left: auto;
+    right: -75px;
+}
+.sponsors-section .owl-next {
+    right: auto;
+    left: -70px;
+}
+.footer-logo {
+    margin-left: auto;
+    margin-right: -13px;
+}
+.main-footer .link-widget li a,
+.main-footer .service-widget li a {
+    padding: 0px 11px 0px 0;}
+    .main-footer .link-widget li a:before,
+.main-footer .service-widget li a:before {
+    left: auto;
+    right: 0px;
+}
+.main-footer .service-widget {
+    padding: 0px 55px 0px 0px;
+}
+.main-footer .link-widget {
+    margin-left: auto;
+    margin-right: -28px;
+}
+.main-footer .subscribe-widget .input-box button {
+    right: auto;
+    left: 0px;
+}
+.main-footer .subscribe-widget .footer-social li {
+    margin-right: auto;
+    margin-left: 9px;
+}
+.footer-list li i{
+  
+    margin-right:auto;
+    margin-left:10px;
+  }
+.about-bg:before {
+    left: auto;
+    right: 0px;
+}
+.bread-crumb .text,
+.bread-crumb .text i:before {
+    margin-left: 4px;
+    margin-right: 8px;
+}
+.bread-crumb .share i:before {
+    margin-right: auto;
+    margin-left: 8px;
+}
+.bread-crumb .share {
+    float: left;
+}/** about-section **/.about-section .title-text:before {
+    left: auto;
+    right: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+}
+.about-section .about-content {
+    margin-right: auto;
+    margin-left: 10px;
+}
+.about-section .about-content .list li {
+    padding: 0px 23px 0px 0;
+}
+.about-section .about-content .list li:before {
+    left: auto;
+    right: 0px;
+}
+.about-section .img-box {
+    margin-left: auto;
+    margin-right: 10px;
+}
+ .service-style-tow .service-content .icon-box:before {
+    left: auto;
+    right: 0px;
+}
+.service-style-tow .service-content {
+    padding: 52px 42px 22px 40px;
+   }
+.service-details .sidebar {
+    margin-right: auto;
+    margin-left: 20px;
+}
+.service-details .sidebar .sidebar-list a {
+    padding: 4px 15px 13px 0;
+   }
+.service-details .sidebar .sidebar-list a:before {
+    left: auto;
+    right: 1px;
+}
+.service-details .sidebar-details .content-style-two .list li {
+    padding: 0px 23px 0px 0px;
+}
+.service-details .sidebar-details .content-style-two .list li:before {
+    left: auto;
+    right: 0px;
+}
+.accordion-box .accordion .acc-btn .toggle-icon {
+    left: auto;
+    right: 20px;
+}
+.accordion-box .accordion .acc-btn.active .toggle-icon {
+    left: auto;
+    right: 11px;
+}
+.accordion-box .accordion .acc-btn.active .acc-title {
+    padding: 17px 47px 18px 30px;
+}
+.accordion-box .accordion .acc-btn .acc-title {
+    padding: 17px 47px 18px 30px;
+}
+.accordion-box .accordion .acc-content.collapsed {
+    padding: 13px 49px 15px 15px;
+}
+.accordion-box .accordion .acc-content {
+    padding: 13px 49px 15px 15px;
+}
+.faq-section .faq-sidebar {
+    margin-left: auto;
+    margin-right: 20px;
+ }
+.error-section .error-title:before {
+    left: auto;
+    right: 50%;
+    margin-left:auto;
+    margin-right: -48px;
+}
+.error-section .input-box button {
+    right: auto;
+    left: 15px;
+}
+.blog-page .sidebar {
+    margin-left: auto;
+    margin-right: 20px;
+}
+.blog-page .sidebar-search button {
+    right: auto;
+    left: 15px;
+}
+.blog-page .sidebar-post .single-post {
+    padding: 0px 105px 0px 0;
+}
+.blog-page .sidebar-post .single-post .img-box {
+    left: auto;
+    right: 0px;
+}
+.blog-page .sidebar-post .post-time li i:before {
+    margin-right: auto;
+    margin-left: 6px;
+}
+.blog-page .sidebar-catagories .sidebar-list a {
+    padding: 4px 15px 13px 0px;
+}
+.blog-page .sidebar-catagories .sidebar-list a:before {
+    left: auto;
+    right: 1px;
+}
+.blog-details .single-item .title:before {
+    left: auto;
+    right: 0px;
+}
+.blog-details .single-item .news-content {
+    padding: 55px 29px 44px 80px;
+}
+.blog-details .post-share-option .text {
+    margin-right: auto;
+    margin-left: 12px;
+}
+
+ 
+
+/*  -------------------------------------------------------------------*/
+
+body, p ,
+.btn-one,a,
+.main-menu .navigation > li > ul > li > a,
+.call-back .call-back-content input,
+.call-back .call-back-content select,
+.fact-counter .single-item .text,
+input, button, select, textarea{
+    font-family: 'gsl' ,'Open Sans',sans-serif;
+    word-spacing: 2px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.about-bg .text,
+.sec-title span{
+    font-family: 'gsb';
+    word-spacing: 2px;
+}
+.main-menu .navigation > li > a,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-family: 'gsm';
+    word-spacing: 2px;
+}
+ 
+/* ---------------------------------------------------------------------   */
+
+.sponsors-section   .fa-angle-left::before{
+    content: "\f105";
+}
+.sponsors-section   .fa-angle-right::before{
+    content: "\f104";
+}

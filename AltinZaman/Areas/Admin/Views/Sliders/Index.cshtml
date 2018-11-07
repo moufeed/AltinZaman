@@ -57,23 +57,18 @@
                             @foreach (var item in Model)
                             {
 
-                                <tr id="tr-@item.Id">
-                                    <td class="index">
-                                        @item.Title
-                                    </td>
-
-
-                                    <td>@item.Key</td>
-                                    <td>
-
-                                        @{
-                                            string text;
-                                            if (item.Summary != null)
-                                            {
-                                                text = Regex.Replace(item.Summary, "<.*?>", String.Empty);
-                                            }
+                            <tr id="tr-@item.Id">
+                                <td class="index"> @item.Title  </td>
+                                <td>@item.Key</td>
+                                <td>
+                                    @{
+                                        string text;
+                                        if (item.Summary != null)
+                                        {
+                                            text = Regex.Replace(item.Summary, "<.*?>", String.Empty);
                                         }
-                                     
+                                    }
+
                                     @Html.Raw(item.Summary)
                                 </td>
                                 <td>
@@ -115,43 +110,33 @@
                                         }
                                         else
                                         {
-
-                                            @if (item.Locked)
-                                            {
-                                                <span data-toggle="tooltip"
-                                                      data-placement="top"
-                                                      class="btn-locked btn-round"
-                                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                                            }
-                                            else
-                                            {
-                                                <a data-toggle="tooltip"
-                                                   data-placement="top"
-                                                   data-id="@item.Id"
-                                                   data-target="#tr-@item.Id"
-                                                   data-url="@Url.AdminUrl("DeleteAsync", "sliders", new { id = item.Id })"
-                                                   title="@Localizer["t_remove"]"
-                                                   data-msg-error="@Localizer["error"]"
-                                                   data-msg-deleted="@Localizer["deleted_successfully"]"
-                                                   class="btn btn-remove btn-round delete__slider "><i class="fa fa-times "></i></a>
-                                            }
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               data-status="true"
+                                               title="@Localizer["t_publish"]"
+                                               data-type="slider"
+                                               data-url="@Url.AdminUrl("PublishSliderAsync","Sliders" ,new { id= item.Id })"
+                                               class="btn btn-link-pup unpublished toggle__publish ut-unpublished">
+                                                <i class="fa fa-eye-slash c-red"></i>
+                                                <small>@Localizer["t_unpublished"]</small>
+                                            </a>
                                         }
                                     }
                                 </td>
 
+
+                                 
                                 <td>
                                     <a data-toggle="tooltip"
                                        data-placement="top"
                                        title="@Localizer["t_details"]"
                                        href="@Url.AdminUrl("details","sliders",new { id=item.Id} )"
                                        class="btn btn-view btn-round"><i class="fa fa-eye "></i></a>
-
                                     <a data-toggle="tooltip"
                                        data-placement="top"
                                        href="@Url.AdminUrl("Edit","sliders",new { id=item.Id})"
                                        title="@Localizer["t_edit"]"
                                        class="btn btn-edit btn-round ut-edit-btn"><i class="fa fa-edit "></i></a>
-
                                     @if (item.Locked)
                                     {
                                         <span data-toggle="tooltip"
@@ -167,19 +152,13 @@
                                            title="@Localizer["t_remove"]"
                                            data-url="@Url.AdminUrl("DeleteAsync","sliders",new { id=item.Id})"
                                            data-target="#tr-@item.Id"
-                                           data-id = "@item.Id"
+                                           data-id="@item.Id"
                                            class="btn btn-remove btn-round delete__slider ut-delete-btn"><i class="fa fa-times "></i></a>
-                                    } 
-
+                                    }
                                 </td>
-
                             </tr>
                              }
-                                     
-
-                                    </td>
-                                </tr>
-                            }
+                               
 
                         </tbody>
                             </table>
