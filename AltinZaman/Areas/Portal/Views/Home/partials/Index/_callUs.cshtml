@@ -14,7 +14,7 @@
                         <form action="/@lang/Portal/Home/contactus" method="post" id="contact-form" data-id="contact-form" class="default-form">
                             <div class="row">
                                 <div class=" form-group col-md-6 col-sm-6 col-xs-12 colmun">
-                                    <input type="text" placeholder="@Localizer["name"].." name="Name" required />
+                                    <input type="text" placeholder="@Localizer["name"].." name="Name" required  data-msg="هذا الحقل مطلوب"/>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
                                     <input type="tel" placeholder="@Localizer["Phone"].." name="Mobile" id="cphone" />
@@ -22,10 +22,10 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
-                                    <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail">
+                                    <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail" required data-msg="هذا الحقل مطلوب">
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12 colmun">
-                                    <textarea placeholder="@Localizer["Message"].." name="Message" class="home-textarea" required></textarea>
+                                    <textarea placeholder="@Localizer["Message"].." name="Message" class="home-textarea" required data-msg="هذا الحقل مطلوب"></textarea>
                                 </div>
                             </div>
                             <div class="button">

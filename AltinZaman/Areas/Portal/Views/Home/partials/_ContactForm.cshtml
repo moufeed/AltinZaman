@@ -1,4 +1,4 @@
- 
+﻿ 
 @{ 
     var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 }
@@ -12,18 +12,18 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <input type="text" placeholder="@Localizer["name"].." name="Name" required />
+                        <input type="text" placeholder="@Localizer["name"].." name="Name" required data-msg="هذا الحقل مطلوب"/>
                     </div>
                     <div class="form-group">
                         <input type="tel" placeholder="@Localizer["Phone"].." name="Mobile" id="cphone" />
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail">
+                        <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail" required data-msg="هذا الحقل مطلوب">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="clerfix">
-                        <textarea cols="30" rows="4" placeholder="@Localizer["Message"].." name="Message" required></textarea>
+                        <textarea cols="30" rows="4" placeholder="@Localizer["Message"].." name="Message" required data-msg="هذا الحقل مطلوب"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn-one style-one radi" 
