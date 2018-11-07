@@ -3,7 +3,15 @@
     <div class="container">
         <div class="sponsors-area">
             <ul class="sponsors-slider" data-rtl="true">
-                <li><a href="#"><figure><img src="images/sponsors/1.png" alt=""></figure></a></li>
+
+                @if (ViewBag.publicClientsSlider != null)
+                {
+                    @foreach (var item in ViewBag.publicClientsSlider.Items)
+                    {
+                        <li><a href="#"><figure><img src="@item.MainImage" alt=""></figure></a></li>
+                    }
+                }
+
             </ul>
         </div>
     </div>
