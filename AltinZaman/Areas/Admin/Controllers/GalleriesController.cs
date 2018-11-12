@@ -14,8 +14,8 @@ namespace AltinZaman.Areas.Admin.Controllers
     {
         public GalleriesController(ITelemetryClientService telemetryClientService,
             IGalleriesService galeriesService,
-             IUploadManagerService uploadManager, ICulturesManager languageService, IStringLocalizer<GalleryBaseController> localizer)
-            : base(telemetryClientService, galeriesService, uploadManager, languageService, localizer)
+             IUploadManagerService uploadManager, IStringLocalizer<GalleryBaseController> localizer)
+            : base(telemetryClientService, galeriesService, uploadManager, localizer)
         {
         }
     }

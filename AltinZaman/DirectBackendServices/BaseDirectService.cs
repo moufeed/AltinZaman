@@ -84,6 +84,7 @@ namespace AltinZaman.DirectBackendServices
             return _resultModel;
         }
 
+
         public IRequestProviderResult<TOutputResult> ReturnResult<TOutputResult, TInputResult>(TamTechBackendSDK.ContentService.Models.Results.IReturnResultModel<TInputResult> inputResult, TOutputResult data)
         {
             IRequestProviderResult<TOutputResult> _resultModel = new RequestProviderResult<TOutputResult>();

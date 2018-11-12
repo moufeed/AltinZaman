@@ -10,7 +10,6 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.1.1\n"
 
 # adminbar
 msgid "Dashboard"
@@ -120,21 +119,18 @@ msgstr "أغلق"
 msgid "mobile_no"
 msgstr "رقم الهاتف المحمول"
 
-msgid  "please_wait"
-msgstr  "الرجاء الانتظار"
-  
 msgid "dear_customer"
 msgstr  "عزيزي  <strong class=\"customer_name\"></strong>, شكراً لتواصلك معنا!"
 
 msgid  "We_have_received_your_message"
-msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا."
+msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا. إذا كان الأمر مستعجلاً, يمكنك أيضاً استخدام رقم الهاتف المحمول أدناه للتّحدّث معنا."
 
 msgid  "have_great_day"
 msgstr  "طاب يومك!"
 
 
 msgid "About_Us"
-msgstr "عن الشركة"
+msgstr "عنّا"
 
 msgid "Call_us_today_at_<span>{0}</span>_or_Email_us_at_<span>{1}</span>"
 msgstr "اِتّصل بنا اليوم على <span>{0}</span> أو أرسل لنا بريداً إلكترونيّاً على  <span>{1}</span>"
@@ -345,7 +341,11 @@ msgstr "إلغاء"
 msgid "characters"
 msgstr "محارف"
 
+msgid "none"
+msgstr "لا يوجد"
  
+msgid "more"
+msgstr "المزيد"
 #global Forms
 
 msgid "f_title"
@@ -355,7 +355,7 @@ msgid "f_name"
 msgstr "الاِسم :"
 
 msgid  "f_slug"
-msgstr "Slug :"
+msgstr "الأسم اللطيف (Slug) :"
 
 msgid  "f_section"
 msgstr "القسم :"
@@ -379,7 +379,7 @@ msgid  "f_meta_keywords"
 msgstr "Meta Keywords :"
 
 msgid  "f_meta_description"
-msgstr "Meta description :"
+msgstr "وصف الميتا :"
 
 msgid  "f_display_order"
 msgstr "ترتيب العرض :"
@@ -468,6 +468,9 @@ msgstr "كلمات مفتاحيّة :"
 
 msgid "f_cuisine"
 msgstr "المطبخ :"
+
+msgid "f_section_parent"
+msgstr "التصنيف الأب :"
 
 #global Tables
 msgid  "t_title"
@@ -561,7 +564,7 @@ msgid  "t_sku"
 msgstr "SKU"
  
 msgid  "t_slug"
-msgstr "Slug"
+msgstr "الأسم اللطيف"
 
 msgid  "t_quantity"
 msgstr "كميّة"
@@ -581,7 +584,11 @@ msgstr "سمات"
 msgid "t_logo"
 msgstr "شعار"
 
- 
+msgid "t_total_items"
+msgstr "عدد العناصر"
+
+msgid "t_section_parent"
+msgstr "التصنيف الأب"
 
 # global alerts 
  
@@ -607,7 +614,7 @@ msgid  "was_successfully_unpublished"
 msgstr "أُلغيَ النّشر بنجاح"
  
 msgid  "no_data_table"
-msgstr "الجدول لا يحوي بيانات"
+msgstr "لا توجد بيانات متوفرة"
  
 msgid  "upload_failed"
 msgstr "<strong>عفواً! </strong>&nbsp;&nbsp;فشِل الرّفع."
@@ -619,7 +626,7 @@ msgid "email_has_not_been_sent"
 msgstr "البريد الإلكترونيّ ذو العنوان <strong>{0}</strong> لم يُرسل للمستخدم <strong>{1}</strong> , حاول مرّة أُخرى لاحقاًأو تواصل مع المدير "
 
 msgid  "are_you_sure"
-msgstr هل أنت متأكّد ؟"
+msgstr "هل أنت متأكّد ؟"
 
 msgid  "you_wont_be_able_to_revert_this"
 msgstr "لن تستطيع التّراجع عن هذا!"
@@ -628,7 +635,7 @@ msgid  "yse_delete"
 msgstr "نعم, حذف!"
 
 msgid  "something_wrong"
-msgstr "هناك خطبٌ ما"
+msgstr "هناك خطأ ما"
 
 msgid  "description_is_only_used_in_mobile_view"
 msgstr "ملاحظة : </strong>هذا الوصف يُستخدم فقط في واجهة الهاتف المحمول."
@@ -665,15 +672,20 @@ msgstr "تمّ التّحديث بنجاح"
 
 msgid "product_havent_attributes"
 msgstr "هذا المنتج لا يملك أيّة سمات"
-msgstr "This product does not have any attributes"
 
 msgid "exception_msg"
-msgstr "Sorry, an error occurred while processing the process please try again later"
-عذراً, حدث خطأ أثناء معالجة العمليّة. من فضلك, حاول مرّة أخرى لاحقاً 
+msgstr "عذراً, حدث خطأ أثناء معالجة العمليّة. من فضلك, حاول مرّة أخرى لاحقاً "
+
 #admin sidebar
 
 msgid "view_all"
 msgstr "عرض الكلّ"
+
+msgid "all_posts"
+msgstr "كل المقالات"
+
+msgid "all_sections"
+msgstr "تصنيفات"
 
 msgid "Home"
 msgstr "الصّفحة الرّئيسيّة"
@@ -983,7 +995,6 @@ msgstr "قائمة فرعيّة"
 
 
 #: menus _modal.cshtml
-
 msgid "page"
 msgstr "صفحة"
 
@@ -1424,3 +1435,39 @@ msgstr "مقالة جديدة"
 
 msgid "locked_by_system"
 msgstr "مُقفل من قِبل النّظام"
+
+#: Posts Details.cshtml
+
+msgid "post_details"
+msgstr "تفاصيل المقالة"
+
+#: Sections Controller
+
+msgid "section_creation_successfully"
+msgstr "تم إنشاء التصنيف بنجاح"
+
+msgid "section_editing_successfully"
+msgstr "تم تعديل التصنيف بنجاح"
+
+#:Sections index.cshtml
+
+msgid "sections"
+msgstr "التصنيفات"
+
+msgid "new_section"
+msgstr "تصنيف جديد"
+
+#:Sections Form.cshtml
+
+msgid "create_section"
+msgstr "تصنيف جديد"
+
+msgid "edit_section"
+msgstr "تحرير التصنيف"
+
+#: Section Details.cshtml
+msgid "section_details"
+msgstr "تفاصيل التصنيف"
+
+msgid "section_parent"
+msgstr "التصنيف الأب"

@@ -3,10 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
-using AltinZaman.Cultures;
 using AltinZaman.Services.Configurations.AppSetting;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
-using AltinZaman.Services.Configurations.Cultures;
 using TamTechSDK.Common.Helpers.Converters;
 using TamTechSDK.Common.Services.ContentService.Menus;
 using TamTechSDK.Common.Services.Helpers;
@@ -35,7 +33,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddScoped<IExpressionValidation, ExpressionValidation>();
 
 
-            services.AddScoped<ICulturesManager, ConstantsCulturesService>();
+            // services.AddScoped<ICulturesManager, ConstantsCulturesService>();   
 
 
 

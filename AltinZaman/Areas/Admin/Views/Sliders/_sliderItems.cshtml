@@ -1,7 +1,7 @@
 @model UpdateSliderDto
 @{
     var route_lang = ViewContext.RouteData.Values["lang"];
-    var activeLang = (route_lang != null) ? @route_lang.ToString() : @ViewBag.DefaultLanguage.Lang;
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
 <div class="x_panel">
@@ -41,9 +41,7 @@
                             <div class="info">
                                 <h4>@item.Title</h4>
                                 <div class="actions">
-                                    <span class="image-info">
-                                          @(String.Format("{0:d/M/yyyy  }", item.CreatedDate))
-                                    </span>
+                                     
                                     <div class="btn-group  ">
                                         @if (item.Published)
                                         {
@@ -83,6 +81,8 @@
                                                data-url="@Url.AdminUrl("DeleteAsync","sliders" , new {sliderId = Model.Id , id = item.Id })">
                                                 <span class="fa fa-times"></span>@Localizer["t_delete"]
                                             </a>
+
+                                             
                                     </div>
                                 </div>
                             </div>

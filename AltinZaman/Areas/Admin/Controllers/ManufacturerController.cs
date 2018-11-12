@@ -11,9 +11,8 @@ namespace AltinZaman.Areas.Admin.Controllers
         #region Ctors
         public ManufacturerController(ITelemetryClientService telemetryClientService,
                                         IBrandsServices brandService,
-                                        IUploadService uploadService,
-            ICulturesManager languageService)
-            : base(telemetryClientService, brandService, uploadService, languageService)
+                                        IUploadService uploadService)
+            : base(telemetryClientService, brandService, uploadService)
         {
         }
         #endregion 

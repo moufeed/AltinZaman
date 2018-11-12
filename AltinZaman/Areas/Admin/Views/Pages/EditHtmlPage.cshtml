@@ -4,6 +4,7 @@
     ViewData["Title"] = Localizer["edit_htmal_page"];
     ViewData["UnitTestPageClass"] = "ut-editPage";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    
 }
 
 
@@ -23,7 +24,12 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+        @*@if (ViewBag.Languages?.Count > 1)
         {
             <header class="language_bar clearfix">
                 <ul class="nav nav-tabs nav-header" role="tablist">
@@ -35,12 +41,12 @@
                     }
                 </ul>
             </header>
-        }
+        }*@
 
         <div class="x_panel">
             <div class="x_content">
 
-               
+
 
 
                 <form asp-action="EditHtmlPage" asp-controller="Pages"
@@ -53,7 +59,7 @@
                     {
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                     }
-                     
+
                     <input type="hidden" asp-for="Id" class="ut-id" />
                     <input type="hidden" name="DatePublished" value="@(String.Format("{0:yyyy-MM-dd}", Model.PublishedDate))" data-seo-published />
                     <input type="hidden" name="DateModified" value="@(String.Format("{0:yyyy-MM-dd}", Model.ModifiedDate))" data-seo-modified />
@@ -71,15 +77,15 @@
 
                             @if (Model.Locked)
                             {
-                                 <div class="input-group input-locked">
-                                     
+                                <div class="input-group input-locked">
+
                                     <p class="form-control-static">@Model.Slug</p>
                                     <span class="input-group-addon"
                                           data-toggle="tooltip"
                                           data-placement="top"
                                           title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
                                 </div>
-                                
+
                             }
                             else
                             {

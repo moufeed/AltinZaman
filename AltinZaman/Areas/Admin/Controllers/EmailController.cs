@@ -12,9 +12,8 @@ namespace AltinZaman.Areas.Admin.Controllers
         public EmailController(
                                 IUsersManagerService IdentityService,
                                 IEmailSenderService emailService,
-                                ITelemetryClientService telemetryClientService,
-                                ICulturesManager languageService)
-            : base(IdentityService, emailService, telemetryClientService, languageService)
+                                ITelemetryClientService telemetryClientService)
+            : base(IdentityService, emailService, telemetryClientService)
         {
 
         }

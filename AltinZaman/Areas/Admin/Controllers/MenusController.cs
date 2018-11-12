@@ -16,8 +16,8 @@ namespace AltinZaman.Areas.Admin.Controllers
     public class MenusController : MenusBaseController
     {
         public MenusController(ITelemetryClientService telemetryClientService, IMenusServices MenusServices,
-            ICulturesManager languageService, IWebApplicationSettingsService appSettingsService, IStringLocalizer<MenusBaseController> localizer)
-            : base(telemetryClientService, MenusServices, languageService, appSettingsService, localizer)
+       IWebApplicationSettingsService appSettingsService, IStringLocalizer<MenusBaseController> localizer)
+            : base(telemetryClientService, MenusServices, appSettingsService, localizer)
         {
         }
 

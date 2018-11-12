@@ -224,7 +224,21 @@ const  admin_config = {
                 inputFiles: [
                     './node_modules/jquery-serializejson/jquery.serializejson.min.js', 
                 ],
-            }
+            },
+            {
+                outputFileName: "sections.js",
+                es6 : true,
+                inputFiles: [  
+                    paths.admin_src + '/js/sections.js'
+                ],
+            },
+            {
+                outputFileName: "posts.js",
+                es6 : true,
+                inputFiles: [  
+                    paths.admin_src + '/js/posts.js'
+                ],
+            },
         ]
     }
 }

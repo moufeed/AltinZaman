@@ -1,6 +1,6 @@
 @{
-     var route_lang = ViewContext.RouteData.Values["lang"];
-    var activeLang = (route_lang != null) ? @route_lang.ToString() : @ViewBag.DefaultLanguage.Lang;
+    var route_lang = ViewContext.RouteData.Values["lang"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 <div class="x_panel welcome-panel">
     <div class="x_content ">

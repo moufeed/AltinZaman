@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using TamTechBackendSDK.ContentService.Services.Sections;
 using TamTechSDK.Common.Services.ContentService;
 using TamTechSDK.Common.Services.ContentService.Brands;
 using TamTechSDK.Common.Services.ContentService.Categories;
@@ -8,6 +9,7 @@ using TamTechSDK.Common.Services.ContentService.Pages;
 using TamTechSDK.Common.Services.ContentService.Posts;
 using TamTechSDK.Common.Services.ContentService.Products;
 using TamTechSDK.Common.Services.ContentService.Reviews;
+using TamTechSDK.Common.Services.ContentService.Sections;
 using TamTechSDK.Common.Services.ContentService.Services;
 using TamTechSDK.Common.Services.ContentService.Sliders;
 using TamTechSDK.Common.Services.Email;
@@ -34,7 +36,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddTransient<ISlidersServices, AltinZaman.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
             services.AddTransient<IGalleriesService, AltinZaman.DirectBackendServices.ContentServices.Galleries.DirectGalleriesService>();
             services.AddTransient<IPostsService, AltinZaman.DirectBackendServices.ContentServices.Posts.DirectPostsService>();
-
+            services.AddTransient<ISectionsService, AltinZaman.DirectBackendServices.ContentServices.Sections.DirectSectionsService>();
             #endregion
 
             #region Upload Service 

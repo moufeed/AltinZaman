@@ -18,11 +18,9 @@ namespace AltinZaman.Areas.Admin.Controllers
                                     ITelemetryClientService telemetryClientService,
                                     IServicesService servicesService,
                                     IUploadManagerService UploadManager,
-                                    ICulturesManager languageService,
                                     IStringLocalizer<ServicesBaseController> localizer) : base(telemetryClientService,
                                                                                 servicesService,
                                                                                 UploadManager,
-                                                                                languageService,
                                                                                 localizer)
         {
         }

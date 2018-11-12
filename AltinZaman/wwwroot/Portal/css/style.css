@@ -1,7 +1,4 @@
-
-/* Css Template For The Biznes */
-
-
+ 
 /************ TABLE OF CONTENTS ***************
 1. Fonts
 2. Reset
@@ -41,9 +38,7 @@
 
 /* use font link */
 
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i'); */
+ 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 /* use style sheet */
 
@@ -91,6 +86,9 @@
 
  ***/
 
+.mt-5 {
+    margin-top:50px;
+}
 
 body {
   font-size:15px;
@@ -2994,3 +2992,17 @@ label.error{
   overflow: hidden;
   text-overflow: ellipsis;
  }
+
+.ser-icon {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 17vmin;
+    color: #EED178;
+    color: var(--lightgold);
+     
+    border: 3px solid #EED178;
+    box-shadow: 10.5vmin 10.5vmin 0 -10vmin #EED178
+}

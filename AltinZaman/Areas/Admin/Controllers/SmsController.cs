@@ -9,7 +9,7 @@ namespace AltinZaman.Areas.Admin.Controllers
 {
     public class SmsController : SmsBaseController
     {
-        public SmsController(ITelemetryClientService telemetryClientService, ICulturesManager languageService, ISMSService sMSService, IUsersManagerService IdentityService, ServiceBusSettings serviceBusSettings) : base(telemetryClientService, languageService, sMSService, IdentityService, serviceBusSettings)
+        public SmsController(ITelemetryClientService telemetryClientService, ISMSService sMSService, IUsersManagerService IdentityService, ServiceBusSettings serviceBusSettings) : base(telemetryClientService, sMSService, IdentityService, serviceBusSettings)
         {
         }
     }

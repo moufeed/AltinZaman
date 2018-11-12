@@ -11,15 +11,23 @@
     <Compile Remove="AppStartup\DirectBackendServices\IdentityService\RequestPipeline\**" />
     <Compile Remove="Areas\Portal\Data\**" />
     <Compile Remove="Areas\Portal\Models\**" />
+    <Compile Remove="Areas\Shop\**" />
+    <Compile Remove="wwwroot\Shop\**" />
     <Content Remove="AppStartup\DirectBackendServices\IdentityService\RequestPipeline\**" />
     <Content Remove="Areas\Portal\Data\**" />
     <Content Remove="Areas\Portal\Models\**" />
+    <Content Remove="Areas\Shop\**" />
+    <Content Remove="wwwroot\Shop\**" />
     <EmbeddedResource Remove="AppStartup\DirectBackendServices\IdentityService\RequestPipeline\**" />
     <EmbeddedResource Remove="Areas\Portal\Data\**" />
     <EmbeddedResource Remove="Areas\Portal\Models\**" />
+    <EmbeddedResource Remove="Areas\Shop\**" />
+    <EmbeddedResource Remove="wwwroot\Shop\**" />
     <None Remove="AppStartup\DirectBackendServices\IdentityService\RequestPipeline\**" />
     <None Remove="Areas\Portal\Data\**" />
     <None Remove="Areas\Portal\Models\**" />
+    <None Remove="Areas\Shop\**" />
+    <None Remove="wwwroot\Shop\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,20 +40,24 @@
     <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
-    <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-beta3-68792" />
-    <PackageReference Include="TamTechBackendSDK.ContentService.SQL" Version="0.0.2.5" /> 
+    <PackageReference Include="OrchardCore.Localization.Core" Version="1.0.0-beta3-68792" /> 
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" /> 
+    <PackageReference Include="TamTechBackendSDK.ContentService.SQL" Version="0.0.2.6" /> 
     <PackageReference Include="TamTechBackendSDK.EmailService" Version="0.0.1.8" />
     <PackageReference Include="TamTechBackendSDK.FileStorageService" Version="0.0.0.7" />
     <PackageReference Include="TamTechBackendSDK.SMSService" Version="0.0.0.1" />
     <PackageReference Include="TamTechBackendSDK.IdentityService" Version="0.0.0.6" />
-    <PackageReference Include="TamTechSDK.Web" Version="0.0.1.3" />
+    <PackageReference Include="TamTechSDK.Web" Version="0.0.1.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cultures\Models\" />
     <Folder Include="src\" />
-    <Folder Include="wwwroot\UploadFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TamTechBackendSDK.ContentService">
+      <HintPath>..\..\ContentService\TamTechBackendSDK.ContentService.SQL\bin\Debug\netcoreapp2.1\TamTechBackendSDK.ContentService.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +67,22 @@
     <Content Update="Areas\Admin\Views\Home\Biography.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Admin\Views\Menus\partials\_urlTap.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Posts\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Admin\Views\Products\List.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Sections\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Sections\Form.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\partials\_LanguageTabs.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\Shared\_ResultMessage_notification.cshtml">

@@ -1,8 +1,7 @@
 ﻿@model HtmlPageCreationVM
 @{
     ViewData["Title"] = Localizer["create_html_page"];
-    ViewData["UnitTestPageClass"] = "ut-createPage";
-    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewData["UnitTestPageClass"] = "ut-createPage"; 
 }
 
 
@@ -22,7 +21,8 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        @*@if (ViewBag.Languages?.Count > 1)
         {
             <header class="language_bar clearfix">
                 <ul class="nav nav-tabs nav-header" role="tablist">
@@ -34,11 +34,11 @@
                     }
                 </ul>
             </header>
-        }
+        }*@
 
         <div class="x_panel">
             <div class="x_content">
- 
+
 
 
                 @{ string target = "CreateHtmlPage"; }
@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-3 col-sm-6 col-xs-12 ">
                             <input type="submit" class="btn btn-success p-x-5  ut-createbtn" value="@Localizer["Create"]" id="createBtn">
-                            <input type="submit" class="btn btn-info p-x-5  ut-saveAndcontinue"  value="@Localizer["save_and_continue"]" id="saveAndcontinue" name="save-continue">
+                            <input type="submit" class="btn btn-info p-x-5  ut-saveAndcontinue" value="@Localizer["save_and_continue"]" id="saveAndcontinue" name="save-continue">
                         </div>
                     </div>
                 </form>
@@ -177,13 +177,13 @@
                 plugins : ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
               'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
               'save table contextmenu directionality emoticons template paste textcolor'],
-                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | fontselect fontsizeselect | forecolor backcolor emoticons',
-                directionality : "@(activeLang == "ar" ? "rtl" : "ltr")" ,
+                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
                 setup: function (editor) {
                     editor.on('change', function (e) {
                         editor.save();
                     });
-                }
+            }
+
         });
 
         tinymce.init({
@@ -193,8 +193,7 @@
             statusbar: false,
             theme: 'modern',
             menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker directionality'],
-              directionality : "@(activeLang == "ar" ? "rtl" : "ltr")" ,
+            plugins: ['code hr anchor pagebreak spellchecker '],
                 setup: function (editor) {
                 editor.on('change', function (e) {
                     editor.save();

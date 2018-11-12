@@ -161,19 +161,31 @@
                 </ul>
             </li>
 
-            @*<li>
+            <li>
                 <a>
-                    <i class="fa fa-camera-retro "></i> @Localizer["Posts"] <span class="fa fa-chevron-down"></span>
+                    <i class="fa fa-files-o "></i> @Localizer["Posts"] <span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
                     <li class="@( activeController == " Posts" && activeAction=="Index" ? "current-page" :"" )">
                         <a href="@Url.AdminUrl("index" ,"Posts" )">
-                            <i class="fa fa-picture-o"></i>@Localizer["view_all"]
+                            <i class="fa fa-file-text"></i>@Localizer["all_posts"]
                         </a>
                     </li>
-                    
+                    <li class="@( activeController == " Posts" && activeAction=="Create" ? "current-page" :"" )">
+                        <a href="@Url.AdminUrl("create" ,"Posts" )"><i class="fa fa-file-o"></i>@Localizer["new_post"]</a>
+                    </li>
+
+                    <li class="@( activeController == " Sections" && activeAction=="Index" ? "current-page" :"" )">
+                        <a href="@Url.AdminUrl("index" ,"Sections" )">
+                            <i class="fa fa-folder"></i>@Localizer["all_sections"]
+                        </a>
+                    </li>
+
+                    <li class="@( activeController == " sections" && activeAction=="Create" ? "current-page" :"" )">
+                        <a href="@Url.AdminUrl("create" ,"sections" )"><i class="fa fa-folder-o"></i>@Localizer["new_section"]</a>
+                    </li>
                 </ul>
-            </li>*@
+            </li>
  
         </ul>
     </div>

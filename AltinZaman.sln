@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28218.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltinZaman", "AltinZaman\AltinZaman.csproj", "{636B40D9-0F58-498B-BF71-E045EBD1EDE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltinZaman", "AltinZaman\AltinZaman.csproj", "{69A24CE2-1BE9-4329-9A92-B4E0BCA5164C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{636B40D9-0F58-498B-BF71-E045EBD1EDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{636B40D9-0F58-498B-BF71-E045EBD1EDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{636B40D9-0F58-498B-BF71-E045EBD1EDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{636B40D9-0F58-498B-BF71-E045EBD1EDE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A24CE2-1BE9-4329-9A92-B4E0BCA5164C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A24CE2-1BE9-4329-9A92-B4E0BCA5164C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A24CE2-1BE9-4329-9A92-B4E0BCA5164C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A24CE2-1BE9-4329-9A92-B4E0BCA5164C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

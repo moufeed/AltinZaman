@@ -10,8 +10,8 @@ namespace AltinZaman.Areas.Admin.Controllers
     public class SlidersController : SlidersBaseController
     {
         public SlidersController(ITelemetryClientService telemetryClientService, ISlidersServices sliderService,
-            IUploadManagerService uploadManager, ICulturesManager languageService, IStringLocalizer<SlidersBaseController> _localizer)
-            : base(telemetryClientService, sliderService, uploadManager, languageService, _localizer)
+            IUploadManagerService uploadManager, IStringLocalizer<SlidersBaseController> _localizer)
+            : base(telemetryClientService, sliderService, uploadManager, _localizer)
         {
 
         }

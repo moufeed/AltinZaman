@@ -15,9 +15,8 @@ namespace AltinZaman.Areas.Admin.Controllers
                                     ITelemetryClientService telemetryClientService,
                                     ICategoriesServices categoryService,
                                     IUploadService uploadService,
-              ICulturesManager languageService,
               IStringLocalizer<CategoriesBaseController> localizer)
-            : base(telemetryClientService, categoryService, uploadService, languageService, localizer)
+            : base(telemetryClientService, categoryService, uploadService, localizer)
         {
 
         }

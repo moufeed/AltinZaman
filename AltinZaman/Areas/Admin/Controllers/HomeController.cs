@@ -10,8 +10,8 @@ namespace AltinZaman.Areas.Admin.Controllers
 {
     public class HomeController : HomeBaseController
     {
-        public HomeController(ITelemetryClientService telemetryClientService, ICulturesManager languageService, IWebApplicationSettingsService webApplicationSettingsService)
-            : base(telemetryClientService, languageService, webApplicationSettingsService)
+        public HomeController(ITelemetryClientService telemetryClientService, IWebApplicationSettingsService webApplicationSettingsService)
+            : base(telemetryClientService, webApplicationSettingsService)
         {
         }
     }

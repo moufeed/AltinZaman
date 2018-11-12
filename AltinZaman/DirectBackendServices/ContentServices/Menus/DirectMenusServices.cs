@@ -18,6 +18,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
 
         #region Props  
         private readonly TamTechBackendSDK.ContentService.Services.Menus.IMenuService _menuService;
+        private readonly TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
         private readonly IWebApplicationSettingsService _appSettingsService;
         //private readonly TamTechSDK.Common.Services.ContentService.Menus.IMenuManager _menuManager;
         #endregion
@@ -25,11 +26,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
 
         #region Ctors
         public DirectMenusServices(TamTechBackendSDK.ContentService.Services.Menus.IMenuService menuService,
+            TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities,
             IWebApplicationSettingsService appSettingsService
             //  ,   TamTechSDK.Common.Services.ContentService.Menus.IMenuManager menuManager
             )
         {
             _menuService = menuService;
+            _contentUtilities = contentUtilities;
             _appSettingsService = appSettingsService;
             //    _menuManager = menuManager;
         }
@@ -97,6 +100,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
 
         #region Service
 
+        public async Task<Dictionary<string, Dictionary<string, string>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
+        {
+            var results = await _contentUtilities.GetListsModulesForMenuItemsTypesAsync(model, lang);
+            return results;
+        }
+
+
 
         #region {Public Menus}  
 
@@ -126,8 +136,10 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         public async Task<IRequestProviderResult<Dictionary<string, dynamic>>> GetPublicDynamicMenuItemsTypesListsByTypesAsync(List<string> model, string lang)
         {
             // TODO: language parameter not called
-            var results = await _menuService.GetPublicDynamicMenuItemsTypesListsByTypesAsync(model);
-            return GetRequestProviderResult(results);
+            //var results = await _menuService.GetPublicDynamicMenuItemsTypesListsByTypesAsync(model);
+            //return GetRequestProviderResult(results);
+
+            throw new NotImplementedException("the method not implemented in DirectMenusServices");
         }
 
         #endregion 

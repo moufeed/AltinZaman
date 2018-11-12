@@ -23,30 +23,26 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                            <a href="@Url.AdminUrl("CreateItem", "sliders", new { culture = lang.Lang , sliderId =  ViewBag.SliderId , sliderTitle = ViewBag.SliderTitle })">@lang.Name</a>
-                        </li>
-                    }
-                </ul>
-            </header>
-        }
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                { "sliderId", ViewBag.SliderId} ,
+                { "sliderTitle", ViewBag.SliderTitle}
 
+            };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+      
         <div class="x_panel">
             <div class="x_content">
 
-                
+
 
 
                 <form asp-controller="Sliders"
                       asp-action="CreateItem"
                       method="post"
-                      class="form-horizontal forn-new form-label-left m-t5" 
+                      class="form-horizontal forn-new form-label-left m-t5"
                       id="SliderItemForm" enctype="multipart/form-data">
 
                     @if (!ViewData.ModelState.IsValid)
@@ -86,14 +82,14 @@
                                 <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i>@Localizer["Browse"]</span>
-                            
+
                             </label>
-                        <label id="NewMainImage-error" class="error invalid_field" for="NewMainImage" style="display:none;"></label>
-                         <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
+                            <label id="NewMainImage-error" class="error invalid_field" for="NewMainImage" style="display:none;"></label>
+                            <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
                         </div>
-                           
-                        
-                        </div>
+
+
+                    </div>
 
 
 

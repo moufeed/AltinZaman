@@ -2,8 +2,8 @@
 @model TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage
 @{
     ViewData["Title"] = Localizer["page_details"];
-    ViewData["UnitTestPageClass"] = "ut-page_details";
-    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewData["UnitTestPageClass"] = "ut-page_details"; 
+    ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
 }
 <div class="clearfix">
     <div class="page-title">
@@ -20,7 +20,8 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        @*@if (ViewBag.Languages?.Count > 1)
         {
             <header class="language_bar clearfix">
                 <ul class="nav nav-tabs nav-header" role="tablist">
@@ -32,9 +33,9 @@
                     }
                 </ul>
             </header>
-        }
+        }*@
         <div class="x_panel">
- 
+
 
             <div class="x_content p-y-5 ">
                 <div class="form-group clearfix">

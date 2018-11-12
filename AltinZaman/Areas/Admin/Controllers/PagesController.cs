@@ -15,9 +15,9 @@ namespace AltinZaman.Areas.Admin.Controllers
         public PagesController(ITelemetryClientService telemetryClientService,
                          IPageService pageService,
                          IUploadManagerService uploadManager,
-                         IStringConverters stringConverters, ICulturesManager languageService,
+                         IStringConverters stringConverters,
                          IStringLocalizer<PagesBaseController> localizer)
-          : base(telemetryClientService, pageService, uploadManager, stringConverters, languageService, localizer)
+          : base(telemetryClientService, pageService, uploadManager, stringConverters, localizer)
         { }
 
         #endregion

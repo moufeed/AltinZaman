@@ -16,13 +16,27 @@
 
 <section class="content">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="page-date wow fadeInUp animated">
-                    @( Model.CreatedDate.ToString("dd") )
-                    <div class="text">@( Model.CreatedDate.ToString("MMMM") )</div>
-                </div>
+        <div class="page-date wow fadeInUp animated">
+            @( Model.CreatedDate.ToString("dd") )
+            <div class="text">@( Model.CreatedDate.ToString("MMMM") )</div>
+        </div>
+        <div class="row mt-5">
 
+            
+            @if (Model.IconVisibility)
+            {
+                <div class="col-md-3 col-xs-12 col-sm-4">
+                    <div class="ser-icon">
+                        <i class="fa @Model.Icon"></i>
+                    </div>
+                </div>
+            }
+            
+            @{ 
+                string clas = (Model.IconVisibility) ? "col-md-9 col-xs-12 col-sm-8" : "col-md-12 col-sm-12 col-xs-12";
+            }
+            <div class="@clas">
+                
                 <div class="text">
                     @Html.Raw(Model.Content)
                 </div>

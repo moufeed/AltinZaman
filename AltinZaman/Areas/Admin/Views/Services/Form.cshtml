@@ -28,32 +28,29 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
 
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                    <li class="@((activeLang == lang.Lang) ? "active" :"" )">
 
-                        @if (ViewBag.isUpdate)
-                        {
-                            <a href="@Url.AdminUrl("Edit", "services", new { culture = lang.Lang , id= Model.Id})">@lang.Name</a>
-                        }
-                        else
-                        {
-                            <a href="@Url.AdminUrl("Create", "services", new { culture = lang.Lang})">@lang.Name</a>
-                        }
-                    </li>
-                    }
-                </ul>
-            </header>
+        @{
+            if (ViewBag.isUpdate)
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                    { "id" , Model.Id}
+                };
+            }
+            else
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {};
+            }
+
         }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
+        
 
 
         <div class="x_panel">
 
-            
+
 
 
             <div class="x_content">
@@ -82,12 +79,12 @@
                             @if (Model.Locked)
                             {
                                 <div class="input-group input-locked">
-                                    
+
                                     <p class="form-control-static">@Model.Slug</p>
-                                    <span class="input-group-addon" 
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                    <span class="input-group-addon"
+                                          data-toggle="tooltip"
+                                          data-placement="top"
+                                          title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
                                 </div>
 
                             }
@@ -95,7 +92,7 @@
                             {
                                 <input type="text" asp-for="Slug" class="form-control" required />
                             }
-                             
+
                             <span asp-validation-for="Slug" class="text-danger invalid_field"></span>
                         </div>
                     </div>
@@ -139,7 +136,7 @@
                     <div class="form-group clearfix">
                         <label asp-for="DisplayOrder" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
-                            @if (activeLang != ViewBag.DefaultLanguage.Lang && ViewBag.isUpdate)
+                            @if (activeLang != CultureConstants.DefaultCulture.Lang && ViewBag.isUpdate)
                             {
                                 <input asp-for="DisplayOrder" class="form-control" min="0" disabled />
                             }

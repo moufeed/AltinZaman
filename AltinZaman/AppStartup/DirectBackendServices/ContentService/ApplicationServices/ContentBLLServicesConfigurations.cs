@@ -9,11 +9,14 @@ using TamTechBackendSDK.ContentService.Services.Categorys;
 using TamTechBackendSDK.ContentService.Services.Galleries;
 using TamTechBackendSDK.ContentService.Services.Menus;
 using TamTechBackendSDK.ContentService.Services.Pages;
+using TamTechBackendSDK.ContentService.Services.Posts;
 using TamTechBackendSDK.ContentService.Services.ProductCatalog;
 using TamTechBackendSDK.ContentService.Services.Products;
+using TamTechBackendSDK.ContentService.Services.Sections;
 using TamTechBackendSDK.ContentService.Services.Services;
 using TamTechBackendSDK.ContentService.Services.Shared;
 using TamTechBackendSDK.ContentService.Services.Sliders;
+using TamTechBackendSDK.ContentService.Services.Utilities.Content;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices
 {
@@ -24,7 +27,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
             services.AddScoped<IIdentityHelper, HttpContextHelper>();
 
 
-
+            services.AddTransient<IContentUtilities, ContentUtilities>();
             services.AddTransient<PageServiceManager, PageServiceManager>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IProductService, ProductService>();
@@ -37,6 +40,9 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
             services.AddTransient<ISliderService, SliderService>();
             services.AddTransient<GalleryServiceManager, GalleryServiceManager>();
             services.AddTransient<IGalleryService, GalleryService>();
+
+            services.AddTransient<ISectionService, SectionService>();
+            services.AddTransient<IPostService, PostService>();
 
 
 

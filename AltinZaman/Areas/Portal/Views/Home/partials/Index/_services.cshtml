@@ -16,7 +16,7 @@
                         {
                             <div class="single-item">
                                 <div class="icon-box"><a href="/services/@item.Slug"><i class="fa @item.Icon"></i></a></div>
-                                <h4><a href="/services/@item.Slug">@item.Title</a></h4>
+                                <h4><a  asp-action="v" asp-controller="services" asp-route-slug="@item.Slug">@item.Title</a></h4>
                                 <div class="text"><p>@Html.Raw(item.Summary)</p></div>
                             </div>
                         }

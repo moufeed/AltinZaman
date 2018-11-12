@@ -5,54 +5,90 @@ using System.Threading.Tasks;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Posts.Models;
+using AltinZaman.DirectBackendServices.ContentServices.Posts.Mapper;
 
 namespace AltinZaman.DirectBackendServices.ContentServices.Posts
 {
     public class DirectPostsService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Posts.IPostsService
     {
-        public Task<IRequestProviderResult<Guid>> CreateAsync(CreatePostDto model)
+        private readonly TamTechBackendSDK.ContentService.Services.Posts.IPostService _postService;
+
+
+        public DirectPostsService(TamTechBackendSDK.ContentService.Services.Posts.IPostService postService)
         {
-            throw new NotImplementedException();
+            _postService = postService;
         }
 
-        public Task<IRequestProviderResult<bool>> DeleteAsync(Guid id)
+
+
+        #region {Services Manager}  
+        public async Task<IRequestProviderResult<List<PostDto>>> GetAllAsync(string lang)
         {
-            throw new NotImplementedException();
+            var result = await _postService.GetAllExceptSoftDeletedAsync(lang);
+            List<PostDto> servicesDto = result != null ? result.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
+            return ReturnResult(servicesDto);
+
         }
 
-        public Task<IRequestProviderResult<bool>> EditAsync(UpdatePostDto model)
+
+        public async Task<IRequestProviderResult<Guid>> CreateAsync(CreatePostDto model)
         {
-            throw new NotImplementedException();
+            var result = await _postService.CreateAsync(model.MapToBackendDto());
+            return MapRequestProviderResult(result);
         }
 
-        public Task<IRequestProviderResult<List<PostDto>>> GetAllAsync(string lang)
+
+        public async Task<IRequestProviderResult<PostDto>> GetByIdAsync(Guid id, string lang)
         {
-            throw new NotImplementedException();
+            var post = await _postService.GetByIdExceptSoftDeletedAsync(id, lang);
+            return ReturnResult(post.MapToFrontendDto());
         }
 
-        public Task<IRequestProviderResult<PostDto>> GetByIdAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<bool>> EditAsync(UpdatePostDto model)
         {
-            throw new NotImplementedException();
+            var result = await _postService.EditAsync(model.MapToBackendDto());
+            return MapRequestProviderResult(result);
         }
 
-        public Task<IRequestProviderResult<PostDto>> GetPublicBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO data)
         {
-            throw new NotImplementedException();
+            var result = await _postService.PublishAsync(data.MapToBackend());
+            return MapRequestProviderResult(result);
         }
 
-        public Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync()
+        public async Task<IRequestProviderResult<bool>> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await _postService.SoftDeleteAsync(id);
+            return MapRequestProviderResult(result);
         }
 
-        public Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync(int takeitems)
+        #endregion
+
+
+        #region {Public Services}  
+
+
+        public async Task<IRequestProviderResult<PostDto>> GetPublicBySlugAsync(string slug)
         {
-            throw new NotImplementedException();
+            var service = await _postService.GetPublicBySlugAsync(slug);
+            return ReturnResult(service.MapToFrontendDto());
         }
 
-        public Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync()
         {
-            throw new NotImplementedException();
+            var posts = await _postService.GetPublicListAsync();
+            List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
+            return ReturnResult(servicesDto);
         }
+
+        public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync(int takeitems)
+        {
+            var posts = await _postService.GetPublicListAsync(takeitems);
+            List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
+            return ReturnResult(servicesDto);
+        }
+
+        #endregion
+
     }
 }

@@ -12,10 +12,9 @@ namespace AltinZaman.Areas.Admin.Controllers
         public UsersController(ITelemetryClientService telemetryClientService,
                                IUsersManagerService identityService,
                                IRolesService rolesService,
-                                  ICulturesManager languageService,
                                   IStringLocalizer<UsersBaseController> localizer
                               )
-               : base(telemetryClientService, identityService, rolesService, languageService, localizer)
+               : base(telemetryClientService, identityService, rolesService, localizer)
         {
         }
         #endregion  

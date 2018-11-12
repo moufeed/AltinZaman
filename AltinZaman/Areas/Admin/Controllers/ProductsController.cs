@@ -22,10 +22,9 @@ namespace AltinZaman.Areas.Admin.Controllers
                                     ICategoriesServices categoriesService,
                                     IContentServices contentService,
                                     IUploadManagerService uploadManager,
-                                    ICulturesManager languageService,
                                     IStringLocalizer<ProductsBaseController> localizer
                                     )
-            : base(telemetryClientService, productsManagerService, brandsService, categoriesService, contentService, uploadManager, languageService, localizer)
+            : base(telemetryClientService, productsManagerService, brandsService, categoriesService, contentService, uploadManager, localizer)
         {
         }
         #endregion  
