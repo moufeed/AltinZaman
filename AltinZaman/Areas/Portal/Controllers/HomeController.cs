@@ -35,9 +35,6 @@ namespace AltinZaman.Areas.Portal.Controllers
 
         public override async Task<IActionResult> Index()
         {
-
-
-
             return await  base.Index();  
         }
     }

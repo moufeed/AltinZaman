@@ -13,6 +13,7 @@ namespace AltinZaman.Areas.Admin.Controllers
         public HomeController(ITelemetryClientService telemetryClientService, IWebApplicationSettingsService webApplicationSettingsService)
             : base(telemetryClientService, webApplicationSettingsService)
         {
+
         }
     }
 }

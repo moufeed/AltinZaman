@@ -376,7 +376,7 @@ msgid  "f_content"
 msgstr "المحتوى :"
 
 msgid  "f_meta_keywords"
-msgstr "Meta Keywords :"
+msgstr "كلمات مفتاحية :"
 
 msgid  "f_meta_description"
 msgstr "وصف الميتا :"
@@ -528,7 +528,7 @@ msgid  "t_delete"
 msgstr "حذف"
 
 msgid  "t_order"
-msgstr "طلب"
+msgstr "الترتيب"
 
 msgid  "t_url"
 msgstr "رابط"
@@ -1007,6 +1007,9 @@ msgstr "رابط"
 msgid "static_page"
 msgstr "صفحة ثابتة"
 
+msgid "service"
+msgstr "خدمة"
+
 msgid "add_to_menu"
 msgstr "إضافة للقائمة"
 
@@ -1352,6 +1355,12 @@ msgstr "لقد قمنا بجمع بعض الرّوابط من أجل أن تبد
 msgid "create_page"
 msgstr "إنشاء صفحة"
  
+msgid "get_started"
+msgstr "في البداية"
+
+msgid "more_actions"
+msgstr "المزيد"
+
 msgid "next_steps"
 msgstr "خطوات تالية"
  

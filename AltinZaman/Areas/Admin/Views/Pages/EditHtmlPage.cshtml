@@ -1,7 +1,7 @@
 ﻿@model HtmlPageEditingVM
 @using TamTechSDK.Common.Services.ContentService.Pages.Enums
 @{
-    ViewData["Title"] = Localizer["edit_htmal_page"];
+    ViewData["Title"] = Localizer["html_editing_form"];
     ViewData["UnitTestPageClass"] = "ut-editPage";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
     
@@ -118,7 +118,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" Name="NewMainImage" class="upload-input" data-text="Choose file." accept="image/*" />
+                                <input type="file" Name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                 <span class="url">Choose file.</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> Browse</span>
                             </label>

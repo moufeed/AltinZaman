@@ -48,7 +48,7 @@
                 <hr />
                 <ul class="clearfix metalist list-unstyled">
                     <li class="col-md-4 col-xs-12 col-sm-4">
-                        <strong>Status</strong>
+                        <strong>@Localizer["status"]</strong>
                         @if (Model.Published)
                         {
                             <span class="c-green"> <i class="fa fa-check" aria-hidden="true"></i> @Localizer["published"]</span>
@@ -57,7 +57,6 @@
                         {
                             <span class="c-red"> <i class="fa fa-times" aria-hidden="true"></i> @Localizer["unpublished"]</span>
                         }
-
                     </li>
                     <li class="col-md-4 col-xs-12 col-sm-4">
                         <strong>@Localizer["created_date"]</strong>

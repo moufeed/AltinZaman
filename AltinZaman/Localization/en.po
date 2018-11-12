@@ -1016,6 +1016,9 @@ msgstr "Link"
 msgid "static_page"
 msgstr "Static Page"
 
+msgid "service"
+msgstr "Service"
+
 msgid "add_to_menu"
 msgstr "Add to menu"
 
@@ -1366,6 +1369,13 @@ msgstr "Create Page"
 msgid "next_steps"
 msgstr "Next Steps"
  
+msgid "get_started"
+msgstr "Get started"
+
+msgid "more_actions"
+msgstr "More actions"
+
+
 msgid "upload_first_gallery"
 msgstr "Upload your first gallery"
  

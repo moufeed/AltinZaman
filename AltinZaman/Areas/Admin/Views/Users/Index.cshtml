@@ -65,7 +65,7 @@
                 <form class="form-inline" asp-action="Index" method="post">
                     <div class="form-group">
                         <label for="Username" class="m-x-2">@Localizer["f_username"]</label>
-                        <input type="text" class="form-control" name="Username" id="Username" placeholder="Username" value="@filter.UserName">
+                        <input type="text" class="form-control" name="Username" id="Username" placeholder="@Localizer["f_username"]" value="@filter.UserName">
                     </div>
                     <div class="form-group">
                         <label for="UserRole" class="m-x-2">@Localizer["user_role"]</label>
