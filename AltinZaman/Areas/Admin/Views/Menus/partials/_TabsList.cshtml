@@ -3,6 +3,7 @@
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 <ul class="nav nav-tabs navs-line" role="tablist">
+
     <li role="presentation" class="active" data-type="Page">
         <a href="#@MenuItemTypeEnum.page.ToString()"
            aria-controls="@MenuItemTypeEnum.page.ToString()"
@@ -50,12 +51,12 @@
            class="ut-service-tab"
            data-toggle="tab"><strong>@Localizer["service"]</strong></a>
     </li>
-    <li role="presentation" data-type="gallery">
+    @*<li role="presentation" data-type="gallery">
         <a href="#@MenuItemTypeEnum.gallery.ToString()"
            aria-controls="@MenuItemTypeEnum.gallery.ToString()"
            role="tab"
            class="ut-gallery-tab"
            data-toggle="tab"><strong>@Localizer["gallery"]</strong></a>
-    </li>
+    </li>*@
 
 </ul>

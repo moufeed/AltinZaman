@@ -12,32 +12,7 @@
             <li>
                 <a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>@Localizer["Home"]</a>
             </li>
-
-            @*<li>
-            <a asp-area="Admin" asp-controller="Home" asp-action="Biography"><i class="fa fa-address-book-o"></i>Biography</a>
-        </li>*@
-
-            <li>
-            <a><i class="fa fa-book"></i>@Localizer["Catelog"]<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-                <li class="@( activeController == " Products" ? "current-page" :"" )">
-
-                    <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cubes"></i>
-                        @Localizer["Products"]</a>
-                </li>
-                @*<li class="@( activeController == " Manufacturer" ? "current-page" :"" )">
-                    <a asp-area="Admin" asp-controller="Manufacturer" asp-action="Index"><i class="fa fa-tags"></i>@Localizer["Manufacturer"]</a>
-                </li>
-                <li class="@( activeController == " Categories" ? "current-page" :"" )">
-                    <a asp-area="Admin" asp-controller="Categories" asp-action="Index"><i class="fa fa-folder"></i>@Localizer["Categories"]</a>
-                </li>
-                <li class="@( activeController == " Reviews" ? "current-page" :"" )">
-                    <a asp-area="Admin" asp-controller="Reviews" asp-action="Index"><i class="fa fa-comment"></i>@Localizer["Reviews"]</a>
-                </li>*@
-            </ul>
-        </li>
-
-
+             
 
             <li class='@((activeController == "Pages")  ?  "active" :""  )'>
                 <a>
@@ -75,36 +50,7 @@
                     </li>
                 </ul>
             </li>
-
-
-
-            <li class='@((activeController == "Users")  ?  "active" :""  )'>
-                <a><i class="fa fa-users"></i> @Localizer["Users"] <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li class="@( activeController == " Users" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index","users")"><i class="fa fa-user"></i>@Localizer["view_all"]</a>
-                    </li>
-                    <li class="@( activeController == " Users" && activeAction=="Create" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("Create","users")">
-                            <i class="fa fa-plus"></i>@Localizer["new_user"]
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            @*<li>
-            <a><i class="fa fa-envelope"></i> @Localizer["Messages"] <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-                <li class="@( activeController == " Email" ? "current-page" :"" )">
-                    <a asp-area="Admin" asp-controller="Email" asp-action="Index"><i class="fa fa-envelope-o"></i>Email</a>
-                </li>
-                <li class="@( activeController == " Sms" ? "current-page" :"" )">
-                    <a asp-area="Admin" asp-controller="Sms" asp-action="Index"><i class="fa fa-commenting"></i>Sms</a>
-                </li>
-            </ul>
-        </li>*@
-
-
+             
             <li class='@((activeController == "Services")  ?  "active" :""  )'>
                 <a>
                     <i class="fa fa-cubes"></i>
@@ -144,48 +90,7 @@
                 </ul>
             </li>
 
-            <li>
-                <a>
-                    <i class="fa fa-camera-retro "></i> @Localizer["Galleries"] <span class="fa fa-chevron-down"></span>
-                </a>
-                <ul class="nav child_menu">
-                    <li class="@( activeController == " Galleries" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index" ,"galleries" )">
-                            <i class="fa fa-picture-o"></i>@Localizer["view_all"]
-                        </a>
-                    </li>
-                    <li class="@( activeController == " Galleries" && activeAction=="Create" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("create" ,"galleries" )"><i class="fa fa-plus"></i>@Localizer["new_gallery"]</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a>
-                    <i class="fa fa-files-o "></i> @Localizer["Posts"] <span class="fa fa-chevron-down"></span>
-                </a>
-                <ul class="nav child_menu">
-                    <li class="@( activeController == " Posts" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index" ,"Posts" )">
-                            <i class="fa fa-file-text"></i>@Localizer["all_posts"]
-                        </a>
-                    </li>
-                    <li class="@( activeController == " Posts" && activeAction=="Create" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("create" ,"Posts" )"><i class="fa fa-file-o"></i>@Localizer["new_post"]</a>
-                    </li>
-
-                    <li class="@( activeController == " Sections" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index" ,"Sections" )">
-                            <i class="fa fa-folder"></i>@Localizer["all_sections"]
-                        </a>
-                    </li>
-
-                    <li class="@( activeController == " sections" && activeAction=="Create" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("create" ,"sections" )"><i class="fa fa-folder-o"></i>@Localizer["new_section"]</a>
-                    </li>
-                </ul>
-            </li>
- 
+            
         </ul>
     </div>
 </div>
