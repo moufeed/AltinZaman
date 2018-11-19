@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Sections.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Sections.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
+using TamTechSDK.Common.Services.ContentService.Posts.Models;
 using TamTechSDK.Common.Services.ContentService.Sections;
 using TamTechSDK.Common.Services.ContentService.Sections.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Sections
+namespace TamTech.Web.DirectBackendServices.ContentServices.Sections
 {
     public class DirectSectionsService : BaseDirectService, ISectionsService
     {
@@ -51,11 +52,17 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sections
             return ReturnResult(result.MapToContainerDto());
         }
 
-        public async Task<List<SectionDto>> GetPublicMainSectionListAsync()
+        public async Task<List<SectionDto>> GetPublicLatestSectionsAsync()
         {
-            var result = await _SectionService.GetPublicMainSectionListAsync();
-            List<SectionDto> sectionDto = result != null ? result.Select(m => m.MapToFrontendDto()).ToList() : new List<SectionDto>();
+            var result = await _SectionService.GetPublicLatestSectionsAsync();
+            List<SectionDto> sectionDto =  result?.Select(m => m.MapToFrontendDto()).ToList() ;
             return sectionDto;
+        }
+
+         public async Task<SectionContainerDto> GetPublicSectionWithLatestSubSectionsBySlugAsync(string slug)
+        {
+            var result = await _SectionService.GetPublicSectionWithLatestSubSectionsBySlugAsync(slug); 
+            return  result.MapToContainerDto();
         }
 
 
@@ -69,21 +76,21 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sections
             return sectionDto;
         }
 
-        public async Task<IRequestProviderResult<Guid>> CreateAsync(CreateSectionDto model)
+        public async  Task<IRequestProviderResult<Guid>> CreateAsync(CreateSectionDto model)
         {
             var result = await _SectionService.CreateAsync(model.MapTobackendCreateSection());
             return MapRequestProviderResult(result);
         }
-
+         
         public async Task<IRequestProviderResult<bool>> EditAsync(UpdateSectionDto model)
         {
             var result = await _SectionService.EditAsync(model.MapToBackendDto());
             return MapRequestProviderResult(result);
         }
-
+         
         public async Task<IRequestProviderResult<SectionDto>> GetByIdAsync(Guid id, string lang)
         {
-            var result = await _SectionService.GetByIdExceptSoftDeletedAsync(id, lang);
+            var result = await _SectionService.GetByIdExceptSoftDeletedAsync(id , lang);
             return ReturnResult(result.MapToFrontendDto());
         }
 
@@ -97,6 +104,11 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sections
         {
             var result = await _SectionService.SoftDeleteAsync(id);
             return MapRequestProviderResult(result);
+        }
+
+        public Task<SectionContainerDto> GetPublicSectionWithLatestSubSectionsBySlugAsync(PaginationModel Pagination, string slug)
+        {
+            throw new NotImplementedException();
         }
 
 

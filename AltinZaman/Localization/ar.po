@@ -12,6 +12,10 @@ msgstr ""
 "Language-Team: \n"
 
 # adminbar
+
+msgid "site_title"
+msgstr "الزمان الذهبي"
+
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 

@@ -10,18 +10,18 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class SectionsController : SectionsBaseController
     {
-        public SectionsController(ITelemetryClientService telemetryClientService,
+        public SectionsController(  ITelemetryClientService telemetryClientService,
                                     ISectionsService sectionsService,
                                     IUploadManagerService uploadManager,
-                                    IStringLocalizer<SectionsBaseController> localizer)
+                                    IStringLocalizer<SectionsBaseController> localizer) 
             : base(
-                    telemetryClientService,
-                    sectionsService,
-                    uploadManager,
+                    telemetryClientService,  
+                    sectionsService, 
+                    uploadManager, 
                     localizer)
         { }
 

@@ -12,8 +12,8 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
     {
         public static void AddFiltersConfigurations(this IServiceCollection services)
         {
-            services.AddTransient<LanguageFilter>();
-            services.AddTransient<MenuFilter>();
+            services.AddTransient<AdminFilter>();
+          //  services.AddTransient<MenuFilter>();
         }
     }
 }

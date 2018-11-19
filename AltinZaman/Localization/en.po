@@ -13,6 +13,10 @@ msgstr ""
  
 
 # adminbar
+
+msgid "site_title"
+msgstr "Altin Zaman"
+
 msgid "Dashboard"
 msgstr "Dashboard"
 

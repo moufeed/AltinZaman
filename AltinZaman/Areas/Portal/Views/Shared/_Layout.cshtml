@@ -7,10 +7,8 @@
     <title>@ViewData["Title"]</title>
     @RenderSection("SEO", required: false)
    
-    <link href="~/Portal/css/style.css" rel="stylesheet">
-    <link href="~/Portal/css/style-rtl.css" rel="stylesheet">
-    <link href="~/Portal/css/responsive.css" rel="stylesheet">
-    <link href="~/Portal/css/responsive-rtl.css" rel="stylesheet">
+    <link href="~/Portal/css/style.min.css" rel="stylesheet">
+   
     <link rel="icon" href="~/Portal/images/favicon.ico" type="image/x-icon">
 
     @RenderSection("meta", required: false)
@@ -24,25 +22,21 @@
 <body class="page-wrapper">
     <div class="preloader"></div>
 
-
     @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_Header.cshtml")
     @RenderBody()
-
     @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_Footer.cshtml")
-
-
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon fa fa-angle-up"></span></div>
+    @*<script src="~/Portal/js/jquery-2.1.4.js"></script>
+        <script src="~/Portal/js/bootstrap.min.js"></script>
+        <script src="~/Portal/js/SmoothScroll.js"></script>
+        <script src="~/Portal/js/wow.js"></script>*@
 
-    <script src="~/Portal/js/jquery-2.1.4.js"></script>
-    <script src="~/Portal/js/bootstrap.min.js"></script>
-    <script src="~/Portal/js/SmoothScroll.js"></script>
-    <script src="~/Portal/js/wow.js"></script>
+    <script src="~/Portal/js/main-min.js"></script>
+   
     @RenderSection("footer", required: false)
-
-    <script src="~/Portal/js/script.js"></script>
-
+    <script src="~/Portal/js/script-min.js"></script>
 
 </body>
 </html>

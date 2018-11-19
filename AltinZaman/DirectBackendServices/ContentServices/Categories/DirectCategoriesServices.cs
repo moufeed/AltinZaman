@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Categories.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Categories.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Categories.Models;
 using TamTechSDK.Common.Services.ContentService.Categories;
-namespace AltinZaman.DirectBackendServices.ContentServices.Categories
+namespace TamTech.Web.DirectBackendServices.ContentServices.Categories
 {
     public class DirectCategoriesServices : BaseDirectService, ICategoriesServices
     {
@@ -50,7 +50,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Categories
 
             var data = result != null ? result.Select(m => m.MapToFrontendCategory()).ToList() : new List<Category>();
 
-            return ReturnResult(data, result != null);
+           return ReturnResult(data, result != null);
         }
 
 

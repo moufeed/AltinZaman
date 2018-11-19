@@ -4,55 +4,8 @@
     string activeAction = ViewContext.RouteData.Values["Action"].ToString();
 }
 
-@functions {
-    public string PrintMenu(List<MenuItemDto> MenuItems)
-
-    {
-        StringBuilder stringBuilder = new StringBuilder("<ul class=\"list-unstyled submenu\">");
-        if (MenuItems?.Count > 0)
-        {
-            foreach (var item in MenuItems)
-            {
-                PrintMenuItem(item, stringBuilder);
-            }
-        }
-        stringBuilder.Append("</ul>");
-        return stringBuilder.ToString();
-    }
-
-    private void PrintMenuItem(MenuItemDto dto, StringBuilder stringBuilder)
-    {
-        if (dto.ItemType.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))
-        {
-            stringBuilder.Append("<li class=\"\">");
-            stringBuilder.Append($"<a href=\"{(string)@ViewBag.paths[MenuItemTypeEnum.page.ToString()]}/{dto.Url}\" class=\"dropdown-item\">{dto.Title}</a>");
-            stringBuilder.Append("</li>");
-        }
-
-        if (dto.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
-        {
-            stringBuilder.Append("<li class=\"\">");
-            var target = (dto.UrlTarget?.Length > 0) ? dto.UrlTarget : "_blank";
-
-            stringBuilder.Append($"<a href=\"{dto.Url}\" class=\"dropdown-item\" target=\"{target}\">{dto.Title}</a>");
-            stringBuilder.Append("</li>");
-        }
-
-        if (dto.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase) && dto.MenuItems?.Count > 0)
-        {
-            stringBuilder.Append("<li class=\"dropdown-submenu item-has-submenu\">");
-            var sublavel = PrintMenu(dto.MenuItems);
-            stringBuilder.Append($"<a class=\"dropdown-item  \" href=\"#\">{dto.Title} <i class=\"fa fa-caret\"></i></a>");
-
-            stringBuilder.Append(sublavel);
-
-            stringBuilder.Append("</li>");
-        }
-    }
-}
-
-@if (ViewBag.Menu != null && ViewBag.Menu.MenuItems != null)
-{
+ 
+ 
     <div class="menu-bar">
         <nav class="main-menu">
             <div class="navbar-header">
@@ -63,44 +16,9 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse clearfix">
-                <ul class="navigation clearfix">
-
-                    @foreach (var item in ViewBag.Menu.MenuItems)
-                    {
-
-                        @if (item.ItemType.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))
-                        {
-                            <li>
-                                <a asp-controller="pages" asp-action="@item.Url" asp-route-slug="@item.Url" class="nav-link">@item.Title</a>
-                            </li>
-
-                        }
-                        else if (item.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))
-                        {
-                            <li>
-                                <a href='/@System.Globalization.CultureInfo.CurrentCulture.Name/Portal/@item.Url'>@item.Title</a>
-                            </li>
-                        }
-                        else if (item.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
-                        {
-                            <li>
-                                <a href="@item.Url" target="@item.UrlTarget">@item.Title</a>
-                            </li>
-                        }
-
-                        else if (item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase) && item.MenuItems?.Count > 0)
-                        {
-                            <li class="dropdown">
-                                <a href="#">@item.Title</a>
-                                @Html.Raw(PrintMenu(item.MenuItems))
-                            </li>
-                        }
-
-                    }
-
-                </ul>
+                <menu></menu>
             </div>
         </nav>
 
     </div>
-}
+ 

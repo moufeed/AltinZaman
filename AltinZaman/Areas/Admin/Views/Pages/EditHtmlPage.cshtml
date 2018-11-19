@@ -4,7 +4,7 @@
     ViewData["Title"] = Localizer["html_editing_form"];
     ViewData["UnitTestPageClass"] = "ut-editPage";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
-    
+
 }
 
 
@@ -30,18 +30,18 @@
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
         @*@if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                            <a href="@Url.AdminUrl("EditHtmlPage", "Pages", new { culture = lang.Lang ,id = Model.Id})">@lang.Name</a>
-                        </li>
-                    }
-                </ul>
-            </header>
-        }*@
+            {
+                <header class="language_bar clearfix">
+                    <ul class="nav nav-tabs nav-header" role="tablist">
+                        @foreach (var lang in ViewBag.Languages)
+                        {
+                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                                <a href="@Url.AdminUrl("EditHtmlPage", "Pages", new { culture = lang.Lang ,id = Model.Id})">@lang.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </header>
+            }*@
 
         <div class="x_panel">
             <div class="x_content">
@@ -144,12 +144,12 @@
                     </div>
 
                     @*<div class="form-group clearfix">
-                        @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
-                        <div class="col-md-7 col-sm-9 col-xs-12">
-                            @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
-                            @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
-                        </div>
-                    </div>*@
+                            @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
+                            <div class="col-md-7 col-sm-9 col-xs-12">
+                                @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
+                                @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
+                            </div>
+                        </div>*@
 
                     <div class="form-group clearfix">
                         <label asp-for="Content" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_content"]</label>
@@ -229,7 +229,11 @@
 
     <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#Content";
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 
     //seo scripts
@@ -238,40 +242,7 @@
     <script src="~/Admin/js/serializejson.min.js"></script>
     <script src="~/Admin/js/seo.min.js"></script>
     <script>
-        tinymce.init({
-            selector: '#Content',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-
-
-
+         
         $('#keywords').tagsinput({
             tagClass: 'tag'
         });

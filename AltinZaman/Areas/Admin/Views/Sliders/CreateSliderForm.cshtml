@@ -28,7 +28,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         @{
-            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {   };
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
         }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
@@ -68,15 +68,15 @@
                     </div>
 
                     @*<div class="form-group clearfix">
-                        <label asp-for="Position" class="control-label col-md-3 col-sm-3 col-xs-12 ">Slider Position</label>
-                        <div class="col-md-7 col-sm-5 col-xs-12">
-                            <select asp-for="Position" class="form-control" required>
-                                <option value="Header">Header</option>
-                            </select>
+                            <label asp-for="Position" class="control-label col-md-3 col-sm-3 col-xs-12 ">Slider Position</label>
+                            <div class="col-md-7 col-sm-5 col-xs-12">
+                                <select asp-for="Position" class="form-control" required>
+                                    <option value="Header">Header</option>
+                                </select>
 
-                            <span asp-validation-for="Position" class="text-danger invalid_field"></span>
-                        </div>
-                    </div>*@
+                                <span asp-validation-for="Position" class="text-danger invalid_field"></span>
+                            </div>
+                        </div>*@
 
                     <div class="form-group clearfix">
                         <label asp-for="Summary" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_summary"]</label>
@@ -121,47 +121,14 @@
             ignore: ".ignore"
         });
     </script>
-
-
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
     <script src="~/Admin/js/validator.min.js"></script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = null;
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
-    <script>
-
-
-        tinymce.init({
-            selector: '#Content',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-    </script>
+     
 
 }
 

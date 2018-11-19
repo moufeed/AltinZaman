@@ -73,7 +73,7 @@
                                            data-placement="top"
                                            href="@Url.AdminUrl("Edit","menus",new { id = menu.Id})"
                                            title="@Localizer["t_edit"]"
-                                           class="btn btn-edit u_edit_btn btn-round"><i class="fa fa-edit "></i></a>
+                                           class="btn btn-edit  ut-edit-btn btn-round"><i class="fa fa-edit "></i></a>
                                         @*href="~/Admin/@activeLang/Menus/Edit/@menu.Id"*@
 
                                         @if (menu.Locked)
@@ -93,7 +93,7 @@
                                                title="@Localizer["t_remove"]"
                                                data-msg-error="@Localizer["error"]"
                                                data-msg-deleted="@Localizer["deleted_successfully"]"
-                                               class="btn btn-remove btn-round delete__menu "><i class="fa fa-times "></i></a>
+                                               class="btn btn-remove btn-round delete__menu ut-delete-btn "><i class="fa fa-times "></i></a>
                                         }
 
                                     </td>

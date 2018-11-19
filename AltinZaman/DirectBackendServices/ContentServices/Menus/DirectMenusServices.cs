@@ -4,22 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Menus.Models;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
 using TamTechSDK.Web.Services.ContentService.Menus.PublicService;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Menus
+namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 {
     public class DirectMenusServices : TamTechSDK.Common.Services.ContentService.Menus.IMenusServices
     {
-
+      
 
         #region Props  
         private readonly TamTechBackendSDK.ContentService.Services.Menus.IMenuService _menuService;
         private readonly TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
-        private readonly IWebApplicationSettingsService _appSettingsService;
+        private readonly IWebApplicationSettingsService _appSettingsService; 
         //private readonly TamTechSDK.Common.Services.ContentService.Menus.IMenuManager _menuManager;
         #endregion
 
@@ -34,14 +34,14 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
             _menuService = menuService;
             _contentUtilities = contentUtilities;
             _appSettingsService = appSettingsService;
-            //    _menuManager = menuManager;
+        //    _menuManager = menuManager;
         }
         #endregion
 
         #region Utilities
 
         private IRequestProviderResult<TResult> MapRequestProviderResult<TResult>(
-           TamTechBackendSDK.ContentService.Models.Results.IReturnResultModel<TResult> inputResult)
+           TamTechBackendSDK.ContentService.Models.Results.IReturnResultModel<TResult> inputResult  )
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = inputResult.Success;
@@ -80,13 +80,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
             {
                 string mainMenuKey = _appSettingsService.GetMainMenuKey();
 
-                WebPublicCashedMenusService._navbar_en = await GetPublicByKeyAndLangAsync(mainMenuKey, "en");
+                 WebPublicCashedMenusService._navbar_en =  await GetPublicByKeyAndLangAsync(mainMenuKey, "en");
 
 
-                WebPublicCashedMenusService._navbar_ar = await GetPublicByKeyAndLangAsync(mainMenuKey, "ar");
+                WebPublicCashedMenusService._navbar_ar =  await GetPublicByKeyAndLangAsync(mainMenuKey, "ar");
             }
         }
-
+        
         #region Deserialize
         public TResult DeserializeFromObject<TResult>(dynamic inputObject)
         {
@@ -101,7 +101,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         #region Service
 
         public async Task<Dictionary<string, Dictionary<string, string>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
-        {
+        { 
             var results = await _contentUtilities.GetListsModulesForMenuItemsTypesAsync(model, lang);
             return results;
         }
@@ -118,13 +118,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         //}
 
 
-        public async Task<MenuDto> GetPublicByKeyAndLangAsync(string key, string lang)
+        public async Task<MenuDto> GetPublicByKeyAndLangAsync(string key , string lang)
         {
             var result = await _menuService.GetPublicDynamicByKeyAndLangAsync(key, lang);
             MenuDto menu = new MenuDto();
             if (result != null)
             {
-                menu = DeserializeFromObject<MenuDto>(result);
+                menu = DeserializeFromObject<MenuDto>(result); 
             }
             return menu;
         }
@@ -157,7 +157,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<MenuDto>> GetByIdAsync(Guid id, string lang)
         {
-            var menus = await _menuService.GetByIdExceptSoftDeletedAsync(id, lang);
+            var menus = await _menuService.GetByIdExceptSoftDeletedAsync(id, lang); 
             return GetRequestProviderResult(menus.MapToFrontendDto());
         }
 
@@ -192,12 +192,12 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus
         public async Task<IRequestProviderResult<string>> CreateMenuItemAsync(CreateMenuItemDto model)
         {
             var result = await _menuService.CreateMenuItemAsync(model.MapToBackendDto());
-            if (result.Success)
+            if(result.Success)
             {
-                await RefreshCachedMenusAsync();
+               await  RefreshCachedMenusAsync();
             }
             return MapRequestProviderResult(result);
-        }
+        } 
 
         public async Task<IRequestProviderResult<bool>> EditMenuItemAsync(UpdateMenuItemDto model)
         {

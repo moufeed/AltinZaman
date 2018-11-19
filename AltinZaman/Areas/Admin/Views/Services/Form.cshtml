@@ -38,14 +38,14 @@
             }
             else
             {
-                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {};
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
             }
 
         }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
 
-        
+
 
 
         <div class="x_panel">
@@ -231,7 +231,11 @@
     <script src="~/Admin/js/validator.min.js"></script>
 
 
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#Content";
+        ViewBag.TinyMce_Suumry_Id = null;
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 
     @if (ViewBag.isUpdate)
@@ -240,47 +244,7 @@
         <script src="~/Admin/js/seo.min.js"></script>
     }
     <script>
-
-
-
     $('.select_picker').select2();
-
-
-    tinymce.init({
-    selector: '#Content',
-    branding: false,
-    theme: 'modern',
-    height: 300,
-    plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-    'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-    'save table contextmenu directionality emoticons template paste textcolor'],
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-    setup: function (editor) {
-    editor.on('change', function (e) {
-    editor.save();
-    });
-    }
-
-    });
-
-    /*
-    tinymce.init({
-    selector: '#Summary',
-    branding: false,
-    min_height: 150,
-
-    statusbar: false,
-    theme: 'modern',
-    menubar: false,
-    plugins: ['code hr anchor pagebreak spellchecker '],
-    setup: function (editor) {
-    editor.on('change', function (e) {
-    editor.save();
-    });
-    }
-    });
-
-    */
     </script>
 
 }

@@ -3,16 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.IdentityService.UsersMenager.Mapper;
+using TamTech.Web.DirectBackendServices.IdentityService.UsersMenager.Mapper;
 using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Common.Services.Identity.Models;
 using TamTechSDK.Common.Services.Identity.Models.Params;
 
-namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
+namespace TamTech.Web.DirectBackendServices.IdentityService.UsersMenager
 {
-    public class DirectUserMenagerServices : BaseDirectService, TamTechSDK.Common.Services.Identity.IUsersManagerService
+    public class DirectUserMenagerServices : BaseDirectService,  TamTechSDK.Common.Services.Identity.IUsersManagerService
     {
 
         #region Props  
@@ -35,8 +35,8 @@ namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
 
         #region Utilities
 
-
-        private IRequestProviderResult<TResult> GetRequestProviderResult<TResult>(TResult data, PaginationMetadataModel header)
+       
+        private IRequestProviderResult<TResult> GetRequestProviderResult<TResult>(TResult data , PaginationMetadataModel header)
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = true;
@@ -45,7 +45,7 @@ namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
             _resultModel.Header = header;
             return _resultModel;
         }
-
+        
 
         #endregion
 
@@ -58,11 +58,11 @@ namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
         public async Task<IRequestProviderResult<UserModel>> GetUserByUsernameAsync(string username)
         {
             var result = _userManagerService.GetByUserName(username);
-            UserModel user = result != null ? result.MapToFrontendModel() : new UserModel();
-            return ReturnResult(user);
+            UserModel user = result != null ? result.MapToFrontendModel(): new UserModel();
+            return  ReturnResult(user);
         }
 
-        public async Task<IRequestProviderResult<List<UserModel>>> GetUsersAsync(GetUsersModel model)
+        public async  Task<IRequestProviderResult<List<UserModel>>> GetUsersAsync(GetUsersModel model)
         {
             var result = _userManagerService.GetAll(model.MapToBackendModel());
             var users = result.Users != null ? result.Users.Select(m => m.MapToFrontendModel()).ToList() : new List<UserModel>();
@@ -76,10 +76,10 @@ namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
             return MapRequestProviderResult<bool>(result);
         }
 
-        public async Task<IRequestProviderResult<bool>> BlockUserAsync(UserNameModel model)
+        public async Task<IRequestProviderResult<bool>> BlockUserAsync (UserNameModel model)
         {
             var result = _userManagerService.BlockUserAccount(model.UserName);
-            return MapRequestProviderResult<bool>(result);
+            return  MapRequestProviderResult<bool>(result);
         }
 
         public async Task<IRequestProviderResult<bool>> UnblockUserAsync(UserNameModel model)

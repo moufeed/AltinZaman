@@ -1,4 +1,4 @@
-﻿@model  ProductFormVM
+﻿@model ProductFormVM
 @{
     ViewData["Title"] = "Form";
 
@@ -34,15 +34,15 @@ new
                 </button>
                 @if (ViewBag.isUpdate)
                 {
-                <button type="button" class="btn  btn-danger delete-product" data-redirection
-                         data-url="@Url.AdminUrl("DeleteAsync","products" ,new { id = Model.Id } )"
-                         data-backurl="@Url.AdminUrl("index","products")">
-                    <i class="fa fa-trash-o"></i>
-                    @Localizer["delete"]
-                </button>
+                    <button type="button" class="btn  btn-danger delete-product" data-redirection
+                            data-url="@Url.AdminUrl("DeleteAsync","products" ,new { id = Model.Id } )"
+                            data-backurl="@Url.AdminUrl("index","products")">
+                        <i class="fa fa-trash-o"></i>
+                        @Localizer["delete"]
+                    </button>
                 }
-                    
-                </div>
+
+            </div>
         </div>
     </div>
 
@@ -74,7 +74,8 @@ new
                     <div class="pull-left flip-dir">
                         <ul class="nav nav-tabs navs-line" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#information" aria-controls="information" role="tab" data-toggle="tab" class="ut-tap-info">@Localizer["product_info"] </a></li>
+                                <a href="#information" aria-controls="information" role="tab" data-toggle="tab" class="ut-tap-info">@Localizer["product_info"] </a>
+                            </li>
                             <li role="presentation">
                                 <a href="#Specifications" aria-controls="Specifications" role="tab" data-toggle="tab" class="ut-tap-specifications">@Localizer["product_specifications"] </a>
                             </li>
@@ -244,7 +245,7 @@ new
                                 <input type="number" step="any" name="discountprice" class="form-control" id="discount_price" min="0" value="0" />
                             </div>
                         </div>
-                       
+
 
                     </div>
                     <div class="modal-footer">
@@ -260,7 +261,7 @@ new
 
 
 
- 
+
 
 
 @section Styles{
@@ -303,7 +304,7 @@ new
             deleteAttrValue : "@Url.AdminUrl("DeleteProductAttributeValueAsync", "Products")",
             geteditAttributes: "@Url.AdminUrl("GetProductAttributesAsync", "Products" , new { productId = Model.Id })"
         }
-        
+
         window.productLocalization ={
             "f_type" :" @Localizer["f_type"]",
             "f_name" :" @Localizer["f_name"]",
@@ -326,19 +327,13 @@ new
         }
     </script>
     <script src="~/Admin/js/product.min.js"></script>
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
 
-    <script>
-        tinymce.init({
-            selector: '#FullDescription',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
-        });</script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#FullDescription";
+        ViewBag.TinyMce_Suumry_Id = null;
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
+ 
 
 
 }

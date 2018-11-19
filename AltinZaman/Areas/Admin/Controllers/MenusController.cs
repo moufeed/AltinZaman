@@ -11,16 +11,16 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class MenusController : MenusBaseController
-    {
+    { 
         public MenusController(ITelemetryClientService telemetryClientService, IMenusServices MenusServices,
-       IWebApplicationSettingsService appSettingsService, IStringLocalizer<MenusBaseController> localizer)
+       IWebApplicationSettingsService appSettingsService , IStringLocalizer<MenusBaseController> localizer)
             : base(telemetryClientService, MenusServices, appSettingsService, localizer)
         {
         }
-
+ 
 
     }
 }

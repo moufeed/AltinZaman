@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Brands.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Brands.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Brands.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Brands
+namespace TamTech.Web.DirectBackendServices.ContentServices.Brands
 {
-    public class DirectBrandsServices : BaseDirectService, TamTechSDK.Common.Services.ContentService.Brands.IBrandsServices
+    public class DirectBrandsServices : BaseDirectService , TamTechSDK.Common.Services.ContentService.Brands.IBrandsServices
     {
 
         #region Props  
-        private readonly TamTechBackendSDK.ContentService.Services.Brands.IBrandService _brandService;
+        private readonly TamTechBackendSDK.ContentService.Services.Brands.IBrandService  _brandService;
         #endregion
 
 
 
-        public DirectBrandsServices(TamTechBackendSDK.ContentService.Services.Brands.IBrandService brandService)
+        public DirectBrandsServices(TamTechBackendSDK.ContentService.Services.Brands.IBrandService  brandService)
         {
             _brandService = brandService;
         }
@@ -38,7 +38,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Brands
         #region {Brands Manager}   
         public async Task<IRequestProviderResult<Guid>> CreateAsync(Brand model)
         {
-            var result = await _brandService.CreateAsync(model.MapToBackendBrandDto());
+            var result = await  _brandService.CreateAsync(model.MapToBackendBrandDto());
 
             return MapRequestProviderResult<Guid>(result);
 
@@ -51,7 +51,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Brands
 
             return ReturnResult(data, result != null);
 
-
+            
         }
 
         public async Task<IRequestProviderResult<object>> DeleteBrandByIdAsync(string id)

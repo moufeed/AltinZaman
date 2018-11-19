@@ -5,7 +5,7 @@ using TamTechSDK.Common.Services.Upload;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using Microsoft.Extensions.Localization;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class CategoriesController : CategoriesBaseController
     {
@@ -14,11 +14,11 @@ namespace AltinZaman.Areas.Admin.Controllers
         public CategoriesController(
                                     ITelemetryClientService telemetryClientService,
                                     ICategoriesServices categoryService,
-                                    IUploadService uploadService,
-              IStringLocalizer<CategoriesBaseController> localizer)
-            : base(telemetryClientService, categoryService, uploadService, localizer)
+                                    IUploadService uploadService, 
+              IStringLocalizer<CategoriesBaseController> localizer) 
+            : base(telemetryClientService, categoryService, uploadService,  localizer)
         {
-
+            
         }
         #endregion
 

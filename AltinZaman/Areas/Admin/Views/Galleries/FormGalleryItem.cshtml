@@ -2,7 +2,7 @@
 
 @{
     ViewData["UnitTestPageClass"] = "ut-item-form-page";
-    ViewData["Title"] =   ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"];
+    ViewData["Title"] = ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"];
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
@@ -12,14 +12,14 @@
         <div class="title_left">
             <h3>
                 @( ViewBag.isUpdate ? Localizer["edit_gallery_item"] : Localizer["create_gallery_item"])
-            <small></small>
-        </h3>
+                <small></small>
+            </h3>
+        </div>
+        <div class="title_right">
+            <a href="@Url.AdminUrl("Edit" ,"Galleries" ,new { id = ViewBag.GalleryId} ) "
+               class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_gallery"]</a>
+        </div>
     </div>
-    <div class="title_right">
-        <a href="@Url.AdminUrl("Edit" ,"Galleries" ,new { id = ViewBag.GalleryId} ) "
-           class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_gallery"]</a>
-    </div>
-</div>
 </div>
 
 
@@ -44,7 +44,7 @@
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
 
-    
+
         <div class="x_panel">
             <div class="x_content">
 
@@ -159,51 +159,16 @@
 }
 
 @section Scripts {
-    
-     
+
+
     <script src="~/Admin/js/validator.min.js"></script>
     <script src="~/Admin/lib/tinymce/tinymce.js"></script>
 
-  
-
-    <script>
-
-        
-         
-
-        tinymce.init({
-            selector: '#Content',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-    </script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = null;
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 }
 

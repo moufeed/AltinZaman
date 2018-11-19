@@ -7,7 +7,7 @@
 }
 
 
- 
+
 
 <div class="clearfix">
     <div class="page-title">
@@ -35,7 +35,7 @@
         }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
-         
+
         <div class="x_panel">
             <div class="x_content">
 
@@ -166,7 +166,7 @@
 
 
     <script>
-       
+
 
 
 
@@ -176,28 +176,14 @@
             ignore: ".ignore"
         });
     </script>
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
-
-    <script>
 
 
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-    </script>
-
+    @{
+        ViewBag.TinyMce_Contetnt_Id = null;
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
+ 
 }
 
 

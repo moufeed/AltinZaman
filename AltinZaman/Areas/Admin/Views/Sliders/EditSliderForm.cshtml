@@ -28,7 +28,7 @@
         @{
             ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
         }
-            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
         <div class="x_panel">
 
@@ -37,12 +37,15 @@
                       asp-action="Edit"
                       class="form-horizontal forn-new form-label-left m-t5"
                       id="SlidersForm">
+
                     <input type="hidden" name="Lang" value="@activeLang" />
+
 
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                     }
+
                     <div class="form-group clearfix">
                         <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_name"]</label>
                         <div class="col-md-7 col-sm-5 col-xs-12">
@@ -50,6 +53,7 @@
                             <span asp-validation-for="Title" class="text-danger invalid_field"></span>
                         </div>
                     </div>
+
                     @if (Model.Locked)
                     {
                         <div class="form-group clearfix">
@@ -65,7 +69,6 @@
                             </div>
                         </div>
 
-                       
                     }
                     else
                     {
@@ -80,6 +83,17 @@
 
                     }
 
+                    @*<div class="form-group clearfix">
+                            <label asp-for="Position" class="control-label col-md-3 col-sm-3 col-xs-12 ">Slider Position</label>
+                            <div class="col-md-7 col-sm-5 col-xs-12">
+                                <select asp-for="Position" class="form-control" required>
+                                    <option value="Header">Header</option>
+                                </select>
+
+                                <span asp-validation-for="Position" class="text-danger invalid_field"></span>
+                            </div>
+                        </div>*@
+
                     <div class="form-group clearfix">
                         <label asp-for="Summary" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_summary"]</label>
                         <div class="col-md-7 col-sm-5 col-xs-12">
@@ -87,6 +101,7 @@
                             <span asp-validation-for="Summary" class="text-danger invalid_field"></span>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
                             <input type="submit" class="btn btn-success p-x-5 ut-save-btn" value="@Localizer["Update"]">
@@ -96,6 +111,7 @@
                             </button>
                         </div>
                     </div>
+
 
                 </form>
             </div>
@@ -129,49 +145,16 @@
     </script>
 
 
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+
     <script src="~/Admin/js/sliders.min.js"></script>
     <script src="~/Admin/js/validator.min.js"></script>
-    <script>
-        $(document).ready(function() {
- 
 
-        tinymce.init({
-            selector: '#Content',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
 
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-        });
-
-    </script>
-
+    @{
+        ViewBag.TinyMce_Contetnt_Id = null;
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 }
 
 

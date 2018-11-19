@@ -38,7 +38,7 @@
 
         stringBuilder.Append("<tr class=\"tfooter\"><td colspan='6'>");
         stringBuilder.Append("<div class=\"text-right p-t2\">");
-        stringBuilder.Append($"<button class=\"btn btn-add btn-info\" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
+        stringBuilder.Append($"<button class=\"btn btn-add btn-info ut-additem-btn\" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
             $"<i class=\"fa fa-plus\"></i>{ViewBag.tableheadding[6]}</button>");
         stringBuilder.Append("</div></tr></td>");
         stringBuilder.Append("</table>");
@@ -128,7 +128,7 @@
                              $"data-key='{dto.Key}' " +
                              $"data-type=\"{dto.ItemType}\" " +
                              $"data-root='{@Model.Id}' " +
-                             $"class='btn btn-edit edit-menuitem ut-edit-{dto.ItemType} btn-round child' >" +
+                             $"class='btn btn-edit edit-menuitem ut-{dto.ItemType}-edit btn-round child' >" +
                              $"<i class='fa fa-edit '></i></a>");
 
 
@@ -413,7 +413,7 @@
                                                    data-key="@item.Key"
                                                    data-root="@Model.Id"
                                                    data-type='@item.ItemType'
-                                                   class="btn btn-edit edit-menuitem btn-round ut-edit-@item.ItemType"><i class="fa fa-edit "></i></a>
+                                                   class="btn btn-edit edit-menuitem btn-round ut-@item.ItemType-edit"><i class="fa fa-edit "></i></a>
 
 
                                                 <a data-toggle="tooltip"

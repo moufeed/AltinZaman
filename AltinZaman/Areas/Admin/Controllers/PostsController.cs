@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using TamTechSDK.Common.Helpers.Converters;
 using TamTechSDK.Common.Services.ContentService.Posts;
 using TamTechSDK.Common.Services.ContentService.Sections;
 using TamTechSDK.Common.Services.Upload;
@@ -11,19 +12,20 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class PostsController : PostsBaseController
     {
         public PostsController(
             ITelemetryClientService telemetryClientService,
-            IPostsService postservice,
-            IStringLocalizer<PostsBaseController> localizer,
+            IPostsService postservice, 
+            IStringLocalizer<PostsBaseController> localizer , 
             IUploadManagerService uploadManager,
-            ISectionsService sectionsService)
-                                            : base(telemetryClientService,
+            ISectionsService sectionsService,
+            IStringConverters stringConverters)
+                                            : base(telemetryClientService, 
                                                     postservice, localizer,
-                                                    uploadManager, sectionsService)
+                                                    uploadManager, sectionsService, stringConverters)
         {
         }
     }

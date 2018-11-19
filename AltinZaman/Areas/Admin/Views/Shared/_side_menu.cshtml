@@ -7,7 +7,7 @@
             @{
                 string activeController = ViewContext.RouteData.Values["Controller"].ToString();
                 string activeAction = ViewContext.RouteData.Values["Action"].ToString();
-                var activeLang = ViewData["_lang"];
+              
             }
             <li>
                 <a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>@Localizer["Home"]</a>
@@ -17,7 +17,7 @@
             <a asp-area="Admin" asp-controller="Home" asp-action="Biography"><i class="fa fa-address-book-o"></i>Biography</a>
         </li>*@
 
-            @*<li>
+            <li>
             <a><i class="fa fa-book"></i>@Localizer["Catelog"]<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li class="@( activeController == " Products" ? "current-page" :"" )">
@@ -25,9 +25,17 @@
                     <a asp-area="Admin" asp-controller="Products" asp-action="Index"><i class="fa fa-cubes"></i>
                         @Localizer["Products"]</a>
                 </li>
-               
+                @*<li class="@( activeController == " Manufacturer" ? "current-page" :"" )">
+                    <a asp-area="Admin" asp-controller="Manufacturer" asp-action="Index"><i class="fa fa-tags"></i>@Localizer["Manufacturer"]</a>
+                </li>
+                <li class="@( activeController == " Categories" ? "current-page" :"" )">
+                    <a asp-area="Admin" asp-controller="Categories" asp-action="Index"><i class="fa fa-folder"></i>@Localizer["Categories"]</a>
+                </li>
+                <li class="@( activeController == " Reviews" ? "current-page" :"" )">
+                    <a asp-area="Admin" asp-controller="Reviews" asp-action="Index"><i class="fa fa-comment"></i>@Localizer["Reviews"]</a>
+                </li>*@
             </ul>
-        </li>*@
+        </li>
 
 
 
@@ -70,7 +78,7 @@
 
 
 
-            @*<li class='@((activeController == "Users")  ?  "active" :""  )'>
+            <li class='@((activeController == "Users")  ?  "active" :""  )'>
                 <a><i class="fa fa-users"></i> @Localizer["Users"] <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li class="@( activeController == " Users" && activeAction=="Index" ? "current-page" :"" )">
@@ -81,7 +89,7 @@
                             <i class="fa fa-plus"></i>@Localizer["new_user"]
                         </a>
                     </li>
-                </ul>*@
+                </ul>
             </li>
 
             @*<li>
@@ -97,7 +105,7 @@
         </li>*@
 
 
-            <li class='@((activeController == "Services")  ?  "active" :""  )' >
+            <li class='@((activeController == "Services")  ?  "active" :""  )'>
                 <a>
                     <i class="fa fa-cubes"></i>
                     @Localizer["Services"] <span class="fa fa-chevron-down"></span>
@@ -119,7 +127,7 @@
 
             </li>
 
-            <li class='@((activeController == "Menus")  ?  "Sliders" :""  )'>
+            <li class='@((activeController == "Sliders")  ?  "active" :""  )'>
                 <a>
                     <i class="fa fa-picture-o"></i> @Localizer["Sliders"] <span class="fa fa-chevron-down"></span>
                 </a>
@@ -136,7 +144,7 @@
                 </ul>
             </li>
 
-            @*<li>
+            <li>
                 <a>
                     <i class="fa fa-camera-retro "></i> @Localizer["Galleries"] <span class="fa fa-chevron-down"></span>
                 </a>
@@ -150,9 +158,9 @@
                         <a href="@Url.AdminUrl("create" ,"galleries" )"><i class="fa fa-plus"></i>@Localizer["new_gallery"]</a>
                     </li>
                 </ul>
-            </li>*@
+            </li>
 
-            @*<li>
+            <li>
                 <a>
                     <i class="fa fa-files-o "></i> @Localizer["Posts"] <span class="fa fa-chevron-down"></span>
                 </a>
@@ -176,7 +184,7 @@
                         <a href="@Url.AdminUrl("create" ,"sections" )"><i class="fa fa-folder-o"></i>@Localizer["new_section"]</a>
                     </li>
                 </ul>
-            </li>*@
+            </li>
  
         </ul>
     </div>

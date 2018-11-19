@@ -8,13 +8,13 @@ using TamTechSDK.Common.Services.Upload.Settings;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using Microsoft.Extensions.Localization;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class GalleriesController : GalleryBaseController
     {
         public GalleriesController(ITelemetryClientService telemetryClientService,
             IGalleriesService galeriesService,
-             IUploadManagerService uploadManager, IStringLocalizer<GalleryBaseController> localizer)
+             IUploadManagerService uploadManager,  IStringLocalizer<GalleryBaseController> localizer)
             : base(telemetryClientService, galeriesService, uploadManager, localizer)
         {
         }

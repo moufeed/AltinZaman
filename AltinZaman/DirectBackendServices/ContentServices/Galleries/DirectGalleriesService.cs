@@ -6,10 +6,10 @@ using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Galleries;
 using TamTechSDK.Common.Services.ContentService.Galleries.Models;
 using System.Linq;
-using AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
+namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries
 {
     public class DirectGalleriesService : BaseDirectService, IGalleriesService
     {
@@ -17,7 +17,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
         #region prop
         TamTechBackendSDK.ContentService.Services.Galleries.IGalleryService _galleriesService;
 
-
+       
         #endregion
 
 
@@ -77,7 +77,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
         }
 
 
-
+        
 
         public async Task<IRequestProviderResult<GalleryDto>> GetByIdAsync(Guid id, string lang)
         {
@@ -90,12 +90,12 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
 
         public async Task<IRequestProviderResult<bool>> EditAsync(UpdateGalleryDto Gallery)
         {
-            var result = await _galleriesService.EditAsync(Gallery.MapTobackendUpdateGalleryDto());
+            var result =await  _galleriesService.EditAsync(Gallery.MapTobackendUpdateGalleryDto());
 
             return MapRequestProviderResult(result);
         }
 
-
+       
 
         public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO data)
         {
@@ -125,9 +125,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
 
         public async Task<IRequestProviderResult<GalleryItemDto>> GetGalleryItemByIdAsync(GalleryItemKeysDto model, string lang)
         {
-            var result = await _galleriesService.GetGalleryItemByIdAsync(model.MapToBackendGalleryItemKeysDto(), lang);
+            var result = await _galleriesService.GetGalleryItemByIdAsync(model.MapToBackendGalleryItemKeysDto() ,lang);
             return ReturnResult(result.MapToFrontEndGalleryItemDto());
-
+        
         }
 
 
@@ -139,7 +139,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
 
         }
 
-
+        
 
         public async Task<IRequestProviderResult<bool>> PublishGalleryItemByIdAsync(GalleryItemKeysDto dto)
         {
@@ -156,14 +156,14 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
 
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishGalleryItemsAsync(PublishDTO dto)
+        public async  Task<IRequestProviderResult<bool>> PublishGalleryItemsAsync(PublishDTO dto)
         {
             var result = await _galleriesService.PublishAllGalleryItemsAsync(dto.MapToBackend());
-
+             
             return MapRequestProviderResult(result);
         }
 
-        public async Task<IRequestProviderResult<Dictionary<Guid, string>>> CreateListGalleryItemsAsync(CreateListGalleryItemsDto data)
+        public async Task<IRequestProviderResult<Dictionary<Guid,string>>> CreateListGalleryItemsAsync(CreateListGalleryItemsDto data)
         {
 
             var result = await _galleriesService.CreateListGalleryItemsAsync(data.MapToBackendListOitems());

@@ -23,7 +23,7 @@ using TamTechSDK.Web.Filters;
 namespace AltinZaman.Areas.Identity.Controllers
 {
     [Area("Identity")]
-    [ServiceFilter(typeof(LanguageFilter))]
+    [ServiceFilter(typeof(AdminFilter))]
     public class AccountController : IdentityServer4.Quickstart.UI.AccountController
     {
         public AccountController(IIdentityServerInteractionService interaction,

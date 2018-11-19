@@ -1,7 +1,7 @@
 ﻿@model HtmlPageCreationVM
 @{
     ViewData["Title"] = Localizer["create_html_page"];
-    ViewData["UnitTestPageClass"] = "ut-createPage"; 
+    ViewData["UnitTestPageClass"] = "ut-createPage";
 }
 
 
@@ -23,18 +23,18 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
         @*@if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                            <a href="@Url.AdminUrl("CreateHtmlPage", "Pages", new { culture = lang.Lang})">@lang.Name</a>
-                        </li>
-                    }
-                </ul>
-            </header>
-        }*@
+            {
+                <header class="language_bar clearfix">
+                    <ul class="nav nav-tabs nav-header" role="tablist">
+                        @foreach (var lang in ViewBag.Languages)
+                        {
+                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                                <a href="@Url.AdminUrl("CreateHtmlPage", "Pages", new { culture = lang.Lang})">@lang.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </header>
+            }*@
 
         <div class="x_panel">
             <div class="x_content">
@@ -76,7 +76,7 @@
 
                         <label asp-for="Section" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_section"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
-                            <input type="text" asp-for="Section" class="form-control"  />
+                            <input type="text" asp-for="Section" class="form-control" />
                             <span asp-validation-for="Section" class="text-danger invalid_field"></span>
                         </div>
                     </div>
@@ -162,50 +162,24 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Admin/js/validator.min.js"></script>
+
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#Content";
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
     <script src="~/Admin/lib/select2/dist/js/select2.min.js"></script>
-    <script src="~/Admin/js/validator.min.js"></script>
     <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+
     <script>
          $('.select_picker').select2();
-            tinymce.init({
-                selector: '#Content',
-                branding: false,
-                theme: 'modern',
-                height: 300,
-                plugins : ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-              'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-              'save table contextmenu directionality emoticons template paste textcolor'],
-                toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-                setup: function (editor) {
-                    editor.on('change', function (e) {
-                        editor.save();
-                    });
-            }
-
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-                setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
+         $('#keywords').tagsinput({
+                    tagClass: 'tag'
         });
     </script>
-    <script>
-$('#keywords').tagsinput({
-            tagClass: 'tag'
-});
-    </script>
+
 }
 
 

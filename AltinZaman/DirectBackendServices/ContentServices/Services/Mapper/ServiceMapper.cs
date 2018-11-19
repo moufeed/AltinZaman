@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Services.Mapper
+namespace TamTech.Web.DirectBackendServices.ContentServices.Services.Mapper
 {
     public static class ServiceMapper
     {
@@ -59,7 +59,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services.Mapper
                 Slug = backend.Slug,
                 Summary = backend.Summary,
                 Title = backend.Title,
-                CreatedDate = backend.CreatedDate,
+                CreatedDate = backend.CreatedDate, 
                 Published = backend.Published,
                 Icon = backend.Icon,
                 IconVisibility = backend.IconVisibility,

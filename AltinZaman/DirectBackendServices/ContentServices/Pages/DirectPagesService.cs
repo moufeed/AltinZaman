@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Pages.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Pages.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Pages
+namespace TamTech.Web.DirectBackendServices.ContentServices.Pages
 {
     public class DirectPagesService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Pages.IPageService
     {
@@ -26,43 +26,43 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages
 
 
 
-
+      
 
 
 
 
 
         #region {Public Pages}  
-
+        
 
         public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)
         {
             // TODO: Not optimized
-            dynamic result = await _pageService.GetPublicDynamicBySlugAsync(slug);
+             dynamic result = await _pageService.GetPublicDynamicBySlugAsync(slug);
             PageDto page = new PageDto();
             if (result != null)
             {
                 page = DeserializeFromObject<PageDto>(result);
-            }
+            } 
             return ReturnResult(page);
 
         }
-
+     
 
         public async Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(Guid id)
         {
-            dynamic result = await _pageService.GetPublicDynamicByIdAsync(id);
+             dynamic result = await _pageService.GetPublicDynamicByIdAsync(id);
             PageSummary summaryPage = new PageSummary();
 
             bool Success = false;
-            if (result != null)
+            if (result != null )
             {
-                summaryPage = DeserializeFromObject<PageSummary>(result);
-                Success = true;
+                    summaryPage =  DeserializeFromObject<PageSummary>(result);
+                    Success = true;
             }
-
-            return ReturnResult(summaryPage, Success);
-
+             
+            return ReturnResult(summaryPage , Success); 
+            
         }
 
         #endregion
