@@ -2538,11 +2538,10 @@ input,
 textarea{
   position: relative;
   width: 100%;
- 
   padding: 15px 20px;
   color: #222;
   border: 1px solid #d9d9d9;
-  margin-bottom: 18px;
+  margin-bottom: 7px;
   background: transparent;
   transition: all 900ms ease;
 }
@@ -2984,18 +2983,19 @@ label.error{
   display: block;
   display: -webkit-box;
   max-width: 400px;
-  height: 58.8px;
+  height: 67.2px;
   margin: 0 auto;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.6;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
  }
+ 
 
 .ser-icon {
-    min-height: 350px;
+    min-height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3003,7 +3003,25 @@ label.error{
     font-size: 17vmin;
     color: #EED178;
     color: var(--lightgold);
-     
-    border: 3px solid #EED178;
-    box-shadow: 10.5vmin 10.5vmin 0 -10vmin #EED178
+    border-radius:15px; 
+    box-shadow: 10.5vmin 10.5vmin 0 -10vmin #EED178 ,-10.5vmin -10.5vmin 0 -10vmin #EED178
+}
+.ser-icon-sm{
+  font-size: 16vmin;
+  float: right;
+  margin: 6vmin;
+  color: #EED178;
+  color: var(--lightgold);
+}
+.btn-more{
+  color: #fff;
+  background:  #797979;
+  margin-top: 10px;
+  transition: all .2s;
+}
+.btn-more:hover{
+  background: #EED178;
+  background: var(--lightgold);
+  color: #fff;
+  text-decoration: none;
 }

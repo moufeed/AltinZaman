@@ -1,6 +1,6 @@
 ﻿@model List<ServiceDto>
 @{
-    ViewData["Title"] = Localizer["Services"];
+    ViewData["Title"] = Localizer["our_services"];
     Layout = "_Layout";
     ViewData["ImageURl"] = @Url.Content("~/portal/images/bgs/services.jpg");
     ViewData["pageTitle"] = Localizer["our_services"];
@@ -16,13 +16,28 @@
             {
                 <div class="col-md-4 col-sm-6 col-xs-12 service-colmun">
                     <div class="service-content">
-                        <div class="icon-box"><a href="service-details.html"><i class="fa @service.Icon"></i></a></div>
+                        <div class="icon-box">
+                        
+                        
+                            <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >
+                                @if (!string.IsNullOrEmpty(service.Icon))
+                                {
+                                    <i class="fa @service.Icon"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-cubes"></i>
+                                }
+
+
+                            </a></div>
                         <h4><a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >@service.Title</a></h4>
                         <div class="text">
                             <p class="truncate-3line">
                                 @service.Summary
                             </p>
                         </div>
+                        <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" class="btn btn-link btn-more" >@Localizer["more"]</a>
                     </div>
                 </div>
             }

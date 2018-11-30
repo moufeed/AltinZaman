@@ -1,9 +1,9 @@
 ﻿
 
-<script src="~/Admin/lib/tinymce/tinymce.js"></script>
-    
-    @if (ViewBag.TinyMce_Contetnt_Id != null)
-    {
+<script src="~/Admin/lib/tinymce/tinymce.min.js"></script>
+
+@if (ViewBag.TinyMce_Contetnt_Id != null)
+{
     <script>
             tinymce.init({
                 selector: '@ViewBag.TinyMce_Contetnt_Id',
@@ -11,7 +11,7 @@
                     theme: 'modern',
                     height: 300,
                     images_upload_url: "@Url.AdminUrl("UploadImage", "Home")",
-   
+
                   images_upload_handler: function (blobInfo, success, failure) {
 
                       var xhr, formData;
@@ -25,7 +25,7 @@
                                 return;
                             }
                             json = JSON.parse(xhr.responseText);
-        
+
                             if (!json || typeof json.url != 'string') {
                                 failure('Invalid JSON: ' + xhr.responseText);
                                 return;
@@ -45,13 +45,20 @@
                 skin: "lightgray",
                 paste_data_images: false,
                 suffix: ".min",
+                content_css: "/portal/css/default.css",
+                importcss_merge_classes: true,
+                importcss_groups: [
+                    {title: 'List styles', filter: /^(ul|ol)\./}  ,
+                    {title: 'Line styles', filter: /(-line)$/}  ,
+                ],
                 insertdatetime_formats: ["%H:%M:%S", "%Y-%m-%d", "%I:%M:%S %p", "%D"],
                 block_formats: 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3',
+                directionality:"@(DataCultureHelper.GetCurrent(Context.Request.Query) == "ar" ? "rtl" : "ltr")",
                 menubar: "edit insert view format table tools",
                 plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker autosave',
-                 'searchreplace wordcount visualblocks visualchars   fullscreen insertdatetime media nonbreaking colorpicker code charmap',
+                 'searchreplace wordcount visualblocks visualchars fullscreen insertdatetime media nonbreaking colorpicker code charmap',
                  'save table contextmenu directionality emoticons template paste textcolor codesample importcss'],
-                toolbar: " undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect | formatselect fontselect fontsizeselect | searchreplace | bullist numlist | outdent indent  | link unlink anchor image | code | forecolor backcolor | fullscreen | table | subscript superscript | charmap link image media | hr ltr rtl | cut copy paste pastetext | visualchars visualblocks nonbreaking blockquote template | print preview codesample insertdatetime removeformat format",
+                toolbar : " undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect | formatselect fontselect fontsizeselect | searchreplace | bullist numlist | outdent indent  | link unlink anchor image | code | forecolor backcolor | fullscreen | table | subscript superscript | charmap link image media | hr ltr rtl | cut copy paste pastetext | visualchars visualblocks nonbreaking blockquote template | print preview codesample insertdatetime removeformat format | styleselect code",
                 toolbar_items_size: "small",
                 verify_html: true,
                       image_class_list: [
@@ -65,11 +72,11 @@
                     })},
                 });
 
-      
+
 
     </script>
-         
-    }
+
+}
 
 @if (ViewBag.TinyMce_Suumry_Id != null)
 {
@@ -82,8 +89,8 @@
                 min_height: 150,
                 statusbar: false,
                  menubar: false,
-
-               plugins: ['code hr anchor pagebreak spellchecker '],
+                 directionality:"@(DataCultureHelper.GetCurrent(Context.Request.Query) == "ar" ? "rtl" : "ltr")",
+             plugins: ['code hr anchor pagebreak spellchecker directionality'],
                 setup: function(editor) {
                 editor.on('change', function(e) {
                     editor.save();
@@ -92,7 +99,7 @@
 
     </script>
 }
+
+
+
  
-
-
-

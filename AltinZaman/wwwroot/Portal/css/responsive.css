@@ -164,9 +164,21 @@
 		margin-top: 8px;
 		margin-bottom: 10px;
 	}
-
+	.contact-info .single-item{
+		border: none;
+	}
+	.contact-info{
+		padding: 25px 0;
+	}
 }
 @media only screen and (max-width: 767px){
+
+
+	.logo-box img{
+		height: 90px;
+		margin-bottom: -30px;
+	}
+	 
 	
 	.header-lower  .col-md-3.col-xs-12:first-of-type{
 		text-align: center;
@@ -357,7 +369,9 @@
 		width: 100%;
 	}
 	.sticky-header .logo-box{
-		display: none;
+		float: left;
+		margin-bottom: -25px;
+		margin-top: 5px;
 	}
 	.feature-section .img-box{
 		width: 100%;
@@ -392,6 +406,21 @@
 	}
 	.main-footer{
 		text-align: center;
+	}
+
+	.ser-icon{
+		display: none;
+	}
+	.sec-pad{
+		padding: 25px 0;
+	}
+	.about-colmun .img-box{
+		display: none;
+	}
+
+	.contact-info .single-item{
+		padding: 15px 0;
+		margin-bottom: 15px;
 	}
 }
 

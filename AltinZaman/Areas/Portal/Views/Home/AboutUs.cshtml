@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "TamTech";
+    ViewData["Title"] = @Localizer["site_title"];
     Layout = "_Layout";
     ViewData["ImageURl"] = @Url.Content("~/portal/Images/bgs/about.jpg");
     ViewData["pageTitle"] = Localizer["About_Us"];
@@ -17,7 +17,7 @@
     "@@context":"http://schema.org",
     "@@type":"LocalBusiness",
     "image":"@ViewBag.Host/portal/img/seoLogo.jpg",
-    "name":"Tamtech",
+    "name":"@Localizer["site_title"]",
     "@@type":"PostalAddress",
     "streetAddress":"E5 yan yol Civan Cokak",
     "addressLocality":"Avcılar Üniversite Mh",
@@ -30,7 +30,7 @@
     "latitude":40.991939 ,
     "longitude":28.713351
     },
-    "telephone":"+905354152865"
+    "telephone":""
     }
 </script>
 }

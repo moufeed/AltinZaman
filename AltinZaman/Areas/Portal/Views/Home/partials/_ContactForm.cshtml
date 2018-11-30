@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <input type="text" placeholder="@Localizer["name"].." name="Name" required data-msg="هذا الحقل مطلوب"/>
+                        <input type="text" placeholder="@Localizer["name"].." name="Name" required data-msg="هذا الحقل مطلوب" />
                     </div>
                     <div class="form-group">
                         <input type="tel" placeholder="@Localizer["Phone"].." name="Mobile" id="cphone" />
@@ -20,16 +20,19 @@
                     <div class="form-group">
                         <input type="email" placeholder="@Localizer["Email"].." name="Email" id="cemail" required data-msg="هذا الحقل مطلوب">
                     </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-one style-one radi"
+                                data-loading-text="@Localizer["please_wait"] ..."
+                                data-success-text="@Localizer["We_have_received_your_message"]">
+                            @Localizer["Send_it"]
+                        </button>
+                    </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="clerfix">
-                        <textarea cols="30" rows="4" placeholder="@Localizer["Message"].." name="Message" required data-msg="هذا الحقل مطلوب"></textarea>
+                        <textarea cols="30" rows="6" placeholder="@Localizer["Message"].." name="Message" required data-msg="هذا الحقل مطلوب"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn-one style-one radi" 
-                                data-loading-text="@Localizer["please_wait"] ..."
-                                data-success-text="@Localizer["We_have_received_your_message"]" > @Localizer["Send_it"]</button>
-                    </div>
+                    
                 </div>
 
             </div>

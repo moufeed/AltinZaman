@@ -55,12 +55,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TamTechBackendSDK.ContentService">
-      <HintPath>..\..\ContentService\TamTechBackendSDK.ContentService.SQL\bin\Debug\netcoreapp2.1\TamTechBackendSDK.ContentService.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Areas\Admin\Views\Galleries\FormGalleryItem.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

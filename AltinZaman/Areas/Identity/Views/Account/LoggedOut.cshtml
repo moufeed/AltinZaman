@@ -46,7 +46,7 @@
 </svg>
 
     @{
-        Model.PostLogoutRedirectUri = "/Identity/account/login?returnUrl=%2Fadmin";
+        Model.PostLogoutRedirectUri = Url.Action("login", "account");
     }
     <h1> You are now logged out</h1>
     <div class="alert alert-logout">

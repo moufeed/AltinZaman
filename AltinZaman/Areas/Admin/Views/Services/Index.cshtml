@@ -63,7 +63,17 @@
                                         }
                                     </td>
                                     <td style="min-width:150px">
-                                        @item.Title
+                                        @if (item.Published)
+                                        {
+                                           
+                                        <a asp-area="Portal" asp-action="v" asp-controller="services" asp-route-slug="@item.Slug" class="underline">
+                                          @item.Title</a>
+                                        }
+                                        else
+                                        {
+                                            @item.Title
+                                        }
+
                                     </td>
 
 

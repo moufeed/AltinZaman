@@ -21,10 +21,10 @@
 </head>
 <body class="page-wrapper">
     <div class="preloader"></div>
-
-    @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_Header.cshtml")
+    <partial name="partials/_Header.cshtml" />
     @RenderBody()
-    @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_Footer.cshtml")
+    <partial name="partials/_Footer.cshtml" />
+    
 
     <!--Scroll to top-->
     <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon fa fa-angle-up"></span></div>
@@ -37,7 +37,7 @@
    
     @RenderSection("footer", required: false)
     <script src="~/Portal/js/script-min.js"></script>
-
+     
 </body>
 </html>
 

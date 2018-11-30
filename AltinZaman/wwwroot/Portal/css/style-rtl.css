@@ -463,6 +463,7 @@ body, p ,
 .call-back .call-back-content input,
 .call-back .call-back-content select,
 .fact-counter .single-item .text,
+.contact-info .single-item .title,
 input, button, select, textarea{
     font-family: 'gsl' ,'Open Sans',sans-serif;
     word-spacing: 2px;

@@ -35,7 +35,9 @@ namespace AltinZaman.Settings.Cultures
                 IList<CultureInfo> cultures = new List<CultureInfo>();
                 foreach (var cultureModel in CultureConstants.CulturesList)
                 {
-                    cultures.Add(new CultureInfo(cultureModel.Culture));
+                    var cul = new CultureInfo(cultureModel.Culture);
+                    cul.DateTimeFormat.Calendar = new GregorianCalendar();
+                    cultures.Add(cul);
                 }
                 return cultures;
             }

@@ -1,6 +1,6 @@
 ﻿@model ServiceDto
 @{
-    ViewData["Title"] = Localizer["Services"];
+    ViewData["Title"] = string.IsNullOrEmpty(Model.Title) ?  Localizer["Services"].ToString()  : Model.Title;
     Layout = "_Layout";
     ViewData["ImageURl"] = (Model.MainImage != null) ? Model.MainImage : @Url.Content("~/portal/images/bgs/services.jpg");
 
@@ -25,7 +25,7 @@
             
             @if (Model.IconVisibility)
             {
-                <div class="col-md-3 col-xs-12 col-sm-4">
+                <div class="col-md-3 col-xs-12 hidden-sm">
                     <div class="ser-icon">
                         <i class="fa @Model.Icon"></i>
                     </div>
@@ -33,14 +33,21 @@
             }
             
             @{ 
-                string clas = (Model.IconVisibility) ? "col-md-9 col-xs-12 col-sm-8" : "col-md-12 col-sm-12 col-xs-12";
+                string clas = (Model.IconVisibility) ? "col-md-9 col-xs-12 col-sm-12" : "col-md-12 col-sm-12 col-xs-12";
             }
-            <div class="@clas">
-                
-                <div class="text">
-                    @Html.Raw(Model.Content)
+                <div class="@clas">
+                    @if (Model.IconVisibility)
+                    {
+                    <div class="visible-sm">
+                        <div class="ser-icon-sm">
+                            <i class="fa @Model.Icon"></i>
+                        </div>
+                    </div>
+                    } 
+                    <div class="text">
+                        @Html.Raw(Model.Content)
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </section>

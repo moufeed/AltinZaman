@@ -581,9 +581,10 @@ const style_files = [
  //   `${root}/css/jquery.fancybox.css`,
     `${root}/css/hover.css`,
     `${root}/css/style.css`,
-    `${root}/css/responsive.css`,
     `${root}/css/style-rtl.css`,
+    `${root}/css/responsive.css`,
     `${root}/css/responsive-rtl.css`,
+    `${root}/css/default.css`,
 ]
 
 
