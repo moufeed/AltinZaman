@@ -15,7 +15,7 @@
         </div>
         <div class="title_right">
             <a asp-action="Index"
-               class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
         </div>
     </div>
 </div>
@@ -60,6 +60,22 @@
         <div class="x_panel">
             <div class="x_content">
 
+                @if (!Model.Locked && ViewBag.isUpdate)
+                {
+                    <div class="text-right flip">
+                        <label asp-for="Published">
+
+                            <input type="checkbox"
+                                   asp-for="Published"
+                                   class="toggle_switch "
+                                   data-toggle="tooltip"
+                                   id="publish-gallery"
+                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                   data-url="@Url.AdminUrl("PublishAsync" ,"galleries" , new { id= Model.Id })"
+                                   title="@Localizer["publish_unpublish"]" />
+                        </label>
+                    </div>
+                }
 
                 <form asp-controller="Galleries"
                       asp-action="@ViewBag.FormAction"
@@ -112,7 +128,7 @@
 
 
                     <div class="form-group clearfix">
-                        <label asp-for="Slug" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_main_image"]</label>
+                        <label asp-for="MainImage" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_main_image"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
 
                             @if (!string.IsNullOrEmpty(Model.MainImage))
@@ -122,10 +138,19 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                @if (ViewBag.isUpdate)
+                                {
+                                    <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
+                                }
+                                else
+                                {
+                                    <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" required />
+                                }
+
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
                             </label>
+                            <label id="NewMainImage-error" class="invalid_field" for="NewMainImage"></label>
                             <span asp-validation-for="MainImage" class="text-danger invalid_field"></span>
                         </div>
                     </div>
@@ -271,9 +296,14 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
     <script src="~/Admin/js/validator.min.js"></script>
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+ 
     <script src="~/Admin/js/galleries.min.js"></script>
 
+    @{
+        ViewBag.TinyMce_Contetnt_Id = null;
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 
 
@@ -283,26 +313,45 @@
         await Html.RenderPartialAsync("~/Areas/Admin/Views/Shared/_seoLabels.cshtml");
         <script src="~/Admin/js/serializejson.min.js"></script>
         <script src="~/Admin/js/seo.min.js"></script>
+        <script>
 
+            $('#publish-gallery').on('change', function () {
+                var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";
+                var url = $(this).data('url');
+                $.get(url, function () { }).done(function (data) {
+                    if (data.success) {
+                        $notification.success(window.localization.success,msg, 2000, "fa fa-check");
+                    } else {
+                        var errors = data.errors;
+                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                        togglePublishBtn($this, false, published, unpublished);
+                    }
+                })
+                .fail(function (jqXHR, Status) {
+                    $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                    togglePublishBtn($this, false, published, unpublished);
+                }); })
 
-    }
+        </script>
 
-    @{
-        ViewBag.TinyMce_Contetnt_Id = null;
-        ViewBag.TinyMce_Suumry_Id = "#Summary";
-        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
     }
 
 
     <script>
-
-
          var length =  158 - $('.MetaDescription').val().length;
 
             $('.MetaDescription').keyup(function(){
                 $('.sms_messages .characters').text( length - this.value.length);
             });
     </script>
+    @if (!ViewBag.isUpdate)
+    {
+        <script>
+           $("#Title").on("keyup", function() {
+               $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
+           })
+        </script>
+    }
 
 }
 

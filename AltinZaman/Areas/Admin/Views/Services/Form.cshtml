@@ -54,7 +54,23 @@
 
 
             <div class="x_content">
+                @if (ViewBag.isUpdate && !Model.Locked)
+                {
+                    <div class="text-right flip">
+                        <label asp-for="Published">
 
+                            <input type="checkbox"
+                                   asp-for="Published"
+                                   class="toggle_switch "
+                                   data-toggle="tooltip"
+                                   id="publish-service"
+                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                   data-url="@Url.AdminUrl("PublishAsync","services" , new { id = Model.Id})"
+                                   title="@Localizer["publish_unpublish"]" />
+                        </label>
+                        
+                    </div>
+                }
                 <form asp-action="@ViewBag.FormAction" method="post" class="form-horizontal forn-new form-label-left" id="ServicesForm" enctype="multipart/form-data">
 
                     @if (!ViewData.ModelState.IsValid)
@@ -65,6 +81,21 @@
                     @if (ViewBag.isUpdate)
                     {
                         <input type="hidden" asp-for="Id" class="ut-id" />
+
+
+                        @if (!string.IsNullOrEmpty(Model.Slug) && Model.Published)
+                        {
+                            <div class="form-group clearfix">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_public_url"]</label>
+                                <div class="col-md-7 col-sm-9 col-xs-12">
+                                    @{
+                                        var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, Url.Action("v", "services", new { Area = "portal", slug = Model.Slug }));
+                                    }
+                                    <p class="form-control-static p-x-2"><a href="@url" class="underline" id="url">@(System.Uri.UnescapeDataString(url))</a></p>
+                                    <span asp-validation-for="Title" class="text-danger invalid_field"></span>
+                                </div>
+                            </div>
+                        }
                     }
                     <div class="form-group clearfix">
                         <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_name"]</label>
@@ -242,10 +273,43 @@
     {
         <script src="~/Admin/js/serializejson.min.js"></script>
         <script src="~/Admin/js/seo.min.js"></script>
+
+        <script>
+            $('#publish-service').on('change', function () {
+                var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";
+                var url = $(this).data('url');
+                $.get(url, function () { }).done(function (data) {
+
+                    if (data.success) {
+                        $notification.success(window.localization.success, msg, 2000, "fa fa-check");
+                    } else {
+                        var errors = data.errors;
+                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                        togglePublishBtn($this, false, published, unpublished);
+                    }
+                })
+                .fail(function (jqXHR, Status) {
+                    $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                    togglePublishBtn($this, false, published, unpublished);
+                });
+            });
+
+            
+        </script>
     }
     <script>
-    $('.select_picker').select2();
+        $('.select_picker').select2();
+
     </script>
+
+    @if (!ViewBag.isUpdate)
+            {
+       <script>
+           $("#Title").on("keyup", function() {
+               $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
+           })
+       </script>
+            }   
 
 }
 

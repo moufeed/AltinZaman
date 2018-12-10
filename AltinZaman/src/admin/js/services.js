@@ -39,6 +39,7 @@ $(document).ready(()=>{
         var dataurl = $this.data('url');
         var unpublished = $this.data('unpublished') || "unpublished";
         var published = $this.data('published') || "published";
+        var $tr  = $this.parents("tr");
         $this.find('i').removeClass().addClass("fa fa-spinner fa-pulse");
 
         $.ajax({
@@ -48,7 +49,12 @@ $(document).ready(()=>{
             data: {}
         }) 
         .done(function (data) {
-     
+            var title = $tr.find(".ser-title");
+             if($this.hasClass('unpublished')){
+                title.attr("href",title.attr("data-href")).addClass("underline");
+             }else{
+                title.attr("data-href",title.attr("href")).removeAttr("href").removeClass("underline");
+             }
             if(data.success){
                 togglePublishBtn($this , true , published ,unpublished)
             }else{

@@ -19,7 +19,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
         public PostsController(
             ITelemetryClientService telemetryClientService,
             IPostsService postservice, 
-            IStringLocalizer<PostsBaseController> localizer , 
+            IStringLocalizer<AdminBaseController> localizer , 
             IUploadManagerService uploadManager,
             ISectionsService sectionsService,
             IStringConverters stringConverters)

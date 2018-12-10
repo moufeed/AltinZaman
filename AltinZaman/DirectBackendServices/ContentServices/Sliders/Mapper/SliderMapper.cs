@@ -2,7 +2,7 @@
 using System.Linq;
 using TamTechSDK.Common.Services.ContentService.Sliders.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
 {
     public static class SliderMapper
     {
@@ -29,9 +29,31 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderDto MapToBackendDto(this CreateSliderDto frontend)
+        public static SliderDto MapToFrontendSliderDto(this TamTechBackendSDK.ContentService.Services.Sliders.Dtos.PublicSliderDto backend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderDto
+            return new SliderDto
+            {
+                Id = backend.Id,
+                Lang = backend.Lang,
+                Title = backend.Title,
+                Key = backend.Key,
+                //  Slug = backend.Slug,
+                Summary = backend.Summary,
+                //  Position = backend.Position,
+                //  DisplayOrder = backend.DisplayOrder,
+                CreatedDate = backend.CreatedDate,
+                ModifiedDate = backend.ModifiedDate,
+                Published = backend.Published, 
+                Items = backend.Items != null ? backend.Items.Where(item => !item.Deleted)
+                                                                     .Select(p => p.MapToFrontendDto())
+                                                                     .OrderBy(m => m.DisplayOrder)
+                                                                     .ToList() : new List<SliderItemDto>()
+            };
+        }
+
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderModel MapToBackendDto(this CreateSliderDto frontend)
+        {
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderModel
             {
                 Lang = frontend.Lang,
                 Title = frontend.Title,
@@ -42,9 +64,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderDto MapToBackendUpdateSliderDto(this UpdateSliderDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderModel MapToBackendUpdateSliderDto(this UpdateSliderDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderDto
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderModel
             {
                 Id = frontend.Id,
                 Lang = frontend.Lang,
@@ -57,18 +79,18 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderItemKeysDto MapToBackendDto(this SliderItemKeysDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderItemKeysModel MapToBackendDto(this SliderItemKeysDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderItemKeysDto
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderItemKeysModel
             {
                 SliderId = frontend.SliderId,
                 Id = frontend.Id, 
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.PublishSliderItemDto MapToBackendPublishDto(this SliderItemKeysDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.PublishSliderItemModel MapToBackendPublishDto(this SliderItemKeysDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.PublishSliderItemDto
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.PublishSliderItemModel
             {
                 SliderId = frontend.SliderId,
                 Id = frontend.Id,
@@ -96,9 +118,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderItemDto MapToBackendDto(this CreateSliderItemDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderItemModel MapToBackendDto(this CreateSliderItemDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderItemDto
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.CreateSliderItemModel
             {
 
                 Lang = frontend.Lang,
@@ -113,9 +135,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
             };
         }
 //------------------------------------------------------------
-        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemDto MapToBackendDto(this UpdateSliderItemDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemModel MapToBackendDto(this UpdateSliderItemDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemDto
+            return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemModel
             {
                 Id = frontend.Id,
                 Title = frontend.Title,

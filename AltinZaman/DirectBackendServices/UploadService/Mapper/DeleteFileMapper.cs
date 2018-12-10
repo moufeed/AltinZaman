@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TamTech.Web.DirectBackendServices.UploadService.Mapper
+namespace AltinZaman.DirectBackendServices.UploadService.Mapper
 {
     public static class DeleteFileMapper
     {

@@ -17,8 +17,8 @@ namespace AltinZaman.Areas.Portal.Controllers
     public class ServicesController : ServicesBaseController
     {
         public ServicesController(ITelemetryClientService telemetryClientService, IMenusServices menusServices,
-              IServicesService servicesservice, IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-            : base(telemetryClientService, menusServices, servicesservice, stringLocalizer)
+              IServicesService servicesservice )
+            : base(telemetryClientService, menusServices, servicesservice)
         {
         }
 

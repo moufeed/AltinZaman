@@ -16,8 +16,11 @@
 
     List<string> targets = new List<string> { "_blank", "_self", "_parent", "_top" };
 
-    public string PrintMenu(List<MenuItemDto> MenuItems)
+
+    public string PrintMenu(List<MenuItemDto> MenuItems , string index)
     {
+
+
 
         StringBuilder stringBuilder = new StringBuilder("<table class=\"table table-middle table-hover\">");
         stringBuilder.Append("<thead><tr>");
@@ -32,13 +35,13 @@
         {
             foreach (var item in MenuItems)
             {
-                PrintMenuItem(item, stringBuilder);
+                PrintMenuItem(item, stringBuilder , index);
             }
         }
 
         stringBuilder.Append("<tr class=\"tfooter\"><td colspan='6'>");
         stringBuilder.Append("<div class=\"text-right p-t2\">");
-        stringBuilder.Append($"<button class=\"btn btn-add btn-info ut-additem-btn\" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
+        stringBuilder.Append($"<button class=\"btn btn-add btn-info ut-additem-btn ut-btn-{index}  \" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
             $"<i class=\"fa fa-plus\"></i>{ViewBag.tableheadding[6]}</button>");
         stringBuilder.Append("</div></tr></td>");
         stringBuilder.Append("</table>");
@@ -46,7 +49,7 @@
 
     }
 
-    private void PrintMenuItem(MenuItemDto dto, StringBuilder stringBuilder)
+    private void PrintMenuItem(MenuItemDto dto, StringBuilder stringBuilder , string index )
     {
 
         stringBuilder.Append($"<tr data-key=\"{dto.Key}\" data-type=\"{dto.ItemType}\" class=\"{dto.ItemType}\" >");
@@ -143,8 +146,8 @@
         stringBuilder.Append($" <a data-toggle='tooltip'" +
                             $"data-placement='top'  data-key='{dto.Key}' data-root='{@Model.Id}'" +
                             $"data-url={Url.AdminUrl("DeleteAsync","menus" ,new { rootmenuid = Model.Id  , Key = dto.Key })}" +
-                            $"title='{ViewBag.tableheadding[13]}' class='btn btn-remove delete-menuitem btn-round' data-type=\"{dto.ItemType}\">" +
-                            $"<i class='fa fa-times '></i></a>");
+                            $" title='{ViewBag.tableheadding[13]}' class='btn btn-remove delete-menuitem btn-round' data-type=\"{dto.ItemType}\">" +
+                            $"<i class='fa fa-trash-o '></i></a>");
 
 
         stringBuilder.Append($"</td>");
@@ -154,11 +157,11 @@
         if (dto.ItemType != null && dto.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))
         {
 
-            stringBuilder.Append($"<tr class=\"submenu ut-submenu\" data-key=\"{dto.Key}\"><td colspan=\"6\"  >");
+            stringBuilder.Append($"<tr class=\"submenu ut-submenu-{dto.Key} \" data-key=\"{dto.Key}\"><td colspan=\"6\"  >");
 
             stringBuilder.Append($"<div class=\"collapse collapse-box\" aria-expanded=\"false\">");
 
-            var sublavel = PrintMenu(dto.MenuItems);
+            var sublavel = PrintMenu(dto.MenuItems, dto.Key);
             stringBuilder.Append(sublavel);
             stringBuilder.Append("</div></td></tr>");
         }
@@ -188,7 +191,7 @@
                 <a asp-action="Index" class="btn btn-default">
                     <span class="fa fa-chevron-left"></span> @Localizer["back_to_list"]
                 </a>
-                <button type="submit" name="save" class="btn btn-success"><i class="fa fa-save"></i> @Localizer["save"] </button>
+                <button type="submit" name="save" class="btn btn-success ut-save-btn"><i class="fa fa-save"></i> @Localizer["save"] </button>
                 <button type="submit" name="save-continue" class="btn  btn-blue">
                     <i class="fa fa-floppy-o"></i>
                     @Localizer["save_and_continue"]
@@ -356,7 +359,7 @@
 
                                                     <a id="pubunpub-@index"
                                                        data-toggle="tooltip"
-                                                       data-placement="top"
+                                                       data-placement="@(activeLang == "ar" ? "left" : "right")"
                                                        data-status="true"
                                                        title="@Localizer["publish"]"
                                                        data-published='@Localizer["t_published"]'
@@ -374,7 +377,7 @@
 
                                                     <a id="pubunpub-@index"
                                                        data-toggle="tooltip"
-                                                       data-placement="top"
+                                                       data-placement="@(activeLang == "ar" ? "left" : "right")"
                                                        title="@Localizer["unpublished"]"
                                                        data-published='@Localizer["t_published"]'
                                                        data-unpublished='@Localizer["t_unpublish"]'
@@ -408,7 +411,7 @@
 
 
                                                 <a data-toggle="tooltip"
-                                                   data-placement="top"
+                                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
                                                    title="@Localizer["edit"]"
                                                    data-key="@item.Key"
                                                    data-root="@Model.Id"
@@ -417,29 +420,29 @@
 
 
                                                 <a data-toggle="tooltip"
-                                                   data-placement="top"
+                                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
                                                    title="@Localizer["cancel"]"
                                                    data-object='@Html.Raw(Json.Serialize(@item))'
                                                    class="btn btn-cancel cancel-menuitem btn-round hidden"><i class="fa fa-ban "></i></a>
                                                  
                                                 <a data-toggle="tooltip"
-                                                   data-placement="top"
+                                                    data-placement="@(activeLang == "ar" ? "left" : "right")"
                                                    data-key="@item.Key"
                                                    data-root="@Model.Id"
                                                    data-type='@item.ItemType'
                                                    data-url="@Url.AdminUrl("DeleteAsync","menus",new { rootmenuid = Model.Id , Key=item.Key})"
                                                    title="@Localizer["remove"]"
-                                                   class="btn btn-remove delete-menuitem btn-round ut-delete-btn"><i class="fa fa-times "></i></a>
+                                                   class="btn btn-remove delete-menuitem btn-round ut-delete-btn"><i class="fa fa-trash-o "></i></a>
 
                                             </td>
                                         </tr>
 
                                         @if (item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))
                                         {
-                                            <tr class="submenu ut-submenu" data-key="@item.Key" >
+                                            <tr class="submenu ut-submenu-@item.Key" data-key="@item.Key" >
                                                 <td colspan="6">
                                                     <div class="collapse collapse-box" id="collapse-@index">
-                                                        @Html.Raw(PrintMenu(item.MenuItems))
+                                                        @Html.Raw(PrintMenu(item.MenuItems , item.Key ))
                                                     </div>
                                                 </td>
                                             </tr>
@@ -486,8 +489,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script src="~/Admin/lib/select2/dist/js/select2.min.js"></script>
-    <script src="~/Admia/js/validator.min.js"></script>
-
+    <script src="~/Admin/js/validator.min.js"></script>
     <script>
         var edit_url = '@Url.AdminUrl("EditMenuItemAsync" , "menus" )';
         var publishUrl = '@Url.AdminUrl("PublishMenuItemAsync", "menus")';
@@ -503,7 +505,26 @@
     </script>
 }
 
+    
+ 
+<div class="modal fade" id="MenuItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content ut-modal">
+            <div class="content">
 
+                <partial name="partials/_TabsList.cshtml" />
 
-
-@await Html.PartialAsync("~/Areas/Admin/Views/Menus/partials/_modal.cshtml")
+                <div class="tab-content">
+                    <partial name="partials/_pageTap.cshtml"  model="Model"/>
+                    <partial name="partials/_productTap.cshtml"  model="Model"/>
+                    <partial name="partials/_urlTap.cshtml"  model="Model"/>
+                    <partial name="partials/_serviceTap.cshtml"  model="Model"/>
+                    <partial name="partials/_staticpageTap.cshtml"  model="Model"/>
+                    <partial name="partials/_dropdownTap.cshtml"  model="Model"/>
+                    <partial name="partials/_galleryTap.cshtml"  model="Model"/>
+                    <partial name="partials/_sectionTap.cshtml"  model="Model"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@ using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Products.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Products
+namespace AltinZaman.DirectBackendServices.ContentServices.Products
 {
     public class DirectProductsService : TamTechSDK.Common.Services.ContentService.Products.IProductsService
     {

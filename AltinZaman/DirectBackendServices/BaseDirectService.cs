@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests.Models;
 
-namespace TamTech.Web.DirectBackendServices
+namespace AltinZaman.DirectBackendServices
 {
     public class BaseDirectService
     {

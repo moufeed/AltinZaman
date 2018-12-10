@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Products.Mapper
 {
     public static class ProductMapper
     {
@@ -31,9 +31,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeFormDto MapToBackendAttributeFormDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeForm item)
+        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeModel MapToBackendAttributeFormDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeForm item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeFormDto
+            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeModel
             {
                 ProductId = item.ProductId,
                 Type = item.Type,
@@ -42,9 +42,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueFormDto  MapToBackendAttributeValueForm(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeValueForm item)
+        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueModel  MapToBackendAttributeValueForm(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeValueForm item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueFormDto
+            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueModel
             {
               
                 Value = item.Value,
@@ -76,9 +76,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeEditingDto MapToAttributeEditingDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeEditing item)
+        public static TamTechBackendSDK.ContentService.Dtos.Product.UpdateProductAttributeModel MapToAttributeEditingDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeEditing item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeEditingDto
+            return new TamTechBackendSDK.ContentService.Dtos.Product.UpdateProductAttributeModel
             {
                 ProductId = item.ProductId,
                 Type = item.Type,
@@ -90,9 +90,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueEditingDto MapToBackendAttributeValueEditingDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeValueEditing item)
+        public static TamTechBackendSDK.ContentService.Dtos.Product.UpdateProductAttributeValueModel MapToBackendAttributeValueEditingDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductAttributeValueEditing item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductAttributeValueEditingDto
+            return new TamTechBackendSDK.ContentService.Dtos.Product.UpdateProductAttributeValueModel
             {
 
                 OriginalValue = item.OriginalValue,
@@ -119,9 +119,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductCombinationFormDto  MapToBackendCombinationFormDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductCombinationForm item)
+        public static TamTechBackendSDK.ContentService.Dtos.Product.ProductCombinationModel  MapToBackendCombinationFormDto(this TamTechSDK.Common.Services.ContentService.Products.Models.ProductCombinationForm item)
         {
-            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductCombinationFormDto
+            return new TamTechBackendSDK.ContentService.Dtos.Product.ProductCombinationModel
             {
                 ProductId = item.ProductId,
                 Attributes = item.AttributesValues,
@@ -255,9 +255,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper
                 // ModifiedDate = item.ModifiedDate
             };
         }
-        public static TamTechBackendSDK.ContentService.Services.Common.Dtos.PublishDto  MapToBackendPublishDt(this TamTechSDK.Common.Services.ContentService.Products.Models.PublishDto item)
+        public static TamTechBackendSDK.ContentService.Services.Shared.Dtos.PublishModel  MapToBackendPublishDt(this TamTechSDK.Common.Services.ContentService.Products.Models.PublishDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Common.Dtos.PublishDto
+            return new TamTechBackendSDK.ContentService.Services.Shared.Dtos.PublishModel
             {
                 Id = item.Id,
                 Lang = item.Lang

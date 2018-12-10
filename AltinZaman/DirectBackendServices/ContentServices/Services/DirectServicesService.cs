@@ -3,15 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Services.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Services.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
+using TamTechSDK.Common.Models.Pagination;
+using TamTechSDK.Common.Models.Sort;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Services;
 using TamTechSDK.Common.Services.ContentService.Services.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Services
+namespace AltinZaman.DirectBackendServices.ContentServices.Services
 {
-    public class DirectServicesService : TamTechSDK.Common.Services.ContentService.Services.IServicesService
+    public class DirectServicesService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Services.IServicesService
     {
 
         #region Props  
@@ -86,7 +88,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Services
             //}
             //return GetRequestProviderResult(page);
             var service = await _servicesService.GetPublicBySlugAsync(slug);
-            return GetRequestProviderResult(service.MapToFrontendDto());
+            return GetRequestProviderResult(service?.MapToFrontendDto());
         }
 
          
@@ -103,7 +105,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Services
             //}
             //return GetRequestProviderResult(ServicesList);
             var services = await _servicesService.GetPublicListAsync();
-            List<ServiceDto> servicesDto = services != null ? services.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>();
+            List<ServiceDto> servicesDto = services?.Select(m => m.MapToFrontendDto()).ToList();
             return GetRequestProviderResult(servicesDto);
         }
 
@@ -126,17 +128,31 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Services
         #endregion
 
         #region {Services Manager}  
-        public async Task<IRequestProviderResult<List<ServiceDto>>> GetAllAsync(string lang)
+        
+
+        public async Task<IRequestProviderResult<ServiceList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang)
         {
-            var services = await _servicesService.GetAllExceptSoftDeletedAsync(lang);
-            List<ServiceDto> servicesDto = services != null ? services.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>();
-            return GetRequestProviderResult(servicesDto);
+             
+            var result = await _servicesService.GetAllExceptSoftDeletedAsync(pagination.MapToBackendPaginationModel(), searchParams, sorting.MapToBackendSortingModel(), lang);
+
+             ServiceList model = new ServiceList
+             {
+               Data = result.Data != null  ? result.Data.Select(m => m.MapToFrontendDto()).ToList() : new List<ServiceDto>(),
+                Pagination = result.Pagination?.MapToForntEndPagination()
+             };
+
+            return ReturnResult(model);
+            
+
+            
         }
+
+
 
         public async Task<IRequestProviderResult<ServiceDto>> GetByIdAsync(Guid id, string lang)
         {
             var service = await _servicesService.GetByIdExceptSoftDeletedAsync(id, lang);
-            return GetRequestProviderResult(service.MapToFrontendDto());
+            return GetRequestProviderResult(service?.MapToFrontendDto());
         }
 
         public async Task<IRequestProviderResult<Guid>> CreateAsync(CreateServiceDto model)
@@ -163,7 +179,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Services
             return MapRequestProviderResult(result);
         }
 
-       
+        
+
+
         #endregion
 
         #endregion

@@ -6,10 +6,12 @@ using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Galleries;
 using TamTechSDK.Common.Services.ContentService.Galleries.Models;
 using System.Linq;
-using TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
+using TamTechSDK.Common.Models.Pagination;
+using TamTechSDK.Common.Models.Sort;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries
+namespace AltinZaman.DirectBackendServices.ContentServices.Galleries
 {
     public class DirectGalleriesService : BaseDirectService, IGalleriesService
     {
@@ -46,26 +48,37 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries
 
             GalleryDto gallery = new GalleryDto();
 
-            if (result != null)
+            if (result != null) 
             {
                 gallery = DeserializeFromObject<GalleryDto>(result);
+                return ReturnResult(gallery);
             }
-            return ReturnResult(gallery);
+            return ReturnResult(gallery,false);
 
         }
 
         #endregion
 
-        public async Task<IRequestProviderResult<List<GalleryLiteDto>>> GetAllAsync(string lang)
+         
+
+
+        public async Task<IRequestProviderResult<GalleryList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang)
         {
 
-            var result = (await _galleriesService.GetAllExceptSoftDeletedAsync(lang));
+            var result = await _galleriesService.GetAllExceptSoftDeletedAsync(pagination.MapToBackendPaginationModel(), searchParams, sorting.MapToBackendSortingModel(), lang);
+         
 
-            List<GalleryLiteDto> Galleries = result != null ? result.Select(m => m.ToFrontend_GalleryLiteDto()).ToList() : new List<GalleryLiteDto>();
+           GalleryList model = new GalleryList
+           {
+               Data = result.Data != null  ? result.Data.Select(m => m.ToFrontend_GalleryLiteDto()).ToList() : new List<GalleryLiteDto>(),
+               Pagination = result.Pagination?.MapToForntEndPagination()
+           };
 
-            return ReturnResult(Galleries);
-
+           return ReturnResult(model);
+             
         }
+
+
 
         #region Gallery
 
@@ -172,6 +185,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries
 
         }
 
+       
         #endregion
 
     }

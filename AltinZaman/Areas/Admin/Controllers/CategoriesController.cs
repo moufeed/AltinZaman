@@ -15,7 +15,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
                                     ITelemetryClientService telemetryClientService,
                                     ICategoriesServices categoryService,
                                     IUploadService uploadService, 
-              IStringLocalizer<CategoriesBaseController> localizer) 
+              IStringLocalizer<AdminBaseController> localizer) 
             : base(telemetryClientService, categoryService, uploadService,  localizer)
         {
             

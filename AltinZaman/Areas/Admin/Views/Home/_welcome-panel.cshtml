@@ -2,7 +2,7 @@
     var route_lang = ViewContext.RouteData.Values["lang"];
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
-<div class="x_panel welcome-panel">
+<div class="x_panel welcome-panel m-b0 m-t5 long-shadow">
     <div class="x_content ">
         <h2>@Localizer["welcome_to_tamcms"]</h2>
 	    <p class="selogan">@Localizer["welcome_message"]</p>
@@ -18,13 +18,13 @@
             <div class="col-sm-4">
                 <h3>@Localizer["next_steps"]</h3>
                 <ul class="list-unstyled">
-                    <li>
+                    @*<li>
                         <a asp-area="Admin" asp-controller="Galleries" asp-action="Index">
                            
                                 <i class="fa fa-upload"></i>
                                 @Localizer["upload_first_gallery"]
                             </a>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="Admin" asp-controller="Services" asp-action="Index">
                             <i class="fa fa-cubes"></i>
@@ -46,14 +46,14 @@
                         <i class="fa fa-cogs"></i>
                         @Localizer["manage"]  
                         <a asp-area="Admin" asp-controller="Users" asp-action="Index">
-                            @Localizer["Users"]
+                            Users
                         </a>
                         or
                         <a asp-area="Admin" asp-controller="Menus" asp-action="Index">
-                            @Localizer["Menus"]     
+                            @Localizer["Menus"]    menus
                         </a>
                     </li>
-                     
+
                     <li>
                         <a asp-area="Admin" asp-controller="Sliders" asp-action="Index">
                             <i class="fa fa-picture-o"></i>

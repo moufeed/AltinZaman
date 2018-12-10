@@ -1,4 +1,5 @@
-﻿ 
+﻿
+using Microsoft.Extensions.Localization;
 using TamTechSDK.Common.Services.Email;
 using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Web.Controllers.Admin;
@@ -12,8 +13,9 @@ namespace TamTech.Web.Areas.Admin.Controllers
         public EmailController(
                                 IUsersManagerService IdentityService,
                                 IEmailSenderService emailService,
-                                ITelemetryClientService telemetryClientService )
-            : base(IdentityService, emailService, telemetryClientService)
+                                ITelemetryClientService telemetryClientService,
+                                IStringLocalizer<AdminBaseController> localizer)
+            : base(IdentityService, emailService, telemetryClientService, localizer)
         {
 
         }

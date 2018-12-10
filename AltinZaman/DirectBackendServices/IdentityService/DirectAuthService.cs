@@ -6,16 +6,21 @@ using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.Identity.Auth.Models;
 using TamTechBackendSDK.IdentityService.Services.UserAccountServices.ResetPasswordService;
 using TamTechBackendSDK.IdentityService.Services.UserAccountServices.ResetPasswordService.Models;
-namespace TamTech.Web.DirectBackendServices.IdentityService
+using TamTechBackendSDK.IdentityService.Services;
+using TamTechBackendSDK.IdentityService.Models.Users;
+
+namespace AltinZaman.DirectBackendServices.IdentityService
 {
     public class DirectAuthService : BaseDirectService , TamTechSDK.Common.Services.Identity.IAuthService
     {
 
         private IResetPasswordByEmailSendingService _resetService;
+        private IUserAccountService _AccountService;
 
-        public DirectAuthService(IResetPasswordByEmailSendingService resetService)
+        public DirectAuthService(IResetPasswordByEmailSendingService resetService , IUserAccountService  AccountService)
         {
             _resetService = resetService;
+            _AccountService = AccountService;
         }
         
         public async Task<IRequestProviderResult<bool>> GenerateResetPasswordByEmailSendig(string email)
@@ -39,5 +44,19 @@ namespace TamTech.Web.DirectBackendServices.IdentityService
             return ReturnResult(result.Data, result.Success);
  
         }
+
+        public async Task<IRequestProviderResult<bool>> ChangePassword(ChangePassword model)
+        {
+            ChangePasswordModel data = new ChangePasswordModel()
+            {
+                CurrentPassword = model.CurrentPassword,
+                NewPassword = model.NewPassword
+            };
+            var result = await _AccountService.ChangePassword(data);
+            return ReturnResult(result.Data, result.Success);
+
+        }
+
+        
     }
 }

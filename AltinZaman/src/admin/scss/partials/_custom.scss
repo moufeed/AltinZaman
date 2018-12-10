@@ -1,5 +1,6 @@
   .select2-dropdown,.select2-container{
-    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans",FontAwesome , sans-serif;
+    font-family:if-ltr($ltr-fonts , $rtl-fonts ) ,  "Helvetica Neue", Roboto, Arial, "Droid Sans",FontAwesome;
+     
     font-size: 15px;
 } 
 
@@ -15,9 +16,12 @@
         width: 35%;
         float: $left;
         display: block;
+        
         h3 {
             margin: 9px 0;
             text-transform: capitalize;
+            font-size: 19px;
+            font-weight: 300;
           }
       }
       .title_right {
@@ -26,6 +30,7 @@
         display: block;
         text-align: $right;
         direction: ltr;
+        padding-top: 9px;
         .pull-right {
             margin: 10px 0;
           }
@@ -149,6 +154,11 @@
             text-align: $left;
         }
         .form-control ,.form-control-static{  @extend %inputStyle; }  
+
+        .form-control-static{
+            height: auto !important;
+            min-height: 40px;
+        }
         textarea{
             resize: vertical;
         } 
@@ -291,7 +301,7 @@
 .static-form-control{
     .bootstrap-tagsinput{
         display: inline-block;
-        border: 2px solid #f0f3f4;
+        border: 1px solid $input_border_color ;
         box-shadow: none;
         border-radius: 3px;
         padding: 6px 12px;
@@ -842,11 +852,7 @@ input[type="radio"] {
     }
 }
 
-.select2-container--default {
-    .select2-selection--single, .select2-selection--multiple {
-        border: 2px solid #f0f3f4;
-    } 
-}    
+ 
 
 .ltr-dir{
     direction: ltr !important;
@@ -874,18 +880,57 @@ input[type="radio"] {
         }
     }
 }
+.select2-container--default {
+    .select2-selection--single, .select2-selection--multiple {
+        border: 1px solid  $input_border_color;
+        color: #575962;
+    }  
+  }   
 
-/*
-  <header class=" clearfix">
-                    <div class="pull-left flip-dir">
-                        <ul class="nav nav-tabs " role="tablist">
-                            @foreach (var lang in ViewBag.Languages)
-                            {
-                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                                <a href="@Url.AdminUrl("edit" , "products" , new {  culture = lang.Lang  , id = Model.Id })">@lang.Name</a>
-                            </li>
-                            }
-                        </ul>
-                    </div>
-                </header>
-*/
+.mce-panel{
+    border: 0 !important;
+}
+.mce-tinymce{
+    box-shadow: 0 0 0 1px  $input_border_color !important; 
+    &.error {
+        border-color: $red !important;
+    }
+}
+.mce-top-part::before{
+  box-shadow: 0 0 0 1px  darken($input_border_color ,5%) !important; 
+}
+ 
+
+.modal.fade .modal-dialog {
+    transform:  scale(1.1);
+}
+.modal.in .modal-dialog{
+    transform:   scale(1);
+} 
+.filter-form{
+    label{
+        display:block;
+    }
+}
+
+.tooltip{
+    .tooltip-inner{
+        padding: 7px 20px 7px 20px;
+        font-size: 14px;
+        border-radius: 30px;
+        color: #6f727d;
+        background: #fff;
+        box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.1);
+    }
+}
+
+.fullscreen{
+    cursor: pointer;
+    svg{
+        margin : 8px 0 -2px 0 ;
+        polygon{
+            fill:$textColor;
+        }
+    }
+}
+ 

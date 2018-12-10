@@ -10,7 +10,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
 	public class SlidersController : SlidersBaseController
 	{
 		public SlidersController(ITelemetryClientService telemetryClientService , ISlidersServices sliderService , 
-            IUploadManagerService uploadManager,  IStringLocalizer<SlidersBaseController> _localizer) 
+            IUploadManagerService uploadManager,  IStringLocalizer<AdminBaseController> _localizer) 
             : base(telemetryClientService, sliderService , uploadManager,  _localizer)
 		{
 

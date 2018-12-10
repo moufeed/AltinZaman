@@ -2,29 +2,31 @@
  
 $.validator.addMethod('lessThan', function(value, element, param) {
     return this.optional(element) || parseInt(value) <= parseInt($(param[0]).val());
-}, "The value must be less than {1} ");
+},$.validator.messages.lessThan);
 
 $.validator.addMethod('greaterThan', function(value, element, param) {
     return this.optional(element) || parseInt(value) >= parseInt($(param[0]).val());
-}, "The value must be greater  than {1} ");
+}, $.validator.messages.greaterThan);
 
 $.validator.addMethod(
     "regex",
     function(value, element, regexp) {
         var re = new RegExp(regexp);
         return this.optional(element) || re.test(value);
-    },
-    "Please check your input." 
-);
+    },$.validator.messages.regex );
 
 $.validator.addMethod(
     "slug",
     function(value, element ) {
         var re = new RegExp('^([A-Za-z0-9\u0621-\u064A0-9])+(?:[-|_]|[A-Za-z0-9\u0621-\u064A0-9])+([A-Za-z0-9\u0621-\u064A0-9])$');
         return this.optional(element) || re.test(value);
-    },
-    "Only use numbers,letters and  \"  _ , - , +  \" symbols. no space are allowed. enter 3 numbers or letters at least."
-);
+    },$.validator.messages.slug);
+
+
+
+
+// 
+
 
 
 $.validator.addMethod(
@@ -37,9 +39,7 @@ $.validator.addMethod(
             return this.optional(element) || false;
          }
          return this.optional(element) || true ;
-    },
-    "You must Enter Valid json markup. "
-);
+    },$.validator.messages.json);
 
 $.validator.addMethod(
     "schemaType",
@@ -54,9 +54,10 @@ $.validator.addMethod(
             return this.optional(element) || false
         }
          
-    },
-    "The @type is required and cannot be an empty string "
-);
+    },$.validator.messages.json);
+
+
+
 
 $("#CreateUserForm").validate({
     errorClass: "invalid_field",
@@ -128,7 +129,7 @@ $("#DiscountPrice").on('keyup',function(){
     Productvalidator.element( "#Price" );
 })
 
-$('#BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm' ,'#CreateUserForm' ).validate({
+$('#BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm ,#CreateUserForm'   ).validate({
     errorClass: "invalid_field",
     validClass: "valid_field",
     ignore: ".ignore",
@@ -166,7 +167,10 @@ $('#BrandForm ,#CategoriesForm ,#ListPageForm ,#EmailForm' ,'#CreateUserForm' ).
 
 //    },
 //});
-$('#CreatePageForm,#EditPageForm ,#ServicesForm').validate({
+ 
+
+
+$('#CreatePageForm,#EditPageForm ,#ServicesForm , #PostForm ').validate({
     errorClass: "invalid_field",
     validClass: "valid_field",
     ignore: ".ignore",
@@ -184,4 +188,5 @@ $('#CreatePageForm,#EditPageForm ,#ServicesForm').validate({
         },
 },
 });
+
  

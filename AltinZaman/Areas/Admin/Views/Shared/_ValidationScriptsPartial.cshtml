@@ -16,27 +16,40 @@
             integrity="sha384-JrXK+k53HACyavUKOsL+NkmSesD2P+73eDMrbTtTk0h4RmOF8hF8apPlkp26JlyH">
     </script>
 </environment>
+
+<script>
+    $.extend($.validator.messages, {
+        slug:  "@Localizer["slug_msg"]" ,
+        regex: "@Localizer["regex_msg"]",
+        greaterThan: $.validator.format("@Localizer["greaterThan_msg"]" + "{1}"),
+        lessThan: $.validator.format("@Localizer["lessThan_msg"]" + "{1}"),
+        json: "@Localizer["json_msg"]",
+        schemaType: "@Localizer["schemaType_msg"]"
+    });
+</script>
+
+
 @*<script>
-        $.extend( $.validator.messages, {
-	        required: "@Localizer["this_is_field_is_required"] ",
-	        remote: "@Localizer["fix_this_field"] ",
-	        email: "@Localizer["enter_valid_email"] ",
-	        url: "@Localizer["enter_valid_url"] ",
-	        date: "@Localizer["enter_valid_date"] ",
-	        dateISO: "@Localizer["enter_valid_iso"] ",
-	        number: "@Localizer["enter_valid_number"] ",
-	        digits: "@Localizer["enter_only_digits"] ",
-	        equalTo: "@Localizer["enter_same_value"] ",
-	        maxlength:$.validator.format('@Localizer["enter_more_than_characters"]'),
-	        minlength:$.validator.format("@Localizer["enter_at_least_characters"]"),
-	        rangelength:$.validator.format("@Localizer["enter_value_between_characters"]"),
-	        range:$.validator.format("@Localizer["enter_value_between_0_and_1"]"),
-	        max:$.validator.format("@Localizer["enter_value_less_or_equal"]"),
-	        min:$.validator.format("@Localizer["enter_value_greater_or_equal"]"),
-            step:$.validator.format("@Localizer["enter_multiple_of"]"),
-            extension: "@Localizer["enter_vaild_extension"]"
-        });
-</script>*@
+            $.extend( $.validator.messages, {
+                required: "@Localizer["this_is_field_is_required"] ",
+                remote: "@Localizer["fix_this_field"] ",
+                email: "@Localizer["enter_valid_email"] ",
+                url: "@Localizer["enter_valid_url"] ",
+                date: "@Localizer["enter_valid_date"] ",
+                dateISO: "@Localizer["enter_valid_iso"] ",
+                number: "@Localizer["enter_valid_number"] ",
+                digits: "@Localizer["enter_only_digits"] ",
+                equalTo: "@Localizer["enter_same_value"] ",
+                maxlength:$.validator.format('@Localizer["enter_more_than_characters"]'),
+                minlength:$.validator.format("@Localizer["enter_at_least_characters"]"),
+                rangelength:$.validator.format("@Localizer["enter_value_between_characters"]"),
+                range:$.validator.format("@Localizer["enter_value_between_0_and_1"]"),
+                max:$.validator.format("@Localizer["enter_value_less_or_equal"]"),
+                min:$.validator.format("@Localizer["enter_value_greater_or_equal"]"),
+                step:$.validator.format("@Localizer["enter_multiple_of"]"),
+                extension: "@Localizer["enter_vaild_extension"]"
+            });
+    </script>*@
 
 <script>
         $("#SliderItemForm").validate({
@@ -47,7 +60,7 @@
                 }
             },
             messages: {
-                Url: "Url must be in this form : http://example.com"
+                Url: "@Localizer["url_msg"]"
             }
         });
 

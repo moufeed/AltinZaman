@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Localization;
+using TamTechSDK.Common.Services.ContentService;
 using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Common.Services.SMS;
 using TamTechSDK.Common.Services.Upload;
@@ -11,8 +13,12 @@ namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class HomeController : HomeBaseController
     {
-        public HomeController(ITelemetryClientService telemetryClientService,  IWebApplicationSettingsService webApplicationSettingsService , IUploadManagerService uploadManager) 
-            : base(telemetryClientService,  webApplicationSettingsService, uploadManager)
+        public HomeController(ITelemetryClientService telemetryClientService,  
+            IWebApplicationSettingsService webApplicationSettingsService , 
+            IUploadManagerService uploadManager,
+            IStringLocalizer<AdminBaseController> localizer,
+            IContentServices contentServices) 
+            : base(telemetryClientService,  webApplicationSettingsService, uploadManager,localizer , contentServices)
         {
         }
     }

@@ -17,7 +17,7 @@
         </div>
         <div class="title_right">
             <a href="@Url.AdminUrl("Edit" ,"Galleries" ,new { id = ViewBag.GalleryId} ) "
-               class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_gallery"]</a>
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_gallery"]</a>
         </div>
     </div>
 </div>
@@ -47,6 +47,22 @@
 
         <div class="x_panel">
             <div class="x_content">
+
+                @if (ViewBag.isUpdate)
+                {
+                    <div class="text-right flip">
+                        <label asp-for="Published">
+                            <input type="checkbox"
+                                   asp-for="Published"
+                                   class="toggle_switch "
+                                   data-toggle="tooltip"
+                                   id="publish-gallery-item"
+                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                   data-url="@Url.AdminUrl("PublishItemAsync","galleries" , new {GalleryId =  ViewBag.GalleryId , id = Model.Id })"
+                                   title="@Localizer["publish_unpublish"]" />
+                        </label>
+                    </div>
+                }
 
                 <form asp-controller="Galleries"
                       asp-action="@ViewBag.FormAction"
@@ -170,6 +186,28 @@
         await Html.RenderPartialAsync("partials/_tinymce.cshtml");
     }
 
+    @if (ViewBag.isUpdate)
+    {
+        <script>
+            $('#publish-gallery-item').on('change', function () {
+                var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";
+                var url = $(this).data('url');
+                $.get(url, function () { }).done(function (data) {
+
+                    if (data.success) {
+                        $notification.success(window.localization.success,msg, 2000, "fa fa-check");
+                    } else {
+                        var errors = data.errors;
+                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                        togglePublishBtn($this, false, published, unpublished);
+                    }
+                })
+                .fail(function (jqXHR, Status) {
+                    $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                    togglePublishBtn($this, false, published, unpublished);
+                }); })
+        </script>
+    }
 }
 
 

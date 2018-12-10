@@ -3,6 +3,7 @@
     ViewData["Title"] = Localizer["services"];
     ViewData["UnitTestPageClass"] = "ut-sevices_index";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+
 }
 
 <div class="clearfix">
@@ -35,6 +36,7 @@
 
 
             <div class="x_content">
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
                 <div class="table-responsive">
                     <table class="table table-middle table-striped services-table" id="ServicesTable">
                         <thead>
@@ -65,13 +67,14 @@
                                     <td style="min-width:150px">
                                         @if (item.Published)
                                         {
-                                           
-                                        <a asp-area="Portal" asp-action="v" asp-controller="services" asp-route-slug="@item.Slug" class="underline">
-                                          @item.Title</a>
+
+                                            <a asp-area="Portal" asp-action="v" asp-controller="services" asp-route-slug="@item.Slug" target="_blank" class="underline ser-title">
+                                                @item.Title
+                                            </a>
                                         }
                                         else
                                         {
-                                            @item.Title
+                                            <a target="_blank" data-href="@Url.AdminUrl("v","services",new {area = "portal" , slug = item.Slug })" class="ser-title"> @item.Title</a>
                                         }
 
                                     </td>
@@ -90,28 +93,22 @@
                                         </div>
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
 
                                         @if (item.Locked)
                                         {
-                                            @if (item.Published)
-                                            {
-                                                <span data-toggle="tooltip"
-                                                      data-placement="top"
-                                                      title="@Localizer["locked_by_system"]">
-                                                    <i class="fa fa-eye c-green"></i>
-                                                    <small>@Localizer["t_published"]</small>
+                                            <if include-if="item.Published">
+                                                <span class="label label-success">
+                                                    <i class="fa fa-eye "></i>
+                                                    @Localizer["t_published"]
                                                 </span>
-                                            }
-                                            else
-                                            {
-                                                <span data-toggle="tooltip"
-                                                      data-placement="top"
-                                                      title="@Localizer["locked_by_system"]">
-                                                    <i class="fa fa-eye-slash c-red"></i>
-                                                    <small>@Localizer["t_unpublished"]</small>
+                                            </if>
+                                            <if exclude-if="item.Published">
+                                                <span class="label label-danger">
+                                                    <i class="fa fa-eye-slash "></i>
+                                                    @Localizer["t_unpublished"]
                                                 </span>
-                                            }
+                                            </if>
                                         }
                                         else
                                         {
@@ -145,51 +142,71 @@
                                         }
                                     </td>
                                     <td>
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           title="@Localizer["t_details"]"
-                                           href="@Url.AdminUrl("Details","services",new { id = item.Id })"
-                                           class="btn btn-view btn-round ut-detail_btn"><i class="fa fa-eye "></i></a>
-
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           title="@Localizer["t_edit"]"
-                                           href="@Url.AdminUrl("Edit" ,"services",new { id = item.Id })"
-                                           class="btn btn-edit btn-round ut-edit_btn"><i class="fa fa-edit "></i></a>
-
-                                        @if (item.Locked)
-                                        {
-                                            <span data-toggle="tooltip"
-                                                  data-placement="top"
-                                                  class="btn-locked btn-round"
-                                                  title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                                        }
-                                        else
-                                        {
+                                        <div>
                                             <a data-toggle="tooltip"
                                                data-placement="top"
-                                               data-id="@item.Id"
-                                               data-url="@Url.AdminUrl("DeleteAsync", "services", new { id = item.Id })"
-                                               title="@Localizer["t_remove"]"
-                                               class="btn btn-remove btn-round delete-service ut-service_remove_btn"><i class="fa fa-times "></i></a>
-                                        }
+                                               title="@Localizer["t_details"]"
+                                               href="@Url.AdminUrl("Details","services",new { id = item.Id })"
+                                               class="btn btn-view btn-round ut-detail_btn"><i class="fa fa-info "></i></a>
 
+                                            <a data-toggle="tooltip"
+                                               data-placement="top"
+                                               title="@Localizer["t_edit"]"
+                                               href="@Url.AdminUrl("Edit" ,"services",new { id = item.Id })"
+                                               class="btn btn-edit btn-round ut-edit_btn"><i class="fa fa-edit "></i></a>
+                                            <if include-if="item.Locked">
+                                                <span data-toggle="tooltip"
+                                                      data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                                      class="btn-locked btn-round"
+                                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                            </if>
+                                            <if exclude-if="item.Locked">
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   data-id="@item.Id"
+                                                   data-url="@Url.AdminUrl("DeleteAsync", "services", new { id = item.Id })"
+                                                   title="@Localizer["t_remove"]"
+                                                   class="btn btn-remove btn-round delete-service ut-service_remove_btn"><i class="fa fa-trash-o "></i></a>
+                                            </if>
+                                        </div>
 
                                     </td>
                                 </tr>
 
                             }
 
+                            <if include-if='Model.Count == 0'>
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <p class="empty_row">
+                                            <i class='fa fa fa-exclamation-circle'></i>
+                                            @Localizer["no_data_table"]
+                                        </p>
+                                    </td>
+                                </tr>
+                            </if>
+
                         </tbody>
                     </table>
                 </div>
+                 <hr class="m-y-2" />
+                    <pagination controller-name="services" filter-model="ViewBag.FilterModel" pagniation-model="ViewBag.pagination" total="true"></pagination>
+                 
             </div>
         </div>
     </div>
 </div>
+ 
+
+@section Styles{
+    <link href="~/Admin/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+}
 
 
 @section Scripts {
     <script src="~/Admin/js/services.min.js"></script>
-
+    <script src="~/Admin/lib/select2/dist/js/select2.js"></script>
+    <script>
+        $('.select_no-search').select2({ minimumResultsForSearch: -1});
+    </script>
 }

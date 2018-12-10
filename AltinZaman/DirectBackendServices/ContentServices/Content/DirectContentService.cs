@@ -2,12 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AltinZaman.DirectBackendServices.ContentServices.Content.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
+using TamTechSDK.Common.Services.ContentService.ContentService.Models;
+using TamTechSDK.Web.Services.Configurations.AppSetting;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Content
+namespace AltinZaman.DirectBackendServices.ContentServices.Content
 {
     public class DirectContentService : TamTechSDK.Common.Services.ContentService.IContentServices
     {
+
+        private readonly TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
+        #region Ctors
+        public DirectContentService( 
+                    TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities )
+        {
+            
+            _contentUtilities = contentUtilities;
+        }
+        #endregion
+
+
+        public async Task<Dictionary<string, NumericalStatisticsDto>> GetNumericalStatisticsAsync(List<string> types, string lang)
+        {
+            var result = await _contentUtilities.GetNumericalStatisticsAsync(types, lang);
+             
+            var dec = result.Select(dict => dict).ToDictionary(m => m.Key, m => m.Value.MapToFrontEndNumericalStatisticsDto());
+            return dec;
+
+
+        }
+
         public async Task<IRequestProviderResult<List<KeyValuePair<Guid, string>>>> GetProductsNames()
         {
             return new RequestProviderResult<List<KeyValuePair<Guid, string>>>

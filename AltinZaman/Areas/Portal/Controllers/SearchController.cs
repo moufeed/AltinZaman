@@ -16,9 +16,8 @@ namespace AltinZaman.Areas.Portal.Controllers
 
     public class SearchController : SearchBaseController
     {
-        public SearchController(ITelemetryClientService telemetryClientService, IMenusServices menusServices,
-             IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-            : base(telemetryClientService, menusServices, stringLocalizer)
+        public SearchController(ITelemetryClientService telemetryClientService, IMenusServices menusServices)
+            : base(telemetryClientService, menusServices)
         {
         }
     }

@@ -14,10 +14,8 @@ defaultLocalization ={
     "text_count_be_more_than" : "text count be more than 300 characters long",
     "updateted_successfully" : "updateted successfully",
     "something_wrong" : "Something wrong",
-    "unpublished" :"unpublished",
-    "published" :"published",
-    "unpublish" :"unpublish",
-    "publish" :"publish",
+    "published_successfully" : "published successfully",
+    "unpublished_successfully" : "unpublished successfully",
 }
    window.localization = $.extend({}, defaultLocalization ,window.customLocalization || {});
  
@@ -76,6 +74,8 @@ defaultLocalization ={
 
  $(document).ready(function () {
 
+    $(".preloader").fadeOut();
+    
     if(localStorage.getItem("menu-type") === null){
         localStorage.setItem("menu-type","full");
     }else{
@@ -92,20 +92,20 @@ defaultLocalization ={
 
      // TODO: This is some kind of easy fix, maybe we can improve this
      var setContentHeight = function () {
-         // reset height
+           // reset height
          $RIGHT_COL.css('min-height', $(window).height());
 
          var bodyHeight = $BODY.outerHeight(),
-             footerHeight = $BODY.hasClass('footer_fixed') ? -10 : $FOOTER.height(),
+             footerHeight = $BODY.hasClass('footer_fixed') ? -10 : $FOOTER.height(), 
              leftColHeight = $LEFT_COL.eq(1).height() + ( $SIDEBAR_FOOTER.height() || 0),
              contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
 
 
          // normalize content
             
-         contentHeight -= ($NAV_MENU.height() + footerHeight +125);
+         contentHeight -= ($NAV_MENU.height() + footerHeight + 147);
           
-         $RIGHT_COL.css('min-height', contentHeight);
+         $RIGHT_COL.css('min-height', contentHeight);  
      };
 
     
@@ -116,19 +116,19 @@ defaultLocalization ={
         
          if ($li.is('.active')) {
              $li.removeClass('active active-sm');
-             $('ul:first', $li).slideUp(function () {
+             $('ul:first', $li).slideUp(250,function () {
                  setContentHeight();
              });
          } else {
              // prevent closing menu if we are on child menu
              if (!$li.parent().is('.child_menu')) {
                  $SIDEBAR_MENU.find('li').removeClass('active active-sm');
-                 $SIDEBAR_MENU.find('li ul').slideUp();
+                 $SIDEBAR_MENU.find('li ul').slideUp(250);
              }
 
              $li.addClass('active');
 
-             $('ul:first', $li).slideDown(function () { 
+             $('ul:first', $li).slideDown(250,function () { 
                  setContentHeight();
              });
          }
@@ -136,7 +136,7 @@ defaultLocalization ={
      $(document).mouseup(function(e) 
      {
          var container = $($SIDEBAR_MENU.find(".child_menu")) ;
-         if (!container.is(e.target) && container.has(e.target).length === 0) 
+         if (!container.is(e.target) && container.has(e.target).length === 0 &&  $BODY.hasClass("nav-sm")) 
          {
               container.parent().removeClass("active");            
               container.hide();
@@ -170,7 +170,7 @@ defaultLocalization ={
      
      $SIDEBAR_MENU.find('a').filter(function () {
          return this.href === CURRENT_URL;
-     }).parent('li').addClass('current-page').parents('ul').slideDown(function () {
+     }).parent('li').addClass('current-page').parents('ul').slideDown(250,function () {
          setContentHeight();
      }).parent().addClass('active');
 
@@ -179,18 +179,20 @@ defaultLocalization ={
          setContentHeight();
      });
 
+     
      setContentHeight();
-
      // fixed sidebar
      if ($.fn.mCustomScrollbar) {
-         $('.menu_fixed').mCustomScrollbar({
-             autoHideScrollbar: true,
-             theme: 'minimal',
-             mouseWheel: {
-                 preventDefault: true
-             }
-         });
-     }
+        $('.menu_fixed .scroll-view').mCustomScrollbar({
+            autoHideScrollbar: true,
+            axis: "y",
+            mouseWheelPixels: 70 ,
+            scrollInertia: 250,
+            theme: 'minimal',
+            mouseWheel:{ preventDefault: true }
+        });
+    }
+      
 
  });
 
@@ -200,14 +202,7 @@ defaultLocalization ={
  $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
  });
- $(document).ready(function () {
-
-    
-
- })
-
-
-
+  
   window.aspectRatio = function (img, target) {
      var css;
      if (img.width > img.height) {
@@ -275,13 +270,7 @@ defaultLocalization ={
      }).then((result) => {
 
          if (result.value) {
-
-             // let $parent = $("#tr-"+id).parent();
-             // $("#tr-"+id).remove();
-             //  $parent.find('tr').each(function(i,tr){
-             //     $(tr).children().eq(0).text(i+1);
-             // })
-
+ 
              swal(
                  'Deleted!',
                  'has been deleted.',
@@ -414,11 +403,11 @@ function togglePublishBtn($this , status , published ,unpublished){
     if(status){
         if($this.hasClass('unpublished')){
             $this.removeClass('unpublished ut-unpublished').addClass('published ut-published');
-            $this.find('small').text( published || window.localization.published );
+            $this.find('small').text( published || 'published');
             $this.find('i').removeClass('fa fa-spinner fa-pulse').addClass('fa fa-eye c-green');
         }else{
             $this.removeClass('published ut-published').addClass('unpublished ut-unpublished');
-            $this.find('small').text(unpublished || window.localization.unpublished );
+            $this.find('small').text(unpublished || 'unpublished');
             $this.find('i').removeClass('fa fa-spinner fa-pulse').addClass('fa fa-eye-slash c-red');
         }
     }else{
@@ -433,11 +422,11 @@ function toggleEye($this , status){
     if(status){
         if($this.hasClass('unpublished')){
             $this.removeClass('unpublished').addClass('published');
-            $this.attr("data-original-title",window.localization.publish)
+            $this.attr("data-original-title","publish")
             $this.find('.fa').removeClass('fa-spinner fa-pulse').addClass('fa-eye ');
         }else{
             $this.removeClass('published').addClass('unpublished');
-            $this.attr("data-original-title",window.localization.unpublish  )
+            $this.attr("data-original-title","unpublish")
             $this.find('.fa').removeClass('fa-spinner fa-pulse').addClass('fa-eye-slash');
         }
     }else{
@@ -575,17 +564,17 @@ $('.toggleblock').on('click', function () {
 
 $(document).ready(function(){
     
-        var Temptext='<span class="pull-left characters-alerts "></span>' +
-            '<span class="pull-right sms_messages">'+
-                '<small class="characters">@@</small> <small>'+ window.localization.characters  +'</small>'+
-            '</span>';
+    var Temptext='<span class="pull-left characters-alerts "></span>' +
+        '<span class="pull-right sms_messages">'+
+            '<small class="characters">@@</small> <small>'+ window.localization.characters  +'</small>'+
+        '</span>';
 
-        var optDefaults = {
-                warning_count: 158,
-                warning_alert: window.localization.text_will_be_truncated , 
-                maximum_count: 300, 
-                maximum_alert: window.localization.text_count_be_more_than 
-                } 
+    var optDefaults = {
+        warning_count: 158,
+        warning_alert: window.localization.text_will_be_truncated , 
+        maximum_count: 300, 
+        maximum_alert: window.localization.text_count_be_more_than 
+    } 
 
     $("[data-characters]").each(function(index,item){
         var $this = $(item);
@@ -601,11 +590,11 @@ $(document).ready(function(){
             var val_length = this.value.length;
             console.log(length ,  val_length)
             if( val_length  > opts.warning_count &&  val_length <  opts.maximum_count){
-                 $this.parent().find('.characters-alerts').addClass("warning_field").text(optDefaults.warning_alert);
+                $this.parent().find('.characters-alerts').addClass("warning_field").text(optDefaults.warning_alert);
             }  
 
             if( val_length  > opts.maximum_count ){
-                 $this.parent().find('.characters-alerts').removeClass("warning_field").addClass("error").text(optDefaults.maximum_alert);
+                $this.parent().find('.characters-alerts').removeClass("warning_field").addClass("error").text(optDefaults.maximum_alert);
             }
 
             if(val_length < opts.warning_count &&  val_length <  opts.maximum_count)
@@ -617,4 +606,33 @@ $(document).ready(function(){
         })
     })
 
-})
+});
+
+ 
+function toggleFullscreen(elem) {
+    elem = elem || document.documentElement;
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+  
+$(".fullscreen").click(function(){toggleFullscreen()});

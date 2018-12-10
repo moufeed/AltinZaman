@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests.Models;
-using TamTech.Web.DirectBackendServices.UploadService.Mapper;
+using AltinZaman.DirectBackendServices.UploadService.Mapper;
 using TamTechSDK.Common.Services.Upload.Models;
 
-namespace TamTech.Web.DirectBackendServices.UploadService
+namespace AltinZaman.DirectBackendServices.UploadService
 {
     public class DirectFileStorageService : TamTechSDK.Common.Services.Upload.IUploadService
     {

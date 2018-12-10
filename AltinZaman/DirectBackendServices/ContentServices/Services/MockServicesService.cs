@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Services.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Services
+namespace AltinZaman.DirectBackendServices.ContentServices.Services
 {
     public class MockServicesService // : TamTechSDK.Common.Services.ContentService.Services.IServicesService
     {

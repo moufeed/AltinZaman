@@ -7,7 +7,7 @@ namespace AltinZaman.Settings.Configurations.Modules
 {
     public class ModulesSettingsModel
     {
-        public string ModuleType { get; set; }
-
+        public string ModuleType { get; set; } 
+        
     }
 }

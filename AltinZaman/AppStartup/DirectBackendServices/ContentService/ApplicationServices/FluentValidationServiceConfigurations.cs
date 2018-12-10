@@ -1,16 +1,17 @@
 using Microsoft.Extensions.DependencyInjection;
-using FluentValidation;
-using FluentValidation.AspNetCore;
+using FluentValidation; 
 using TamTechBackendSDK.ContentService.Dtos.Product;
 using TamTechBackendSDK.ContentService.Validators;
-using TamTechBackendSDK.ContentService.Services.Menus.Dtos;
-using TamTechBackendSDK.ContentService.Services.Pages.Dtos;
+using TamTechBackendSDK.ContentService.Services.Menus.Dtos; 
 using TamTechBackendSDK.ContentService.Services.Dtos;
 using TamTechBackendSDK.ContentService.Services.Galleries.Dtos;
+using TamTechBackendSDK.ContentService.Services.Services.Validators;
+using TamTechBackendSDK.ContentService.Services.Menus.Validators;
+using TamTechBackendSDK.ContentService.Services.Galleries.Validators;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices
-{
-    public static class FluentValidationServiceConfigurations
+{ 
+     public static class FluentValidationServiceConfigurations
     {
         public static void DirectBackendServices_ContentService_AddFluentValidationConfigurations(this IServiceCollection services)
         {
@@ -27,48 +28,50 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
 
 
 
-            #region Page Module
+            //#region Page Module
 
-            services.AddTransient<IValidator<CreateHtmlPageDto>, CreateHtmlPageDtoValidator>();
+            //services.AddTransient<IValidator<CreateHtmlPageModel>, CreateHtmlPageModelValidator>();
 
-            services.AddTransient<IValidator<CreateSectionsPageDto>, CreateSectionsPageDtoValidator>();
+            //services.AddTransient<IValidator<CreateSectionsPageModel>, CreateSectionsPageModelValidator>();
 
-            services.AddTransient<IValidator<UpdateHtmlPageDto>, UpdateHtmlPageDtoValidator>();
+            //services.AddTransient<IValidator<UpdateHtmlPageModel>, UpdateHtmlPageModelValidator>();
 
-            services.AddTransient<IValidator<UpdateSectionsPageDto>, UpdateSectionsPageDtoValidator>();
+            //services.AddTransient<IValidator<UpdateSectionsPageModel>, UpdateSectionsPageModelValidator>();
 
-            #endregion
+            //#endregion
 
 
             #region Menu Module
 
-            services.AddTransient<IValidator<CreateMenuItemDto>, CreateMenuItemDtoValidator>();
+            services.AddTransient<IValidator<CreateMenuItemModel>, CreateMenuItemModelValidator>();
 
-            services.AddTransient<IValidator<UpdateMenuItemDto>, UpdateMenuItemDtoValidator>();
+            services.AddTransient<IValidator<UpdateMenuItemModel>, UpdateMenuItemModelValidator>();
 
-            services.AddTransient<IValidator<MenuItemKeysDto>, MenuItemKeysDtoValidator>();
+            services.AddTransient<IValidator<MenuItemKeysModel>, MenuItemKeysModelValidator>();
 
-            services.AddTransient<IValidator<CreateMenuDto>, CreateMenuDtoValidator>();
+            services.AddTransient<IValidator<CreateMenuModel>, CreateMenuModelValidator>();
 
             #endregion
 
 
             #region Service Module
 
-            services.AddTransient<IValidator<CreateServiceDto>, CreateServiceDtoValidator>();
+            services.AddTransient<IValidator<CreateServiceModel>, CreateServiceModelValidator>();
 
-            services.AddTransient<IValidator<UpdateServiceDto>, UpdateServiceDtoValidator>();
+            services.AddTransient<IValidator<UpdateServiceModel>, UpdateServiceModelValidator>();
 
             #endregion
 
 
             #region Gallery Module
 
-            services.AddTransient<IValidator<CreateGalleryDto>, CreateGalleryDtoValidator>();
+            services.AddTransient<IValidator<CreateGalleryModel>, CreateGalleryModelValidator>();
 
-            services.AddTransient<IValidator<UpdateGalleryDto>, UpdateGalleryDtoValidator>();
+            services.AddTransient<IValidator<UpdateGalleryModel>, UpdateGalleryModelValidator>();
 
             #endregion
+
+
 
         }
 

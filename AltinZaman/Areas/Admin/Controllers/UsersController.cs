@@ -12,7 +12,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
         public UsersController(ITelemetryClientService telemetryClientService,
                                IUsersManagerService identityService,
                                IRolesService rolesService, 
-                                  IStringLocalizer<UsersBaseController> localizer
+                                  IStringLocalizer<AdminBaseController> localizer
                               )
                : base(telemetryClientService, identityService, rolesService, localizer)
         {

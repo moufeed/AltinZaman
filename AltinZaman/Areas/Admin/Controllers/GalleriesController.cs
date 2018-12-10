@@ -14,7 +14,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
     {
         public GalleriesController(ITelemetryClientService telemetryClientService,
             IGalleriesService galeriesService,
-             IUploadManagerService uploadManager,  IStringLocalizer<GalleryBaseController> localizer)
+             IUploadManagerService uploadManager,  IStringLocalizer<AdminBaseController> localizer)
             : base(telemetryClientService, galeriesService, uploadManager, localizer)
         {
         }

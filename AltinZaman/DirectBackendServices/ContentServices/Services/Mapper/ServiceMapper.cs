@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Services.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Services.Mapper
 {
     public static class ServiceMapper
     {
-        public static TamTechBackendSDK.ContentService.Services.Dtos.CreateServiceDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Services.Models.CreateServiceDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Dtos.CreateServiceModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Services.Models.CreateServiceDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Dtos.CreateServiceDto
+            return new TamTechBackendSDK.ContentService.Services.Dtos.CreateServiceModel
             {
                 Content = frontend.Content,
                 DisplayOrder = frontend.DisplayOrder,
@@ -25,9 +25,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Services.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Dtos.UpdateServiceDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Services.Models.UpdateServiceDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Dtos.UpdateServiceModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Services.Models.UpdateServiceDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Dtos.UpdateServiceDto
+            return new TamTechBackendSDK.ContentService.Services.Dtos.UpdateServiceModel
             {
                 Id = frontend.Id,
                 Content = frontend.Content,

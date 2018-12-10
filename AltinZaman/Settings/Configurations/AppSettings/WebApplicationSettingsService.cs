@@ -151,8 +151,18 @@ namespace AltinZaman.Services.Configurations.AppSetting
         {
             return new List<string>
             {
-                     "page",
-                    "section",
+                     "page", 
+                    "service", 
+                    
+            };
+        }
+
+
+        public List<string> GetNumericalStatisticsModulesNames()
+        {
+            return new List<string>
+            {
+                    "page",
                     "service",
             };
         }

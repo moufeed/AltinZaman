@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Posts.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Posts.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Sections;
 using TamTechSDK.Common.Services.ContentService.Sections.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Sections.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Sections.Mapper
 {
     public  static class SectionsMapper 
     {
@@ -79,7 +79,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sections.Mapper
         {
             return new TamTechSDK.Common.Services.ContentService.Sections.Models.SectionContainerDto
             {
-                SectionInfo = item.SectionInfo.MapToFrontendDto(),
+                SectionInfo = item.SectionInfo?.MapToFrontendDto(),
                 Sections = item.Sections != null ? item.Sections.Select(m => m.MapToFrontendDto()).ToList() : new List<SectionDto>(),
                 Posts = item.Posts != null ? item.Posts.Select(p=> p.MapToFrontendDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Posts.Models.PostDto>()
             };

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Brands.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Brands.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Brands.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Brands
+namespace AltinZaman.DirectBackendServices.ContentServices.Brands
 {
     public class DirectBrandsServices : BaseDirectService , TamTechSDK.Common.Services.ContentService.Brands.IBrandsServices
     {

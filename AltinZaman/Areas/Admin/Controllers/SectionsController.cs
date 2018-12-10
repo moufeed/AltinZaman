@@ -17,7 +17,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
         public SectionsController(  ITelemetryClientService telemetryClientService,
                                     ISectionsService sectionsService,
                                     IUploadManagerService uploadManager,
-                                    IStringLocalizer<SectionsBaseController> localizer) 
+                                    IStringLocalizer<AdminBaseController> localizer) 
             : base(
                     telemetryClientService,  
                     sectionsService, 

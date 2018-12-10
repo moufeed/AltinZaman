@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{
-    public static class LocalizationServicesConfigurations
+{ 
+     public static class LocalizationServicesConfigurations
     {
         public static void AddLocalizationConfigurations(this IServiceCollection services)
         {

@@ -174,7 +174,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.IdentityService.Applicatio
                         options.AddPolicy(PolicyConstants.UsersManager, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(PolicyConstants.UsersManager)));
 
                         // Content SDK Policies
-
+                        
                         options.AddPolicy(ContentSDKPoliciesConstants.MenusContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.MenusContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.PagesContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PagesContentAdmin)));
@@ -200,6 +200,12 @@ namespace AltinZaman.AppStartup.DirectBackendServices.IdentityService.Applicatio
                         $"{AppSettings.DirectBackendSDKsSettings}:{ AppSettings.DirectBackendSDK_IdentityService_ResetPasswordEmailModelSettings}",
                          $"{AppSettings.DirectBackendSDKsSettings}:{ AppSettings.DirectBackendSDK_IdentityService_SelfSecuring}");
                 });
+
+            services.AddTransient<TamTechBackendSDK.IdentityService.Services.IIdentityServiceNotificationSenderToMessagingService, TamTechBackendSDK.IdentityService.Services.IdentityServiceNotificationSenderToServiceBus>((serviceExtension) =>
+            {
+                var settings = Configuration.GetSection("SMSServiceSettings").Get<ServiceBusSettings>();
+                return new TamTechBackendSDK.IdentityService.Services.IdentityServiceNotificationSenderToServiceBus(settings);
+            });
 
             services.AddTransient<TamTechBackendSDK.Common.Validations.IExpressionValidation, TamTechBackendSDK.Common.Validations.ExpressionValidation>();
             services.AddTransient<TamTechBackendSDK.IdentityService.Services.IUserAccountService, TamTechBackendSDK.IdentityService.Services.UserAccountService>();

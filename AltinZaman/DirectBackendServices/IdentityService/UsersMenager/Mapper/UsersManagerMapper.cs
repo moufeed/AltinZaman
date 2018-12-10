@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.IdentityService.UsersMenager.Mapper
+namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager.Mapper
 {
     public static class UsersManagerMapper
     {

@@ -7,12 +7,15 @@
 
 
 <div class="clearfix">
-    <div class="page-title">
+    <div class="page-title"> 
         <div class="title_left">
-            <h3>@Localizer["Products"] <small></small></h3>
+            <h3>@Localizer["Products"]<small></small></h3>
+          
+            
+            
         </div>
         <div class="title_right">
-            <a  href="@Url.AdminUrl("Create" ,"Products")"  class="btn btn-default btn-add-new ut-create-btn">
+            <a  href="@Url.AdminUrl("Create" ,"Products")"  class="btn btn-info btn-add-new ut-create-btn">
                 <i class="fa fa-plus"></i> @Localizer["new_product"]
             </a>
         </div>
@@ -32,11 +35,14 @@
 
 
             <div class="x_content">
+
+               @*  <partial name="_Filters.cshtml" model="ViewBag.FilterModel" /> *@
+
                 <div class="table-responsive">
                     <table class="table table-middle table-striped">
                         <thead>
                             <tr class="headings">
-                                <th width="100" class="text-center">@Localizer["t_image"]</th>
+                                <th width="60" class="text-center">@Localizer["t_image"]</th>
                                 <th class="text-center">@Localizer["t_name"]</th>
                                 <th>@Localizer["t_price"]</th>
                                 <th>@Localizer["t_sku"]</th>
@@ -84,12 +90,13 @@
                                         { <i class="fa fa-times c-red"></i>}
                                     </td>
                                     <td width="150" class="text-center td-actions">
-                                        <a data-toggle="tooltip"
+                                       <div>
+                                            <a data-toggle="tooltip"
                                            data-placement="top"
                                            title="@Localizer["t_edit"]"
                                            data-id="@product.Id"
                                            href=" @Url.AdminUrl("Edit","Products" ,new { id = product.Id } )"
-                                           class="btn btn-edit"><i class="fa fa-edit "></i></a>
+                                           class="btn btn-edit btn-round ut-edit-btn"><i class="fa fa-edit "></i></a>
 
                                         <a data-toggle="tooltip"
                                            data-placement="top"
@@ -97,7 +104,11 @@
                                            title="@Localizer["t_remove"]"
                                            data-url="@Url.AdminUrl("DeleteAsync","products" ,new { id = product.Id } )"
                                            data-backurl="@Url.AdminUrl("index","products")"
-                                           class="btn btn-remove delete-product"><i class="fa fa-times "></i></a>
+                                           class="btn btn-remove btn-round delete-product ut-remove-btn"><i class="fa fa-trash-o"></i></a>
+
+                                            
+
+                                       </div>
                                     </td>
                                 </tr>
                                 i++;
@@ -106,6 +117,9 @@
                         </tbody>
                     </table>
                 </div>
+                @*  <hr class="m-y-2" />
+                    <pagination controller-name="posts" filter-model="ViewBag.FilterModel" pagniation-model="ViewBag.pagination" total="true"></pagination>
+                *@
             </div>
         </div>
     </div>

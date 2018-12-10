@@ -9,8 +9,8 @@
     > thead > tr > td{
         padding: 15px 7px;
         vertical-align: middle;
-        font-weight: 500;
-        color: #333; 
+        font-weight: 600;
+        color: #000; 
         border-width: 1px;
         text-transform: uppercase;
         &.index{
@@ -37,8 +37,27 @@
             @include square(50px);
             display: inline-flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; 
         } 
+    }
+
+    tr{
+        td{
+            .label{
+                letter-spacing: 0.6px;
+                padding: 1px 10px;
+                border-radius: 14px;
+                font-weight: 300;
+                line-height: 20px;
+                display: inline-block;
+            }
+            &:last-child(){
+                div:not(.collapse):not(.text-right)  {
+                 display: flex;
+                }
+             }
+        }
+        
     }
    
 }
@@ -213,3 +232,7 @@ tr[data-type="dropdown"]{
            height: 30px !important;
     }
 }    
+
+.table-striped > tbody > tr:nth-of-type(odd){
+    background: #f7faff;
+}

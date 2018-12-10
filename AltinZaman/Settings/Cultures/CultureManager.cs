@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 
 namespace AltinZaman.Settings.Cultures
 {
@@ -22,7 +22,7 @@ namespace AltinZaman.Settings.Cultures
                     SupportedCultures = this.SupportedUICultures,
                     SupportedUICultures = this.SupportedUICultures,
                     RequestCultureProviders = this.CultureProviders
-                };
+                }; 
                 //options.RequestCultureProviders.Insert(0, RouteCultureProviders);
                 return options;
             }
@@ -50,13 +50,13 @@ namespace AltinZaman.Settings.Cultures
                 IList<CultureInfo> cultures = new List<CultureInfo>
                 {
                     new CultureInfo(CultureConstants.DefaultCulture.Culture)
-                };
+                }; 
                 return cultures;
             }
         }
 
         public RequestCulture DefaultRequestCulture
-        {
+        { 
             get
             {
                 return new RequestCulture(CultureConstants.DefaultCulture.Culture);
@@ -75,13 +75,13 @@ namespace AltinZaman.Settings.Cultures
             }
         }
 
-        public RouteDataRequestCultureProvider RouteCultureProviders
+        public  RouteDataRequestCultureProvider RouteCultureProviders
         {
             get
             {
                 return new RouteDataRequestCultureProvider();
             }
-        }
+        } 
 
     }
 }

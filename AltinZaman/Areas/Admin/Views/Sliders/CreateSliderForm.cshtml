@@ -19,7 +19,7 @@
         </div>
         <div class="title_right">
             <a asp-action="Index"
-               class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
         </div>
     </div>
 </div>
@@ -120,15 +120,21 @@
             validClass: "valid_field",
             ignore: ".ignore"
         });
+       
+           $("#Title").on("keyup", function() {
+               $("#Key").val($(this).val().replace(/\s/g, "_")).valid();
+           })
+   
+ 
     </script>
-    <script src="~/Admin/js/validator.min.js"></script>
-    @{
-        ViewBag.TinyMce_Contetnt_Id = null;
-        ViewBag.TinyMce_Suumry_Id = "#Summary";
-        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
-    }
+<script src="~/Admin/js/validator.min.js"></script>
+@{
+    ViewBag.TinyMce_Contetnt_Id = null;
+    ViewBag.TinyMce_Suumry_Id = "#Summary";
+    await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+}
 
-     
+
 
 }
 

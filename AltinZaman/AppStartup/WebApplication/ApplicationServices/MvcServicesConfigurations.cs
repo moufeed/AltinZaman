@@ -10,8 +10,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{
-    public static class MvcServicesConfigurations
+{ 
+     public static class MvcServicesConfigurations
     {
         public static void AddMvcConfigurations(this IServiceCollection services)
         {
@@ -28,10 +28,10 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddMvc()
                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddFluentValidation();
-            services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
+            services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization" );
             services.AddMvcCore().AddJsonFormatters();
 
-
+             
 
         }
     }

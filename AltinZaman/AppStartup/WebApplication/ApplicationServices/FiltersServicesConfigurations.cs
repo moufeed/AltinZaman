@@ -7,13 +7,13 @@ using System.Text;
 using TamTechSDK.Web.Filters;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{
-    public static class FiltersServicesConfigurations
+{ 
+     public static class FiltersServicesConfigurations
     {
         public static void AddFiltersConfigurations(this IServiceCollection services)
-        {
+        { 
             services.AddTransient<AdminFilter>();
-          //  services.AddTransient<MenuFilter>();
+          //  services.AddTransient<MenuFilter>(); 
         }
     }
 }

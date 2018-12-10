@@ -1,5 +1,6 @@
 
 .welcome-panel{
+    padding: 35px 30px 25px;
     h2{
         margin-bottom: 0;
         font-size: 21px;
@@ -21,7 +22,7 @@
             line-height: 16px;
             margin-bottom: 10px;
             i{
-                color: $dark-gray;
+                color:  $blue;
                 display: inline-block;
                 width: 25px;
             }

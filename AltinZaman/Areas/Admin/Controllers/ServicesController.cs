@@ -18,7 +18,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
                                     ITelemetryClientService telemetryClientService ,
                                     IServicesService servicesService , 
                                     IUploadManagerService UploadManager,
-                                    IStringLocalizer<ServicesBaseController> localizer) : base(telemetryClientService,
+                                    IStringLocalizer<AdminBaseController> localizer) : base(telemetryClientService,
                                                                                 servicesService, 
                                                                                 UploadManager, 
                                                                                 localizer)

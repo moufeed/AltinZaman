@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Products.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Products.Mapper;
 using TamTechSDK.Common.Models.Pagination;
+using TamTechSDK.Common.Models.Sort;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Products.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Products
+namespace AltinZaman.DirectBackendServices.ContentServices.Products
 {
     public class DirectProductsManagerService : BaseDirectService , TamTechSDK.Common.Services.ContentService.Products.IProductsManagerService
     {
@@ -137,6 +138,30 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Products
             return ReturnResult(data , result != null);
 
         }
+
+        public async Task<IRequestProviderResult<List<Product>>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang)
+        {
+
+           /*
+             var result = await _productService.GetAllExceptSoftDeletedAsync(pagination.MapToBackendPaginationModel(), searchParams, sorting.MapToBackendSortingModel(), lang);
+             
+            ProductsList model = new ProductsList
+            {
+                Data = result.Data != null  ? result.Data.Select(m => m.MapToFrontendProduct()).ToList() : new List<Product>(),
+                Pagination = result.Pagination?.MapToForntEndPagination()
+            };
+
+            return ReturnResult(model);
+            
+        */
+
+
+            throw new NotImplementedException();
+
+
+        }
+
+
 
         public Task<IRequestProviderResult<List<Product>>> GetAsync(PagingParameterModel model)
         {

@@ -1,11 +1,14 @@
 ﻿@{
 
     Layout = "_Layout";
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["home_page"];
 }
 
  
 
-@await Html.PartialAsync("_welcome-panel.cshtml")
+<partial name="_welcome-panel.cshtml" />
+<partial name="_statisticsPanel.cshtml" />
+
+ 
 
 

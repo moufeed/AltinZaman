@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Posts.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Posts.Mapper
 {
     public static class PostMapper
     {
@@ -84,30 +84,5 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Posts.Mapper
 
 
 
-        public static TamTechBackendSDK.ContentService.Models.PaginationParamsModel toBackendPaginationModel(this TamTechSDK.Common.Services.ContentService.Posts.Models.PaginationModel item)
-        {
-            return new TamTechBackendSDK.ContentService.Models.PaginationParamsModel
-            {
-                PageNumber = item.PageNumber,
-                PageSize = item.PageSize
-            };
-        }
-
-
-        
-
-
-        public static TamTechSDK.Common.Services.ContentService.Posts.Models.PaginationMetadataModel MapToForntEndPagination(this TamTechBackendSDK.ContentService.Models.PaginationMetadataModel item)
-        {
-            return new TamTechSDK.Common.Services.ContentService.Posts.Models.PaginationMetadataModel
-            {
-                TotalCount= item.TotalCount,
-                PageSize= item.PageSize,
-                PageNumber= item.PageNumber,
-                TotalPages= item.TotalPages,
-                PreviousPage= item.PreviousPage,
-                NextPage= item.NextPage
-            };
-        }
     }
 }

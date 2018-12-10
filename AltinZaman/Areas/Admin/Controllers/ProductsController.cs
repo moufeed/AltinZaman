@@ -22,7 +22,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
                                     ICategoriesServices categoriesService,
                                     IContentServices contentService, 
                                     IUploadManagerService uploadManager,
-                                    IStringLocalizer<ProductsBaseController> localizer
+                                    IStringLocalizer<AdminBaseController> localizer
                                     )
             : base(telemetryClientService, productsManagerService, brandsService, categoriesService, contentService,  uploadManager,   localizer)
         {

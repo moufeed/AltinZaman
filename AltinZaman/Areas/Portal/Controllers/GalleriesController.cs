@@ -15,9 +15,8 @@ namespace AltinZaman.Areas.Portal.Controllers
     public class GalleriesController : GalleriesBaseController
     {
         public GalleriesController(ITelemetryClientService telemetryClientService,
-            IMenusServices menusServices, IGalleriesService galleriesService
-            , IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-            : base(telemetryClientService, menusServices, galleriesService, stringLocalizer)
+            IMenusServices menusServices, IGalleriesService galleriesService )
+            : base(telemetryClientService, menusServices, galleriesService)
         {
         }
 

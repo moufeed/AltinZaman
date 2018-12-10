@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Pages.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
 {
     public static class PageMapper
     {
@@ -39,6 +39,22 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Pages.Mapper
             };
         }
 
+
+        public static TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary MapToPageSummaryFrontend(this TamTechBackendSDK.ContentService.Services.Pages.Dtos.PageDto backend)
+        {
+            return new TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary
+            { 
+                Id = backend.Id.ToString(),
+                Title = backend.Title,
+                Slug = backend.Slug, 
+                Section = backend.Section,
+                MainImage = backend.MainImage,
+                Summary = backend.Summary, 
+                ModifiedDate = backend.ModifiedDate,
+                CreatedDate = backend.CreatedDate, 
+                
+            };
+        }
         public static TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPage MapToFrontendDto(this TamTechBackendSDK.ContentService.Services.Pages.Dtos.HtmlPageDto backend)
         {
             return new TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPage

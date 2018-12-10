@@ -16,7 +16,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
     public class MenusController : MenusBaseController
     { 
         public MenusController(ITelemetryClientService telemetryClientService, IMenusServices MenusServices,
-       IWebApplicationSettingsService appSettingsService , IStringLocalizer<MenusBaseController> localizer)
+       IWebApplicationSettingsService appSettingsService , IStringLocalizer<AdminBaseController> localizer)
             : base(telemetryClientService, MenusServices, appSettingsService, localizer)
         {
         }

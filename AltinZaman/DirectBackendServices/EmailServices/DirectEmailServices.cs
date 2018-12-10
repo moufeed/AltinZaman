@@ -8,7 +8,7 @@ using TamTechBackendSDK.Common.Services.ServiceBus.Models;
 using TamTechSDK.Common.Services.Email.Models;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
 
-namespace TamTech.Web.DirectBackendServices.EmailServices
+namespace AltinZaman.DirectBackendServices.EmailServices
 {
     public class DirectEmailServices : TamTechSDK.Common.Services.Email.IEmailSenderService
     {

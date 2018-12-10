@@ -12,10 +12,6 @@ msgstr ""
 "Language-Team: \n"
 
 # adminbar
-
-msgid "site_title"
-msgstr "الزمان الذهبي"
-
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
@@ -178,6 +174,17 @@ msgstr "التّالي"
 msgid "Description"
 msgstr "وصف"
 
+msgid "By"
+msgstr "بواسطة"
+
+msgid "share_this_post"
+msgstr "مشاركة "
+
+#request qute
+
+msgid "request_qute"
+msgstr "عرض سعر"
+
 #-------------------------------------------------------------------------
 #:admin panel
 #-------------------------------------------------------------------------
@@ -248,6 +255,9 @@ msgstr "اِستعراض"
 msgid  "select"
 msgstr "اِختيار"
 
+msgid "filter"
+msgstr "تصفية"
+
 msgid "save_and_continue"
 msgstr "حفظ و متابعة"
 
@@ -286,7 +296,13 @@ msgstr "صورة"
 
 msgid "icon"
 msgstr "أيقونة"
-  
+
+msgid "total"
+msgstr "Total"
+
+msgid "locked_by_system"
+msgstr "مُقفل من قِبل النّظام"
+
 msgid "meta_keywords"
 msgstr "كلمات مفتاحيّة"
 
@@ -350,6 +366,25 @@ msgstr "لا يوجد"
  
 msgid "more"
 msgstr "المزيد"
+
+msgid "publish_unpublish"
+msgstr "نشر /إلغاء النشر"
+
+msgid "total_items"
+msgstr "عدد العناصر :"
+
+msgid "showing_of"
+msgstr "عرض {0} إلى {1} من {2}"
+ 
+msgid "all"
+msgstr "الكل"
+
+msgid "change_password"
+msgstr "تغير كلمة السر"
+
+msgid "languages"
+msgstr "اللغات"
+
 #global Forms
 
 msgid "f_title"
@@ -380,6 +415,9 @@ msgid  "f_content"
 msgstr "المحتوى :"
 
 msgid  "f_meta_keywords"
+msgstr "كلمات مفتاحية :"
+
+msgid  "f_meta_tags"
 msgstr "كلمات مفتاحية :"
 
 msgid  "f_meta_description"
@@ -447,6 +485,9 @@ msgstr "Key :"
 
 msgid "f_position"
 msgstr "الموقع :"
+
+msgid "f_public_url"
+msgstr "الرابط العام :"
 
 #seo form 
 msgid "f_headline"
@@ -594,6 +635,56 @@ msgstr "عدد العناصر"
 msgid "t_section_parent"
 msgstr "التصنيف الأب"
 
+msgid "t_status"
+msgstr "الحالة"
+
+msgid "t_detials"
+msgstr "التفاصيل"
+
+msgid "t_city"
+msgstr "المدينة"
+
+#labels
+
+msgid "l_full_name"
+msgstr "الأسم الكامل"
+
+msgid "l_name"
+msgstr "الأسم"
+
+msgid "l_email"
+msgstr "البريد الألكتروني"
+
+msgid "l_mobile"
+msgstr "الجوال"
+
+msgid "l_phone"
+msgstr "الهاتف"
+
+msgid "l_city"
+msgstr "المدينة"
+
+msgid "l_zip_code"
+msgstr "العنوان البريدي"
+
+msgid "l_address"
+msgstr "العنوان"
+
+msgid "l_date"
+msgstr "التاريخ"
+
+msgid "l_quantity"
+msgstr "العدد"
+
+msgid "l_price"
+msgstr "السعر"
+
+msgid "l_status"
+msgstr "الحالة"
+
+msgid "l_notes"
+msgstr "ملاحظات"
+
 # global alerts 
  
 msgid "success"
@@ -732,7 +823,7 @@ msgstr "مستخدِمون"
 msgid "new_user"
 msgstr "مُستخدِم جديد"
 
-msgid "Catalog"
+msgid "Catelog"
 msgstr "فهْرس"
 
 msgctxt "admin.Views.Shared._side_menu"
@@ -750,6 +841,9 @@ msgstr "تقييمات"
 
 msgid "Messages"
 msgstr "رسائل"
+
+msgid "requests"
+msgstr "الطلبات"
 
 #: _SeoWebPage.cshtml
 msgid "page_description"
@@ -995,8 +1089,6 @@ msgstr "بنية القائمة "
 
 msgid "submenu"
 msgstr "قائمة فرعيّة"
-
-
 
 #: menus _modal.cshtml
 msgid "page"
@@ -1359,15 +1451,15 @@ msgstr "لقد قمنا بجمع بعض الرّوابط من أجل أن تبد
 msgid "create_page"
 msgstr "إنشاء صفحة"
  
+msgid "next_steps"
+msgstr "خطوات تالية"
+
 msgid "get_started"
 msgstr "في البداية"
 
 msgid "more_actions"
 msgstr "المزيد"
 
-msgid "next_steps"
-msgstr "خطوات تالية"
- 
 msgid "upload_first_gallery"
 msgstr "اِرفع أوّل معرض صور"
  
@@ -1439,6 +1531,20 @@ msgstr "مقالات"
 msgid "new_post"
 msgstr "مقالة جديدة"
 
+msgid "page_size"
+msgstr "عدد العناصر"
+
+msgid "sort_by"
+msgstr "ترتيب حسب"
+
+msgid "post_name"
+msgstr "عنوان المقالة"
+
+msgid "section_name"
+msgstr "اسم التصنيف"
+
+
+
 #: Posts Form.cshtml
 msgid "post_edit"
 msgstr "تعديل مقالة"
@@ -1446,8 +1552,7 @@ msgstr "تعديل مقالة"
 msgid "post_create"
 msgstr "مقالة جديدة"
 
-msgid "locked_by_system"
-msgstr "مُقفل من قِبل النّظام"
+
 
 #: Posts Details.cshtml
 
@@ -1484,3 +1589,118 @@ msgstr "تفاصيل التصنيف"
 
 msgid "section_parent"
 msgstr "التصنيف الأب"
+
+# : request index.cshtml 
+
+msgid "customer_name"
+msgstr "الأسم"
+
+msgid "all_cities"
+msgstr "كل المدن"
+
+msgid "choice_option"
+msgstr "ترتيب بحسب"
+
+#: request details.cshtml
+
+msgid "request_details"
+msgstr "تفاصيل الطلب"
+ 
+msgid "request_status"
+msgstr "حالة الطلب"
+
+msgid "request_date"
+msgstr "تاريخ الطلب"
+
+msgid "personal_information"
+msgstr "المعلومات الشخصية"
+
+msgid "request_information"
+msgstr "معلومات الطلب"
+
+msgid "request_history"
+msgstr "العمليات المنفذة"
+
+msgid "process_date"
+msgstr "تاريخ العملية"
+
+msgid "current_status"
+msgstr "الحالة"
+
+msgid "previous_status"
+msgstr "الحالة السابقة"
+
+msgid "information"
+msgstr "المعلومات"
+
+msgid "history"
+msgstr "ارشيف"
+ 
+msgid "greaterThan_msg"
+msgstr "يجب ان تكون القيمة أكبر من  "
+
+msgid "slug_msg"
+msgstr "فقط احرف وارقام والمسافات غير مسموحة ويمكن استخدم  _ + -"
+
+msgid "regex_msg"
+msgstr "الرجاء التأكد من القيمة المدخلة"
+
+msgid "lessThan_msg"
+msgstr "القيمة يجب ان تكون أقل من"
+
+msgid "json_msg"
+msgstr "الرجاء إدخال شيفرة برمجية صالحة"
+
+msgid "schemaType_msg"
+msgstr  " لايمكن ترك حقل (@type) فارغ"
+
+msgid "url_msg"
+msgstr "الرجاء إدخال رابط صحيح  http://example.com "
+
+# :controller adminbaseController.cs // filters
+
+msgid "title_a_to_z"
+msgstr "الأسم : ا الى ي" 
+
+msgid "title_z_to_a"
+msgstr "الأسم : ي الى ا"
+
+msgid "newst_first"
+msgstr "الأحدث أولاً"
+
+msgid "oldest_first"
+msgstr "الأقدام أولاً" 
+ 
+
+
+#:home page
+
+msgid "home_page"
+msgstr "الرئيسية"
+
+
+#: _statisticsPanel.cshtml
+
+msgid "h_page"
+msgstr "الصفحات"
+
+msgid "h_section"
+msgstr "التصنيفات"
+
+msgid "h_service"
+msgstr "الخدمات"
+
+msgid "h_gallery"
+msgstr "المعارض"
+
+msgid "more_info"
+msgstr "معرفة المزيد"
+
+msgid "fullscreen"
+msgstr "ملئ الشاشة"
+
+
+
+#altinzaman 
+msgid "site_title"
+msgstr "الزمان الذهبي"

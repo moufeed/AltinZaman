@@ -39,13 +39,9 @@
 
     <environment exclude="Development">
 
-        <link rel="stylesheet"
-              href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/Admin/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/Admin/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-        <link rel="stylesheet" href="~/Admin/lib/font-awesome/css/font-awesome.min.css"
-              asp-fallback-href="~/Admin/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/Admin/lib/font-awesome/css/font-awesome.min.css" />
 
 
 
@@ -63,10 +59,15 @@
 
 </head>
 <body class="nav-md  @ViewData["UnitTestPageClass"]">
-
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col menu_fixed">
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
@@ -95,7 +96,6 @@
             <!-- page content -->
 
             <div class="right_col" role="main">
-
                 @RenderBody()
             </div>
             <!-- /page content -->
@@ -117,18 +117,12 @@
 
 
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-            asp-fallback-src="~/Admin/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+    <script src="~/Admin/lib/jquery/dist/jquery.min.js">
     </script>
-    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-            asp-fallback-src="~/Admin/lib/bootstrap/dist/js/bootstrap.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-            crossorigin="anonymous"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    <script src="~/Admin/lib/bootstrap/dist/js/bootstrap.min.js">
     </script>
+
+
 
     <script src="~/Admin/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
     @Html.Partial("~/Areas/Admin/Views/Shared/_localization.cshtml")
@@ -137,5 +131,19 @@
 
     @RenderSection("Scripts", required: false)
     @Html.Partial("~/Areas/Admin/Views/Shared/_ResultMessage_notification.cshtml", ViewData)
+
+    <script>
+        var loginUrl = '@Url.Action("login", "account" ,new { Area="Identity" })'
+        $.ajaxSetup({
+            statusCode: {
+                401: function () {
+                    window.location.href = loginUrl
+                },
+                403: function () {
+                    window.location.href = loginUrl
+                }
+            }
+        });
+    </script>
 </body>
 </html>

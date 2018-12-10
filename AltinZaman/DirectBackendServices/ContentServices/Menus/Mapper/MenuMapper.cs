@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
 {
     public static class MenuMapper
     {
-        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuDto
+            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuModel
             {
                 Position = frontend.Position,
                 Key = frontend.Key,
@@ -16,9 +16,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuItemDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuItemDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuItemModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuItemDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuItemDto
+            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.CreateMenuItemModel
             {
                 RootMenuId = frontend.MenuId,
                 ParentKey = frontend.ParentKey,
@@ -32,9 +32,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.MenuItemKeysDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.MenuItemKeysModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.MenuItemKeysDto
+            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.MenuItemKeysModel
             {
                 RootMenuId = frontend.RootMenuId,
                 Key = frontend.Key,  
@@ -52,9 +52,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuDto
+            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuModel
             {
                 Id = frontend.Id,
                 Position = frontend.Position,
@@ -65,9 +65,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuItemDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuItemDto frontend)
+        public static TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuItemModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuItemDto frontend)
         {
-            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuItemDto
+            return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.UpdateMenuItemModel
             {
                 DisplayOrder = frontend.DisplayOrder,
                 ItemType = frontend.ItemType,

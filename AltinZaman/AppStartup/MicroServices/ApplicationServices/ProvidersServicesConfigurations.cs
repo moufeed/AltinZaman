@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests;
 
 namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
-{
-    public static class ProvidersServicesConfigurations
+{ 
+     public static class ProvidersServicesConfigurations
     {
         public static void MicroServices_AddProvidersServicesConfigurations(this IServiceCollection services)
         {

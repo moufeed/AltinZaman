@@ -7,12 +7,17 @@
             @{
                 string activeController = ViewContext.RouteData.Values["Controller"].ToString();
                 string activeAction = ViewContext.RouteData.Values["Action"].ToString();
-              
+
             }
             <li>
                 <a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>@Localizer["Home"]</a>
             </li>
+
+            
+
              
+
+
 
             <li class='@((activeController == "Pages")  ?  "active" :""  )'>
                 <a>
@@ -21,7 +26,7 @@
                 <ul class="nav child_menu">
                     <li class="@( activeController == " Pages" && activeAction=="Index" ? "current-page" :"" )">
                         <a href="@Url.AdminUrl("index","pages")">
-                            <i class="fa fa-files-o"></i>
+                            <i class="fa fa-circle"></i>
                             @Localizer["view_all"]
                         </a>
                     </li>
@@ -32,25 +37,36 @@
                     <li class="@( activeController == " Pages" && activeAction=="CreateSectionsPage" ? "current-page"
                         :"" )">
                         <a href="@Url.AdminUrl("CreateSectionsPage", "pages")">
-                            <i class="fa fa-list-ol"></i>
+                            <i class="fa fa-plus"></i>
                             @Localizer["new_section_page"]
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class='@((activeController == "Menus")  ?  "active" :""  )'>
-                <a><i class="fa fa-bars"></i> @Localizer["Menus"] <span class="fa fa-chevron-down"></span></a>
+            <li class='@((activeController == "Menus")  ?  "current-page" :""  )'>
+                <a href="@Url.AdminUrl("index","menus")"><i class="fa fa-bars"></i>@Localizer["Menus"]</a>
+            </li>
+
+
+            
+            <li class='@((activeController == "Users")  ?  "active" :""  )'>
+                <a><i class="fa fa-users"></i> @Localizer["Users"] <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li class="@( activeController == " Menus" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index","menus")">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
-                            @Localizer["view_all"]
+                    <li class="@( activeController == " Users" && activeAction=="Index" ? "current-page" :"" )">
+                        <a href="@Url.AdminUrl("index","users")"><i class="fa fa-circle"></i>@Localizer["view_all"]</a>
+                    </li>
+                    <li class="@( activeController == " Users" && activeAction=="Create" ? "current-page" :"" )">
+                        <a href="@Url.AdminUrl("Create","users")">
+                            <i class="fa fa-plus"></i>@Localizer["new_user"]
                         </a>
                     </li>
                 </ul>
             </li>
-             
+
+         
+
+
             <li class='@((activeController == "Services")  ?  "active" :""  )'>
                 <a>
                     <i class="fa fa-cubes"></i>
@@ -59,14 +75,14 @@
 
                 <ul class="nav child_menu">
                     <li class="@( activeController == " Services" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index","services")" >
-                            <i class="fa fa-cube"></i>@Localizer["view_all"]
+                        <a href="@Url.AdminUrl("index","services")">
+                            <i class="fa fa-circle"></i>@Localizer["view_all"]
                         </a>
                     </li>
                     <li class="@( activeController == " Services" && activeAction=="Create" ? "current-page" :"" )">
                         <a href="@Url.AdminUrl("Create","services")">
                             <i class="fa fa-plus"></i>@Localizer["new_service"]
-                             
+
                         </a>
                     </li>
                 </ul>
@@ -80,7 +96,7 @@
                 <ul class="nav child_menu">
                     <li class="@( activeController == " Sliders" && activeAction=="Index" ? "current-page" :"" )">
                         <a href="@Url.AdminUrl("index","Sliders")">
-                            <i class="fa fa-file-image-o"></i>@Localizer["view_all"]
+                            <i class="fa fa-circle"></i>@Localizer["view_all"]
 
                         </a>
                     </li>
@@ -90,20 +106,10 @@
                 </ul>
             </li>
 
-            <li class='@((activeController == "Users")  ?  "active" :""  )'>
-                <a><i class="fa fa-users"></i> @Localizer["Users"] <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li class="@( activeController == " Users" && activeAction=="Index" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("index","users")"><i class="fa fa-user"></i>@Localizer["view_all"]</a>
-                    </li>
-                    <li class="@( activeController == " Users" && activeAction=="Create" ? "current-page" :"" )">
-                        <a href="@Url.AdminUrl("Create","users")">
-                            <i class="fa fa-plus"></i>@Localizer["new_user"]
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            
+             
+
+              
+          
         </ul>
     </div>
 </div>

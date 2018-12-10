@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks; 
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
 {
     public static class GalleriesMapper
     {
@@ -35,9 +35,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryDto ToBackend_CreateGalleryDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryDto item)
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryModel ToBackend_CreateGalleryDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryModel
             {
                 Lang = item.Lang,
                 Title = item.Title,
@@ -78,9 +78,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryDto MapTobackendUpdateGalleryDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryDto item)
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryModel MapTobackendUpdateGalleryDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryModel
             {
                 Id = item.Id,
                 Lang = item.Lang,
@@ -121,10 +121,10 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
             };
         }
         
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemDto MapToBackendCreateGalleryItemDto (this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryItemDto item )
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemModel MapToBackendCreateGalleryItemDto (this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryItemDto item )
         {
 
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemModel
             {
                 Lang = item.Lang,
                 Title = item.Title,
@@ -139,10 +139,10 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemDto MapToBackendUpdateGalleryItemDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryItemDto item )
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemModel MapToBackendUpdateGalleryItemDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryItemDto item )
         {
 
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemModel
             {
                 Lang = item.Lang,
                 Title = item.Title,
@@ -158,9 +158,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.GalleryItemKeysDto MapToBackendGalleryItemKeysDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemKeysDto item)
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.GalleryItemKeysModel MapToBackendGalleryItemKeysDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemKeysDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.GalleryItemKeysDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.GalleryItemKeysModel
             {
 
                 Id = item.Id,
@@ -168,9 +168,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.PublishGalleryItemsDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemKeysDto item)
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.PublishGalleryItemsModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemKeysDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.PublishGalleryItemsDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.PublishGalleryItemsModel
             {
 
                 Id = item.Id,
@@ -179,9 +179,9 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Galleries.Mapper
             };
         }
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateListGalleryItemsDto MapToBackendListOitems(this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateListGalleryItemsDto item)
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateListGalleryItemsModel MapToBackendListOitems(this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateListGalleryItemsDto item)
         {
-            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateListGalleryItemsDto
+            return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateListGalleryItemsModel
             {
                 GalleryId = item.GalleryId,
                 Lang = item.Lang,

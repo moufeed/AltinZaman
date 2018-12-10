@@ -21,8 +21,8 @@ namespace AltinZaman.Settings.Configurations.Modules
                 ModulesTypesEnum.Service,
                 ModulesTypesEnum.Slider
             };
-        }
+        } 
 
-
+     
     }
 }

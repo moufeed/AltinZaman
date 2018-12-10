@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.IdentityService.UsersMenager.Mapper;
+using AltinZaman.DirectBackendServices.IdentityService.UsersMenager.Mapper;
 using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Common.Services.Identity.Models;
 using TamTechSDK.Common.Services.Identity.Models.Params;
 
-namespace TamTech.Web.DirectBackendServices.IdentityService.UsersMenager
+namespace AltinZaman.DirectBackendServices.IdentityService.UsersMenager
 {
     public class DirectUserMenagerServices : BaseDirectService,  TamTechSDK.Common.Services.Identity.IUsersManagerService
     {

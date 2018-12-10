@@ -17,14 +17,14 @@
     </div>
 </div>
 
-  
+
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
 
         @{
-            
-                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
-             
+
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+
         }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
@@ -32,6 +32,7 @@
         <div class="x_panel p-x-0">
 
             <div class="x_content">
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
                 <div class="table-responsive">
                     <table class="table table-middle table-striped sections-table" id="sectionsTable">
                         <thead>
@@ -60,7 +61,7 @@
                                             }
                                             else
                                             {
-                                                <img src="~/Admin/img/noimage.jpg" alt="" width="75" />
+                                                <img src="~/Admin/img/noimage.jpg" alt="" width="60" />
                                             }
                                         </td>
                                         <td style="min-width:150px">
@@ -83,28 +84,22 @@
                                         <td>
                                             @item.ParentName
                                         </td>
-                                        <td>
+                                        <td class="text-center">
 
                                             @if (item.Locked)
                                             {
-                                                @if (item.Published)
-                                                {
-                                                    <span data-toggle="tooltip"
-                                                          data-placement="top"
-                                                          title="@Localizer["locked_by_system"]">
-                                                        <i class="fa fa-eye c-green"></i>
-                                                        <small>@Localizer["t_published"]</small>
-                                                    </span>
-                                                }
-                                                else
-                                                {
-                                                    <span data-toggle="tooltip"
-                                                          data-placement="top"
-                                                          title="@Localizer["locked_by_system"]">
-                                                        <i class="fa fa-eye-slash c-red"></i>
-                                                        <small>@Localizer["t_unpublished"]</small>
-                                                    </span>
-                                                }
+                                                 <if include-if="item.Published">
+                                                <span class="label label-success">
+                                                    <i class="fa fa-eye "></i>
+                                                    @Localizer["t_published"]
+                                                </span>
+                                            </if>
+                                            <if exclude-if="item.Published">
+                                                <span class="label label-danger">
+                                                    <i class="fa fa-eye-slash "></i>
+                                                    @Localizer["t_unpublished"]
+                                                </span>
+                                            </if>
                                             }
                                             else
                                             {
@@ -138,34 +133,36 @@
                                             }
                                         </td>
                                         <td>
-                                            <a data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="@Localizer["t_details"]"
-                                               href="@Url.AdminUrl("Details","sections",new { id = item.Id })"
-                                               class="btn btn-view btn-round ut-detail_btn"><i class="fa fa-eye "></i></a>
-
-                                            <a data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="@Localizer["t_edit"]"
-                                               href="@Url.AdminUrl("Edit" ,"sections",new { id = item.Id })"
-                                               class="btn btn-edit btn-round ut-edit_btn"><i class="fa fa-edit "></i></a>
-
-                                            @if (item.Locked)
-                                            {
-                                                <span data-toggle="tooltip"
-                                                      data-placement="top"
-                                                      class="btn-locked btn-round"
-                                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                                            }
-                                            else
-                                            {
+                                            <div>
                                                 <a data-toggle="tooltip"
                                                    data-placement="top"
-                                                   data-id="@item.Id"
-                                                   data-url="@Url.AdminUrl("DeleteAsync", "sections", new { id = item.Id })"
-                                                   title="@Localizer["t_remove"]"
-                                                   class="btn btn-remove btn-round delete-service ut-section-removebtn"><i class="fa fa-times "></i></a>
-                                            }
+                                                   title="@Localizer["t_details"]"
+                                                   href="@Url.AdminUrl("Details","sections",new { id = item.Id })"
+                                                   class="btn btn-view btn-round ut-detail_btn"><i class="fa fa-info "></i></a>
+
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["t_edit"]"
+                                                   href="@Url.AdminUrl("Edit" ,"sections",new { id = item.Id })"
+                                                   class="btn btn-edit btn-round ut-edit_btn"><i class="fa fa-edit "></i></a>
+
+                                                @if (item.Locked)
+                                                {
+                                                    <span data-toggle="tooltip"
+                                                          data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                                          class="btn-locked btn-round"
+                                                          title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <a data-toggle="tooltip"
+                                                       data-placement="top"
+                                                       data-id="@item.Id"
+                                                       data-url="@Url.AdminUrl("DeleteAsync", "sections", new { id = item.Id })"
+                                                       title="@Localizer["t_remove"]"
+                                                       class="btn btn-remove btn-round delete-service ut-section-removebtn"><i class="fa fa-trash-o "></i></a>
+                                                }
+                                            </div>
 
 
                                         </td>
@@ -173,25 +170,41 @@
 
                                 }
                             }
-                            else
-                            {
+                             
+
+                        <if include-if='Model.Count == 0'>
                                 <tr>
-                                    <td colspan="6">
-                                        <div class='empty_table text-center'> <i class='fa fa fa-exclamation-circle'></i><p>@Localizer["no_data_table"]</p></div>
+                                    <td colspan="8" class="text-center">
+                                        <p class="empty_row">
+                                            <i class='fa fa fa-exclamation-circle'></i>
+                                            @Localizer["no_data_table"]
+                                        </p>
                                     </td>
                                 </tr>
-                            }
-
+                            </if>
                         </tbody>
                     </table>
                 </div>
+                
+                  <hr class="m-y-2" />
+                    <pagination controller-name="sections" filter-model="ViewBag.FilterModel" pagniation-model="ViewBag.pagination" total="true"></pagination>
+                
             </div>
         </div>
     </div>
 </div>
 
+ 
+@section Styles{
+    <link href="~/Admin/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+}
+
 
 @section Scripts {
     <script src="~/Admin/js/sections.min.js"></script>
-
+    <script src="~/Admin/lib/select2/dist/js/select2.js"></script>
+    <script>
+        $('.select_no-search').select2({ minimumResultsForSearch: -1});
+        $('.select_picker').select2();
+    </script>
 }

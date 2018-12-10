@@ -16,7 +16,7 @@ namespace TamTech.Web.Areas.Admin.Controllers
                          IPageService pageService,
                          IUploadManagerService uploadManager,
                          IStringConverters stringConverters, 
-                         IStringLocalizer<PagesBaseController> localizer)
+                         IStringLocalizer<AdminBaseController> localizer)
           :  base(telemetryClientService, pageService, uploadManager, stringConverters, localizer)
         { }
 

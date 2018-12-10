@@ -24,29 +24,31 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @{
-            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
-        }
+        @{  ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };  }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
-        @*@if (ViewBag.Languages?.Count > 1)
-            {
-                <header class="language_bar clearfix">
-                    <ul class="nav nav-tabs nav-header" role="tablist">
-                        @foreach (var lang in ViewBag.Languages)
-                        {
-                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                                <a href="@Url.AdminUrl("EditHtmlPage", "Pages", new { culture = lang.Lang ,id = Model.Id})">@lang.Name</a>
-                            </li>
-                        }
-                    </ul>
-                </header>
-            }*@
+
 
         <div class="x_panel">
             <div class="x_content">
 
+                @if (!Model.Locked)
+                {
+                <div class="text-right flip">
+                    <label asp-for="Published">
 
+                        <input type="checkbox"
+                               asp-for="Published"
+                               class="toggle_switch "
+                               data-toggle="tooltip"
+                               id="publish-page"
+                               data-placement="@(activeLang == "ar" ? "left" : "right")"
+                               data-url="@Url.AdminUrl("Publish","Pages", new { type = "html" , id = Model.Id } )"
+                               title="@Localizer["publish_unpublish"]" />
+                    </label>
+                </div>
+                }
+                    
 
 
                 <form asp-action="EditHtmlPage" asp-controller="Pages"
@@ -64,6 +66,28 @@
                     <input type="hidden" name="DatePublished" value="@(String.Format("{0:yyyy-MM-dd}", Model.PublishedDate))" data-seo-published />
                     <input type="hidden" name="DateModified" value="@(String.Format("{0:yyyy-MM-dd}", Model.ModifiedDate))" data-seo-modified />
                     <input type="hidden" name="Lang" value="@activeLang" />
+
+
+
+
+                    @if (!string.IsNullOrEmpty(Model.Slug) && Model.Published)
+                    {
+                        <div class="form-group clearfix">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_public_url"]</label>
+                            <div class="col-md-7 col-sm-9 col-xs-12">
+                                @{
+                                    string UrlAction = Url.Action("v", "pages", new { Area = "portal", slug = Model.Slug });
+
+
+                                    var url = System.Uri.UnescapeDataString(string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, UrlAction));
+                                }
+
+                                <p class="form-control-static p-x-2"><a href="@url" class="underline" id="url">@url</a></p>
+                                <span asp-validation-for="Title" class="text-danger invalid_field"></span>
+                            </div>
+                        </div>
+                    }
+
                     <div class="form-group clearfix">
                         <label asp-for="Title" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_title"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
@@ -144,12 +168,12 @@
                     </div>
 
                     @*<div class="form-group clearfix">
-                            @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
-                            <div class="col-md-7 col-sm-9 col-xs-12">
-                                @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
-                                @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
-                            </div>
-                        </div>*@
+                @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
+                <div class="col-md-7 col-sm-9 col-xs-12">
+                    @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
+                    @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
+                </div>
+            </div>*@
 
                     <div class="form-group clearfix">
                         <label asp-for="Content" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_content"]</label>
@@ -242,9 +266,28 @@
     <script src="~/Admin/js/serializejson.min.js"></script>
     <script src="~/Admin/js/seo.min.js"></script>
     <script>
-         
+
         $('#keywords').tagsinput({
             tagClass: 'tag'
+        });
+
+        $('#publish-page').on('change', function () {
+            var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";
+            var url = $(this).data('url');
+            $.get(url, function () { }).done(function (data) {
+
+                if (data.success) {
+                    $notification.success(window.localization.success, msg, 2000, "fa fa-check");
+                } else {
+                    var errors = data.errors;
+                    $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                    togglePublishBtn($this, false, published, unpublished);
+                }
+            })
+            .fail(function (jqXHR, Status) {
+                $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                togglePublishBtn($this, false, published, unpublished);
+            });
         });
     </script>
 }

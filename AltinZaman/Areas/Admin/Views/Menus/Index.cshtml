@@ -69,33 +69,35 @@
                                         @menu.ModifiedDate
                                     </td>
                                     <td>
-                                        <a data-toggle="tooltip"
-                                           data-placement="top"
-                                           href="@Url.AdminUrl("Edit","menus",new { id = menu.Id})"
-                                           title="@Localizer["t_edit"]"
-                                           class="btn btn-edit  ut-edit-btn btn-round"><i class="fa fa-edit "></i></a>
-                                        @*href="~/Admin/@activeLang/Menus/Edit/@menu.Id"*@
+                                        <div>
 
-                                        @if (menu.Locked)
-                                        {
-                                            <span data-toggle="tooltip"
-                                                  data-placement="top"
-                                                  class="btn-locked btn-round"
-                                                  title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                                        }
-                                        else
-                                        {
                                             <a data-toggle="tooltip"
                                                data-placement="top"
-                                               data-id="@menu.Id"
-                                               data-target="#tr-@menu.Id"
-                                               data-url="@Url.AdminUrl("Delete", "menus", new { id = menu.Id })"
-                                               title="@Localizer["t_remove"]"
-                                               data-msg-error="@Localizer["error"]"
-                                               data-msg-deleted="@Localizer["deleted_successfully"]"
-                                               class="btn btn-remove btn-round delete__menu ut-delete-btn "><i class="fa fa-times "></i></a>
-                                        }
+                                               href="@Url.AdminUrl("Edit","menus",new { id = menu.Id})"
+                                               title="@Localizer["t_edit"]"
+                                               class="btn btn-edit  ut-edit-btn btn-round"><i class="fa fa-edit "></i></a>
+                                             
 
+                                            <if include-if="menu.Locked">
+                                                <span data-toggle="tooltip"
+                                                      data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                                      class="btn-locked btn-round"
+                                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                            </if>
+
+                                            <if exclude-if="menu.Locked">
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   data-id="@menu.Id"
+                                                   data-target="#tr-@menu.Id"
+                                                   data-url="@Url.AdminUrl("Delete", "menus", new { id = menu.Id })"
+                                                   title="@Localizer["t_remove"]"
+                                                   data-msg-error="@Localizer["error"]"
+                                                   data-msg-deleted="@Localizer["deleted_successfully"]"
+                                                   class="btn btn-remove btn-round delete__menu ut-delete-btn "><i class="fa fa-trash-o "></i></a>
+                                            </if>
+                                             
+                                        </div>
                                     </td>
                                 </tr>
                             }

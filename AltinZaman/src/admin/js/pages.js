@@ -17,9 +17,13 @@ $(document).on('click','a[id^="pubunpub-"]',function(){
     let status = $el.data('status');
     let OldClass = $el.find('i').attr("class");
     $el.find('i').removeClass().addClass("fa fa-spinner fa-pulse");
+    var $tr  =  $el.parents("tr");
     $.get(url,()=>{}).done(function(data){
+ 
        if(data.success){
-            if( $el.hasClass('ptrue') ){
+        var title = $tr.find(".ser-title");
+        if( $el.hasClass('ptrue') ){
+            title.attr("data-href",title.attr("href")).removeAttr("href").removeClass("underline");
              $el.removeClass('ptrue')
              $el.attr('title' , _localizer.t_unpublish  );
              $el.removeClass("ut-published").addClass("ut-unpublished");
@@ -27,7 +31,7 @@ $(document).on('click','a[id^="pubunpub-"]',function(){
              $el.find('small').text(_localizer.t_unpublished);
              $notification.success("", _localizer.unpublished_successfully , 2500, "fa fa-check")
         }else{
-
+            title.attr("href",title.attr("data-href")).addClass("underline");
             $el.removeClass("ut-unpublished").addClass("ut-published ptrue");
             $el.attr('title' ,_localizer.t_publish );
             $el.find('i').removeClass("fa-spinner fa-pulse").addClass("fa-eye c-green");

@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Sliders.Models;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders
+namespace AltinZaman.DirectBackendServices.ContentServices.Sliders
 {
     public class DirectSlidersService : TamTechSDK.Common.Services.ContentService.Sliders.ISlidersServices
     {
@@ -81,14 +81,8 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders
 
         public async Task<IRequestProviderResult<SliderDto>> GetPublicByKeyAsync(string key)
         {
-            var result = await _sliderService.GetPublicDynamicByKeyAsync(key);
-            SliderDto slider = new SliderDto();
-            if (result != null)
-            {
-                slider = DeserializeFromObject<SliderDto>(result);
-            }
-            return GetRequestProviderResult(slider);
-
+            var result = await _sliderService.GetPublicByKeyAsync(key); 
+            return GetRequestProviderResult(result.MapToFrontendSliderDto()); 
         }
 
 

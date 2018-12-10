@@ -11,9 +11,8 @@ namespace AltinZaman.Areas.Portal.Controllers
 {
     public class PagesController : PagesBaseController
     {
-        public PagesController(ITelemetryClientService telemetryClientService, IPageService pageService, IMenusServices menusServices,
-             IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-            : base(telemetryClientService, pageService, menusServices, stringLocalizer)
+        public PagesController(ITelemetryClientService telemetryClientService, IPageService pageService, IMenusServices menusServices )
+            : base(telemetryClientService, pageService, menusServices)
         {
         }
     }

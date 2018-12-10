@@ -14,12 +14,12 @@
             @if (ViewBag.SpecificUser)
             {
                 <a  OnClick="JavaScript: window.history.back(1); return false;"
-                   class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back"]</a>
+                   class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back"]</a>
             }
             else
             {
                 <a asp-action="Index"
-                   class="btn btn-default"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+                   class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
             }
 
         </div>

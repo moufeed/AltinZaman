@@ -44,7 +44,7 @@ $(document).ready(() => {
             published  = $this.data('txt-published') || false,
             unpublished  =$this.data('txt-unpublished')|| false,
             error = $this.data('msg-error') || "Error!";
-
+            var $tr  = $this.parents("tr");
         $this.find('.fa').removeClass().addClass("fa fa-spinner fa-pulse");
 
 
@@ -55,17 +55,21 @@ $(document).ready(() => {
                 data: {}
             })
             .done(function (data) {
-                if (data.success) {
 
+                if (data.success) {
+                    var title = $tr.find(".ser-title");
+                    if($this.hasClass('unpublished')){
+                        title.attr("href",title.attr("data-href")).addClass("underline");
+                    }else{
+                        title.attr("data-href",title.attr("href")).removeAttr("href").removeClass("underline");
+                    } 
                     togglePublishBtn($this, true , published ,unpublished)
                 } else {
                     var errors = data.errors;
                     $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
 
                     togglePublishBtn($this, false, published ,unpublished);
-
-
-
+ 
                 }
             })
             .fail(function (jqXHR, Status) {

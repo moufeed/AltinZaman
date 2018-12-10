@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TamTechBackendSDK.EmailService.Services;
 using TamTechSDK.Common.Models.ContactUs;
+using TamTechSDK.Common.Services.ContentService.City;
 using TamTechSDK.Common.Services.ContentService.Menus;
 using TamTechSDK.Common.Services.ContentService.Pages;
+using TamTechSDK.Common.Services.ContentService.Request;
 using TamTechSDK.Common.Services.ContentService.Services;
 using TamTechSDK.Common.Services.ContentService.Sliders;
 
@@ -28,8 +30,8 @@ namespace AltinZaman.Areas.Portal.Controllers
                                IConfiguration configuration,
                                IEmailSenderService emailSender, IWebApplicationSettingsService appSettingsService, IServicesService servicesservice,
                                ISlidersServices sliderService,
-             IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-                               : base(telemetryClientService, pageService, menusServices, configuration, emailSender, appSettingsService, servicesservice, stringLocalizer, sliderService)
+                               IRequestService requestService, ICityService cityService)
+                               : base(telemetryClientService, pageService, menusServices, configuration, emailSender, appSettingsService, servicesservice, sliderService, requestService, cityService)
 
         { }
 

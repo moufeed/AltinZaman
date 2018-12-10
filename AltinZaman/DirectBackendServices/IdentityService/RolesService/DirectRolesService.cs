@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.IdentityService.RolesService.Mapper;
+using AltinZaman.DirectBackendServices.IdentityService.RolesService.Mapper;
 using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Common.Services.Identity.Models;
 
-namespace TamTech.Web.DirectBackendServices.IdentityService.RolesService
+namespace AltinZaman.DirectBackendServices.IdentityService.RolesService
 {
     public class DirectRolesService : BaseDirectService, IRolesService
     {

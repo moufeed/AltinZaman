@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Posts.Models;
-using TamTech.Web.DirectBackendServices.ContentServices.Posts.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Posts.Mapper;
+using TamTechSDK.Common.Models.Pagination;
+using TamTechSDK.Common.Models.Sort;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Posts
+namespace AltinZaman.DirectBackendServices.ContentServices.Posts
 {
     public class DirectPostsService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Posts.IPostsService
     {
@@ -22,12 +24,21 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Posts
 
 
         #region {Services Manager}  
-        public async Task<IRequestProviderResult<List<PostDto>>> GetAllAsync(string lang)
+        public async Task<IRequestProviderResult<PostsList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting,string lang)
         {
-            var result = await _postService.GetAllExceptSoftDeletedAsync(lang);
-            List<PostDto> servicesDto = result != null ? result.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
-            return ReturnResult(servicesDto);
 
+            var result = await _postService.GetAllExceptSoftDeletedAsync(pagination.MapToBackendPaginationModel(), searchParams, sorting.MapToBackendSortingModel(), lang);
+
+
+            
+            PostsList model = new PostsList
+            {
+                Data = result.Data?.Select(m => m.MapToFrontendDto()).ToList(),
+                Pagination = result.Pagination?.MapToForntEndPagination()
+            };
+
+            return ReturnResult(model);
+ 
         }
 
 
@@ -68,25 +79,25 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Posts
         #region {Public Services}  
 
 
-        public async Task<IRequestProviderResult<PostDto>> GetPublicBySlugAsync(string slug)
-        {
-            var service = await _postService.GetPublicBySlugAsync(slug);
-            return ReturnResult(service.MapToPublicFrontendDto());
-        }
+        //public async Task<IRequestProviderResult<PostDto>> GetPublicBySlugAsync(string slug)
+        //{
+        //    var service = await _postService.GetPublicBySlugAsync(slug);
+        //    return ReturnResult(service.MapToPublicFrontendDto());
+        //}
 
-        public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync()
-        {
-            var posts = await _postService.GetPublicListAsync();
-            List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
-            return ReturnResult(servicesDto);
-        }
+        //public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync()
+        //{
+        //    var posts = await _postService.GetPublicListAsync();
+        //    List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
+        //    return ReturnResult(servicesDto);
+        //}
 
-        public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync(int takeitems)
-        {
-            var posts = await _postService.GetPublicListAsync(takeitems);
-            List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
-            return ReturnResult(servicesDto);
-        }
+        //public async Task<IRequestProviderResult<List<PostDto>>> GetPublicListAsync(int takeitems)
+        //{
+        //    var posts = await _postService.GetPublicListAsync(takeitems);
+        //    List<PostDto> servicesDto = posts != null ? posts.Select(m => m.MapToFrontendDto()).ToList() : new List<PostDto>();
+        //    return ReturnResult(servicesDto);
+        //}
         
         public async Task<PostsList> GetPublicLatestPostsAsync(PaginationModel Pagination)
         {

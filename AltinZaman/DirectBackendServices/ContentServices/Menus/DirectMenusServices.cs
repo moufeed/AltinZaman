@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Menus.Models;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
 using TamTechSDK.Web.Services.ContentService.Menus.PublicService;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
+namespace AltinZaman.DirectBackendServices.ContentServices.Menus
 {
     public class DirectMenusServices : TamTechSDK.Common.Services.ContentService.Menus.IMenusServices
     {
@@ -120,13 +120,8 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<MenuDto> GetPublicByKeyAndLangAsync(string key , string lang)
         {
-            var result = await _menuService.GetPublicDynamicByKeyAndLangAsync(key, lang);
-            MenuDto menu = new MenuDto();
-            if (result != null)
-            {
-                menu = DeserializeFromObject<MenuDto>(result); 
-            }
-            return menu;
+            var result = await _menuService.GetPublicByKeyAndLangAsync(key, lang); 
+            return result?.MapToFrontendDto();
         }
 
 
@@ -158,7 +153,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
         public async Task<IRequestProviderResult<MenuDto>> GetByIdAsync(Guid id, string lang)
         {
             var menus = await _menuService.GetByIdExceptSoftDeletedAsync(id, lang); 
-            return GetRequestProviderResult(menus.MapToFrontendDto());
+            return GetRequestProviderResult(menus?.MapToFrontendDto());
         }
 
 
@@ -169,12 +164,12 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<Guid>> CreateAsync(CreateMenuDto model)
         {
-            var result = await _menuService.CreateAsync(model.MapToBackendDto());
+            var result = await _menuService.CreateAsync(model?.MapToBackendDto());
             return MapRequestProviderResult(result);
         }
         public async Task<IRequestProviderResult<bool>> EditAsync(UpdateMenuDto model)
         {
-            var result = await _menuService.EditAsync(model.MapToBackendDto());
+            var result = await _menuService.EditAsync(model?.MapToBackendDto());
             return MapRequestProviderResult(result);
         }
         public async Task<IRequestProviderResult<bool>> DeleteByIdAsync(Guid id)
@@ -191,7 +186,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<string>> CreateMenuItemAsync(CreateMenuItemDto model)
         {
-            var result = await _menuService.CreateMenuItemAsync(model.MapToBackendDto());
+            var result = await _menuService.CreateMenuItemAsync(model?.MapToBackendDto());
             if(result.Success)
             {
                await  RefreshCachedMenusAsync();
@@ -201,7 +196,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<bool>> EditMenuItemAsync(UpdateMenuItemDto model)
         {
-            var result = await _menuService.EditMenuItemAsync(model.MapToBackendDto());
+            var result = await _menuService.EditMenuItemAsync(model?.MapToBackendDto());
             if (result.Success)
             {
                 await RefreshCachedMenusAsync();
@@ -211,7 +206,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<bool>> PublishMenuItemAsync(MenuItemKeysDto model)
         {
-            var result = await _menuService.PublishMenuItemAsync(model.MapToBackendPublishDto());
+            var result = await _menuService.PublishMenuItemAsync(model?.MapToBackendPublishDto());
             if (result.Success)
             {
                 await RefreshCachedMenusAsync();
@@ -221,7 +216,7 @@ namespace TamTech.Web.DirectBackendServices.ContentServices.Menus
 
         public async Task<IRequestProviderResult<bool>> DeleteMenuItemAsync(MenuItemKeysDto model)
         {
-            var result = await _menuService.HardDeleteMenuItemAsync(model.MapToBackendDto());
+            var result = await _menuService.HardDeleteMenuItemAsync(model?.MapToBackendDto());
             if (result.Success)
             {
                 await RefreshCachedMenusAsync();

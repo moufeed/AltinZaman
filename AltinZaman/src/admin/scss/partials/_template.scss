@@ -271,9 +271,9 @@ a {
   position: relative;
   display: block;
   cursor: pointer;
-  border-#{$left}: 3px solid transparent; 
+   border-#{$left}: 3px solid transparent;  
   &.active ,&.active-sm ,&.current-section{
-    border-#{$left}-color:$green;  
+    border-#{$left}-color:$border-green-color;  
   }
   
 
@@ -296,7 +296,7 @@ a {
 
 .nav.child_menu {
   display: none;
-  background: darken( $dark-blue, 10%);
+  background:  $dark-leftCol;
 }
 
 .nav.child_menu li:hover,
@@ -352,8 +352,8 @@ a {
 
 .nav li li.current-page {
   
-  box-shadow:8px 0 0 -5px $green inset ; 
-  a {   
+  background: $border-green-color;
+   a {     
     color: #fff;
         
   }  
@@ -384,13 +384,15 @@ a {
   font-weight: 400;
   font-size: 22px;
   width: 100%;
-  color: #ECF0F1 !important;
+  color: #fff !important;
   margin-left: 0 !important;
   line-height: 59px;
   display: block;
-  height: 55px;
+  height: 57px;
   margin: 0;
   padding-#{$left}: 10px;
+  background: $dark-leftCol ;
+   
 }
 
 .site_title:hover,
@@ -411,31 +413,7 @@ a {
   background-color: transparent;
 }
 
-.top_search {
-  padding: 0;
-}
-
-.top_search .form-control {
-  border-right: 0;
-  box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
-  border-radius: 25px 0px 0px 25px;
-  padding-left: 20px;
-  border: 1px solid rgba(221, 226, 232, 0.49);
-}
-
-.top_search .form-control:focus {
-  border: 1px solid rgba(221, 226, 232, 0.49);
-  border-right: 0;
-}
-
-.top_search .input-group-btn button {
-  border-radius: 0px 25px 25px 0px;
-  border: 1px solid rgba(221, 226, 232, 0.49);
-  border-left: 0;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  color: #93A2B2;
-  margin-bottom: 0 !important;
-}
+  
 
 .toggle {
   float: $left;
@@ -489,8 +467,10 @@ a {
 
 footer {
   background: #fff;
-  padding: 10px 20px;
+  padding: 17px 20px;
   display: block;
+  height: 50px;
+  box-shadow: -2px -8px 41px -14px rgba(202,210,222,0.61);
 }
 @media (min-width: 992px) {
   footer {
@@ -692,7 +672,7 @@ h2 {
   float: right;
 }
 
-.x_title h2 {
+.x_title h2 { 
   margin: 5px 0 6px;
   float: $left;
   display: block;
@@ -1521,6 +1501,9 @@ a.user-profile {
   margin-right: 10px;
 }
 
+.user-profile  .fa-user{
+  margin-#{$right}: 5px;
+}
 ul.top_profiles {
   height: 330px;
   width: 100%;
@@ -1625,8 +1608,10 @@ h4.graph_title {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
+.main_menu li li  .fa{ 
+  font-size: 14px;
+}
+ 
 .tile-stats {
   position: relative;
   display: block;
@@ -2002,20 +1987,13 @@ span.section {
   border-bottom: 1px solid #e5e5e5;
 }
 
-.form-control {
-  border-radius: 0;
-  width: 100%;
-}
+ 
 
 .form-horizontal .control-label {
   padding-top: 8px
 }
 
-.form-control:focus {
-  border-color: #CCD0D7;
-  box-shadow: none !important;
-}
-
+ 
 legend {
   font-size: 18px;
   color: inherit;
@@ -2027,33 +2005,7 @@ legend {
   margin-right: 0;
   margin-left: 0;
 }
-
-.form-control-feedback {
-  margin-top: 8px;
-  height: 23px;
-  color: #bbb;
-  line-height: 24px;
-  font-size: 15px;
-}
-
-.form-control-feedback.left {
-  border-right: 1px solid #ccc;
-  left: 13px;
-}
-
-.form-control-feedback.right {
-  border-left: 1px solid #ccc;
-  right: 13px;
-}
-
-.form-control.has-feedback-left {
-  padding-left: 55px;
-}
-
-.form-control.has-feedback-right {
-  padding-right: 55px;
-}
-
+ 
 .form-group {
   margin-bottom: 20px;
 }
@@ -3941,170 +3893,7 @@ fieldset {
   padding: 0;
 }
 
-
-
-.cropper .img-container,
-.cropper .img-preview {
-  background-color: #f7f7f7;
-  width: 100%;
-  text-align: center;
-}
-
-.cropper .img-container {
-  min-height: 200px;
-  max-height: 516px;
-  margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-  .cropper .img-container {
-    min-height: 516px;
-  }
-}
-
-.cropper .img-container>img {
-  max-width: 100%;
-}
-
-.cropper .docs-preview {
-  margin-right: -15px;
-}
-
-.cropper .img-preview {
-  float: left;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.cropper .img-preview>img {
-  max-width: 100%;
-}
-
-.cropper .preview-lg {
-  width: 263px;
-  height: 148px;
-}
-
-.cropper .preview-md {
-  width: 139px;
-  height: 78px;
-}
-
-.cropper .preview-sm {
-  width: 69px;
-  height: 39px;
-}
-
-.cropper .preview-xs {
-  width: 35px;
-  height: 20px;
-  margin-right: 0;
-}
-
-.cropper .docs-data>.input-group {
-  margin-bottom: 10px;
-}
-
-.cropper .docs-data>.input-group>label {
-  min-width: 80px;
-}
-
-.cropper .docs-data>.input-group>span {
-  min-width: 50px;
-}
-
-.cropper .docs-buttons>.btn,
-.cropper .docs-buttons>.btn-group,
-.cropper .docs-buttons>.form-control {
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-.cropper .docs-toggles>.btn,
-.cropper .docs-toggles>.btn-group,
-.cropper .docs-toggles>.dropdown {
-  margin-bottom: 10px;
-}
-
-.cropper .docs-tooltip {
-  display: block;
-  margin: -6px -12px;
-  padding: 6px 12px;
-}
-
-.cropper .docs-tooltip>.icon {
-  margin: 0 -3px;
-  vertical-align: top;
-}
-
-.cropper .tooltip-inner {
-  white-space: normal;
-}
-
-.cropper .btn-upload .tooltip-inner,
-.cropper .btn-toggle .tooltip-inner {
-  white-space: nowrap;
-}
-
-.cropper .btn-toggle {
-  padding: 6px;
-}
-
-.cropper .btn-toggle>.docs-tooltip {
-  margin: -6px;
-  padding: 6px;
-}
-
-@media (max-width: 400px) {
-  .cropper .btn-group-crop {
-    margin-right: -15px !important;
-  }
-  .cropper .btn-group-crop>.btn {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .cropper .btn-group-crop .docs-tooltip {
-    margin-left: -5px;
-    margin-right: -5px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-}
-
-.cropper .docs-options .dropdown-menu {
-  width: 100%;
-}
-
-.cropper .docs-options .dropdown-menu>li {
-  padding: 3px 20px;
-}
-
-.cropper .docs-options .dropdown-menu>li:hover {
-  background-color: #f7f7f7;
-}
-
-.cropper .docs-options .dropdown-menu>li>label {
-  display: block;
-}
-
-.cropper .docs-cropped .modal-body {
-  text-align: center;
-}
-
-.cropper .docs-cropped .modal-body>img,
-.cropper .docs-cropped .modal-body>canvas {
-  max-width: 100%;
-}
-
-.cropper .docs-diagram .modal-dialog {
-  max-width: 352px;
-}
-
-.cropper .docs-cropped canvas {
-  max-width: 100%;
-}
-
+ 
 
 
 .form_wizard .stepContainer {
@@ -4486,3 +4275,8 @@ ul.notifications {
 }
 
   
+.empty_row{
+  padding: 40px 0;
+  font-size: 18px;
+  color: #666;
+}

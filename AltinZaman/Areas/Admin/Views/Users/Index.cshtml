@@ -2,39 +2,34 @@
 @{
     ViewData["Title"] = Localizer["Users"];
     ViewData["UnitTestPageClass"] = "ut-Users_index";
-
-    // Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var filter = (TamTechSDK.Common.Services.Identity.Models.Params.GetUsersModel)ViewBag.FilterModel;
-
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
-
-
-@{
-    if (TempData.ContainsKey("showSuccessAlert"))
-    {
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            @Localizer["email_has_been_sent" , TempData["subject"] , TempData["username"] ]
-        </div>
-        TempData.Remove("showSuccessAlert");
-        TempData.Remove("username");
-        TempData.Remove("subject");
+<if include-if='TempData.ContainsKey("showSuccessAlert")'>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @Localizer["email_has_been_sent", TempData["subject"], TempData["username"]]
+    </div>
+    @{ 
+      TempData.Remove("showSuccessAlert");
+      TempData.Remove("username");
+      TempData.Remove("subject");
     }
 
-    if (TempData.ContainsKey("showFailedAlert"))
-    {
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            @Localizer["email_has_not_been_sent", TempData["subject"] , TempData["username"]]
-        </div>
+</if>
+
+
+<if include-if='TempData.ContainsKey("showFailedAlert")'>
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @Localizer["email_has_not_been_sent", TempData["subject"], TempData["username"]]
+    </div>
+    @{ 
         TempData.Remove("showFailedAlert");
         TempData.Remove("username");
         TempData.Remove("subject");
     }
-}
+</if>
 
 
 <div class="clearfix">
@@ -43,104 +38,56 @@
             <h3>@Localizer["Users"]   @ViewBag.test </h3>
         </div>
         <div class="title_right">
-            <a   href="@Url.AdminUrl("Create","Users")"
-               class="btn btn-default btn-add-new ut-create_btn">@Localizer["new_user"]</a>
+            <a href="@Url.AdminUrl("Create","Users")"
+               class="btn btn-blue ut-create_btn">
+               <i class="fa fa-plus"></i>@Localizer["new_user"]</a>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-
-        @{
-            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
-        }
+        @{ ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { }; }
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
 
-
-       
-
         <div class="x_panel p-x-0">
-            <div class="x_title clearfix p-y-3  form_search">
-
-                <form class="form-inline" asp-action="Index" method="post">
-                    <div class="form-group">
-                        <label for="Username" class="m-x-2">@Localizer["f_username"]</label>
-                        <input type="text" class="form-control" name="Username" id="Username" placeholder="@Localizer["f_username"]" value="@filter.UserName">
-                    </div>
-                    <div class="form-group">
-                        <label for="UserRole" class="m-x-2">@Localizer["user_role"]</label>
-
-                        <select class="form-control" name="RoleId" id="UserRole">
-                            <option value="">@Localizer["roles"]</option>
-                            @if (ViewBag.Roles != null)
-                            {
-                                @foreach (var item in ViewBag.Roles)
-                                {
-                                    if (filter.RoleId == item.Id)
-                                    {
-                                        <option value="@item.Id" selected>@item.Name</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item.Id">@item.Name</option>
-                                    }
-
-                                }
-                            }
-
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info m-y-0 m-x-1" name="searchBtn"> <i class="fa fa-search"></i> @Localizer["search"] </button>
-                        @if (ViewBag.ShowReset)
-                        {
-                            <button type="submit" class="btn btn-link  m-y-0 c-blue " name="resetBtn"> <i class="fa fa-times"></i> @Localizer["reset"] </button>
-                        }
-                    </div>
-                </form>
-            </div>
             <div class="x_content">
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
                 <div class="table-responsive datatable">
                     <table class="table table-middle table-striped" id="UsersTable" width="100%">
                         <thead>
+
                             <tr class="headings">
+                                <th width="50" class="text-center">#</th>
                                 <th>@Localizer["t_username"]</th>
                                 <th>@Localizer["t_mobileNumber"]</th>
                                 <th>@Localizer["t_email"]</th>
-                                <th>@Localizer["t_active"]</th>
-                                <th width="100">@Localizer["t_mobile_confirmed"]</th>
+                                <th class="text-center" width="100">@Localizer["t_active"]</th>
+                                
                                 <th width="100">@Localizer["t_email_confirmed"]</th>
                                 <th width="100">@Localizer["t_actions"]</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @{ int indexer = 1;}
                             @foreach (UserModel user in Model)
                             {
                                 <tr>
+                                    <td class="text-center">@indexer @{indexer++;}</td>
                                     <td class="index">@user.UserName</td>
                                     <td><span class="ltr-dir text-center">@user.MobileNumber</span></td>
                                     <td>@user.Email</td>
                                     <td class="text-center">
                                         @if (user.IsBlocked)
                                         {
-                                            <i class="fa fa-times-circle-o c-red"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fa fa-check c-green"></i>
-                                        }
-                                    </td>
-                                    <td class="text-center">
-                                        @if (user.MobileNumberConfirmed)
-                                        {
-                                            <i class="fa fa-check c-green"></i>
-                                        }
-                                        else
-                                        {
                                             <i class="fa fa-times c-red"></i>
                                         }
+                                        else
+                                        {
+                                            <i class="fa fa-check c-green"></i>
+                                        }
                                     </td>
+                                    
                                     <td class="text-center">
                                         @if (user.EmailConfirmed)
                                         {
@@ -148,126 +95,56 @@
                                         }
                                         else
                                         {
-                                            <i class="fa fa-times c-red"></i>
+                                            <i class="fa fa-times "></i>
                                         }
                                     </td>
                                     <td class="text-center ut-details_btn">
-                                        @if (user.IsBlocked)
-                                        {
-                                            <a data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="@Localizer["t_details"]"
-                                               href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
-                                               class="btn btn-view ut-details_btn_for_blocked_user">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
+                                        <div>
+                                            <if include-if="user.IsBlocked">
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["t_details"]"
+                                                   href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
+                                                   class="btn btn-view ut-details_btn_for_blocked_user btn-round">
+                                                    <i class="fa fa-info"></i>
+                                                </a>
+                                            </if>
 
-                                        }
-                                        else
-                                        {
-                                            <a data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="@Localizer["t_details"]"
-                                               href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
-                                               class="btn btn-view ut-details_btn_for_unblocked_user">
-                                                <i class="fa fa-eye "></i>
-                                            </a>
-                                        }
+                                            <if exclude-if="user.IsBlocked">
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["t_details"]"
+                                                   href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
+                                                   class="btn btn-view ut-details_btn_for_unblocked_user btn-round">
+                                                    <i class="fa fa-info "></i>
+                                                </a>
+                                            </if>
 
+                                        </div>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-
-                @if (ViewBag.pagination != null)
-                {
-                    var pagination = (TamTechSDK.Common.Models.Pagination.PaginationMetadataModel)ViewBag.pagination;
-
-
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination pull-right flip-dir m-4">
-                            @{
-                                object CreateUrl(int i)
-                                {
-
-                                    dynamic Url = new System.Dynamic.ExpandoObject();
-
-                                    Url.Page = i;
-
-                                    if (ViewBag.FilterModel != null)
-                                    {
-
-                                        if (!string.IsNullOrEmpty(filter.RoleId))
-                                        {
-                                            Url.role = filter.RoleId;
-                                        }
-
-                                        if (!string.IsNullOrEmpty(filter.UserName))
-                                        {
-
-                                            Url.user = filter.UserName;
-                                        }
-                                        if (filter.PageSize != 10)
-                                        {
-
-                                            Url.size = filter.PageSize;
-                                        }
-                                    }
-
-
-                                    return Url;
-                                }
-                            }
-
-
-
-                            @if (@pagination.PreviousPage)
-                            {
-
-
-                                object preUrl = CreateUrl(ViewBag.QS_PageNumber - 1);
-
-                                <li>
-                                    <a href="@Url.AdminUrl("index","users" , preUrl  )" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                            }
-
-                            @if (pagination.TotalPages > 1)
-                            {
-                                @for (int i = 1; i <= pagination.TotalPages; i++)
-                                {
-
-                                    object url = CreateUrl(i);
-                                    <li @{ if (i == ViewBag.QS_PageNumber) { <text> class="active" </text>  } }><a href="@Url.AdminUrl("index","users" , url  )">@i</a></li>
-                                }
-                            }
-
-
-                            @if (pagination.NextPage)
-                            {
-
-                                object nexturl = CreateUrl(ViewBag.QS_PageNumber + 1);
-                                <li>
-                                    <a href="@Url.AdminUrl("index","users" , nexturl  )" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            }
-
-                        </ul>
-                    </nav>
-                }
+                <hr class="m-y-2" />
+                <pagination controller-name="users" filter-model="ViewBag.FilterModel" pagniation-model="ViewBag.pagination" total="true"></pagination>
             </div>
         </div>
     </div>
 </div>
 
 
+@section Styles{
+    <link href="~/Admin/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+}
 
 
-
-
+@section Scripts {
+   
+    <script src="~/Admin/lib/select2/dist/js/select2.js"></script>
+    <script>
+        $('.select_no-search').select2({ minimumResultsForSearch: -1});
+        $('.select_picker').select2();
+    </script>
+}

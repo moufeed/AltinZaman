@@ -12,9 +12,8 @@ namespace AltinZaman.Areas.Portal.Controllers
 
     public class ProductsController : ProductsBaseController
     {
-        public ProductsController(ITelemetryClientService telemetryClientService, IProductsService productsService, IMenusServices menusServices,
-             IStringLocalizer<TamTechSDK.Web.SharedResources> stringLocalizer)
-            : base(telemetryClientService, menusServices, productsService, stringLocalizer)
+        public ProductsController(ITelemetryClientService telemetryClientService, IProductsService productsService, IMenusServices menusServices)
+            : base(telemetryClientService, menusServices, productsService)
         {
         }
     }

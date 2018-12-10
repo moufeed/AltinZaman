@@ -53,6 +53,24 @@
 
             <div class="x_content">
 
+
+                @if (!Model.Locked && ViewBag.IsEditMode)
+                {
+                    <div class="text-right flip">
+                        <label asp-for="Published">
+                            <input type="checkbox"
+                                   asp-for="Published"
+                                   class="toggle_switch "
+                                   data-toggle="tooltip"
+                                   id="publish-section"
+                                   data-placement="@(activeLang == "ar" ? "left" : "right")"
+                                   data-url="@Url.AdminUrl("PublishAsync","sections" , new { id = Model.Id})"
+                                   title="@Localizer["publish_unpublish"]" />
+                        </label>
+                    </div>
+                }
+
+
                 <form asp-action="@( ViewBag.IsEditMode  ? "Edit" : "Create" )" method="post" class="form-horizontal forn-new form-label-left" id="ServicesForm" enctype="multipart/form-data">
 
                     @if (!ViewData.ModelState.IsValid)
@@ -212,26 +230,46 @@
     <script src="~/Admin/lib/select2/dist/js/select2.js"></script>
     <script src="~/Admin/js/validator.min.js"></script>
 
-     
+
 
 
     @if (ViewBag.IsEditMode)
     {
         <script src="~/Admin/js/serializejson.min.js"></script>
         <script src="~/Admin/js/seo.min.js"></script>
+
+        <script>
+            $('#publish-section').on('change', function () {
+                var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";
+                var url = $(this).data('url');
+                $.get(url, function () { }).done(function (data) {
+
+                    if (data.success) {
+                        $notification.success(window.localization.success,msg, 2000, "fa fa-check");
+                    } else {
+                        var errors = data.errors;
+                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                        togglePublishBtn($this, false, published, unpublished);
+                    }
+                })
+                .fail(function (jqXHR, Status) {
+                    $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
+                    togglePublishBtn($this, false, published, unpublished);
+                }); })
+        </script>
     }
     <script>
-
-
-
    $('.select_picker').select2();
-
-
-   
-
-   
     </script>
 
+    @if (!ViewBag.IsEditMode)
+    {
+        <script>
+           $("#Title").on("keyup", function() {
+               $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
+           })
+        </script>
+    }
 }
 
 

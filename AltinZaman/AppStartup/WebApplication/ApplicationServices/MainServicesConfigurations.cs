@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices;
 using AltinZaman.AppStartup.DirectBackendServices.EmailService;
 using AltinZaman.AppStartup.DirectBackEndServices.FilesServices;
-using AltinZaman.AppStartup.MicroServices.ApplicationServices;
+using AltinZaman.AppStartup.MicroServices.ApplicationServices; 
 using AltinZaman.Services.Configurations.AppSetting.Constants;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
@@ -18,7 +18,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             {
                 services.MicroServices_AddUrlBackendSettingsServicesConfigurations(configuration);
 
-                services.MicroServices_AddProvidersServicesConfigurations();
+                services.MicroServices_AddProvidersServicesConfigurations(); 
             }
             else
             {

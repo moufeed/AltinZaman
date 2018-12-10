@@ -1,4 +1,5 @@
-﻿using TamTechSDK.Common.Services.Identity;
+﻿using Microsoft.Extensions.Localization;
+using TamTechSDK.Common.Services.Identity;
 using TamTechSDK.Common.Services.ServiceBus;
 using TamTechSDK.Common.Services.SMS;
 using TamTechSDK.Web.Controllers.Admin;
@@ -9,7 +10,10 @@ namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class SmsController : SmsBaseController
     {
-        public SmsController(ITelemetryClientService telemetryClientService,  ISMSService sMSService, IUsersManagerService IdentityService, ServiceBusSettings serviceBusSettings) : base(telemetryClientService,  sMSService, IdentityService, serviceBusSettings)
+        public SmsController(ITelemetryClientService telemetryClientService, 
+            ISMSService sMSService, IUsersManagerService IdentityService, 
+            ServiceBusSettings serviceBusSettings,
+            IStringLocalizer<AdminBaseController> _localizer) : base(telemetryClientService,  sMSService, IdentityService, serviceBusSettings,_localizer)
         {
         }
     }

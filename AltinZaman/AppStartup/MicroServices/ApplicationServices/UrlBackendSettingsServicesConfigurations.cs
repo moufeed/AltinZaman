@@ -9,11 +9,11 @@ using TamTechSDK.Common.Services.ContentService.Pages.Settings;
 using TamTechSDK.Common.Services.ContentService.Products.Settings;
 using TamTechSDK.Common.Services.Identity.Settings;
 using TamTechSDK.Common.Services.Upload.FileTypes;
-using TamTechSDK.Common.Services.Upload.Settings;
+using TamTechSDK.Common.Services.Upload.Settings; 
 
 namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
-{
-    public static class UrlBackendSettingsServicesConfigurations
+{ 
+     public static class UrlBackendSettingsServicesConfigurations
     {
         public static void MicroServices_AddUrlBackendSettingsServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
@@ -34,7 +34,7 @@ namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
                 .GetSection(AppSettings.MicroServicesSettings)
                 .GetSection(AppSettings.MicroServices_IdentityService)
                 .GetValue<string>("Url");
-
+               
                 return new IdentityBackendSettings(url);
             });
 
@@ -49,18 +49,18 @@ namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
             });
 
 
-
-
+         
+             
             services.AddScoped<IPageServiceSettings, PageServiceSettings>();
             services.AddScoped<IProductManagerServiceSettings, ProductManagerServiceSettings>();
             services.AddScoped<IProductServiceSettings, ProductServiceSettings>();
             services.AddScoped<IBrandServiceSettings, BrandServiceSettings>();
-            services.AddScoped<ICategoryServiceSettings, CategoryServiceSettings>();
+            services.AddScoped<ICategoryServiceSettings, CategoryServiceSettings>(); 
             services.AddScoped<IMenusServicesSettings, MenusServicesSettings>();
 
 
 
-
+           
         }
     }
 }

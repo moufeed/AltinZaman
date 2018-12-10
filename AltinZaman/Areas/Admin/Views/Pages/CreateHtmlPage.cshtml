@@ -177,7 +177,10 @@
          $('.select_picker').select2();
          $('#keywords').tagsinput({
                     tagClass: 'tag'
-        });
+         });
+         $("#Title").on("keyup", function () {
+             $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
+         })
     </script>
 
 }

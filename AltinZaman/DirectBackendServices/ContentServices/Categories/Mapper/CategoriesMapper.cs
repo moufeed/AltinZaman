@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Web.DirectBackendServices.ContentServices.Categories.Mapper
+namespace AltinZaman.DirectBackendServices.ContentServices.Categories.Mapper
 {
     public static class CategoriesMapper
     {
