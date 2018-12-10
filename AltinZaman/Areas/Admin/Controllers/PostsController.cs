@@ -4,20 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using TamTechSDK.Common.Helpers.Converters;
 using TamTechSDK.Common.Services.ContentService.Posts;
+using TamTechSDK.Common.Services.ContentService.Sections;
+using TamTechSDK.Common.Services.Upload;
 using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class PostsController : PostsBaseController
     {
         public PostsController(
             ITelemetryClientService telemetryClientService,
-            ICulturesManager languageService,
-            IPostsService postservice,
-            IStringLocalizer<PostsBaseController> localizer) : base(telemetryClientService, languageService, postservice, localizer)
+            IPostsService postservice, 
+            IStringLocalizer<PostsBaseController> localizer , 
+            IUploadManagerService uploadManager,
+            ISectionsService sectionsService,
+            IStringConverters stringConverters)
+                                            : base(telemetryClientService, 
+                                                    postservice, localizer,
+                                                    uploadManager, sectionsService, stringConverters)
         {
         }
     }

@@ -3,73 +3,61 @@
 @{
     var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 }
-
 @if (ViewBag.publicMainSlider != null)
 {
     SliderDto mainSlider = (SliderDto)ViewBag.publicMainSlider;
-
-
-<section class="slider-section">
-
     @if (mainSlider.Items != null && mainSlider.Items.Count > 0)
     {
-        
-            var x = (lang == "ar") ? 1170 : 125;
-        
-        <div class="rev_slider_wrapper fullwidthbanner-container">
-            <div id="main_slider" class="rev_slider fullwidthabanner" data-version="5.4.5" style="display:none">
-                <ul>
-                    @foreach (var item in mainSlider.Items)
-                    {
-                        <li data-transition="random">
-                            <img src="@item.MainImage" alt="" class="rev-slidebg">
-                            <div class="tp-caption top-label"
-                                 data-x='@x'
-                                 data-y="260"
-                                 data-start="500"
-                                 data-transform_in="y:[-300%];opacity:0;s:500;">@item.Title</div>
+        <section class="main-slider">
 
-                                <div class="tp-caption main-label"
-                                     data-x="@x"
-                                     data-y="290"
-                                     data-start="600"
-                                     data-transform_in="y:[100%];s:500;" style="min-width:350px; max-width:450px;white-space: pre-line;">@Html.Raw(item.Summary)</div>
+            <article class="content">
+                <div class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" id="rev_slider_486_1_wrapper" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
+                    <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
+
+
+                    <div class="rev_slider fullwidtha banner" data-version="5.4.1" id="rev_slider_486_1" style="display:none;">
+                        <ul>
+                            @foreach (var item in mainSlider.Items)
+                            {
+                                <li data-description="Science says that Women are generally happier"
+                                    data-easein="default"
+                                    data-easeout="default"
+                                    data-fsmasterspeed="1500"
+                                    data-fsslotamount="7"
+                                    data-fstransition="fade"
+                                    data-hideafterloop="0"
+                                    data-hideslideonmobile="off"
+                                    data-index="rs-1687"
+                                    data-masterspeed="default"
+                                    data-rotate="0"
+                                    data-saveperformance="off"
+                                    data-slotamount="default"
+                                    data-thumb="@item.MainImage"
+                                    data-transition="parallaxvertical">
+
+
+                                    <img alt="" class="rev-slidebg"
+                                         data-bgfit="cover"
+                                         data-bgparallax="10"
+                                         data-bgposition="center center"
+                                         data-bgrepeat="no-repeat"
+                                         data-no-retina=""
+                                         src="@item.MainImage">
+
                                 </li>
                             }
-                </ul>
+                        </ul>
 
-            </div>
-        </div>
+                        <div class="tp-bannertimer tp-bottom" style="height: 5px; background-color: #ffd800;">
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+
+        </section>
     }
-    else
-    {
-        <div class="rev_slider_wrapper fullwidthbanner-container">
-            <div id="main_slider" class="rev_slider fullwidthabanner" data-version="5.4.5" style="display:none">
-                <ul>
-                    @{
-                        var x = (lang == "ar") ? 1170 : 125;
-                    }
-                    @for (var i = 1; i <= 3; i++)
-                    {
-                        <li data-transition="random">
-                            <img src="~/portal/img/slider/@(i).jpg" alt="" class="rev-slidebg">
-                            <div class="tp-caption top-label"
-                                 data-x="@x"
-                                 data-y="260"
-                                 data-start="500"
-                                 data-transform_in="y:[-300%];opacity:0;s:500;">Lorem, ipsum dolor.</div>
-
-                            <div class="tp-caption main-label"
-                                 data-x="@x"
-                                 data-y="290"
-                                 data-start="600"
-                                 data-transform_in="y:[100%];s:500;" style="min-width:350px; max-width:450px;white-space: pre-line;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, sed.</div>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
-    }
-
-</section>
 }
+
+ 

@@ -14,6 +14,10 @@ defaultLocalization ={
     "text_count_be_more_than" : "text count be more than 300 characters long",
     "updateted_successfully" : "updateted successfully",
     "something_wrong" : "Something wrong",
+    "unpublished" :"unpublished",
+    "published" :"published",
+    "unpublish" :"unpublish",
+    "publish" :"publish",
 }
    window.localization = $.extend({}, defaultLocalization ,window.customLocalization || {});
  
@@ -410,11 +414,11 @@ function togglePublishBtn($this , status , published ,unpublished){
     if(status){
         if($this.hasClass('unpublished')){
             $this.removeClass('unpublished ut-unpublished').addClass('published ut-published');
-            $this.find('small').text( published || 'published');
+            $this.find('small').text( published || window.localization.published );
             $this.find('i').removeClass('fa fa-spinner fa-pulse').addClass('fa fa-eye c-green');
         }else{
             $this.removeClass('published ut-published').addClass('unpublished ut-unpublished');
-            $this.find('small').text(unpublished || 'unpublished');
+            $this.find('small').text(unpublished || window.localization.unpublished );
             $this.find('i').removeClass('fa fa-spinner fa-pulse').addClass('fa fa-eye-slash c-red');
         }
     }else{
@@ -429,11 +433,11 @@ function toggleEye($this , status){
     if(status){
         if($this.hasClass('unpublished')){
             $this.removeClass('unpublished').addClass('published');
-            $this.attr("data-original-title","publish")
+            $this.attr("data-original-title",window.localization.publish)
             $this.find('.fa').removeClass('fa-spinner fa-pulse').addClass('fa-eye ');
         }else{
             $this.removeClass('published').addClass('unpublished');
-            $this.attr("data-original-title","unpublish")
+            $this.attr("data-original-title",window.localization.unpublish  )
             $this.find('.fa').removeClass('fa-spinner fa-pulse').addClass('fa-eye-slash');
         }
     }else{

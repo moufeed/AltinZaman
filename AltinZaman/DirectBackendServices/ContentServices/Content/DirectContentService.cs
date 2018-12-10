@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Content
+namespace TamTech.Web.DirectBackendServices.ContentServices.Content
 {
     public class DirectContentService : TamTechSDK.Common.Services.ContentService.IContentServices
     {

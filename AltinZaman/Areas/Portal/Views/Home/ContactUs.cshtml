@@ -1,22 +1,20 @@
 ﻿
 @{
-    ViewData["Title"] = "TamTech";
+    ViewData["Title"] = @Localizer["site_title"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/img/contact.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/portal/Images/bgs/contact.jpg");
     ViewData["pageTitle"] = Localizer["contact_us"];
-}
 
+}
 @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
 
-
 @section SEO{
-
 <script type="application/ld+json">
     {
     "@@context":"http://schema.org",
     "@@type":"LocalBusiness",
-    "image":"@ViewBag.Host/portal/img/seoLogo.jpg",
-    "name":"Tamtech",
+    "image":"@ViewBag.Host/portal/Images/logo.png",
+    "name":"@Localizer["site_title"]",
     "address":{
     "@@type":"PostalAddress",
     "streetAddress":"E5 yan yol Civan Cokak",
@@ -33,49 +31,16 @@
     "telephone":"+905354152865"
     }
 </script>
-
 }
 
- 
+@await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactLinks.cshtml", @ViewData)
 
-<section class="section-contact">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-sm-auto col-md-12 col-lg-6">
-                @await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactLinks.cshtml", @ViewData)
-            </div>
-            <div class="col-sm-auto col-md-12 col-lg-6">
-                @await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactForm.cshtml")
-            </div>
-        </div>
-    </div>
-</section>
+@await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactForm.cshtml")
 
 
 @section footer {
-
-    <div class="modal fade" id="ContactModel" tabindex="-1" role="dialog" aria-labelledby="ContactModelLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-                <div class="modal-body p-5">
-                    <p> @Localizer["dear_customer"] </p>
-                    <p>@Localizer["We_have_received_your_message"]</p>
-                    <p>
-                        @Localizer["mobile_no"]. <span dir="ltr" style="font-family:tahoma">+90 000111222</span>
-                    </p>
-                    <small>@Localizer["have_great_day"]</small>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Localizer["close"]</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="~/portal/js/validation.min.js"></script>
-
-
+   
+    
+    <script src="~/portal/js/validation.js"></script>
 
 }
-

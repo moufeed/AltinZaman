@@ -20,21 +20,15 @@
 </div>
     <section class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            @if (ViewBag.Languages?.Count > 1)
-            {
-                <header class="language_bar clearfix">
-                    <ul class="nav nav-tabs nav-header" role="tablist">
-                        @foreach (var lang in ViewBag.Languages)
-                        {
-                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+            @{
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                        { "username" , Model.UserName},
 
-                                <a href="@Url.AdminUrl("Details", "Users" ,new { culture = lang.Lang  ,username=Model.UserName } )">@lang.Name</a>
-
-                            </li>
-                        }
-                    </ul>
-                </header>
+                    };
             }
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
             <div class="x_panel">
                 <div class="x_content">
 

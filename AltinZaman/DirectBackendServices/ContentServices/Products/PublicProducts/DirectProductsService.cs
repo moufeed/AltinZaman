@@ -6,7 +6,7 @@ using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Products.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Products
+namespace TamTech.Web.DirectBackendServices.ContentServices.Products
 {
     public class DirectProductsService : TamTechSDK.Common.Services.ContentService.Products.IProductsService
     {
@@ -14,7 +14,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Products
 
         public DirectProductsService(TamTechBackendSDK.ContentService.Services.Products.IProductService productService)
         {
-            _productService = productService;
+            _productService = productService; 
         }
 
         public async Task<IRequestProviderResult<ProductForm>> GetByIdAsync(Guid id)

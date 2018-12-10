@@ -13,6 +13,10 @@ msgstr ""
  
 
 # adminbar
+
+msgid "site_title"
+msgstr "Altin Zaman"
+
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -350,7 +354,11 @@ msgstr "Cancel"
 msgid "characters"
 msgstr "Characters"
 
+msgid "none"
+msgstr "None"
  
+msgid "more"
+msgstr "More"
 #global Forms
 
 msgid "f_title"
@@ -473,6 +481,9 @@ msgstr "Keywords :"
 msgid "f_cuisine"
 msgstr "Cuisine :"
 
+msgid "f_section_parent"
+msgstr "section Parent :"
+
 #global Tables
 msgid  "t_title"
 msgstr "Title"
@@ -588,6 +599,9 @@ msgstr "Logo"
 msgid "t_total_items"
 msgstr "Totle Items"
 
+msgid "t_section_parent"
+msgstr "Parent"
+
 # global alerts 
  
 msgid "success"
@@ -678,6 +692,12 @@ msgstr "Sorry, an error occurred while processing the process please try again l
 
 msgid "view_all"
 msgstr "View all"
+
+msgid "all_posts"
+msgstr "All Posts"
+
+msgid "all_sections"
+msgstr "All Sections"
 
 msgid "Home"
 msgstr "Home"
@@ -987,6 +1007,10 @@ msgstr "Submenu"
 
 
 #: menus _modal.cshtml
+
+msgid "page"
+msgstr "Page"
+
 msgid "parent_menu"
 msgstr "Parent Menu"
 
@@ -996,9 +1020,16 @@ msgstr "Link"
 msgid "static_page"
 msgstr "Static Page"
 
+msgid "service"
+msgstr "Service"
+
+msgid "add_to_menu"
+msgstr "Add to menu"
+
 msgctxt "admin.Views.Menus.partials._modal"
 msgid "product"
 msgstr "Product"
+
 
 #:users Controller
 msgid "c_roles"
@@ -1342,6 +1373,13 @@ msgstr "Create Page"
 msgid "next_steps"
 msgstr "Next Steps"
  
+msgid "get_started"
+msgstr "Get started"
+
+msgid "more_actions"
+msgstr "More actions"
+
+
 msgid "upload_first_gallery"
 msgstr "Upload your first gallery"
  
@@ -1420,3 +1458,41 @@ msgstr "Edit post"
 
 msgid "post_create"
 msgstr "Create Post"
+
+#: Posts Details.cshtml
+
+msgid "post_details"
+msgstr "post Details"
+
+
+#: Sections Controller
+
+msgid "section_creation_successfully"
+msgstr "The section creation was done successfully."
+
+msgid "section_editing_successfully"
+msgstr "The section editing was done successfully."
+
+#:Sections index.cshtml
+
+msgid "sections"
+msgstr "Sections"
+
+msgid "new_section"
+msgstr "New Section"
+
+#:Sections Form.cshtml
+
+msgid "create_section"
+msgstr "Create Section"
+
+msgid "edit_section"
+msgstr "Edit Section"
+
+#: Section Details.cshtml
+
+msgid "section_details"
+msgstr "Section details"
+
+msgid "section_parent"
+msgstr "Section Parent"

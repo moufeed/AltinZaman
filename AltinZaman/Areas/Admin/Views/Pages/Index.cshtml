@@ -2,8 +2,7 @@
 
 @{
     ViewData["Title"] = Localizer["Pages"];
-    ViewData["UnitTestPageClass"] = "ut-pages_index";
-    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewData["UnitTestPageClass"] = "ut-pages_index"; 
 }
 
 <div class="clearfix">
@@ -21,22 +20,8 @@
 
 <div class="clearfix">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                            <a href="@Url.AdminUrl("index", "Pages", new { culture = lang.Lang})">@lang.Name</a>
-                        </li>
-                    }
-                </ul>
-            </header>
-        }
-
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml") 
         <div class="x_panel p-x-0">
-
             <div class="x_content">
                 <div class="table-responsive datatable">
                     <table class="table table-middle table-striped" id="pagesTable">
@@ -53,7 +38,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @{int i = 1;}
                             @foreach (var item in Model)
                             {
@@ -65,10 +49,9 @@
                                     <td>@item.ModifiedDate</td>
                                     <td>
                                         @((item.Type == (int)PageTypeEnum.Sections) ?
-                                                                                              PageTypeEnum.Sections.ToString() : PageTypeEnum.Html.ToString())
+                                                                                                      PageTypeEnum.Sections.ToString() : PageTypeEnum.Html.ToString())
                                     </td>
                                     <td class="text-center">
-
                                         @if (item.Locked)
                                         {
                                             @if (item.Published)
@@ -121,7 +104,6 @@
                                                 </a>
                                             }
                                         }
-
                                     </td>
                                     <td class="text-center">
                                         <a data-toggle="tooltip"
@@ -129,13 +111,11 @@
                                            title="@Localizer["t_details"]"
                                            href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "GetSectionsDetailsAsync" : "GetHtmlDetailsAsync"  , "Pages",new { id = item.Id })"
                                            class="btn btn-view btn-round  @(item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "ut-section_detail_btn" : "ut-detail_btn")"><i class="fa fa-eye "></i></a>
-
                                         <a data-toggle="tooltip"
                                            data-placement="top"
                                            title="@Localizer["t_edit"]"
                                            href="@Url.AdminUrl( item.TypeEnum.ToString().Equals("sections" , StringComparison.InvariantCultureIgnoreCase) ? "EditSectionsPage" : "EditHtmlPage"   , "Pages" , new { id = item.Id})"
                                            class="btn btn-edit ut-edit_btn btn-round"><i class="fa fa-edit "></i></a>
-
                                         @if (item.Locked)
                                         {
                                             <span data-toggle="tooltip"

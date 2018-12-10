@@ -2,7 +2,7 @@
 using TamTechSDK.Common.Services.ContentService.Reviews;
 using TamTechSDK.Web.Controllers.Admin;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class ReviewsController : ReviewsBaseController
     {

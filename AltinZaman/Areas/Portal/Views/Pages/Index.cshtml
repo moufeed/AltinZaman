@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    
+    Layout = "_Layout";
+    ViewData["ImageURl"] = @Url.Content("~/portal/img/about.jpg");
+    ViewData["pageTitle"] = "صفحات";
 
-    Layout = "_layout";
+
 }
-
-<h2>Index</h2>
+@await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AltinZaman.DirectBackendServices.IdentityService.RolesService.Mapper
+namespace TamTech.Web.DirectBackendServices.IdentityService.RolesService.Mapper
 {
     public static class RoleMapper
     {

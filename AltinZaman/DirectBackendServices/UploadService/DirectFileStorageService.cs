@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TamTechSDK.Common.Providers.Requests.Models;
-using AltinZaman.DirectBackendServices.UploadService.Mapper;
+using TamTech.Web.DirectBackendServices.UploadService.Mapper;
 using TamTechSDK.Common.Services.Upload.Models;
 
-namespace AltinZaman.DirectBackendServices.UploadService
+namespace TamTech.Web.DirectBackendServices.UploadService
 {
     public class DirectFileStorageService : TamTechSDK.Common.Services.Upload.IUploadService
     {
@@ -26,12 +26,12 @@ namespace AltinZaman.DirectBackendServices.UploadService
         #region Services  
         public async Task<IRequestProviderResult<UploadModelResult>> UploadsFilesAsync(UploadModel mediafiles)
         {
-            IRequestProviderResult<UploadModelResult> _result = new RequestProviderResult<UploadModelResult>();
+            IRequestProviderResult<UploadModelResult> _result =   new RequestProviderResult<UploadModelResult>();
             var v = mediafiles.MapUploadModel();
             var resultUpload = await _fileStorageService.UploadAsync(v);
             _result.Data = resultUpload.MapUploadModelResult();
             _result.Success = true;
-
+              
             return _result;
         }
 
@@ -40,10 +40,10 @@ namespace AltinZaman.DirectBackendServices.UploadService
 
         public async Task<IRequestProviderResult<DeleteFilesModelResult>> DeleteFilesAsync(DeleteFilesInputModel model)
         {
-            IRequestProviderResult<DeleteFilesModelResult> _result = new RequestProviderResult<DeleteFilesModelResult>();
+            IRequestProviderResult<DeleteFilesModelResult> _result =   new RequestProviderResult<DeleteFilesModelResult>();
 
 
-            var resultDeleteFiles = await _fileStorageService.DeleteFilesAsync(model.MapDeleteFilesInputModel());
+            var resultDeleteFiles  = await _fileStorageService.DeleteFilesAsync(model.MapDeleteFilesInputModel());
             _result.Data = resultDeleteFiles.MapDeleteFilesModelResult();
             _result.Success = true;
             return _result;

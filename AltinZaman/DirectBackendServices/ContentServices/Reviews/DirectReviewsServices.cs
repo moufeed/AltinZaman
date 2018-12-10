@@ -6,7 +6,7 @@ using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Products.Models;
 using TamTechSDK.Common.Services.ContentService.Reviews.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Reviews
+namespace TamTech.Web.DirectBackendServices.ContentServices.Reviews
 {
     public class DirectReviewsServices : TamTechSDK.Common.Services.ContentService.Reviews.IReviewsServices
     {

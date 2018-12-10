@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
+using TamTechBackendSDK.ContentService.Services.Sections;
 using TamTechSDK.Common.Services.ContentService;
 using TamTechSDK.Common.Services.ContentService.Brands;
 using TamTechSDK.Common.Services.ContentService.Categories;
@@ -38,6 +39,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddTransient<IContentServices, ContentServices>();
             services.AddTransient<IGalleriesService, GalleriesService>();
             services.AddTransient<IPostsService, PostsService>();
+
 
             #endregion
 
