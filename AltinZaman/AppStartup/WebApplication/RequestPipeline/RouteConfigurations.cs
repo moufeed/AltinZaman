@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AltinZaman.Cultures.Constants;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
+using AltinZaman.Settings.Cultures;
 using TamTechSDK.Web.Routing;
 
 namespace AltinZaman.AppStartup.WebApplication.RequestPipeline

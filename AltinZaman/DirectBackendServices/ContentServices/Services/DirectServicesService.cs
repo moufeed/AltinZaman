@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Services.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Services.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Services;
 using TamTechSDK.Common.Services.ContentService.Services.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Services
+namespace TamTech.Web.DirectBackendServices.ContentServices.Services
 {
     public class DirectServicesService : TamTechSDK.Common.Services.ContentService.Services.IServicesService
     {
@@ -35,7 +35,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             _resultModel.Success = inputResult.Success;
             _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = inputResult.Data;
-            _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
+            _resultModel.Messages = _resultModel.Success ? null: _resultModel.Messages = new Dictionary<string, List<string>>() ;
             foreach (var error in inputResult.ModelState)
             {
                 var errorMessages = new List<string>();
@@ -46,7 +46,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
                         errorMessages.Add(value.ErrorMessage);
                     }
 
-                    _resultModel.Messages.Add(error.Key, errorMessages);
+                    _resultModel.Messages.Add( error.Key, errorMessages);
                 }
             }
             return _resultModel;
@@ -59,7 +59,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             _resultModel.StatusCode = System.Net.HttpStatusCode.OK;
             _resultModel.Data = data;
             return _resultModel;
-        }
+        } 
         #region Deserialize
         public TResult DeserializeFromObject<TResult>(dynamic inputObject)
         {
@@ -89,9 +89,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             return GetRequestProviderResult(service.MapToFrontendDto());
         }
 
-
-
-
+         
+     
+ 
         public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync()
         {
             //// TODO: Not optimized
@@ -107,7 +107,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             return GetRequestProviderResult(servicesDto);
         }
 
-
+      
         public async Task<IRequestProviderResult<List<ServiceDto>>> GetPublicListAsync(int takeItems)
         {
             //// TODO: Not optimized
@@ -150,7 +150,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             var result = await _servicesService.EditAsync(model.MapToBackendDto());
             return MapRequestProviderResult(result);
         }
-
+        
         public async Task<IRequestProviderResult<bool>> DeleteAsync(Guid id)
         {
             var result = await _servicesService.SoftDeleteAsync(id);
@@ -163,7 +163,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Services
             return MapRequestProviderResult(result);
         }
 
-
+       
         #endregion
 
         #endregion

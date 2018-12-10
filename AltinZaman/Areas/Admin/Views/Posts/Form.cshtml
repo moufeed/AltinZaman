@@ -24,27 +24,20 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
 
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+        @{
+            if (ViewBag.IsEditMode)
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                        {"id" , Model.Id }};
+            }
+            else
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+            }
 
-                            @if (ViewBag.IsEditMode)
-                            {
-                                <a href="@Url.AdminUrl("Edit", "posts", new { culture = lang.Lang , id= Model.Id})">@lang.Name</a>
-                            }
-                            else
-                            {
-                                <a href="@Url.AdminUrl("Create", "posts", new { culture = lang.Lang})">@lang.Name</a>
-                            }
-                        </li>
-                    }
-                </ul>
-            </header>
         }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
 
 
         <div class="x_panel">
@@ -118,7 +111,7 @@
                     <div class="form-group clearfix">
                         <label asp-for="DisplayOrder" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
-                            @if (activeLang != ViewBag.DefaultLanguage.Lang && ViewBag.IsEditMode)
+                            @if (activeLang != CultureConstants.DefaultCulture.Lang && ViewBag.IsEditMode)
                             {
                                 <input asp-for="DisplayOrder" class="form-control" min="0" disabled />
                             }
@@ -131,10 +124,11 @@
                     </div>
 
                     <div class="form-group clearfix">
-                        <label asp-for="Section" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_section"]</label>
+                        <label asp-for="SectionId" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_section_parent"]</label>
                         <div class="col-md-7 col-sm-9 col-xs-12">
-                            <input asp-for="Section" class="form-control" />
-                            <span asp-validation-for="Section" class="text-danger invalid_field"></span>
+
+                            <select asp-items="ViewBag.selectItems" asp-for="SectionId" class="form-control select_picker"></select>
+                            <span asp-validation-for="SectionId" class="text-danger invalid_field"></span>
                         </div>
                     </div>
 
@@ -152,6 +146,29 @@
                             <span asp-validation-for="Content" class="text-danger invalid_field"></span>
                         </div>
                     </div>
+
+                    @*<div class="form-group clearfix">
+                        @{
+                            string tags = string.Empty;
+
+                            if (Model.Tags?.Count > 0)
+                            {
+
+                                List<string> list = Model.Tags;
+                                tags = string.Join(",", list);
+                            }
+                        }
+
+                        <label asp-for="Tags" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_meta_tags"]</label>
+                        <div class="col-md-7 col-sm-9 col-xs-12">
+                            <div class="static-form-control">
+                                <input type="text"  asp-for="TagsString" name="TagsString" class="form-control" id="Tags" value="@tags" />
+                            </div>
+                            <span asp-validation-for="Tags" class="text-danger invalid_field"></span>
+                        </div>
+
+                    </div>*@
+
                     <h4>
                         @Localizer["SEO"]
                     </h4>
@@ -180,6 +197,12 @@
                     }
 
 
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@((ViewBag.IsEditMode) ? Localizer["Update"]  : Localizer["Create"] )">
+                            <input type="submit" class="btn btn-info p-x-5   ut-continue-btn" name="save-continue" value="@Localizer["save_and_continue"]">
+                        </div>
+                    </div>
 
                 </form>
             </div>
@@ -188,14 +211,22 @@
 </div>
 
 
+@section Styles{
+    @*<link href="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />*@
+}
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
- 
+    @*<script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>*@
     <script src="~/Admin/js/validator.min.js"></script>
 
 
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#Content";
+        ViewBag.TinyMce_Suumry_Id = null;
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 
     @if (ViewBag.IsEditMode)
@@ -203,27 +234,18 @@
         <script src="~/Admin/js/serializejson.min.js"></script>
         <script src="~/Admin/js/seo.min.js"></script>
     }
-    <script>
 
-  
-    tinymce.init({
-    selector: '#Content',
-    branding: false,
-    theme: 'modern',
-    height: 300,
-    plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-    'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-    'save table contextmenu directionality emoticons template paste textcolor'],
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-    setup: function (editor) {
-    editor.on('change', function (e) {
-    editor.save();
-    });
-    }
 
-    });
 
-   
-    </script>
+    @*<script>
+
+        $('#Tags').tagsinput({
+            tagClass: 'tag'
+        });
+    </script>*@
 
 }
+
+
+
+

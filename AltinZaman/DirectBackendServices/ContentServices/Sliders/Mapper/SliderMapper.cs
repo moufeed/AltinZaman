@@ -2,11 +2,11 @@
 using System.Linq;
 using TamTechSDK.Common.Services.ContentService.Sliders.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
+namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper
 {
     public static class SliderMapper
     {
-        public static SliderDto MapToFrontendSliderDto(this TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderDto backend)
+       public static SliderDto MapToFrontendSliderDto(this TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderDto backend)
         {
             return new SliderDto
             {
@@ -14,13 +14,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Lang = backend.Lang,
                 Title = backend.Title,
                 Key = backend.Key,
-                //  Slug = backend.Slug,
+            //  Slug = backend.Slug,
                 Summary = backend.Summary,
-                //  Position = backend.Position,
-                //  DisplayOrder = backend.DisplayOrder,
+            //  Position = backend.Position,
+            //  DisplayOrder = backend.DisplayOrder,
                 CreatedDate = backend.CreatedDate,
                 ModifiedDate = backend.ModifiedDate,
-                Published = backend.Published,
+                Published = backend.Published, 
                 Locked = backend.Locked,
                 Items = backend.Items != null ? backend.Items.Where(item => !item.Deleted)
                                                                      .Select(p => p.MapToFrontendDto())
@@ -36,9 +36,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Lang = frontend.Lang,
                 Title = frontend.Title,
                 Key = frontend.Key,
-                // Slug = frontend.Slug,
+             // Slug = frontend.Slug,
                 Summary = frontend.Summary,
-                // Position = frontend.Position,
+             // Position = frontend.Position,
             };
         }
 
@@ -50,9 +50,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Lang = frontend.Lang,
                 Title = frontend.Title,
                 Key = frontend.Key,
-                //  Slug = frontend.Slug,
+            //  Slug = frontend.Slug,
                 Summary = frontend.Summary,
-                //  Position = frontend.Position
+            //  Position = frontend.Position
 
             };
         }
@@ -62,7 +62,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
             return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.SliderItemKeysDto
             {
                 SliderId = frontend.SliderId,
-                Id = frontend.Id,
+                Id = frontend.Id, 
             };
         }
 
@@ -82,7 +82,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
             {
 
                 Id = backend.Id,
-                //    SliderId = backend.SliderId,
+            //    SliderId = backend.SliderId,
                 Lang = backend.Lang,
                 Title = backend.Title,
                 MainImage = backend.Image,
@@ -92,7 +92,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 DisplayOrder = backend.DisplayOrder,
                 Summary = backend.Summary,
                 CreatedDate = backend.CreatedDate
-
+                  
             };
         }
 
@@ -112,7 +112,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
 
             };
         }
-        //------------------------------------------------------------
+//------------------------------------------------------------
         public static TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemDto MapToBackendDto(this UpdateSliderItemDto frontend)
         {
             return new TamTechBackendSDK.ContentService.Services.Sliders.Dtos.UpdateSliderItemDto
@@ -128,7 +128,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper
                 Summary = frontend.Summary,
 
 
-            };
+    };
         }
     }
 }

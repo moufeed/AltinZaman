@@ -1,9 +1,10 @@
 ﻿@model HtmlPageEditingVM
 @using TamTechSDK.Common.Services.ContentService.Pages.Enums
 @{
-    ViewData["Title"] = Localizer["edit_htmal_page"];
+    ViewData["Title"] = Localizer["html_editing_form"];
     ViewData["UnitTestPageClass"] = "ut-editPage";
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+
 }
 
 
@@ -23,24 +24,29 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                            <a href="@Url.AdminUrl("EditHtmlPage", "Pages", new { culture = lang.Lang ,id = Model.Id})">@lang.Name</a>
-                        </li>
-                    }
-                </ul>
-            </header>
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
         }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+        @*@if (ViewBag.Languages?.Count > 1)
+            {
+                <header class="language_bar clearfix">
+                    <ul class="nav nav-tabs nav-header" role="tablist">
+                        @foreach (var lang in ViewBag.Languages)
+                        {
+                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
+                                <a href="@Url.AdminUrl("EditHtmlPage", "Pages", new { culture = lang.Lang ,id = Model.Id})">@lang.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </header>
+            }*@
 
         <div class="x_panel">
             <div class="x_content">
 
-               
+
 
 
                 <form asp-action="EditHtmlPage" asp-controller="Pages"
@@ -53,7 +59,7 @@
                     {
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                     }
-                     
+
                     <input type="hidden" asp-for="Id" class="ut-id" />
                     <input type="hidden" name="DatePublished" value="@(String.Format("{0:yyyy-MM-dd}", Model.PublishedDate))" data-seo-published />
                     <input type="hidden" name="DateModified" value="@(String.Format("{0:yyyy-MM-dd}", Model.ModifiedDate))" data-seo-modified />
@@ -71,15 +77,15 @@
 
                             @if (Model.Locked)
                             {
-                                 <div class="input-group input-locked">
-                                     
+                                <div class="input-group input-locked">
+
                                     <p class="form-control-static">@Model.Slug</p>
                                     <span class="input-group-addon"
                                           data-toggle="tooltip"
                                           data-placement="top"
                                           title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
                                 </div>
-                                
+
                             }
                             else
                             {
@@ -112,7 +118,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" Name="NewMainImage" class="upload-input" data-text="Choose file." accept="image/*" />
+                                <input type="file" Name="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" />
                                 <span class="url">Choose file.</span>
                                 <span class="file-btn"><i class="fa fa-search"></i> Browse</span>
                             </label>
@@ -138,12 +144,12 @@
                     </div>
 
                     @*<div class="form-group clearfix">
-                        @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
-                        <div class="col-md-7 col-sm-9 col-xs-12">
-                            @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
-                            @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
-                        </div>
-                    </div>*@
+                            @Html.Label("Published", "Page Visibility :", new { @class = "control-label col-md-3 col-sm-3 col-xs-12 " })
+                            <div class="col-md-7 col-sm-9 col-xs-12">
+                                @Html.CheckBoxFor(m => m.Published, new { @class = "toggle_switch" })
+                                @Html.ValidationMessageFor(m => m.Published, "", new { @class = "text-danger " })
+                            </div>
+                        </div>*@
 
                     <div class="form-group clearfix">
                         <label asp-for="Content" class="control-label col-md-3 col-sm-3 col-xs-12 ">@Localizer["f_content"]</label>
@@ -223,7 +229,11 @@
 
     <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 
-    <script src="~/Admin/lib/tinymce/tinymce.js"></script>
+    @{
+        ViewBag.TinyMce_Contetnt_Id = "#Content";
+        ViewBag.TinyMce_Suumry_Id = "#Summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
 
 
     //seo scripts
@@ -232,40 +242,7 @@
     <script src="~/Admin/js/serializejson.min.js"></script>
     <script src="~/Admin/js/seo.min.js"></script>
     <script>
-        tinymce.init({
-            selector: '#Content',
-            branding: false,
-            theme: 'modern',
-            height: 300,
-            plugins: ['advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker ',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
-
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-
-        tinymce.init({
-            selector: '#Summary',
-            branding: false,
-            min_height: 150,
-            statusbar: false,
-            theme: 'modern',
-            menubar: false,
-            plugins: ['code hr anchor pagebreak spellchecker '],
-            setup: function (editor) {
-                editor.on('change', function (e) {
-                    editor.save();
-                });
-            }
-        });
-
-
-
+         
         $('#keywords').tagsinput({
             tagClass: 'tag'
         });

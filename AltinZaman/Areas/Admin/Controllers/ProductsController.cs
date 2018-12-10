@@ -10,7 +10,7 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace AltinZaman.Areas.Admin.Controllers
+namespace TamTech.Web.Areas.Admin.Controllers
 {
     public class ProductsController : ProductsBaseController
     {
@@ -20,12 +20,11 @@ namespace AltinZaman.Areas.Admin.Controllers
                                     IProductsManagerService productsManagerService,
                                     IBrandsServices brandsService,
                                     ICategoriesServices categoriesService,
-                                    IContentServices contentService,
+                                    IContentServices contentService, 
                                     IUploadManagerService uploadManager,
-                                    ICulturesManager languageService,
                                     IStringLocalizer<ProductsBaseController> localizer
                                     )
-            : base(telemetryClientService, productsManagerService, brandsService, categoriesService, contentService, uploadManager, languageService, localizer)
+            : base(telemetryClientService, productsManagerService, brandsService, categoriesService, contentService,  uploadManager,   localizer)
         {
         }
         #endregion  

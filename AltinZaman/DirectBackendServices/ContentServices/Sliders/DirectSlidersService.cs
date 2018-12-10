@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Sliders.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Sliders.Mapper;
 using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Providers.Requests.Models;
 using TamTechSDK.Common.Services.ContentService.Sliders.Models;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Sliders
+namespace TamTech.Web.DirectBackendServices.ContentServices.Sliders
 {
     public class DirectSlidersService : TamTechSDK.Common.Services.ContentService.Sliders.ISlidersServices
     {

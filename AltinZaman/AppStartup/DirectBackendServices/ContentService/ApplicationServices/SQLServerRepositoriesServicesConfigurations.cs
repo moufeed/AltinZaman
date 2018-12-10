@@ -20,6 +20,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
             services.AddDbContext<ContentDbContext>(options =>
                         options.UseSqlServer(configuration.GetConnectionString(AppSettings.DirectBackendSDK_ContentService_ContentDB)));
 
+            services.AddTransient<IContentUtilitiesRepository, EFCoreContentUtilitiesRepository>();
             services.AddTransient(typeof(IRepository<>), typeof(EFCoreDBRepository<>));
             services.AddTransient<IProductRepository, EFCoreProductRepository>();
             services.AddTransient<ICategoryRepository, EFCoreCategoryRepository>();
@@ -30,6 +31,8 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.Application
             services.AddTransient<IServiceRepository, EFCoreServiceRepository>();
             services.AddTransient<IGalleryRepository, EFCoreGalleryRepository>();
 
+            services.AddTransient<ISectionRepository, EFCoreSectionRepository>();
+            services.AddTransient<IPostRepository, EFCorePostRepository>();
 
         }
 

@@ -1,27 +1,42 @@
-
- 
-<section class="home_about_section">
+﻿  <!-- feature-section -->
+<section class="feature-section sec-pad">
     <div class="container">
+        <div class="feature-title centered">
+            <div class="section-title"><h2>لماذا الزمان الذهبي؟</h2></div>
+            <div class="title-text"><p>شركة خدمية تجارية تتمتع بشخصية اعتبارية ذات استقلال مالي وإداري تام في ممارسة أنشطتها ومهامها</p></div>
+        </div>
         <div class="row">
-            <div class="col">
-                <header class="section-header text-center">
-                     
-                    <p>@Localizer["Welcome_Totamtech"]</p>
-                    <h2><strong>@Localizer["Who_we_are"]</strong></h2>
-                </header>
-                @if (ViewBag.aboutSummary != null)
-                {
-                    <div class="lead short-description">
-                        @Html.Raw(ViewBag.aboutSummary.Summary)
+            <div class="col-md-4 col-sm-6 col-xs-12 feature-colmun">
+                <div class="single-item">
+                    <div class="img-box"><figure><img src="~/Portal/images/feature/1.jpg" alt=""></figure></div>
+                    <div class="single-content">
+                        <div class="icon-box"><i class="flaticon-graphic"></i></div>
+                        <h4>المصداقية</h4>
+                        <div class="text"><p>نظراً لتفشّي حالات الاحتيال المتزايدة ضمن هذا الاختصاص في سوق العمل فقد أقرّت الشركة وضع كامل ثقلها وطاقتها الإنتاجية لتقديم أصدق وأسمى أنواع الخدمات .</p></div>
                     </div>
-                }
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 feature-colmun">
+                <div class="single-item">
+                    <div class="img-box"><figure><img src="~/Portal/images/feature/2.jpg" alt=""></figure></div>
+                    <div class="single-content">
+                        <div class="icon-box"><i class="fa fa-clock-o"></i></div>
+                        <h4>سرعة في الإنجاز</h4>
+                        <div class="text"><p>حيث تعتبر من أهم الميزات التي تتمتع بها الشركة هي السرعة في تقديم وانجاز الخدمات </p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 feature-colmun">
+                <div class="single-item">
+                    <div class="img-box"><figure><img src="~/Portal/images/feature/3.jpg" alt=""></figure></div>
+                    <div class="single-content">
+                        <div class="icon-box"><i class="flaticon-money"></i></div>
+                        <h4>أسعار مناسبة</h4>
+                        <div class="text"><p>تعتمد إدارة الشركة نظام مالي موحد يستند على سياسة مالية مدروسة بدقة يتم بناءً عليها تحديد الأسعار والتكاليف </p></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-<svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1"
-     width="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <path d="M0 100 C 20 0 50 0 100 100 Z"></path>
-</svg>
-
+<!-- feature section end -->

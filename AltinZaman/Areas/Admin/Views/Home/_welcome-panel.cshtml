@@ -1,6 +1,6 @@
 @{
-     var route_lang = ViewContext.RouteData.Values["lang"];
-    var activeLang = (route_lang != null) ? @route_lang.ToString() : @ViewBag.DefaultLanguage.Lang;
+    var route_lang = ViewContext.RouteData.Values["lang"];
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 <div class="x_panel welcome-panel">
     <div class="x_content ">
@@ -9,7 +9,7 @@
 
         <div class="clearfix">
             <div class="col-sm-4">
-                <h3 class="m-b5">Get Started</h3>
+                <h3 class="m-b5">@Localizer["get_started"]</h3>
                 <a asp-area="Admin" asp-controller="pages" asp-action="Index"
                     class="btn btn-blue">@Localizer["create_page"]
                 </a>
@@ -40,20 +40,20 @@
                 </ul>
             </div>
             <div class="col-sm-4">
-                <h3>More Actions</h3>
+                <h3>@Localizer["more_actions"]</h3>
                 <ul class="list-unstyled"> 
                     <li>
                         <i class="fa fa-cogs"></i>
                         @Localizer["manage"]  
                         <a asp-area="Admin" asp-controller="Users" asp-action="Index">
-                            Users
+                            @Localizer["Users"]
                         </a>
                         or
                         <a asp-area="Admin" asp-controller="Menus" asp-action="Index">
-                            @Localizer["Menus"]    menus
+                            @Localizer["Menus"]     
                         </a>
                     </li>
-
+                     
                     <li>
                         <a asp-area="Admin" asp-controller="Sliders" asp-action="Index">
                             <i class="fa fa-picture-o"></i>

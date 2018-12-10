@@ -1,0 +1,24 @@
+﻿@using System.Text;
+@{
+    string activeController = ViewContext.RouteData.Values["Controller"].ToString();
+    string activeAction = ViewContext.RouteData.Values["Action"].ToString();
+}
+
+ 
+ 
+    <div class="menu-bar">
+        <nav class="main-menu">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse clearfix">
+                <menu></menu>
+            </div>
+        </nav>
+
+    </div>
+ 

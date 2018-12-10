@@ -50,21 +50,14 @@
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (ViewBag.Languages?.Count > 1)
-        {
-            <header class="language_bar clearfix">
-                <ul class="nav nav-tabs nav-header" role="tablist">
-                    @foreach (var lang in ViewBag.Languages)
-                    {
-                        <li class="@((activeLang == lang.Lang) ? "active" :"" )">
 
-                            <a href="@Url.AdminUrl("index", "Users" ,new { culture = lang.Lang  } )">@lang.Name</a>
-
-                        </li>
-                    }
-                </ul>
-            </header>
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
         }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
+       
 
         <div class="x_panel p-x-0">
             <div class="x_title clearfix p-y-3  form_search">
@@ -72,7 +65,7 @@
                 <form class="form-inline" asp-action="Index" method="post">
                     <div class="form-group">
                         <label for="Username" class="m-x-2">@Localizer["f_username"]</label>
-                        <input type="text" class="form-control" name="Username" id="Username" placeholder="Username" value="@filter.UserName">
+                        <input type="text" class="form-control" name="Username" id="Username" placeholder="@Localizer["f_username"]" value="@filter.UserName">
                     </div>
                     <div class="form-group">
                         <label for="UserRole" class="m-x-2">@Localizer["user_role"]</label>
@@ -166,7 +159,8 @@
                                                title="@Localizer["t_details"]"
                                                href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
                                                class="btn btn-view ut-details_btn_for_blocked_user">
-                                            <i class="fa fa-eye"></i></a>
+                                                <i class="fa fa-eye"></i>
+                                            </a>
 
                                         }
                                         else
@@ -176,7 +170,8 @@
                                                title="@Localizer["t_details"]"
                                                href="@Url.AdminUrl("Details","Users" ,new { username = user.UserName })"
                                                class="btn btn-view ut-details_btn_for_unblocked_user">
-                                            <i class="fa fa-eye "></i></a>
+                                                <i class="fa fa-eye "></i>
+                                            </a>
                                         }
 
                                     </td>

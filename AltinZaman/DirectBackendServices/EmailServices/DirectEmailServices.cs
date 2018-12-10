@@ -8,7 +8,7 @@ using TamTechBackendSDK.Common.Services.ServiceBus.Models;
 using TamTechSDK.Common.Services.Email.Models;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
 
-namespace AltinZaman.DirectBackendServices.EmailServices
+namespace TamTech.Web.DirectBackendServices.EmailServices
 {
     public class DirectEmailServices : TamTechSDK.Common.Services.Email.IEmailSenderService
     {
@@ -31,7 +31,7 @@ namespace AltinZaman.DirectBackendServices.EmailServices
                                     string clientId = "",
                                     List<string> userRoles = null)
         {
-            return await _emailSender.SendEmail(new TamTechBackendSDK.EmailService.Models.EmailModel
+          return   await _emailSender.SendEmail(new TamTechBackendSDK.EmailService.Models.EmailModel
             {
                 ClientId = clientId,
                 UserId = userId,

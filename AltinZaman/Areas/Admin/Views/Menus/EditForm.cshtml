@@ -38,7 +38,7 @@
 
         stringBuilder.Append("<tr class=\"tfooter\"><td colspan='6'>");
         stringBuilder.Append("<div class=\"text-right p-t2\">");
-        stringBuilder.Append($"<button class=\"btn btn-add btn-info\" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
+        stringBuilder.Append($"<button class=\"btn btn-add btn-info ut-additem-btn\" data-toggle=\"modal\" data-target=\"#MenuItemModal\" data-root=\"false\" " +
             $"<i class=\"fa fa-plus\"></i>{ViewBag.tableheadding[6]}</button>");
         stringBuilder.Append("</div></tr></td>");
         stringBuilder.Append("</table>");
@@ -128,7 +128,7 @@
                              $"data-key='{dto.Key}' " +
                              $"data-type=\"{dto.ItemType}\" " +
                              $"data-root='{@Model.Id}' " +
-                             $"class='btn btn-edit edit-menuitem ut-edit-{dto.ItemType} btn-round child' >" +
+                             $"class='btn btn-edit edit-menuitem ut-{dto.ItemType}-edit btn-round child' >" +
                              $"<i class='fa fa-edit '></i></a>");
 
 
@@ -213,22 +213,17 @@
 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            @if (ViewBag.Languages?.Count > 1)
-            {
-                <header class="language_bar clearfix">
-                    <ul class="nav nav-tabs nav-header" role="tablist">
-                        @foreach (var lang in ViewBag.Languages)
-                        {
-                            <li class="@((activeLang == lang.Lang) ? "active" :"" )">
-                                <a href="@Url.AdminUrl("Edit", "menus", new { culture = lang.Lang , id = Model.Id})">@lang.Name</a>
-                            </li>
-                        }
-                    </ul>
-                </header>
-            }
+            @{
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                    { "id" , Model.Id}
 
+                };
+            }
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+             
             <div class="x_panel">
- 
+
                 <input type="hidden" name="Lang" value="@activeLang" />
                 <div class="row m-t5">
                     <div class="col-md-4 col-xs-12">
@@ -240,21 +235,21 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group clearfix">
                             <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["name"]</label>
                             <div class="col-md-9 col-sm-12">
                                 @if (Model.Locked)
                                 {
-                                <div class="input-group input-locked">
-                                    <p class="form-control-static p-x-2 disabled">@Model.Key</p>
-                                    <input type="hidden" asp-for="Key" id="MenuKey" class="form-control" disabled />
-                                    <span class="input-group-addon"
-                                          data-toggle="tooltip"
-                                          data-placement="top"
-                                          title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                                </div>
+                                    <div class="input-group input-locked">
+                                        <p class="form-control-static p-x-2 disabled">@Model.Key</p>
+                                        <input type="hidden" asp-for="Key" id="MenuKey" class="form-control" disabled />
+                                        <span class="input-group-addon"
+                                              data-toggle="tooltip"
+                                              data-placement="top"
+                                              title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                    </div>
                                 }
                                 else
                                 {
@@ -265,17 +260,17 @@
                         </div>
                     </div>
 
-                        <div class="col-md-4 col-xs-12">
-                            <div class="form-group clearfix">
-                                <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
-                                <div class="col-md-9 col-sm-12">
-                                    <select class="form-control" name="Position" asp-for="Position">
-                                        <option value="header">Header</option>
-                                    </select>
-                                </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group clearfix">
+                            <label for="MenuKey" class="control-label col-md-3 col-sm-12">@Localizer["f_position"]</label>
+                            <div class="col-md-9 col-sm-12">
+                                <select class="form-control" name="Position" asp-for="Position">
+                                    <option value="header">Header</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                </div>
 
             </div>
         </div>
@@ -418,7 +413,7 @@
                                                    data-key="@item.Key"
                                                    data-root="@Model.Id"
                                                    data-type='@item.ItemType'
-                                                   class="btn btn-edit edit-menuitem btn-round ut-edit-@item.ItemType"><i class="fa fa-edit "></i></a>
+                                                   class="btn btn-edit edit-menuitem btn-round ut-@item.ItemType-edit"><i class="fa fa-edit "></i></a>
 
 
                                                 <a data-toggle="tooltip"

@@ -9,6 +9,8 @@ const gulp = require('gulp'),
     uglify =  require('gulp-uglify-es').default, 
     merge = require("merge-stream"),
     babel = require('gulp-babel'),
+    cleanCSS = require('gulp-clean-css'),
+    minifyjs = require('gulp-minify'),
     pkg = require('./package.json');
  
 
@@ -224,7 +226,21 @@ const  admin_config = {
                 inputFiles: [
                     './node_modules/jquery-serializejson/jquery.serializejson.min.js', 
                 ],
-            }
+            },
+            {
+                outputFileName: "sections.js",
+                es6 : true,
+                inputFiles: [  
+                    paths.admin_src + '/js/sections.js'
+                ],
+            },
+            {
+                outputFileName: "posts.js",
+                es6 : true,
+                inputFiles: [  
+                    paths.admin_src + '/js/posts.js'
+                ],
+            },
         ]
     }
 }
@@ -381,6 +397,10 @@ gulp.task('p:w',  ()=> {
     gulp.watch(portal_config.js.watch, ['p:js']);
     gulp.watch(portal_config.css.src, ['p:css']);
 });
+
+
+
+
 
 
 //-------------------------------------------------
@@ -546,4 +566,70 @@ gulp.task('s', ['s:css', 's:js'  ,'s:f']);
 //
 gulp.task('default', ['p' ,'a' ,'s' ]); 
 
- 
+// ----------------------------------------------------
+/// altin zaman tasks
+// ----------------------------------------------------
+const root = "./wwwroot/portal";
+const style_files = [
+    `${root}/css/bootstrap.min.css`,
+    `${root}/css/font-awesome.css`,
+    `${root}/css/flaticon.css`,
+    `${root}/css/animate.css`,
+    `${root}/css/owl.css`,
+    `${root}/css/settings.css`,
+    `${root}/css/jquery-ui.css`,
+ //   `${root}/css/jquery.fancybox.css`,
+    `${root}/css/hover.css`,
+    `${root}/css/style.css`,
+    `${root}/css/style-rtl.css`,
+    `${root}/css/responsive.css`,
+    `${root}/css/responsive-rtl.css`,
+    `${root}/css/default.css`,
+]
+
+
+gulp.task('p:concat-css', () => {
+    return gulp.src(style_files)
+      .pipe(cleanCSS({compatibility: 'ie8'}))
+      .pipe(concat('style.min.css'))
+      .pipe(gulp.dest(`${root}/css`));
+});
+  
+
+const js_files =[
+    `${root}/js/jquery-2.1.4.js`,
+    `${root}/js/bootstrap.min.js`,
+    `${root}/js/SmoothScroll.js`,
+    `${root}/js/wow.js`,
+]
+
+
+gulp.task('p:minify-js', () => {
+    return gulp.src(js_files)
+    .pipe(concat('main.js', {newLine: ';'}))
+    .pipe(minifyjs())
+    .pipe(gulp.dest(`${root}/js`));
+});
+
+gulp.task('p:script-js', () => {
+    return gulp.src(`${root}/js/script.js`)
+    .pipe(minifyjs())
+    .pipe(gulp.dest(`${root}/js`));
+});
+
+
+const slider_files =[
+    `${root}/js/slider-active.js`,
+    `${root}/revolution/js/jquery.themepunch.tools.min.js`,
+    `${root}/revolution/js/jquery.themepunch.revolution.min.js`,
+    `${root}/revolution/js/extensions/revolution.extension.navigation.min.js`,
+    `${root}/revolution/js/extensions/revolution.extension.parallax.min.js`,
+    `${root}/revolution/js/extensions/revolution.extension.slideanims.min.js`,
+]
+
+gulp.task('p:slider-js', () => {
+    return gulp.src(slider_files)
+    .pipe(concat('slider.js', {newLine: ';'}))
+    .pipe(minifyjs())
+    .pipe(gulp.dest(`${root}/js`));
+});

@@ -1,11 +1,5 @@
- 
- <section class="page-header" 
-  data-parallax="scroll" data-speed="0.3" data-image-src="@ViewData["ImageURl"]">
-         <div class="container">
-             <div class="row justify-content-center align-items-center">
-                 <div class="col text-center ">
-                      <h3 class="p-title "><strong>@ViewData["pageTitle"]</strong></h3>
-                 </div>
-             </div> 
-         </div>
+ <section class="about-bg centered" style="background-image :url(@ViewData["ImageURl"])">
+    <div class="container">
+        <div class="text">@ViewData["pageTitle"]</div>
+    </div>
 </section>

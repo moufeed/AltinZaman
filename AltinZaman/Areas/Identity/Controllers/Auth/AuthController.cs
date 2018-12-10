@@ -14,9 +14,8 @@ namespace AltinZaman.Areas.Identity.Controllers.CustomAccount
     {
         public AuthController(ITelemetryClientService telemetryClientService,
             IAuthService accountsService,
-            IExpressionValidation expressionValidation,
-            ICulturesManager languageService)
-            : base(telemetryClientService, accountsService, expressionValidation, languageService)
+            IExpressionValidation expressionValidation)
+            : base(telemetryClientService, accountsService, expressionValidation)
         {
         }
     }

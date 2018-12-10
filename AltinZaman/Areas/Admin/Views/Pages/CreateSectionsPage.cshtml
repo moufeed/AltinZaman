@@ -1,8 +1,7 @@
 ﻿@model SectionsPageCreationVM
 @{
     ViewData["Title"] = Localizer["create_sections_page"];
-    ViewData["UnitTestPageClass"] = "ut-createPage";
-    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewData["UnitTestPageClass"] = "ut-createPage"; 
     int indx = 0;
 }
 
@@ -23,8 +22,8 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-
-        @if (ViewBag.Languages?.Count > 1)
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        @*@if (ViewBag.Languages?.Count > 1)
         {
             <header class="language_bar clearfix">
                 <ul class="nav nav-tabs nav-header" role="tablist">
@@ -36,12 +35,12 @@
                     }
                 </ul>
             </header>
-        }
+        }*@
 
         <div class="x_panel">
             <div class="x_content">
 
-          
+
                 <form asp-action="CreateSectionsPage"
                       asp-controller="Pages"
                       method="Post"
@@ -190,7 +189,7 @@
                     <div class="form-group">
                         <div class="col-md-7 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 text-right">
                             <input type="submit" class="btn btn-success p-x-5 ut-createbtn" value="@Localizer["Create"]" id="createBtn">
-                            <input type="submit" class="btn btn-info p-x-5 ut-saveAndcontinue"  value="@Localizer["save_and_continue"]" id="saveAndcontinue" name="save-continue">
+                            <input type="submit" class="btn btn-info p-x-5 ut-saveAndcontinue" value="@Localizer["save_and_continue"]" id="saveAndcontinue" name="save-continue">
                         </div>
                     </div>
                 </form>

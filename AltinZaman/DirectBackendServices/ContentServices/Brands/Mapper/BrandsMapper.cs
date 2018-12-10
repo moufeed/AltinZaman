@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Brands.Mapper
+namespace TamTech.Web.DirectBackendServices.ContentServices.Brands.Mapper
 {
     public static class BrandsMapper
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
+namespace TamTech.Web.DirectBackendServices.ContentServices.Menus.Mapper
 {
     public static class MenuMapper
     {
@@ -11,7 +11,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
             {
                 Position = frontend.Position,
                 Key = frontend.Key,
-                Title = frontend.Title,
+                Title = frontend.Title, 
                 Lang = frontend.Lang,
             };
         }
@@ -37,7 +37,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Menus.Mapper
             return new TamTechBackendSDK.ContentService.Services.Menus.Dtos.MenuItemKeysDto
             {
                 RootMenuId = frontend.RootMenuId,
-                Key = frontend.Key,
+                Key = frontend.Key,  
             };
         }
 
