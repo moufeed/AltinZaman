@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AltinZaman.DirectBackendServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AltinZaman.DirectBackendServices.ContentServices.Request.Mapper;
+using TamTech.Web.DirectBackendServices.ContentServices.Request.Mapper;
 
 using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Models.SelectList;

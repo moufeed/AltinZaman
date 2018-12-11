@@ -18,13 +18,7 @@
             <div class="col-sm-4">
                 <h3>@Localizer["next_steps"]</h3>
                 <ul class="list-unstyled">
-                    @*<li>
-                        <a asp-area="Admin" asp-controller="Galleries" asp-action="Index">
-                           
-                                <i class="fa fa-upload"></i>
-                                @Localizer["upload_first_gallery"]
-                            </a>
-                    </li>*@
+                   
                     <li>
                         <a asp-area="Admin" asp-controller="Services" asp-action="Index">
                             <i class="fa fa-cubes"></i>
@@ -46,11 +40,11 @@
                         <i class="fa fa-cogs"></i>
                         @Localizer["manage"]  
                         <a asp-area="Admin" asp-controller="Users" asp-action="Index">
-                            Users
+                             @Localizer["Users"]   
                         </a>
-                        or
+                         @Localizer["or"]   
                         <a asp-area="Admin" asp-controller="Menus" asp-action="Index">
-                            @Localizer["Menus"]    menus
+                            @Localizer["Menus"]   
                         </a>
                     </li>
 

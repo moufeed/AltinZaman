@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
  
 
-namespace AltinZaman.DirectBackendServices.ContentServices.Request.Mapper
+namespace TamTech.Web.DirectBackendServices.ContentServices.Request.Mapper
 {
     public static class RequestMapper
     {

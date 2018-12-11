@@ -26,19 +26,19 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             #region Contents Service 
 
             services.AddScoped<IMenusServices, AltinZaman.DirectBackendServices.ContentServices.Menus.DirectMenusServices>();
-            services.AddTransient<ICategoriesServices, AltinZaman.DirectBackendServices.ContentServices.Categories.DirectCategoriesServices> ();
-            services.AddTransient<IProductsManagerService, AltinZaman.DirectBackendServices.ContentServices.Products.DirectProductsManagerService>();
+           // services.AddTransient<ICategoriesServices, AltinZaman.DirectBackendServices.ContentServices.Categories.DirectCategoriesServices> ();
+         //   services.AddTransient<IProductsManagerService, AltinZaman.DirectBackendServices.ContentServices.Products.DirectProductsManagerService>();
             // services.AddTransient<IProductsService, Web.DirectBackendServices.ContentServices.Products.DirectProductsService> ();
-           services.AddTransient<IBrandsServices, AltinZaman.DirectBackendServices.ContentServices.Brands.DirectBrandsServices>();
+         //  services.AddTransient<IBrandsServices, AltinZaman.DirectBackendServices.ContentServices.Brands.DirectBrandsServices>();
             services.AddTransient<IPageService, AltinZaman.DirectBackendServices.ContentServices.Pages.DirectPagesService>();
-            services.AddTransient<IReviewsServices, AltinZaman.DirectBackendServices.ContentServices.Reviews.DirectReviewsServices>();
+         //   services.AddTransient<IReviewsServices, AltinZaman.DirectBackendServices.ContentServices.Reviews.DirectReviewsServices>();
             services.AddTransient<IServicesService, AltinZaman.DirectBackendServices.ContentServices.Services.DirectServicesService>();
             services.AddTransient<IContentServices, AltinZaman.DirectBackendServices.ContentServices.Content.DirectContentService>();
              services.AddTransient<ISlidersServices, AltinZaman.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
             services.AddTransient<IGalleriesService, AltinZaman.DirectBackendServices.ContentServices.Galleries.DirectGalleriesService>();
-            services.AddTransient<IPostsService, AltinZaman.DirectBackendServices.ContentServices.Posts.DirectPostsService>();
-            services.AddTransient<ISectionsService, AltinZaman.DirectBackendServices.ContentServices.Sections.DirectSectionsService> ();
-            services.AddTransient<TamTechSDK.Common.Services.ContentService.Request.IRequestService, AltinZaman.DirectBackendServices.ContentServices.Request.DirectRequestService>();
+         //   services.AddTransient<IPostsService, AltinZaman.DirectBackendServices.ContentServices.Posts.DirectPostsService>();
+        //    services.AddTransient<ISectionsService, AltinZaman.DirectBackendServices.ContentServices.Sections.DirectSectionsService> ();
+        services.AddTransient<TamTechSDK.Common.Services.ContentService.Request.IRequestService, AltinZaman.DirectBackendServices.ContentServices.Request.DirectRequestService>();
             services.AddTransient<TamTechSDK.Common.Services.ContentService.Status.IStatusService , AltinZaman.DirectBackendServices.ContentServices.Status.DirectSatusService>();
             services.AddTransient<TamTechSDK.Common.Services.ContentService.City.ICityService, AltinZaman.DirectBackendServices.ContentServices.City.DirectCityService>();
             #endregion
