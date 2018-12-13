@@ -1,8 +1,25 @@
-﻿<div class="header-upper">
+﻿@{
+    var UserAgent = ViewContext.HttpContext.Request.Headers["User-Agent"].ToString();
+
+    var ismobile = Utils.IsMobile(UserAgent);
+}
+
+<div class="header-upper">
     <div class="container">
         <ul class="top-left">
             <li><i class="fa fa-clock-o" aria-hidden="true"></i>الاثنين - السبت  9.00 - 18.00</li>
-            <li><i class="fa fa-phone"></i><b dir="rtl">009051222247565</b></li>
+            <li>
+                <i class="fa fa-whatsapp"></i>
+
+                @if (ismobile)
+                {
+                    <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905424063913">00905424063913</a>
+                }
+                else
+                {
+                    <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905424063913" target="_blank">00905424063913</a>
+                }
+            </li>
         </ul>
         <div class="top-right">
             <ul class="social-top">

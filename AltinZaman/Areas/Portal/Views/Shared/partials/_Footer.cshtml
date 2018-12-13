@@ -1,4 +1,10 @@
 ﻿<!-- main footer area -->
+@{
+    var UserAgent = ViewContext.HttpContext.Request.Headers["User-Agent"].ToString();
+
+    var ismobile = Utils.IsMobile(UserAgent);
+}
+
 <footer class="main-footer sec-pad">
     <div class="container">
         <div class="row">
@@ -31,8 +37,20 @@
                             <a href="#">info@altinzaman.co</a>
                         </li>
                         <li>
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            <b dir="rtl">009051222247565</b>
+                            <i class="fa fa-whatsapp"></i>
+                            @if (ismobile)
+                            {
+                                <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905424063913">00905424063913</a>
+                            }
+                            else
+                            {
+                                <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905424063913" target="_blank">00905424063913</a>
+                            }
+
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <a dir="rtl" href="tel:+905424063913">00905424063913</a>
                         </li>
                         <li>
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -41,6 +59,7 @@
                     </ul>
 
 
+                     
                 </div>
             </div>
         </div>
