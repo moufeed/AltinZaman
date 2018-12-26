@@ -130,3 +130,6 @@ ol.gray-color-counter > li:before
     border-bottom: 2px dotted #4D4C4E;
 }
  
+.tahoma{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}   

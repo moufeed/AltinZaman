@@ -1926,7 +1926,7 @@ span{
   height: 100%;
 }
 .footer-logo img{
-  height: 90px;
+  height: 130px;
   margin-top: 20px;
 }
 .footer-title h4{
@@ -2030,7 +2030,7 @@ span{
 }
 
 .footer-widget .text{
-  margin-top: 25px;
+  margin-top: 50px;
 }
 .footer-list{
   margin-top: 15px;
@@ -3025,3 +3025,6 @@ label.error{
   color: #fff;
   text-decoration: none;
 }
+.tahoma{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}   
