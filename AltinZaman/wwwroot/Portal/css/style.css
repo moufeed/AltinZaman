@@ -883,7 +883,7 @@ span{
   margin-top: 10px;
 }
 .logo-box img {
-  height: 110px;
+  height: 130px; 
   margin-bottom: 10px;
 }
 .main-header .info-box{
@@ -2870,7 +2870,7 @@ textarea:focus{
 }
 .contact-info .single-item{
   position: relative;
-  border: 1px solid #e5e5e5;
+   
   padding: 59px 0px 35px 0px;
   width: 100%;
 }
