@@ -13,7 +13,7 @@ function toggleMenuItems() {
 
 
 
-$(document).ready(() => {
+$(document).ready(() => { 
 
     toggleMenuItems();
 
@@ -68,7 +68,7 @@ $(document).ready(() => {
             $(".back-to-top").fadeOut(duration);
         }
     })
-    $(".back-to-top").click(function (event) {
+    $(".back-to-top").click(function (event) { 
         event.preventDefault();
         $("html, body").animate({
             scrollTop: 0

@@ -93,7 +93,7 @@ const portal_config = {
                 outputFileName : "owl.carousel.js",
                 es6 : false,
                 inputFiles: [
-                    './node_modules/owl.carousel/dist/owl.carousel.min.js',
+                    paths.portal_src + '/js/owl.carousel.min.js'
                 ],
             },
             {
