@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
-using FluentValidation; 
+using FluentValidation;
 using TamTechBackendSDK.ContentService.Dtos.Product;
 using TamTechBackendSDK.ContentService.Validators;
-using TamTechBackendSDK.ContentService.Services.Menus.Dtos; 
+using TamTechBackendSDK.ContentService.Services.Menus.Dtos;
 using TamTechBackendSDK.ContentService.Services.Dtos;
 using TamTechBackendSDK.ContentService.Services.Galleries.Dtos;
 using TamTechBackendSDK.ContentService.Services.Services.Validators;
@@ -10,8 +10,8 @@ using TamTechBackendSDK.ContentService.Services.Menus.Validators;
 using TamTechBackendSDK.ContentService.Services.Galleries.Validators;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices
-{ 
-     public static class FluentValidationServiceConfigurations
+{
+    public static class FluentValidationServiceConfigurations
     {
         public static void DirectBackendServices_ContentService_AddFluentValidationConfigurations(this IServiceCollection services)
         {

@@ -8,13 +8,11 @@ using TamTechSDK.Common.Models.ContentItem;
 using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Models.Sort;
 using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Models;
-using TamTechSDK.Common.Services.ContentService.Pages;
 using TamTechSDK.Common.Services.ContentService.Pages.Enums;
+using TamTechSDK.Common.Services.ContentService.Pages.Models;
 
 namespace AltinZaman.DirectBackendServices.ContentServices.Pages
 {
-
     public class DirectPagesService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Pages.IPageService
     {
         #region Props  

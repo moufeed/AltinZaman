@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AltinZaman.AppStartup.DirectBackendServices.IdentityService.ApplicationServices;
-using AltinZaman.AppStartup.MicroServices.ApplicationServices; 
+using AltinZaman.AppStartup.MicroServices.ApplicationServices;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices

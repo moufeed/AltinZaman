@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TamTechSDK.Common.Models.Languages;
 
 namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
 {
@@ -17,7 +18,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
                 Lang = backend.Lang,
                 Id = backend.Id,
                 Title = backend.Title,
-                Slug = backend.Slug, 
+                Slug = backend.Slug,
                 Keywords = backend.Keywords,
                 Section = backend.Section,
                 MainImage = backend.MainImage,
@@ -34,8 +35,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
                 MetaDescription = backend.MetaDescription,
                 Locked = backend.Locked,
                 AuthorName = backend.AuthorName,
-                PublishedDate = backend.PublishedDate
-
+                PublishedDate = backend.PublishedDate,
+                SEOMarkup = backend.SEOMarkup,
+                Slugs = backend.Slugs?.Select(m => m.MapSlugsToFrontend()).ToList()
             };
         }
 
@@ -43,16 +45,17 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
         public static TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary MapToPageSummaryFrontend(this TamTechBackendSDK.ContentService.Services.Pages.Dtos.PageDto backend)
         {
             return new TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary
-            { 
+            {
                 Id = backend.Id.ToString(),
                 Title = backend.Title,
-                Slug = backend.Slug, 
+                Slug = backend.Slug,
                 Section = backend.Section,
                 MainImage = backend.MainImage,
-                Summary = backend.Summary, 
+                Summary = backend.Summary,
                 ModifiedDate = backend.ModifiedDate,
-                CreatedDate = backend.CreatedDate, 
-                
+                CreatedDate = backend.CreatedDate,
+
+
             };
         }
         public static TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPage MapToFrontendDto(this TamTechBackendSDK.ContentService.Services.Pages.Dtos.HtmlPageDto backend)
@@ -79,13 +82,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
                 CreatedDate = backend.CreatedDate,
                 Tags = backend.Tags,
                 MetaDescription = backend.MetaDescription,
-                SEOMarkup =backend.SEOMarkup,
+                SEOMarkup = backend.SEOMarkup,
                 Locked = backend.Locked,
-                AuthorName = backend.AuthorName ,
+                AuthorName = backend.AuthorName,
                 PublishedDate = backend.PublishedDate
             };
         }
-     
+
         public static TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage MapToFrontendDto(this TamTechBackendSDK.ContentService.Services.Pages.Dtos.SectionsPageDto backend)
         {
             return new TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage
@@ -165,7 +168,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
         public static TamTechBackendSDK.ContentService.Services.Pages.Dtos.UpdatePageDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.EditHtmlPageDto frontend)
         {
             return new TamTechBackendSDK.ContentService.Services.Pages.Dtos.UpdatePageDto
-            { 
+            {
                 Lang = frontend.Lang,
                 Id = frontend.Id,
                 Title = frontend.Title,
@@ -180,7 +183,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
                 Type = (int)TamTechBackendSDK.ContentService.Services.Pages.Enums.PageTypeEnum.Html,
                 SEOMarkup = frontend.SEOMarkup,
                 AuthorName = frontend.AuthorName,
-                
+
             };
         }
 
@@ -227,7 +230,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
                 MetaDescription = frontend.MetaDescription,
                 Type = (int)TamTechBackendSDK.ContentService.Services.Pages.Enums.PageTypeEnum.Html,
                 AuthorName = frontend.AuthorName,
-                SEOMarkup =frontend.SEOMarkup
+                SEOMarkup = frontend.SEOMarkup
             };
         }
 
@@ -257,4 +260,4 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Pages.Mapper
 
 
 //
- 
+

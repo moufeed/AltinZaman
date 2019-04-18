@@ -1,190 +1,14 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: tamtech cms 0.0.7\n"
-"Last-Translator: tamtech solution <support@tamtech.solution>\n"
-"Language: ar\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Language-Team: \n"
-
-# adminbar
-msgid "Dashboard"
-msgstr "لوحة التحكم"
-
-msgid "Log_Out"
-msgstr "تسجيل الخروج"
-
-# tobbar
-msgid "mail_Us"
-msgstr "راسلنا"
-
-# bootombar
-msgid "Copyright_©_2018_tamtech_solutions._All_rights_reserved."
-msgstr "جميع الحقوق محفوظة لصالح تام تك ©2018"
-
-msgid "Powered_by"
-msgstr "تطوير"
-
-msgid "tamtech"
-msgstr "تام تك"
-
-# index
-msgid "Welcome_Totamtech"
-msgstr "مرحبا بك في تام تك"
-
-msgid "Who_we_are"
-msgstr "من نحن ؟"
-
-msgid "services_we_offer"
-msgstr "خدمات نقدّمها"
-
-msgid "What_we_do"
-msgstr "عملنا"
-
-msgid "Why_Choose_Us"
-msgstr "لماذا نحن ؟"
-
-msgid "What_Clients_say"
-msgstr "ماذا يقول العملاء ؟"
-
-msgid "Our_Clients"
-msgstr "عملاؤنا"
-
-msgid "meet_our_clients"
-msgstr "اِلتقِ بعملائنا"
-
-# about us
-msgid "our_mission"
-msgstr "مهمّتنا"
-
-msgid "happy_clients"
-msgstr "عملاء سعيدون"
-
-msgid "years_in_business"
-msgstr "في مجال الأعمال لسنوات"
-
-msgid "cups_of_coffee"
-msgstr "فناجين قهوة"
-
-msgid "no_projects"
-msgstr "عدد من المشاريع"
-
-msgid "our_values"
-msgstr "قيمنا"
-
-msgid "our_vision"
-msgstr "رؤيتنا"
-
-#: contact us
-msgid "contact_us"
-msgstr "تواصل معنا"
-
-msgid "Address"
-msgstr "العنوان"
-
-msgid "Phone"
-msgstr "الهاتف"
-
-msgid "Mobile"
-msgstr " الهاتف المحمول"
-
-msgid "Email"
-msgstr "البريد الإلكترونيّ"
-
-msgid "Find_us"
-msgstr "جِدْنا"
-
-msgid "Get_in_Touch"
-msgstr "اِتّصل بنا"
-
-msgid "send_us_meesage"
-msgstr "أرسل لنا رسالة"
-
-msgid "name"
-msgstr "الاسم"
-
-msgid "Message"
-msgstr "الرّسالة"
-
-msgid "Send_it"
-msgstr "أرسل"
-
-msgid "close"
-msgstr "أغلق"
-
-msgid "mobile_no"
-msgstr "رقم الهاتف المحمول"
-
-msgid "dear_customer"
-msgstr  "عزيزي  <strong class=\"customer_name\"></strong>, شكراً لتواصلك معنا!"
-
-msgid  "We_have_received_your_message"
-msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا. إذا كان الأمر مستعجلاً, يمكنك أيضاً استخدام رقم الهاتف المحمول أدناه للتّحدّث معنا."
-
-msgid  "have_great_day"
-msgstr  "طاب يومك!"
-
-
-msgid "About_Us"
-msgstr "عنّا"
-
-msgid "Call_us_today_at_<span>{0}</span>_or_Email_us_at_<span>{1}</span>"
-msgstr "اِتّصل بنا اليوم على <span>{0}</span> أو أرسل لنا بريداً إلكترونيّاً على  <span>{1}</span>"
-
-msgid  "Start_Now"
-msgstr "اِبدأ الآن"
-
-#:galleries
-msgid "our_galleries"
-msgstr "معارضنا"
-
-msgid "Galleries"
-msgstr "معارض الصّور"
-
-msgid "Gallery"
-msgstr "معرض صور"
-
-msgid "Services"
-msgstr "خدمات"
-
-msgid "our_services"
-msgstr "خدماتنا"
-
-msgid "read_more"
-msgstr "اِقرأ أكثر"
-
-#: Products
-
-msgid "Products"
-msgstr "منتَجات"
-
-msgid "Our_products"
-msgstr "منتَجاتنا"
-
-msgid "Previous"
-msgstr "السّابق"
-
-msgid "Next"
-msgstr "التّالي"
-
-msgid "Description"
-msgstr "وصف"
-
-msgid "By"
-msgstr "بواسطة"
-
-msgid "share_this_post"
-msgstr "مشاركة "
-
-#request qute
-
-msgid "request_qute"
-msgstr "عرض سعر"
-
+"Project-Id-Version: tamtech_cms 0.0.1.9"
+"Last-Translator: tamtech solution <support@tamtech.solution>"
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
+"POT-Creation-Date:"
+"PO-Revision-Date:"
+"Language-Team:"
 #-------------------------------------------------------------------------
 #:admin panel
 #-------------------------------------------------------------------------
@@ -402,6 +226,15 @@ msgstr "القسم :"
 msgid  "f_main_image"
 msgstr "الصّورة الرّئيسيّة :"
 
+msgid  "f_video_thumbnail"
+msgstr "صورة الغلاف :"
+
+msgid "f_video_url"
+msgstr "رابط الفيديو :"
+
+msgid "f_video_id"
+msgstr "معرف الفيديو :"
+
 msgid  "choose_file"
 msgstr "اِختيار ملف."
  
@@ -489,6 +322,12 @@ msgstr "الموقع :"
 msgid "f_public_url"
 msgstr "الرابط العام :"
 
+msgid "f_created_date"
+msgstr "تاريخ الأنشاء"
+
+msgid "f_post_date"
+msgstr "تاريخ المقالة"
+
 #seo form 
 msgid "f_headline"
 msgstr "العنوان الرّئيسي :"
@@ -516,6 +355,22 @@ msgstr "المطبخ :"
 
 msgid "f_section_parent"
 msgstr "التصنيف الأب :"
+
+msgid "f_company"
+msgstr "شركة :"
+
+msgid "f_job_position"
+msgstr "المنصب الوظيفي :"
+
+msgid "f_avater_image"
+msgstr "الصورة :"
+
+msgid "f_rating"
+msgstr "التقيم :"
+
+msgid "f_message"
+msgstr "الرسالة :"
+
 
 #global Tables
 msgid  "t_title"
@@ -644,6 +499,25 @@ msgstr "التفاصيل"
 msgid "t_city"
 msgstr "المدينة"
 
+msgid "t_position"
+msgstr "الموقع"
+
+msgid "t_section"
+msgstr "التصنيف"
+
+
+msgid "t_company"
+msgstr "الشركة"
+
+msgid "t_job_position"
+msgstr "المنصب الوظيفي"
+
+msgid "t_rating"
+msgstr "التقيم"
+
+msgid "t_message"
+msgstr "الرسالة"
+
 #labels
 
 msgid "l_full_name"
@@ -746,6 +620,12 @@ msgstr "تمّ إنشاء سلايدر بنجاح."
 
 msgid "slider_updating_successfully"
 msgstr "تمّ تحديث السّلايدر بنجاح."
+ 
+msgid "gallery_item_creation_successfully"
+msgstr "تم إنشاء العنصر بنجاح"
+
+msgid "gallery_item_updating_successfully"
+msgstr "تم تحديث العناصر بنجاح"
 
 msgid "deleted_successfully"
 msgstr "تمّ الحذف بنجاح"
@@ -1106,12 +986,27 @@ msgstr "صفحة ثابتة"
 msgid "service"
 msgstr "خدمة"
 
+msgid "gallery"
+msgstr "معرض"
+
+msgid "posts_section"
+msgstr "تصنبفات المقالات"
+
+msgid "services_section"
+msgstr "تصنيفات الخدمات"
+
+msgid "gallery_section"
+msgstr "تصنيفات معرض الصور"
+
 msgid "add_to_menu"
 msgstr "إضافة للقائمة"
 
 msgctxt "admin.Views.Menus.partials._modal"
 msgid "product"
 msgstr "منتَج"
+
+msgid "Create_section"
+msgctxt "تصنيف جديد"
 
 #:users Controller
 msgid "c_roles"
@@ -1236,6 +1131,9 @@ msgstr "صور السّلايدر"
 msgid "upload_single_image"
 msgstr "رفع صورة واحدة"
  
+msgid "add_video"
+msgstr "إضافة فيديو"
+
 #: sliders Details.cshtml
 msgid "slider_details"
 msgstr "تفاصيل السّلايدر"
@@ -1267,6 +1165,12 @@ msgstr "تحديث صورة في المعرض"
 
 msgid "back_to_gallery"
 msgstr "العودة إلى معرض الصّور"
+
+msgid "create_video_item"
+msgstr "إضافة فيديو"
+
+msgid "edit_video_item"
+msgstr "تعديل الفيديو"
 
 #:FormGallery.cshtml 
 msgid "create_gallery"
@@ -1657,6 +1561,9 @@ msgstr  " لايمكن ترك حقل (@type) فارغ"
 msgid "url_msg"
 msgstr "الرجاء إدخال رابط صحيح  http://example.com "
 
+msgid "filesize_msg"
+msgstr "حجم الملف يجب ان يكون اصغر من"
+
 # :controller adminbaseController.cs // filters
 
 msgid "title_a_to_z"
@@ -1699,8 +1606,308 @@ msgstr "معرفة المزيد"
 msgid "fullscreen"
 msgstr "ملئ الشاشة"
 
+msgid "Log_Out"
+msgstr "تسجيل الخروج"
 
 
-#altinzaman 
-msgid "site_title"
-msgstr "الزمان الذهبي"
+msgid "Slug_ar"
+msgstr "الاسم اللطيف"
+
+msgid "Title_ar"
+msgstr "العنوان"
+
+msgid "MainImage_ar"
+msgstr "الصّورة الرّئيسيّة"
+
+msgid "VideoUrl_ar"
+msgstr "رابط الفيديو"
+
+msgid "Content_ar"
+msgstr "محتوى"
+
+msgid "Image_ar"
+msgstr "الصّورة الرّئيسيّة"
+
+msgid "section_projects"
+msgstr "مشاريع"
+
+msgid "section_works"
+msgstr "أعمال"
+
+msgid "View_in_website"
+msgstr "مشاهدة ضمن الموقع"
+
+msgid "new_tab"
+msgstr " فتح في تبويب جديد"
+
+msgid "same_tab"
+msgstr " فتح في نفس التبويب"
+
+msgid "start_chat_in_whatsapp"
+msgstr "بدء محادثة"
+
+msgid "mobile_number_not_confirmed"
+msgstr "رقم الجوال غير مؤكد"
+
+
+msgid "TAMCMS_UsersAdmin"
+msgstr "مدير المستخدمين"
+
+msgid "TAMCMS_MenusContentAdmin"
+msgstr "مدير القوائم"
+
+msgid "TAMCMS_PagesContentAdmin"
+msgstr "مدير الصفحات"
+
+msgid "TAMCMS_PostAuthor"
+msgstr "مؤلف المقالات"
+
+msgid "TAMCMS_GalleriesContentAdmin"
+msgstr "مدير المعارض"
+
+msgid "TAMCMS_SlidersContentAdmin"
+msgstr "مدير السلايدرات"
+
+msgid "TAMCMS_PostsContentAdmin"
+msgstr "مدير المقالات"
+
+msgid "TAMCMS_ServicesContentAdmin"
+msgstr "مدير الخدمات"
+
+msgid "TAMCMS_ProductsContentAdmin"
+msgstr "مدير النتجات"
+
+msgid "TAMCMS_PostsEditor"
+msgstr "محرر مقالات"
+
+
+msgid "email_to"
+msgstr "رسالة إلى"
+
+msgid "email_sent"
+msgstr "تم إرسال الرسالة"
+
+# testimonials
+msgid "new_testimonial"
+msgstr "توصية جديدة"
+
+
+msgid "edit_testimonial"
+msgstr "تعديل التوصية"
+
+msgid "create_testimonial"
+msgstr "إنشاء توصية"
+
+msgid "testimonial_details"
+msgstr "تفاصيل التوصية"
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+# adminbar
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Log_Out"
+msgstr "تسجيل الخروج"
+
+# tobbar
+msgid "mail_Us"
+msgstr "راسلنا"
+
+# bootombar
+msgid "Copyright_©_2018_tamtech_solutions._All_rights_reserved."
+msgstr "جميع الحقوق محفوظة لصالح تام تك ©2018"
+
+msgid "Powered_by"
+msgstr "تطوير"
+
+msgid "tamtech"
+msgstr "تام تك"
+
+# index
+msgid "Welcome_Totamtech"
+msgstr "مرحبا بك في تام تك"
+
+msgid "Who_we_are"
+msgstr "من نحن ؟"
+
+msgid "services_we_offer"
+msgstr "خدمات نقدّمها"
+
+msgid "What_we_do"
+msgstr "عملنا"
+
+msgid "Why_Choose_Us"
+msgstr "لماذا نحن ؟"
+
+msgid "What_Clients_say"
+msgstr "ماذا يقول العملاء ؟"
+
+msgid "Our_Clients"
+msgstr "عملاؤنا"
+
+msgid "meet_our_clients"
+msgstr "اِلتقِ بعملائنا"
+
+# about us
+msgid "our_mission"
+msgstr "مهمّتنا"
+
+msgid "happy_clients"
+msgstr "عملاء سعيدون"
+
+msgid "years_in_business"
+msgstr "في مجال الأعمال لسنوات"
+
+msgid "cups_of_coffee"
+msgstr "فناجين قهوة"
+
+msgid "no_projects"
+msgstr "عدد من المشاريع"
+
+msgid "our_values"
+msgstr "قيمنا"
+
+msgid "our_vision"
+msgstr "رؤيتنا"
+
+#: contact us
+msgid "contact_us"
+msgstr "تواصل معنا"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Phone"
+msgstr "الهاتف"
+
+msgid "Mobile"
+msgstr " الهاتف المحمول"
+
+msgid "Email"
+msgstr "البريد الإلكترونيّ"
+
+msgid "Find_us"
+msgstr "جِدْنا"
+
+msgid "Get_in_Touch"
+msgstr "اِتّصل بنا"
+
+msgid "send_us_meesage"
+msgstr "أرسل لنا رسالة"
+
+msgid "name"
+msgstr "الاسم"
+
+msgid "Message"
+msgstr "الرّسالة"
+
+msgid "Send_it"
+msgstr "أرسل"
+
+msgid "close"
+msgstr "أغلق"
+
+msgid "mobile_no"
+msgstr "رقم الهاتف المحمول"
+
+msgid "dear_customer"
+msgstr  "عزيزي  <strong class=\"customer_name\"></strong>, شكراً لتواصلك معنا!"
+
+msgid  "We_have_received_your_message"
+msgstr  "لقد استلمنا رسالتك و نودّ أن نشكرك لمراسلتنا. إذا كان الأمر مستعجلاً, يمكنك أيضاً استخدام رقم الهاتف المحمول أدناه للتّحدّث معنا."
+
+msgid  "have_great_day"
+msgstr  "طاب يومك!"
+
+
+msgid "About_Us"
+msgstr "عنّا"
+
+msgid "Call_us_today_at_<span>{0}</span>_or_Email_us_at_<span>{1}</span>"
+msgstr "اِتّصل بنا اليوم على <span>{0}</span> أو أرسل لنا بريداً إلكترونيّاً على  <span>{1}</span>"
+
+msgid  "Start_Now"
+msgstr "اِبدأ الآن"
+
+#:galleries
+msgid "our_galleries"
+msgstr "معارضنا"
+
+msgid "Galleries"
+msgstr "معارض الصّور"
+
+msgid "Gallery"
+msgstr "معرض صور"
+
+msgid "Services"
+msgstr "خدمات"
+
+msgid "our_services"
+msgstr "خدماتنا"
+
+msgid "read_more"
+msgstr "اِقرأ أكثر"
+
+#: Products
+
+msgid "Products"
+msgstr "منتَجات"
+
+msgid "Our_products"
+msgstr "منتَجاتنا"
+
+msgid "Previous"
+msgstr "السّابق"
+
+msgid "Next"
+msgstr "التّالي"
+
+msgid "Description"
+msgstr "وصف"
+
+msgid "By"
+msgstr "بواسطة"
+
+msgid "share_this_post"
+msgstr "مشاركة "
+
+#request quote
+
+msgid "request_quote"
+msgstr "عرض سعر"
+
+msgid "AuthorName"
+msgstr "الإسم"
+
+msgid "Company"
+msgstr "الشركة"
+
+msgid "job_position"
+msgstr "المسمى الوظيفي"
+
+msgid "avatar"
+msgstr "الصورة"
+
+msgid "rating"
+msgstr "التقيم"
+
+msgid "title"
+msgstr "العنوان"
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+ 

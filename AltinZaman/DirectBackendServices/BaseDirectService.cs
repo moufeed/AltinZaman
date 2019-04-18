@@ -18,7 +18,7 @@ namespace AltinZaman.DirectBackendServices
 
 
         #region Ctors
-        public BaseDirectService( )
+        public BaseDirectService()
         {
             _lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             _culture = CultureInfo.CurrentCulture.Name;
@@ -32,7 +32,7 @@ namespace AltinZaman.DirectBackendServices
         {
             IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
             _resultModel.Success = inputResult.Success;
-            _resultModel.StatusCode =  (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
+            _resultModel.StatusCode = (System.Net.HttpStatusCode)((int)inputResult.StatusCode);
             _resultModel.Data = inputResult.Data;
             _resultModel.Messages = _resultModel.Success ? null : _resultModel.Messages = new Dictionary<string, List<string>>();
             foreach (KeyValuePair<string, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateEntry> error in inputResult.ModelState)
@@ -49,7 +49,7 @@ namespace AltinZaman.DirectBackendServices
                 }
             }
             return _resultModel;
-        } 
+        }
 
         public IRequestProviderResult<TResult> MapRequestProviderResult<TResult>(
            TamTechBackendSDK.IdentityService.Models.IReturnResultModel<TResult> inputResult)
@@ -84,7 +84,7 @@ namespace AltinZaman.DirectBackendServices
             return _resultModel;
         }
 
-          
+
         public IRequestProviderResult<TOutputResult> ReturnResult<TOutputResult, TInputResult>(TamTechBackendSDK.ContentService.Models.Results.IReturnResultModel<TInputResult> inputResult, TOutputResult data)
         {
             IRequestProviderResult<TOutputResult> _resultModel = new RequestProviderResult<TOutputResult>();

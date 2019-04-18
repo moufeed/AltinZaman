@@ -55,37 +55,41 @@ $(document).ready(function(){
 //------------------------------------------------------------------
 //#region   publish & unpublish  
 //------------------------------------------------------------------
-$(document).on('click','.toggle__publish',function(e){
-    e.preventDefault();
-    var $this =$(this);
-    var published = $this.data("published");
-    var unpublished = $this.data("unpublished");
-    $this.find('i').removeClass().addClass("fa fa-spinner fa-pulse");
-    
-      $.ajax({
+
+ 
+
+
+$(document).on('change', '.toggle_visibility', function (e) {
+    let $this = $(this);
+    let [root, key ,status] = [$this.data("root"), $this.attr("id"), $this.prop('checked')];
+
+    $.ajax({
         url: publishUrl,
         type: 'GET',
         dataType: "json",
-        data: { 
-            RootMenuId : $this.data('root'),
-            key : $this.data('key')
-        }
-    }) 
-    .done(function (data) {
- 
-        if(data.success){
-            togglePublishBtn($this , true , published  ,unpublished )
-        }else{
-            var errors = data.errors;
-            $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
-            togglePublishBtn($this , false , published ,unpublished);
+        data: {
+            RootMenuId: root,
+            key: key
         }
     })
-    .fail(function (jqXHR, Status) {
+    .done((response) => {
+        if (!response.success) {
+            if (response.errors.length > 0) {
+                txt = MakeErrorsMsg(response.errors);
+                $notification.error("", txt, 3500, "fa fa-exclamation-circle");
+            }else{
+                $notification.error(window.localization.error, window.localization.something_wrong, 3500, "fa fa-exclamation-circle");
+            }
+        }
+ 
+    })
+    .fail( (jqXHR, Status)=> {
         $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
-        togglePublishBtn($this , false , published ,unpublished);
-    });  
-}); 
+    });
+
+})
+
+ 
 
 //------------------------------------------------------------------
 //#endregion #9 
@@ -122,7 +126,10 @@ $(document).on('click','.delete-menuitem' ,function(e){
                     itm.remove();
                }else{ 
                 var errors = data.errors;
-                $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+                if (errors.length > 0) {
+                    txt = MakeErrorsMsg(errors);
+                    $notification.error("", txt , 3500, "fa fa-exclamation-circle");
+                }
                }
               
                   
@@ -194,7 +201,10 @@ const SaveItem = ($this)=> {
         dataRequest["UrlTarget"] =  $target.find('select').val() ;
         dataRequest["url"] =  $tr.find('.url-control').val() ;
     }
-     
+
+    if(type == "dropdown"){
+        dataRequest["url"] =  $tr.find('.url-control').val() ;
+    }
     
     $.ajax({
         url: edit_url,
@@ -225,7 +235,11 @@ const SaveItem = ($this)=> {
             $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
             let errors = data.errors;
             $input.val(tmpVal);
-            $notification.error("<strong>"+errors[0].key+"</strong>", "<span>"+errors[0].value[0]+"</span>", 2000, "fa fa-exclamation-circle");
+            
+            if (errors.length > 0) {
+                txt = MakeErrorsMsg(errors);
+                $notification.error("", txt , 3500, "fa fa-exclamation-circle");
+            }
         } 
         
            
@@ -250,11 +264,14 @@ const toggleEdit_menuitem = ($this)=>{
         $target.find('.badge').addClass('hidden');
         $target.next().removeAttr('disabled');
     }
+    if(type == "dropdown"){
+        $target.next().removeAttr('disabled');
+    }
 
     tmpVal = $input.val();
     $input.removeAttr("disabled");
     $order.removeAttr("disabled");
-    $this.removeClass('btn-edit').addClass('btn-save editable').attr('data-original-title',"save");
+    $this.removeClass('btn-edit').addClass('btn-save editable').attr('data-original-title',window.localization.save);
     $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
     $tr.find(".btn-remove").addClass("hidden");
     $tr.find(".btn-cancel").removeClass("hidden");
@@ -286,7 +303,10 @@ $(document).on('click',".cancel-menuitem",function(event){
             $target.find('.badge').removeClass('hidden');
             $target.next().attr('disabled','disabled');
         }
-    toggle($input,$order,$edit);
+        if( $object.itemType == "dropdown" ){ 
+            $tr.find(".url-control").val($object.url).attr('disabled','disabled');
+        }
+    toggle($input,$order,$edit); 
     
     $this.addClass("hidden");
     $tr.find(".btn-remove").removeClass("hidden");
@@ -314,7 +334,10 @@ $(document).on("click", ".delete__menu", function (event) {
                         $(target).remove();
                     } else {
                         var errors = data.errors;
-                        $notification.error("<strong>" + errors[0].key + "</strong>", "<span>" + errors[0].value[0] + "</span>", 2000, "fa fa-exclamation-circle");
+                        if (errors.length > 0) {
+                            txt = MakeErrorsMsg(errors);
+                            $notification.error("", txt , 3500, "fa fa-exclamation-circle");
+                        }
                     }
                 }).fail(function (jqXHR, Status) {
                     $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
@@ -344,4 +367,8 @@ $('#gallery-Url').on('change',function(){
 })
 $('#section-Url').on('change',function(){
     getText(this,'#section-Title')
+})
+
+$('#section_of_service-Url').on('change',function(){
+    getText(this,'#section_of_service-Title')
 })

@@ -1,4 +1,4 @@
-﻿@model List<ServiceDto>
+﻿@model ServiceList
 @{
     ViewData["Title"] = Localizer["our_services"];
     Layout = "_Layout";
@@ -12,14 +12,14 @@
 <section class="service-style-tow">
     <div class="container">
         <div class="row">
-            @foreach (var service in Model)
+            @foreach (var service in Model.Data)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12 service-colmun">
                     <div class="service-content">
                         <div class="icon-box">
-                        
-                        
-                            <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >
+
+
+                            <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug">
                                 @if (!string.IsNullOrEmpty(service.Icon))
                                 {
                                     <i class="fa @service.Icon"></i>
@@ -30,19 +30,27 @@
                                 }
 
 
-                            </a></div>
-                        <h4><a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >@service.Title</a></h4>
+                            </a>
+                        </div>
+                        <h4><a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug">@service.Title</a></h4>
                         <div class="text">
                             <p class="truncate-3line">
                                 @service.Summary
                             </p>
                         </div>
-                        <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" class="btn btn-link btn-more" >@Localizer["more"]</a>
+                        <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" class="btn btn-link btn-more">@Localizer["more"]</a>
                     </div>
                 </div>
             }
 
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <partial name="_pagination" model="Model" />
+            </div>
+        </div>
+
     </div>
 </section>
 

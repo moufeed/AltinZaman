@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
 using TamTech.Common.Models.Settings;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
 using TamTechBackendSDK.ContentService.Repositories;
@@ -7,7 +7,7 @@ using TamTechBackendSDK.ContentService.Repositories.CosmosRepositories;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices
 {
-     
+
     public static class CosmosRepositoriesServicesConfigurations
     {
         public static void ContentService_AddCosmosRepositoriesConfigurations(this IServiceCollection services, IConfiguration configuration)

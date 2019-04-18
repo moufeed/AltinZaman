@@ -11,7 +11,7 @@ using TamTechSDK.Common.Services.ContentService.Sliders.Models;
 
 namespace AltinZaman.DirectBackendServices.ContentServices.Sliders
 {
-    public class DirectSlidersService : TamTechSDK.Common.Services.ContentService.Sliders.ISlidersServices
+    public class DirectSlidersService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Sliders.ISlidersServices
     {
         #region Props  
         private readonly TamTechBackendSDK.ContentService.Services.Sliders.ISliderService _sliderService;
@@ -81,8 +81,11 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Sliders
 
         public async Task<IRequestProviderResult<SliderDto>> GetPublicByKeyAsync(string key)
         {
-            var result = await _sliderService.GetPublicByKeyAsync(key); 
-            return GetRequestProviderResult(result.MapToFrontendSliderDto()); 
+            var result = await _sliderService.GetPublicByKeyAsync(key);
+
+            SliderDto model = result != null ? result.MapToFrontendSliderDto() : new SliderDto();
+
+            return ReturnResult(model, result != null);
         }
 
 

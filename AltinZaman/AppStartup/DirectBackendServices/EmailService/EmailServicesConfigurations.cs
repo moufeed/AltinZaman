@@ -14,7 +14,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.EmailService
     {
         public static void DirectBackendServices_AddEmailServicesConfigurations(this IServiceCollection services, IConfiguration Configuration)
         {
-          
+
             if (!services.Any(s => s.ServiceType == typeof(ITelemetryClientService)))
             {
                 services.AddTransient<ITelemetryClientService, TelemetryClientService>((serviceExtension) =>
@@ -25,24 +25,24 @@ namespace AltinZaman.AppStartup.DirectBackendServices.EmailService
                     IHttpContextAccessor httpContextAccessor = serviceExtension.GetRequiredService<IHttpContextAccessor>();
                     return new TelemetryClientService(httpContextAccessor, insightsSettings);
                 });
-            } 
+            }
 
             services.AddTransient<IEmailSender, SendGridEmailSender>(
                 (serviceExtension) =>
                 {
-                    ITelemetryClientService telemetry = serviceExtension.GetService< ITelemetryClientService>();
+                    ITelemetryClientService telemetry = serviceExtension.GetService<ITelemetryClientService>();
                     TamTechBackendSDK.EmailService.Settings.SendGridSettings settings = Configuration
                                                                                                 .GetSection(AppSettings.DirectBackendSDKsSettings)
                                                                                                 .GetSection(AppSettings.DirectBackendSDK_EmailService_SendGrid)
                                                                                                 .Get<TamTechBackendSDK.EmailService.Settings.SendGridSettings>();
-                     SendGridEmailSender sender = new  SendGridEmailSender(telemetry, settings.ApiKey);
+                    SendGridEmailSender sender = new SendGridEmailSender(telemetry, settings.ApiKey);
 
                     return sender;
                 }
 
-                ); 
+                );
 
-    
+
 
 
 

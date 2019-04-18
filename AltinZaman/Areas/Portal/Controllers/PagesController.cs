@@ -11,7 +11,7 @@ namespace AltinZaman.Areas.Portal.Controllers
 {
     public class PagesController : PagesBaseController
     {
-        public PagesController(ITelemetryClientService telemetryClientService, IPageService pageService, IMenusServices menusServices )
+        public PagesController(ITelemetryClientService telemetryClientService, IPageService pageService, IMenusServices menusServices)
             : base(telemetryClientService, pageService, menusServices)
         {
         }

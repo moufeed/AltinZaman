@@ -7,12 +7,12 @@ using TamTechSDK.Common.Services.Identity.Models;
 
 namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
 {
-     
-     public static class AuthenticationServicesConfigurations
+
+    public static class AuthenticationServicesConfigurations
     {
         public static void MicroServices_AddIdentityServerAuthentication(this IServiceCollection services, IConfiguration Configuration)
         {
-            
+
 
             IdentityServiceSettings identityServiceSettings = Configuration
                                                                       .GetSection(AppSettings.MicroServicesSettings)
@@ -38,7 +38,7 @@ namespace AltinZaman.AppStartup.MicroServices.ApplicationServices
                 foreach (string scop in identityServiceSettings.Scops)
                 {
                     options.Scope.Add(scop);
-                } 
+                }
             });
 
         }

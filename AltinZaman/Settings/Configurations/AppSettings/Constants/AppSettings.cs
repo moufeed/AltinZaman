@@ -19,7 +19,7 @@ namespace AltinZaman.Services.Configurations.AppSetting.Constants
 
         public const string MainMenuSlug = "MainMenuSlug";
 
-     
+
         public const string WebApplication_FilesTypesSettings = "WebApplication_FilesTypesSettings";
 
         public const string UseHardCodeFilesTypes = "UseHardCodeFilesTypes";
@@ -36,7 +36,7 @@ namespace AltinZaman.Services.Configurations.AppSetting.Constants
 
         public const string WebApplication_UseMicroServices = "WebApplication_UseMicroServices";
 
-        public const string WebApplication_ApplicationInsights = "WebApplication_ApplicationInsights"; 
+        public const string WebApplication_ApplicationInsights = "WebApplication_ApplicationInsights";
 
         public const string DirectBackendSDKsSettings = "DirectBackendSDKsSettings";
 
@@ -74,7 +74,7 @@ namespace AltinZaman.Services.Configurations.AppSetting.Constants
 
         public const string MicroServices_IdentityService = "MicroServices_IdentityService";
 
-        public const string MicroServices_ContentsService = "MicroServices_ContentsService"; 
+        public const string MicroServices_ContentsService = "MicroServices_ContentsService";
 
         public const string MicroServices_UploadService = "MicroServices_UploadService";
 
@@ -91,7 +91,7 @@ namespace AltinZaman.Services.Configurations.AppSetting.Constants
 
         public const string StaticPages = "StaticPages";
 
-        public const string WebApplication_Configuration = "WebApplication_Configuration"; 
+        public const string WebApplication_Configuration = "WebApplication_Configuration";
 
         public const string WebApplication_CacheMenus = "WebApplication_CacheMenus";
 
@@ -103,6 +103,6 @@ namespace AltinZaman.Services.Configurations.AppSetting.Constants
 
         public const string App_CacheMenus = "App_CacheMenus";
 
-        
+
     }
 }

@@ -16,19 +16,19 @@ namespace AltinZaman.DirectBackendServices.IdentityService.RolesService
 
 
         #region Ctors
-        public DirectRolesService( 
+        public DirectRolesService(
             TamTechBackendSDK.IdentityService.Services.IRoleService roleService
             )
-        { 
+        {
             _roleService = roleService;
 
         }
         #endregion
         public Task<IEnumerable<RoleModel>> GetAllAsync()
-        { 
+        {
             var result = _roleService.Get();
             var roles = result != null ? result.Select(m => m.MapToFrontendModel()) : new List<RoleModel>();
-            return Task.FromResult( roles);
+            return Task.FromResult(roles);
         }
 
     }

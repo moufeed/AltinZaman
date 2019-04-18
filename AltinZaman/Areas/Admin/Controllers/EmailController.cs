@@ -6,7 +6,7 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
     public class EmailController : EmailBaseController
     {

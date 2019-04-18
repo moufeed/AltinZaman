@@ -8,10 +8,10 @@ using TamTechBackendSDK.ContentService.SQL;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.RequestPipeline
 {
-   public static class MigrationDbConfigurations
+    public static class MigrationDbConfigurations
     {
         public static void ContentService_MigrateDB(this IApplicationBuilder app, IConfiguration configuration)
-        { 
+        {
             var dbType = configuration.GetSection(AppSettings.DirectBackendSDKsSettings)
                                       .GetSection(AppSettings.DirectBackendSDK_ContetntService_UseDatabase).Get<string>();
 
@@ -44,7 +44,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.RequestPipe
                     break;
             }
 
-          
+
 
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TamTechSDK.Web.Models.Shared;
 
 namespace AltinZaman.Areas.Portal.Controllers
 {
@@ -27,9 +28,16 @@ namespace AltinZaman.Areas.Portal.Controllers
                     return View("Areas/Portal/Views/Error/NotFound.cshtml");
                 case "500":
                     return View("Areas/Portal/Views/Error/Exception.cshtml");
+
+                case "401":
+                    JsonResult res = new JsonResult(new { });
+                    res.StatusCode = 401;
+                    return res;
+
             }
             return View("Areas/Portal/Views/Error/NotFound.cshtml");
         }
+
 
 
     }

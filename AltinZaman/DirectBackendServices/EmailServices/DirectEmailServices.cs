@@ -31,7 +31,9 @@ namespace AltinZaman.DirectBackendServices.EmailServices
                                     string clientId = "",
                                     List<string> userRoles = null)
         {
-          return   await _emailSender.SendEmail(new TamTechBackendSDK.EmailService.Models.EmailModel
+
+
+            var email = new TamTechBackendSDK.EmailService.Models.EmailModel
             {
                 ClientId = clientId,
                 UserId = userId,
@@ -41,8 +43,11 @@ namespace AltinZaman.DirectBackendServices.EmailServices
                 ReasonOfSend = model.ReasonOfSend,
                 Subject = model.Subject,
                 Text = model.Message,
-                Recipients = new List<string> { model.Email }
-            });
+                Recipients = new List<string> { model.Email },
+                CC = model.CC
+            };
+
+            return await _emailSender.SendEmail(email);
         }
     }
 }

@@ -11,18 +11,18 @@ using TamTechBackendSDK.IdentityService.Models.Users;
 
 namespace AltinZaman.DirectBackendServices.IdentityService
 {
-    public class DirectAuthService : BaseDirectService , TamTechSDK.Common.Services.Identity.IAuthService
+    public class DirectAuthService : BaseDirectService, TamTechSDK.Common.Services.Identity.IAuthService
     {
 
         private IResetPasswordByEmailSendingService _resetService;
         private IUserAccountService _AccountService;
 
-        public DirectAuthService(IResetPasswordByEmailSendingService resetService , IUserAccountService  AccountService)
+        public DirectAuthService(IResetPasswordByEmailSendingService resetService, IUserAccountService AccountService)
         {
             _resetService = resetService;
             _AccountService = AccountService;
         }
-        
+
         public async Task<IRequestProviderResult<bool>> GenerateResetPasswordByEmailSendig(string email)
         {
 
@@ -42,7 +42,7 @@ namespace AltinZaman.DirectBackendServices.IdentityService
 
             var result = await _resetService.ResetPassword(data);
             return ReturnResult(result.Data, result.Success);
- 
+
         }
 
         public async Task<IRequestProviderResult<bool>> ChangePassword(ChangePassword model)
@@ -57,6 +57,6 @@ namespace AltinZaman.DirectBackendServices.IdentityService
 
         }
 
-        
+
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Text; 
+using System.Text;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
 using AltinZaman.Settings.Cultures;
 using TamTechSDK.Web.Routing;
@@ -21,27 +21,27 @@ namespace AltinZaman.AppStartup.WebApplication.RequestPipeline
                                                             .Get<RoutingAppSettings>();
 
 
-           
+
 
             app.UseRouter(routes =>
             {
-                routes.MapMiddlewareRoute("{culture="+ CultureConstants.DefaultCulture.Culture + "}/{*mvcRoute}", subApp =>
-                {
-                    subApp.UseRequestLocalization(localizationOptions);
-                    subApp.UseMvc(mvcRoutes =>
-                    { 
-                        mvcRoutes.MapRoute(
-                                            name: "default",
-                                            template: "{culture}/{area}/{controller}/{action}/{*slug}",
-                                            defaults: new
-                                            {
-                                                culture = CultureConstants.DefaultCulture.Culture,
-                                                area = routingSettings.DefaultArea,
-                                                controller = "Home",
-                                                action = "index"
-                                            },
-                                             constraints: new { culture = CultureConstants.Constraint }
-                                          );
+                routes.MapMiddlewareRoute("{culture=" + CultureConstants.DefaultCulture.Culture + "}/{*mvcRoute}", subApp =>
+                 {
+                     subApp.UseRequestLocalization(localizationOptions);
+                     subApp.UseMvc(mvcRoutes =>
+                     {
+                         mvcRoutes.MapRoute(
+                                             name: "default",
+                                             template: "{culture}/{area}/{controller}/{action}/{slug?}",
+                                             defaults: new
+                                             {
+                                                 culture = CultureConstants.DefaultCulture.Culture,
+                                                 area = routingSettings.DefaultArea,
+                                                 controller = "Home",
+                                                 action = "index"
+                                             },
+                                              constraints: new { culture = CultureConstants.Constraint }
+                                           );
                         //if (DisplayArea)
                         //{
                         //    mvcRoutes.MapRoute(
@@ -117,8 +117,8 @@ namespace AltinZaman.AppStartup.WebApplication.RequestPipeline
 
 
                     });
-                });
-            
+                 });
+
             });
         }
     }

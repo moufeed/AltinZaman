@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
 using AltinZaman.Services.Configurations.AppSetting;
-using AltinZaman.Services.Configurations.AppSetting.Constants; 
-using TamTechSDK.Common.Helpers.Converters; 
-using TamTechSDK.Common.Services.ContentService.Menus;  
-using TamTechSDK.Common.Services.Helpers; 
+using AltinZaman.Services.Configurations.AppSetting.Constants;
+using TamTechSDK.Common.Helpers.Converters;
+using TamTechSDK.Common.Services.ContentService.Menus;
+using TamTechSDK.Common.Services.Helpers;
 using TamTechSDK.Common.Services.Upload;
 using TamTechSDK.Common.Services.Upload.FileTypes;
 using TamTechSDK.Web.Services.Configurations.AppSetting;
@@ -18,8 +18,8 @@ using TamTechSDK.Web.Services.Telemetry.Settings;
 using TamTechSDK.Web.Services.Validations;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{ 
-     public static class CommonServicesConfigurations
+{
+    public static class CommonServicesConfigurations
     {
         public static void AddCommonServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
@@ -32,8 +32,8 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddScoped<IStringConverters, StringConverters>();
             services.AddScoped<IExpressionValidation, ExpressionValidation>();
 
-            
-          // services.AddScoped<ICulturesManager, ConstantsCulturesService>();   
+
+            // services.AddScoped<ICulturesManager, ConstantsCulturesService>();   
 
 
 
@@ -61,6 +61,6 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             {
                 services.AddScoped<IPublicMenusService, WebPublicMenusService>();
             }
-        } 
+        }
     }
 }

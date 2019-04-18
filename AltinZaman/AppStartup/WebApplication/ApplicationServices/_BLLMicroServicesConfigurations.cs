@@ -20,14 +20,14 @@ using TamTechSDK.Common.Services.SMS;
 using TamTechSDK.Common.Services.Upload;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{ 
-     public static class BLLMicroServicesConfigurations
+{
+    public static class BLLMicroServicesConfigurations
     {
         public static void _AddBusinessLogicMicroServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
 
             #region Contents Service
-            
+
             services.AddScoped<IMenusServices, MenusServices>();
             services.AddTransient<ICategoriesServices, CategoriesServices>();
             services.AddTransient<IProductsManagerService, ProductsManagerService>();
@@ -35,11 +35,11 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             services.AddTransient<IBrandsServices, BrandsServices>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IReviewsServices, ReviewsServices>();
-           // services.AddTransient<IServicesService, ServicesService>();
-            services.AddTransient<IContentServices, ContentServices>(); 
+            // services.AddTransient<IServicesService, ServicesService>();
+            services.AddTransient<IContentServices, ContentServices>();
             services.AddTransient<IGalleriesService, GalleriesService>();
             services.AddTransient<IPostsService, PostsService>();
-            
+
 
             #endregion
 
@@ -73,8 +73,8 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
                                                            .GetSection(AppSettings.MicroServices_EmailService)
                                                            .Get<ServiceBusSettings>();
                 return new EmailSenderToServiceBus(settings, bus);
-            }); 
-             
+            });
+
             #endregion
 
 
@@ -87,7 +87,7 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
                                                                 .GetSection(AppSettings.MicroServices_SMSService)
                                                                 .Get<ServiceBusSettings>();
                 return new SMSServiceBus(settings, bus);
-            }); 
+            });
 
             #endregion
         }

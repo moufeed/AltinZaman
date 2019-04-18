@@ -11,16 +11,22 @@ using TamTechSDK.Common.Services.ContentService.Menus;
 using TamTechSDK.Web;
 using TamTechSDK.Web.Controllers.Portal;
 using TamTechSDK.Web.Services.Telemetry;
+using TamTechSDK.Common.Models.Sort;
 
 namespace AltinZaman.Areas.Portal.Controllers
 {
     public class ServicesController : ServicesBaseController
     {
+        public static SortingModel SortByOrders = new SortingModel()
+        {
+
+            SortBy = "DisplayOrder"
+        };
+
         public ServicesController(ITelemetryClientService telemetryClientService, IMenusServices menusServices,
-              IServicesService servicesservice )
-            : base(telemetryClientService, menusServices, servicesservice)
+              IServicesService servicesservice)
+            : base(telemetryClientService, menusServices, servicesservice, SortByOrders)
         {
         }
-
     }
 }

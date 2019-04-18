@@ -1,9 +1,8 @@
-﻿using AltinZaman.DirectBackendServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Web.DirectBackendServices.ContentServices.Request.Mapper;
+using AltinZaman.DirectBackendServices.ContentServices.Request.Mapper;
 
 using TamTechSDK.Common.Models.Pagination;
 using TamTechSDK.Common.Models.SelectList;
@@ -17,7 +16,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Request
     public class DirectRequestService : BaseDirectService, IRequestService
     {
         #region Props  
-        private readonly TamTechBackendSDK.ContentService.Services.Requests.IRequestService  _RequestService;
+        private readonly TamTechBackendSDK.ContentService.Services.Requests.IRequestService _RequestService;
         #endregion
 
         #region constructor
@@ -56,7 +55,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Request
 
             PagedResultModel<List<RequestDto>> model = new PagedResultModel<List<RequestDto>>
             {
-                Data = result.Data?.Select(m => m.MapToFrontendDto()).ToList() ,
+                Data = result.Data?.Select(m => m.MapToFrontendDto()).ToList(),
                 Pagination = result.Pagination?.MapToForntEndPagination()
             };
 
@@ -64,7 +63,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Request
 
         }
 
-     
+
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetItemsListExceptSoftDeletedAsync(string lang)
         {
@@ -79,7 +78,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Request
         {
             var result = await _RequestService.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return ReturnResult(result.MapToFrontendDto() , result != null );
+            return ReturnResult(result.MapToFrontendDto(), result != null);
         }
 
 
@@ -98,13 +97,13 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Request
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetPublicItemsListAsync()
         {
             var result = await _RequestService.GetPublicItemsListAsync();
-             
+
             List<SelectListItemModel> SelectListItem = result != null ? result.Select(m => m.MapToFrontendSelectListItemModel()).ToList() : new List<SelectListItemModel>();
 
             return ReturnResult(SelectListItem);
         }
 
-      
+
 
         #endregion
     }

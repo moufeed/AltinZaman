@@ -10,17 +10,17 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 using Microsoft.Extensions.Localization;
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
     public class ServicesController : ServicesBaseController
     {
         public ServicesController(
-                                    ITelemetryClientService telemetryClientService ,
-                                    IServicesService servicesService , 
+                                    ITelemetryClientService telemetryClientService,
+                                    IServicesService servicesService,
                                     IUploadManagerService UploadManager,
                                     IStringLocalizer<AdminBaseController> localizer) : base(telemetryClientService,
-                                                                                servicesService, 
-                                                                                UploadManager, 
+                                                                                servicesService,
+                                                                                UploadManager,
                                                                                 localizer)
         {
         }

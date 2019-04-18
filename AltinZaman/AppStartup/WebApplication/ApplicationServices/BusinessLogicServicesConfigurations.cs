@@ -3,8 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{ 
-     public static class BusinessLogicServicesConfigurations
+{
+    public static class BusinessLogicServicesConfigurations
     {
         public static void AddBusinessLogicServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
@@ -14,10 +14,10 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             {
                 services._AddBusinessLogicMicroServicesConfigurations(configuration);
             }
-               else
+            else
             {
                 services._AddBusinessLogicDirectBackendServicesConfigurations();
-            } 
+            }
         }
     }
 }

@@ -6,18 +6,18 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
     public class PagesController : PagesBaseController
     {
         #region Ctors
- 
+
         public PagesController(ITelemetryClientService telemetryClientService,
                          IPageService pageService,
                          IUploadManagerService uploadManager,
-                         IStringConverters stringConverters, 
+                         IStringConverters stringConverters,
                          IStringLocalizer<AdminBaseController> localizer)
-          :  base(telemetryClientService, pageService, uploadManager, stringConverters, localizer)
+          : base(telemetryClientService, pageService, uploadManager, stringConverters, localizer)
         { }
 
         #endregion

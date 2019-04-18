@@ -11,20 +11,20 @@ namespace AltinZaman.DirectBackendServices.UploadService.Mapper
         {
             return new TamTechBackendSDK.FileStorageService.Models.UploadFileModel
             {
-               
-                  FileNamePrefix = common.FileNamePrefix,
-                  Type = common.type,
-                  Stream = common.Stream,
-                  FileName = common.FileName
+
+                FileNamePrefix = common.FileNamePrefix,
+                Type = common.type,
+                Stream = common.Stream,
+                FileName = common.FileName
             };
         }
 
-       
+
         public static TamTechBackendSDK.FileStorageService.Models.UploadModel MapUploadModel(this TamTechSDK.Common.Services.Upload.Models.UploadModel common)
         {
             var ret = new TamTechBackendSDK.FileStorageService.Models.UploadModel
             {
-                 UploadFiles = common.UploadFile.Select(f => f.MapUploadFileModel()).ToList()
+                UploadFiles = common.UploadFile.Select(f => f.MapUploadFileModel()).ToList()
             };
             return ret;
         }
@@ -47,8 +47,8 @@ namespace AltinZaman.DirectBackendServices.UploadService.Mapper
         {
             return new TamTechBackendSDK.FileStorageService.Models.UploadModelResult
             {
-                 UploadPatchId = common.UploadPatchId,
-                 URLs = common.URLs.Select(u => u.MapUploadedFileURL()).ToList()
+                UploadPatchId = common.UploadPatchId,
+                URLs = common.URLs.Select(u => u.MapUploadedFileURL()).ToList()
             };
         }
 
@@ -61,7 +61,7 @@ namespace AltinZaman.DirectBackendServices.UploadService.Mapper
                 Type = nuget.Type,
                 UploadedDate = nuget.UploadedDate,
                 URL = nuget.URL,
-                Success= nuget.URL.Length > 0
+                Success = nuget.URL.Length > 0
             };
         }
 

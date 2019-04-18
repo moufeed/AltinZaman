@@ -6,14 +6,14 @@ using TamTechSDK.Web.Controllers.Admin;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
     public class SmsController : SmsBaseController
     {
-        public SmsController(ITelemetryClientService telemetryClientService, 
-            ISMSService sMSService, IUsersManagerService IdentityService, 
+        public SmsController(ITelemetryClientService telemetryClientService,
+            ISMSService sMSService, IUsersManagerService IdentityService,
             ServiceBusSettings serviceBusSettings,
-            IStringLocalizer<AdminBaseController> _localizer) : base(telemetryClientService,  sMSService, IdentityService, serviceBusSettings,_localizer)
+            IStringLocalizer<AdminBaseController> _localizer) : base(telemetryClientService, sMSService, IdentityService, serviceBusSettings, _localizer)
         {
         }
     }

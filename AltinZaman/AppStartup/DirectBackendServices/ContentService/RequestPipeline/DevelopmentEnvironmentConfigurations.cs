@@ -9,7 +9,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.RequestPipe
     public static class DevelopmentEnvironmentConfigurations
     {
         public static void ContentService_ConfigureDevelopmentEnvironment(this IApplicationBuilder app, IHostingEnvironment env)
-        { 
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

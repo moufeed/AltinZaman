@@ -151,9 +151,12 @@ namespace AltinZaman.Services.Configurations.AppSetting
         {
             return new List<string>
             {
-                     "page", 
-                    "service", 
-                    
+                     "page",
+                    "section",
+                    "service",
+                    "gallery",
+                "section_of_service",
+                "section_of_gallery",
             };
         }
 
@@ -163,7 +166,9 @@ namespace AltinZaman.Services.Configurations.AppSetting
             return new List<string>
             {
                     "page",
+                    "section",
                     "service",
+                    "gallery",
             };
         }
     }

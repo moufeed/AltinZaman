@@ -5,15 +5,15 @@ using TamTechSDK.Common.Services.ContentService.Sliders;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using Microsoft.Extensions.Localization;
 
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
-	public class SlidersController : SlidersBaseController
-	{
-		public SlidersController(ITelemetryClientService telemetryClientService , ISlidersServices sliderService , 
-            IUploadManagerService uploadManager,  IStringLocalizer<AdminBaseController> _localizer) 
-            : base(telemetryClientService, sliderService , uploadManager,  _localizer)
-		{
+    public class SlidersController : SlidersBaseController
+    {
+        public SlidersController(ITelemetryClientService telemetryClientService, ISlidersServices sliderService,
+            IUploadManagerService uploadManager, IStringLocalizer<AdminBaseController> _localizer)
+            : base(telemetryClientService, sliderService, uploadManager, _localizer)
+        {
 
-		}
-	}
+        }
+    }
 }

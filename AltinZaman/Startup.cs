@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IO.Compression;
+using System.Linq;
 using AltinZaman.AppStartup.MicroServices.ApplicationServices;
 using AltinZaman.AppStartup.WebApplication.ApplicationServices;
 using AltinZaman.AppStartup.WebApplication.RequestPipeline;
@@ -37,10 +41,41 @@ namespace AltinZaman
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddLocalizationConfigurations();
 
-
             services.AddMvcConfigurations();
+
+            services.Configure<GzipCompressionProviderOptions>(option =>
+            {
+                option.Level = CompressionLevel.Fastest;
+            });
+
+            services.AddResponseCompression(options =>
+            {
+                //options.Providers.Add<BrotliCompressionProvider>();
+
+                options.EnableForHttps = true;
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+                {
+                    "application/xml",
+                    "text/xml",
+                    "application/json",
+                    "text/json",
+                    "image/svg+xml",
+                    "application/font-woff2",
+                    "application/x-font-ttf",
+                    "font/ttf",
+                    "font/eot",
+                    "font/otf",
+                    "font/opentype"
+                });
+
+
+                //options.Providers.Add<BrotliCompressionProvider>();
+                options.Providers.Add<GzipCompressionProvider>();
+
+            });
 
             services.AddFiltersConfigurations();
 
@@ -92,8 +127,21 @@ namespace AltinZaman
 
 
             //app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
             //app.UseCookiePolicy();
+
+
+
+            var cachePeriod = env.IsDevelopment() ? "600" : "86400";
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
+                }
+            });
+            app.UseResponseCompression();
+
 
             app.UseStatusCodePagesWithRedirects("/error/{0}");
 
@@ -104,6 +152,8 @@ namespace AltinZaman
             {
                 app.UseIdentityServer();
             }
+
+            app.UseResponseCompression();
 
 
             //IList<System.Globalization.CultureInfo> supportedCultures = new List<System.Globalization.CultureInfo>

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AltinZaman.AppStartup.DirectBackendServices.ContentService.RequestPipeline; 
+using AltinZaman.AppStartup.DirectBackendServices.ContentService.RequestPipeline;
 using TamTechBackendSDK.IdentityService.Models.UserManager;
 using TamTechBackendSDK.IdentityService.Models.Users;
 using TamTechSDK.Common.Services.ContentService.Brands.Models;
@@ -13,7 +13,7 @@ using TamTechSDK.Web.Models.Admin.User;
 
 namespace AltinZaman.AppStartup.WebApplication.RequestPipeline
 {
-   public static class MapperConfigurations
+    public static class MapperConfigurations
     {
         public static void InitializeMapper(this IApplicationBuilder app)
         {

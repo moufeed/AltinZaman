@@ -37,7 +37,14 @@ namespace AltinZaman.TagHelpers
         private void GenerateLiItem(MenuItemDto Menu, StringBuilder stringBuilder, bool subItem = false, string path = "")
         {
             stringBuilder.Append($"<li class=\"{((subItem) ? "" : "nav-item")}\">");
-            stringBuilder.Append($"<a class=\"{((subItem) ? "dropdown-item" : "nav-link")}\" href=\"{ path }/{ Menu.Url }\" >");
+            if (Menu.Url.Equals("/"))
+            {
+                stringBuilder.Append($"<a class=\"{((subItem) ? "dropdown-item" : "nav-link")}\" href=\"{ path }\" >");
+            }
+            else
+            {
+                stringBuilder.Append($"<a class=\"{((subItem) ? "dropdown-item" : "nav-link")}\" href=\"{ path }/{ Menu.Url }\" >");
+            }
             stringBuilder.Append($"{Menu.Title}");
             stringBuilder.Append("</a>");
             stringBuilder.Append("</li>");

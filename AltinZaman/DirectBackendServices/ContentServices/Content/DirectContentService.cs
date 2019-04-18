@@ -14,10 +14,10 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Content
 
         private readonly TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
         #region Ctors
-        public DirectContentService( 
-                    TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities )
+        public DirectContentService(
+                    TamTechBackendSDK.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities)
         {
-            
+
             _contentUtilities = contentUtilities;
         }
         #endregion
@@ -26,8 +26,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Content
         public async Task<Dictionary<string, NumericalStatisticsDto>> GetNumericalStatisticsAsync(List<string> types, string lang)
         {
             var result = await _contentUtilities.GetNumericalStatisticsAsync(types, lang);
-             
+
             var dec = result.Select(dict => dict).ToDictionary(m => m.Key, m => m.Value.MapToFrontEndNumericalStatisticsDto());
+
             return dec;
 
 

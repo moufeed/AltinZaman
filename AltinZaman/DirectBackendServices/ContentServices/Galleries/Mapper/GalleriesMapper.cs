@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
 {
@@ -26,11 +26,14 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 CreatedDate = backend.CreatedDate,
                 Tags = backend.Tags,
                 MetaDescription = backend.MetaDescription,
-                SEOMarkup = backend.SEOMarkup, 
+                SEOMarkup = backend.SEOMarkup,
                 Locked = backend.Locked,
-                ItemsCount=backend.ItemsCount,
+                ItemsCount = backend.ItemsCount,
                 PublishedDate = backend.PublishedDate,
-                AuthorName =backend.AuthorName
+                AuthorName = backend.AuthorName,
+                Section = backend.Section,
+                CustomDate = backend.CustomDate,
+                Slugs = backend.Slugs?.Select(m => m.MapSlugsToFrontend()).ToList()
             };
         }
 
@@ -48,7 +51,9 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Tags = item.Tags,
                 Section = item.Section,
                 MetaDescription = item.MetaDescription,
-                AuthorName = item.AuthorName
+                AuthorName = item.AuthorName,
+                CustomDate = item.CustomDate
+
             };
         }
 
@@ -68,12 +73,14 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Published = item.Published,
                 CreatedDate = item.CreatedDate,
                 MetaDescription = item.MetaDescription,
-                Items = item.Items  != null  ? item.Items.Select(m=> m.MapToFrontEndGalleryItemDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemDto>(),
-                SEOMarkup =item.SEOMarkup,
+                Items = item.Items != null ? item.Items.Select(m => m.MapToFrontEndGalleryItemDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Galleries.Models.GalleryItemDto>(),
+                SEOMarkup = item.SEOMarkup,
                 ModifiedDate = item.ModifiedDate,
-                Locked =item.Locked,
-                PublishedDate =item.PublishedDate,
-                AuthorName = item.AuthorName
+                Locked = item.Locked,
+                PublishedDate = item.PublishedDate,
+                AuthorName = item.AuthorName,
+                CustomDate = item.CustomDate,
+                Slugs = item.Slugs?.Select(m => m.MapSlugsToFrontend()).ToList()
             };
         }
 
@@ -93,9 +100,11 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Section = item.Section,
                 MetaDescription = item.MetaDescription,
                 SEOMarkup = item.SEOMarkup,
-                AuthorName = item.AuthorName
+                AuthorName = item.AuthorName,
+                CustomDate = item.CustomDate
+
             };
-        }        
+        }
         #endregion
 
 
@@ -116,12 +125,14 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Published = item.Published,
                 CreatedDate = item.CreatedDate,
                 MetaDescription = item.MetaDescription,
-                Locked = item.Locked
-                
+                Locked = item.Locked,
+                GalleryItemType = item.GalleryItemType,
+                VideoUrl = item.VideoUrl
+
             };
         }
-        
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemModel MapToBackendCreateGalleryItemDto (this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryItemDto item )
+
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemModel MapToBackendCreateGalleryItemDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.CreateGalleryItemDto item)
         {
 
             return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.CreateGalleryItemModel
@@ -133,13 +144,15 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 Summary = item.Summary,
                 DisplayOrder = item.DisplayOrder,
                 GalleryId = item.GalleryId,
-             //   Tags = item.Tags,
-             //   MetaDescription = item.MetaDescription,
+                GalleryItemType = item.GalleryItemType,
+                VideoUrl = item.VideoUrl
+                //   Tags = item.Tags,
+                //   MetaDescription = item.MetaDescription,
             };
         }
 
 
-        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemModel MapToBackendUpdateGalleryItemDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryItemDto item )
+        public static TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemModel MapToBackendUpdateGalleryItemDto(this TamTechSDK.Common.Services.ContentService.Galleries.Models.UpdateGalleryItemDto item)
         {
 
             return new TamTechBackendSDK.ContentService.Services.Galleries.Dtos.UpdateGalleryItemModel
@@ -152,8 +165,10 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
                 DisplayOrder = item.DisplayOrder,
                 GalleryId = item.GalleryId,
                 Id = item.Id,
-             //   Tags = item.Tags,
-             //   MetaDescription = item.MetaDescription,
+                GalleryItemType = item.GalleryItemType,
+                VideoUrl = item.VideoUrl
+                //   Tags = item.Tags,
+                //   MetaDescription = item.MetaDescription,
             };
         }
 
@@ -164,7 +179,7 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
             {
 
                 Id = item.Id,
-                GalleryId = item.GalleryId, 
+                GalleryId = item.GalleryId,
             };
         }
 
@@ -191,24 +206,8 @@ namespace AltinZaman.DirectBackendServices.ContentServices.Galleries.Mapper
 
         #endregion
 
-
-
     }
 }
 
 
 
-
-/* 
-   
-
-         
-
-     
-
-     
-
-        public bool Published { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-     */

@@ -1,18 +1,18 @@
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;  
+using Microsoft.Extensions.DependencyInjection;
 using TamTech.MockServices.Content;
-using TamTech.MockServices.Pages; 
+using TamTech.MockServices.Pages;
 using AltinZaman.Services.Configurations.AppSetting.Constants;
-using TamTechBackendSDK.ContentService.Repositories; 
+using TamTechBackendSDK.ContentService.Repositories;
 
 namespace AltinZaman.AppStartup.DirectBackendServices.ContentService.ApplicationServices
 {
-     
+
     public static class MockRepositoriesServicesConfigurations
     {
         public static void _ContentService_AddMockRepositoriesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-          
+
             //var useMock = configuration.GetValue<bool>("ContentService_UseMockServices");
 
             //if (useMock)

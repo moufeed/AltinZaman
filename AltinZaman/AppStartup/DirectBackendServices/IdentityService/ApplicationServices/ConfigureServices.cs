@@ -174,7 +174,7 @@ namespace AltinZaman.AppStartup.DirectBackendServices.IdentityService.Applicatio
                         options.AddPolicy(PolicyConstants.UsersManager, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(PolicyConstants.UsersManager)));
 
                         // Content SDK Policies
-                        
+
                         options.AddPolicy(ContentSDKPoliciesConstants.MenusContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.MenusContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.PagesContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PagesContentAdmin)));

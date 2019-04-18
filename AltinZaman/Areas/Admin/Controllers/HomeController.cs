@@ -9,16 +9,16 @@ using TamTechSDK.Web.Services.Configurations.AppSetting;
 using TamTechSDK.Web.Services.Configurations.Cultures;
 using TamTechSDK.Web.Services.Telemetry;
 
-namespace TamTech.Web.Areas.Admin.Controllers
+namespace AltinZaman.Areas.Admin.Controllers
 {
     public class HomeController : HomeBaseController
     {
-        public HomeController(ITelemetryClientService telemetryClientService,  
-            IWebApplicationSettingsService webApplicationSettingsService , 
+        public HomeController(ITelemetryClientService telemetryClientService,
+            IWebApplicationSettingsService webApplicationSettingsService,
             IUploadManagerService uploadManager,
             IStringLocalizer<AdminBaseController> localizer,
-            IContentServices contentServices) 
-            : base(telemetryClientService,  webApplicationSettingsService, uploadManager,localizer , contentServices)
+            IContentServices contentServices)
+            : base(telemetryClientService, webApplicationSettingsService, uploadManager, localizer, contentServices)
         {
         }
     }

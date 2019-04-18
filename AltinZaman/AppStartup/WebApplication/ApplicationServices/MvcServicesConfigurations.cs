@@ -8,10 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TamTechSDK.Web.Attributes;
 
 namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
-{ 
-     public static class MvcServicesConfigurations
+{
+    public static class MvcServicesConfigurations
     {
         public static void AddMvcConfigurations(this IServiceCollection services)
         {
@@ -25,13 +26,16 @@ namespace AltinZaman.AppStartup.WebApplication.ApplicationServices
             });
             services.Configure<RouteOptions>(options => options.LowercaseUrls = false);
 
-            services.AddMvc()
+            services.AddMvc(mvc =>
+            {
+                mvc.Conventions.Add(new ControllerNameAttributeConvention());
+            })
                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddFluentValidation();
-            services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization" );
+            services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
             services.AddMvcCore().AddJsonFormatters();
 
-             
+
 
         }
     }
