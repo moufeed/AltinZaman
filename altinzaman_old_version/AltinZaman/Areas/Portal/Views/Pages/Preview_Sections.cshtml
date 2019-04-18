@@ -1,0 +1,77 @@
+﻿@model PageDto
+@{
+    ViewData["Title"] = String.IsNullOrEmpty(Model.Title) ? "الزمان الذهبي" : Model.Title;
+    Layout = "_Layout";
+    ViewData["ImageURl"] = @Model.MainImage;
+    ViewData["pageTitle"] = @Model.Title;
+
+}
+
+@await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
+
+@section SEO{
+    <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
+    <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
+    <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
+}
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="page-date wow fadeInUp animated">
+                    @( Model.CreatedDate.ToString("dd") )
+                    <div class="text">@( Model.CreatedDate.ToString("MMMM") )</div>
+                </div>
+
+
+
+                <div class="sections-content">
+
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 hidden-xs">
+                            <div class="list-group">
+                                @{ int indx = 0; }
+                                @foreach (var content in Model.SectionsContent)
+                                {
+                                <button type="button" data-target="#sec-@indx" class="list-group-item scroll-to-target truncate">
+                                    @content.Key</button>
+
+                                                                indx++;
+                                      }
+
+
+</div>
+                        </div>
+                        <div class="col-md-9 col-sm-8 col-xs-12" id="accordion">
+                            @{ int index = 0; }
+                            @foreach (var content in Model.SectionsContent)
+                            {
+
+                                <div class="section-content wow fadeIn animated"  id="sec-@index">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-@index" aria-expanded="false" aria-controls="collapse-@index">
+                                            <small><i class="fa fa-minus"></i></small>
+                                            @content.Key
+
+                                        </a>
+                                    </h4>
+                                    <div id="collapse-@index" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-@index">
+                                        <div class="text">
+                                            <p> @content.Value</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                index++;
+                            }
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 

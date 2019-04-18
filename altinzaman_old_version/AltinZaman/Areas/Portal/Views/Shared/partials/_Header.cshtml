@@ -1,0 +1,42 @@
+﻿<header class="main-header">
+
+    <!-- header upper -->
+  
+    @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_topbar.cshtml")
+    <!-- end header upper -->
+    <!-- header lower -->
+    <div class="header-lower">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <a href="/" class="logo-box">
+                        <img src="~/Portal/images/logo.png" alt="@ViewData["Title"]">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_menu.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header lower -->
+    <!--sticky header-->
+    <div class="sticky-header">
+        <div class="container clearfix">
+            <div class="row">
+                <div class="col-md-3 col-sm-2 col-xs-12">
+                    <a href="/" class="logo-box">
+                        <img src="~/Portal/images/logo.png" alt="@ViewData["Title"]">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-10 col-xs-12">
+                    @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_menu.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end sticky header -->
+
+</header>
+
+ 

@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="application/xhtml+html; charset=utf-8" />
+    <title>@ViewData["Title"]</title>
+    @RenderSection("SEO", required: false)
+
+    <link href="~/Portal/css/style.min.css" rel="stylesheet">
+
+    <link rel="icon" href="~/Portal/images/favicon.ico" type="image/x-icon">
+
+    @RenderSection("meta", required: false)
+    @if (IsSectionDefined("header"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+
+    <!-- Google Tag Manager -->
+    <script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K7MWMJ4');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+<body class="page-wrapper">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7MWMJ4"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="preloader"></div>
+    <partial name="partials/_Header.cshtml" />
+    @RenderBody()
+    <partial name="partials/_Footer.cshtml" />
+
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon fa fa-angle-up"></span></div>
+    @*<script src="~/Portal/js/jquery-2.1.4.js"></script>
+        <script src="~/Portal/js/bootstrap.min.js"></script>
+        <script src="~/Portal/js/SmoothScroll.js"></script>
+        <script src="~/Portal/js/wow.js"></script>*@
+
+    <script src="~/Portal/js/main-min.js"></script>
+
+    @RenderSection("footer", required: false)
+    <script src="~/Portal/js/script-min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+

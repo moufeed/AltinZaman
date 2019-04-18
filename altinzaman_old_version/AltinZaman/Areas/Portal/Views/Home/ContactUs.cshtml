@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = @Localizer["site_title"];
+    Layout = "_Layout";
+    ViewData["ImageURl"] = @Url.Content("~/portal/Images/bgs/contact.jpg");
+    ViewData["pageTitle"] = Localizer["contact_us"];
+
+}
+@await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
+
+@section SEO{
+<script type="application/ld+json">
+    {
+    "@@context":"http://schema.org",
+    "@@type":"LocalBusiness",
+    "image":"@ViewBag.Host/portal/Images/logo.png",
+    "name":"@Localizer["site_title"]",
+    "address":{
+    "@@type":"PostalAddress",
+    "streetAddress":"E5 yan yol Civan Cokak",
+    "addressLocality":"Avcılar Üniversite Mh",
+    "addressRegion":"İstanbul",
+    "postalCode":"34320",
+    "addressCountry":"Turkey"
+    },
+    "geo":{
+    "@@type":"GeoCoordinates",
+    "latitude":40.991939 ,
+    "longitude":28.713351
+    },
+    "telephone":"+905354152865"
+    }
+</script>
+}
+
+@await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactLinks.cshtml", @ViewData)
+
+@await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/_ContactForm.cshtml")
+
+
+@section footer {
+   
+    
+    <script src="~/portal/js/validation.js"></script>
+
+}

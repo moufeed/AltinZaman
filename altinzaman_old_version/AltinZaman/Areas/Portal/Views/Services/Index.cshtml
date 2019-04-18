@@ -1,0 +1,48 @@
+﻿@model List<ServiceDto>
+@{
+    ViewData["Title"] = Localizer["our_services"];
+    Layout = "_Layout";
+    ViewData["ImageURl"] = @Url.Content("~/portal/images/bgs/services.jpg");
+    ViewData["pageTitle"] = Localizer["our_services"];
+
+}
+@await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
+
+ 
+<section class="service-style-tow">
+    <div class="container">
+        <div class="row">
+            @foreach (var service in Model)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12 service-colmun">
+                    <div class="service-content">
+                        <div class="icon-box">
+                        
+                        
+                            <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >
+                                @if (!string.IsNullOrEmpty(service.Icon))
+                                {
+                                    <i class="fa @service.Icon"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-cubes"></i>
+                                }
+
+
+                            </a></div>
+                        <h4><a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" >@service.Title</a></h4>
+                        <div class="text">
+                            <p class="truncate-3line">
+                                @service.Summary
+                            </p>
+                        </div>
+                        <a asp-controller="services" asp-action="v" asp-route-slug="@service.Slug" class="btn btn-link btn-more" >@Localizer["more"]</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
