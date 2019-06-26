@@ -71,11 +71,11 @@ namespace AltinZaman.Areas.Portal.Controllers
         {
             try
             {
-                var testimonial = await _TestimonialsServices.GetPublicListAsync(true);
-                if (testimonial.Success)
-                {
-                    ViewBag.testimonials = testimonial.Data;
-                }
+               // var testimonial = await _TestimonialsServices.GetPublicListAsync(true);
+                //if (testimonial.Success)
+                //{
+                //    ViewBag.testimonials = testimonial.Data;
+                //}
                 var publicMainSlider = await _sliderService.GetPublicByKeyAsync(_appSettingsService.GetHomePageMainSliderKey());
                 if (publicMainSlider.Success)
                 {
@@ -83,7 +83,7 @@ namespace AltinZaman.Areas.Portal.Controllers
                 }
 
                 ViewBag.Posts = new List<PostDto>();// await _postservice.GetPublicListAsync(4);
-                ViewBag.galleries = await _GalleriesService.GetPublicListAsync(4);
+               // ViewBag.galleries = await _GalleriesService.GetPublicListAsync(4);
 
                 var aboutSummary = await _pageService.GetPublicPageSummaryByIdAsync(_appSettingsService.GetHomePageSummuryId());
 

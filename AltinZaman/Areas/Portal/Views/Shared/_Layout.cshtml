@@ -8,14 +8,14 @@
     @RenderSection("SEO", required: false)
 
     <link href="~/Portal/css/style.min.css" rel="stylesheet">
-
+<meta name="format-detection" content="telephone=no">
     <link rel="icon" href="~/Portal/images/favicon.ico" type="image/x-icon">
 
     @RenderSection("meta", required: false)
     @if (IsSectionDefined("header"))
     {
         @RenderSection("Styles", required: false)
-    }
+    } 
 
     <!-- Google Tag Manager -->
     <script>
@@ -55,9 +55,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </body>
 </html>
-
-
-
-
-
-
