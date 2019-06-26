@@ -1,0 +1,18 @@
+ 
+Last Modified File Date : 06-26-2109
+
+
+TamTechSDK.Web(0.0.3.6)
+TamTechBackendSDK.ContentService.SQL(0.0.4.9)
+
+Last executed sql script ContentService_db_Script_UpgradeSchema_From_V0.0.1.9_To_V0.0.2.2
+
+ 
+
+
+
+
+
+ 
+
+ 
