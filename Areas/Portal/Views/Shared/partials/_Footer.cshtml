@@ -1,0 +1,228 @@
+﻿<!-- main footer area -->
+@{
+    var UserAgent = ViewContext.HttpContext.Request.Headers["User-Agent"].ToString();
+
+    var ismobile = Utils.IsMobile(UserAgent);
+}
+
+<footer class="main-footer sec-pad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                <a href="#" class="footer-logo">
+                    <img src="~/Portal/images/logo-footer.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12 footer-colmun">
+                <div class=" footer-widget">
+
+                    <div class="text">
+                        <p>@Localizer["شركة استشارات مالية تعتمد في ممارسة أنشطتها ومهامها على القانون التركي ومسجلة بموجب قانون الدولة التركية ومتخصصة في تقديم الخدمات الاستشارية المالية والحسابية"]</p>
+                    </div>
+                  
+                </div>
+            </div>
+            <style>
+                .m0{
+                    margin : 0 !important;
+                }
+                 .footer-list li{
+                    margin-top:0;
+                    float :right;
+                    margin-left: 10px;
+                }
+                 .times-list li{
+                      float :none;
+                      padding-right : 15px;
+                      text-align : right;
+                     margin-top: 10px;
+                 }
+            </style>
+            <div class="col-md-3 col-md-offset-2 col-sm-6 col-xs-12 footer-colmun">
+                <div class="subscribe-widget footer-widget">
+                    <ul class="footer-social">
+                        <li><a href="https://www.facebook.com/Altinzama/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/ferasnahas" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/Altin_zaman" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                    <ul class="footer-list times-list">
+                        <li >
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <a href="mailto:info@altinzaman.co">info@altinzaman.co</a>
+                        </li>
+                        <li >
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                             الاثنين - الجمعة: 
+                            <strong><strong class="tahoma">9</strong> صباحا - <strong class="tahoma">6</strong> مساء</strong>
+                        </li>
+                    </ul>
+                   
+                   
+ 
+
+                     
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <hr style="border-top-color:#eed178" />
+                <ul class="footer-list">
+
+                    <li>
+
+                        <small class="btn-group">
+
+                            @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905424063913" class="btn btn-link" target="_blank">
+                                <i class="fa fa-whatsapp m0"></i>
+                            </a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905424063913" target="_blank" class="btn btn-link">
+                                <i class="fa fa-whatsapp m0"></i>
+                            </a>
+                            }
+
+                            <a dir="rtl" href="tel:00905424063913" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+
+                        <small class="tahoma">00905424063913</small>
+
+                    </li>
+                    <li>
+                        <small class="btn-group">
+                            @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905444063913" class="btn btn-link" target="_blank">
+                                <i class="fa fa-whatsapp m0"></i>
+                            </a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905444063913" target="_blank" class="btn btn-link">
+                                <i class="fa fa-whatsapp m0"></i>
+                            </a>
+                            }
+                            <a dir="rtl" href="tel:00905444063913" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+                        <small class="tahoma"> 00905444063913 </small>
+
+
+
+                    </li>
+                    <li>
+
+                        <small class="btn-group">
+                            @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905315985931" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905315985931" target="_blank" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            <a dir="rtl" href="tel:00905315985931" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+                        <small class="tahoma"> 00905315985931 </small>
+
+
+
+
+
+                    </li>
+                    <li>
+
+                        <small class="btn-group">
+                           <!--  @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+902129950625" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00902129950625" target="_blank" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            } -->
+                            <a dir="rtl" href="tel:00902129950625" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+                        <small class="tahoma" > 00902129950625 </small>
+
+
+
+
+
+                    </li>
+
+                    <li>
+
+                        <small class="btn-group">
+                            @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905385984399" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905385984399" target="_blank" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            <a dir="rtl" href="tel:00902129950625" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+                        <small class="tahoma" > 00905385984399 </small>
+
+
+
+
+
+                    </li>
+                    <li>
+
+                        <small class="btn-group">
+                            @if (ismobile)
+                            {
+                            <a dir="rtl" href="https://api.whatsapp.com/send?phone=+905385140359" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            else
+                            {
+                            <a dir="rtl" href="https://web.whatsapp.com/send?phone=00905385140359" target="_blank" class="btn btn-link"><i class="fa fa-whatsapp m0"></i></a>
+                            }
+                            <a dir="rtl" href="tel:00902129950625" target="_blank" class="btn btn-link">
+                                <i class="fa fa-mobile m0"></i>
+                            </a>
+                        </small>
+
+                        <small class="tahoma" > 00905385140359 </small>
+
+
+
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- main footer area end -->
+<!-- footer bottom -->
+<section class="footer-bottom centered">
+    <div class="container">
+        <div class="copyright">
+            <p class="pull-left"> جميع الحقوق محفوظة لصالح شركة الزمان الذهبي ©</p>
+            <p class="pull-right">تصميم ونطوير  شركة <a href="http://tamtech.solutions" target="_blank"> تام تك</a></p>
+        </div>
+    </div>
+</section>

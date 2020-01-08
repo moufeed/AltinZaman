@@ -1,0 +1,27 @@
+@using TamTechSDK.Common.Services.ContentService.Sliders.Models;
+<!-- sponsors section -->
+
+
+
+@if (ViewBag.publicClientsSlider != null)
+{
+    SliderDto clientsSlider = (SliderDto)ViewBag.publicClientsSlider;
+
+    <section class="sponsors-section">
+        <div class="container">
+            <div class="sponsors-area">
+                @if (clientsSlider.Items?.Count > 0) { 
+                <ul class="sponsors-slider" data-rtl="true">
+                    @foreach (var item in clientsSlider.Items)
+                    {
+                        <li><a href="#"><figure><img src="@item.MainImage" alt=""></figure></a></li>
+                    }
+                </ul>
+                }
+            </div>
+        </div>
+    </section>
+ 
+}
+
+<!-- sponsors section end --> 

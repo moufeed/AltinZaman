@@ -1,0 +1,31 @@
+﻿<!-- service section -->
+<section class="service-section">
+    <div class="container-fullid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-sm-12 service-colmun">
+                <div class="service-title">
+                    <div class="sec-title"><h2><span>خدماتنا</span></h2></div>
+                    <div class="text"><p> تسعى الشركة جاهدة لتقديم أفضل الخدمات للعميل </p></div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-xs-12 service-colmun">
+                <div class="three-column-carousel" data-rtl="true">
+                    @if (ViewBag.services != null && ViewBag.services.Count > 0)
+                    {
+                        foreach (ServiceDto item in ViewBag.services)
+                        {
+                            <div class="single-item">
+                                <div class="icon-box"><a href="/services/@item.Slug"><i class="fa @item.Icon"></i></a></div>
+                                <h4><a  asp-action="v" asp-controller="services" asp-route-slug="@item.Slug">@item.Title</a></h4>
+                                <div class="text"><p>@Html.Raw(item.Summary)</p></div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- feature section end -->
+ 
