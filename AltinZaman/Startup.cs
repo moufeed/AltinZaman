@@ -24,6 +24,7 @@ using TamTechSDK.Common.Services.Identity.Models.Params;
 using TamTechSDK.Web.Models.Admin.User;
 using TamTechSDK.Web.Routing;
 using TamTechSDK.Web.Services.Configurations.Cultures;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace AltinZaman
 {
@@ -94,7 +95,10 @@ namespace AltinZaman
         {
             bool useMicroServices = Configuration.GetSection(AppSettings.WebApplicationSettings)
                                                .GetSection(AppSettings.WebApplication_UseMicroServices).Get<bool>();
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             if (env.IsDevelopment())
             {
                 // app.UseBrowserLink(); from web admin panel
