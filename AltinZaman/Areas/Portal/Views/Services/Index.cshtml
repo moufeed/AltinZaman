@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = Localizer["our_services"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/images/bgs/services.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/Portal/images/bgs/services.jpg");
     ViewData["pageTitle"] = Localizer["our_services"];
 
 }
 @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
 
- 
+
 <section class="service-style-tow">
     <div class="container">
         <div class="row">
@@ -53,4 +53,3 @@
 
     </div>
 </section>
-

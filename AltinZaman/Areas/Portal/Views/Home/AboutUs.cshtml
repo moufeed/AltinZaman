@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = @Localizer["حول الشركة"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/Images/bgs/about.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/Portal/Images/bgs/about.jpg");
     ViewData["pageTitle"] = Localizer["About_Us"];
 }
 
@@ -16,7 +16,7 @@
     {
     "@@context":"http://schema.org",
     "@@type":"LocalBusiness",
-    "image":"@ViewBag.Host/portal/img/seoLogo.jpg",
+    "image":"@ViewBag.Host/Portal/img/seoLogo.jpg",
     "name":"@Localizer["site_title"]",
     "@@type":"PostalAddress",
     "streetAddress":"E5 yan yol Civan Cokak",
@@ -45,5 +45,3 @@
     @await Html.PartialAsync("~/Areas/Portal/Views/Home/partials/index/_about.cshtml")
 
 </section>
-
- 

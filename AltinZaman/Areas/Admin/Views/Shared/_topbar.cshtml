@@ -65,7 +65,7 @@
 
 
                                 <li class=" @((_lang == culture.Lang) ? "active" :"" )">
-                                    <a href="@Url.AdminUrl("index","home",new { area ="admin" ,culture = culture.Lang })">@culture.Name</a>
+                                    <a href="@Url.AdminUrl("index","home",new { area ="Admin" ,culture = culture.Lang })">@culture.Name</a>
                                 </li>
                             }
                         </ul>
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="fullscreen" 
+                    <a class="fullscreen"
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="@Localizer["fullscreen"]" >
@@ -96,7 +96,3 @@
         </nav>
     </div>
 </div>
-
-
-
- 

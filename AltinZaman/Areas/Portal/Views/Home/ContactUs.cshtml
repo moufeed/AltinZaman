@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = @Localizer["اتصل بنا"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/Images/bgs/contact.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/Portal/Images/bgs/contact.jpg");
     ViewData["pageTitle"] = Localizer["contact_us"];
 
 }
@@ -13,7 +13,7 @@
     {
     "@@context":"http://schema.org",
     "@@type":"LocalBusiness",
-    "image":"@ViewBag.Host/portal/Images/logo.png",
+    "image":"@ViewBag.Host/Portal/Images/logo.png",
     "name":"@Localizer["site_title"]",
     "address":{
     "@@type":"PostalAddress",
@@ -39,8 +39,8 @@
 
 
 @section footer {
-   
-    
-    <script src="~/portal/js/validation.js"></script>
+
+
+    <script src="~/Portal/js/validation.js"></script>
 
 }

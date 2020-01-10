@@ -64,7 +64,7 @@
                             <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_public_url"]</label>
                             <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
                                 @{
-                                    string UrlAction = Url.Action("v", "pages", new { Area = "portal", slug = Model.Slug });
+                                    string UrlAction = Url.Action("v", "pages", new { Area = "Portal", slug = Model.Slug });
 
 
                                     var url = System.Uri.UnescapeDataString(string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, UrlAction));
@@ -195,7 +195,7 @@
                         </div>
                     </div>
 
-                    @await Html.PartialAsync("~/Areas/admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
+                    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
@@ -246,7 +246,7 @@
                                 txt = MakeErrorsMsg(errors);
                                 $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                             }
-                    
+
                 }
             })
             .fail(function (jqXHR, Status) {

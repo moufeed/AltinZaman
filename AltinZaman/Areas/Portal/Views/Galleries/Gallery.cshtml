@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = Localizer["Gallery"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/img/galleries.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/Portal/img/galleries.jpg");
     ViewData["pageTitle"] = (!string.IsNullOrEmpty(Model.Title)) ? Model.Title : "Gallery";
 
 
@@ -14,7 +14,7 @@
     <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
 }
 @if (Model != null && Model.Id != default(Guid))
-{ 
+{
 
 <section class="gallery-section my-5">
     <div class="container">
@@ -67,7 +67,7 @@
 
 
 }
- 
+
 
 
 
@@ -110,4 +110,3 @@
             });
     </script>
 }
-

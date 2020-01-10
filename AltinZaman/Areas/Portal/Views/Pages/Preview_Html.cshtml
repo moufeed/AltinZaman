@@ -8,7 +8,7 @@
     ViewData["ImageURl"] = @Model.MainImage;
     ViewData["pageTitle"] = @Model.Title;
 
- 
+
 }
 
 @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml", @ViewData)
@@ -20,7 +20,7 @@
     <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
     <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
 }
- 
+
 
     <section class="content">
         <div class="container">
@@ -30,7 +30,7 @@
                         @( Model.CreatedDate.ToString("dd") )
                         <div class="text">@( Model.CreatedDate.ToString("MMMM") )</div>
                     </div>
-  
+
                 <div class="text">
                     @Html.Raw(Model.HtmlContent)
                 </div>
@@ -38,7 +38,3 @@
             </div>
         </div>
     </section>
-   
-
-
-           

@@ -2,9 +2,9 @@
 @{
     ViewData["Title"] = Localizer["Galleries"];
     Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/img/galleries.jpg");
+    ViewData["ImageURl"] = @Url.Content("~/Portal/img/galleries.jpg");
     ViewData["pageTitle"] = Localizer["our_galleries"];
-   
+
 }
 
 @await Html.PartialAsync("~/Areas/Portal/Views/Shared/partials/_PageHeader.cshtml")
@@ -28,7 +28,7 @@
                                    <a asp-controller="galleries" asp-action="v" asp-route-slug="@item.Slug"><img src="~/Portal/img/no-image.svg" alt="@item.Title" /></a>
                                 }
                                 else
-                                { 
+                                {
                                    <a asp-controller="galleries" asp-action="v" asp-route-slug="@item.Slug"><img src="@item.MainImage" alt="@item.Title" /></a>
                                 }
                             </span>

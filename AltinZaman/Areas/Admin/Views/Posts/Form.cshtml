@@ -82,7 +82,7 @@
 
                                         @{
                                             string slug = Model.SectionSlug.Trim('/');
-                                            var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, Url.Action("p", "posts", new { Area = "portal", slug = $"{@slug}/{Model.Slug}" })).Replace("%2F", "/");
+                                            var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, Url.Action("p", "posts", new { Area = "Portal", slug = $"{@slug}/{Model.Slug}" })).Replace("%2F", "/");
                                         }
                                         <p class="form-control-static p-x-2"><a href="@url" class="underline" id="url">@(System.Uri.UnescapeDataString(url))</a></p>
                                         <span asp-validation-for="Title" class="text-danger invalid_field"></span>
@@ -245,7 +245,7 @@
                     {
                         <input type="hidden" name="DatePublished" value="@(String.Format("{0:yyyy-MM-dd}", Model.PublishedDate))" data-seo-published />
                         <input type="hidden" name="DateModified" value="@(String.Format("{0:yyyy-MM-dd}", Model.ModifiedDate))" data-seo-modified />
-                        @await Html.PartialAsync("~/Areas/admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
+                        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
                     }
 
 
@@ -297,10 +297,10 @@
           </text>
         }
 
-      
+
     </script>
 
-   
+
 
     @*
         <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>

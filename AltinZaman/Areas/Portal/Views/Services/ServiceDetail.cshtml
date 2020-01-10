@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = string.IsNullOrEmpty(Model.Title) ?  Localizer["Services"].ToString()  : Model.Title;
     Layout = "_Layout";
-    ViewData["ImageURl"] = (Model.MainImage != null) ? Model.MainImage : @Url.Content("~/portal/images/bgs/services.jpg");
+    ViewData["ImageURl"] = (Model.MainImage != null) ? Model.MainImage : @Url.Content("~/Portal/images/bgs/services.jpg");
 
     ViewData["pageTitle"] = Model.Title;
 
@@ -22,7 +22,7 @@
         </div>
         <div class="row mt-5">
 
-            
+
             @if (Model.IconVisibility)
             {
                 <div class="col-md-3 col-xs-12 hidden-sm">
@@ -31,8 +31,8 @@
                     </div>
                 </div>
             }
-            
-            @{ 
+
+            @{
                 string clas = (Model.IconVisibility) ? "col-md-9 col-xs-12 col-sm-12" : "col-md-12 col-sm-12 col-xs-12";
             }
                 <div class="@clas">
@@ -43,7 +43,7 @@
                             <i class="fa @Model.Icon"></i>
                         </div>
                     </div>
-                    } 
+                    }
                     <div class="text">
                         @Html.Raw(Model.Content)
                     </div>

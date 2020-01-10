@@ -66,7 +66,7 @@
                             <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_public_url"]</label>
                             <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
                                 @{
-                                    var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, Url.Action("v", "pages", new { Area = "portal", slug = Model.Slug }));
+                                    var url = string.Format("{0}://{1}{2}", Context.Request.Scheme, Context.Request.Host, Url.Action("v", "pages", new { Area = "Portal", slug = Model.Slug }));
                                 }
                                 <p class="form-control-static p-x-2"><a href="@url" class="underline" id="url">@(System.Uri.UnescapeDataString(url))</a></p>
                                 <span asp-validation-for="Title" class="text-danger invalid_field"></span>
@@ -248,7 +248,7 @@
                         </div>
                     </div>
 
-                    @await Html.PartialAsync("~/Areas/admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
+                    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/Seo/_SeoFields.cshtml", Model.SEOMarkup);
 
                     <div class="form-group">
                         <div class="col-md-10 col-lg-9 col-md-offset-3 col-sm-offset-3 col-sm-9 col-xs-12 text-right">

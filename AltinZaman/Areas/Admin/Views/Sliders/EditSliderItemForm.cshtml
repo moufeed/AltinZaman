@@ -39,7 +39,7 @@
         <div class="x_panel">
             <div class="x_content">
 
-              
+
 
                 <form asp-controller="Sliders"
                       asp-action="EditItem"
@@ -85,7 +85,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                               
+
                                  @if (!string.IsNullOrEmpty(Model.MainImage)){
  <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="800"/>
                                  }else{
@@ -103,7 +103,7 @@
 
 
 
-  
+
 
                     <div class="form-group clearfix">
                         <label asp-for="Url" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_url"]</label>
@@ -187,5 +187,5 @@
         ViewBag.TinyMce_Suumry_Id = "#Summary";
         await Html.RenderPartialAsync("partials/_tinymce.cshtml");
     }*@
- 
+
 }
